@@ -4,8 +4,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // Configuration
 const CONFIG = {
 	GRID_SIZE: 21,           // A-U (21 lettres)
-	SPHERE_RADIUS: 50,       // Rayon de la sphère
-	PLANET_SIZE: 0.25,       // Taille des planètes
+	SPHERE_RADIUS: 100,       // Rayon de la sphère
+	PLANET_SIZE: 0.5,       // Taille des planètes
 	ANIMATION_SPEED: 0.5,
 };
 
@@ -119,40 +119,43 @@ class GalaxyViewer {
 		}
 	}
 
-	/**
-	 * Convertit les coordonnées de grille 2D en position 3D volumétrique
-	 * M-16 devient: X = M (lettre), Y = 16 (nombre), Z = calculé selon la densité
-	 * @param {number} gridX - Coordonnée X (1-21, A-U)
-	 * @param {number} gridY - Coordonnée Y (1-21)
-	 * @param {number} depth - Profondeur Z (0-1)
-	 * @returns {THREE.Vector3} Position 3D dans le volume
-	 */
-	gridTo3D(gridX, gridY, depth = 0.5) {
-		// Centrer les coordonnées autour de 0
-		const halfSize = CONFIG.GRID_SIZE / 2;
-		const scale = CONFIG.SPHERE_RADIUS / halfSize;
+	gridTo3D(gridX, gridY, depthFactor = Math.random()) {
+		const centerGrid = 11;
+		const scale = CONFIG.SPHERE_RADIUS / (CONFIG.GRID_SIZE / 2);
 
-		// X et Y basés sur la grille
-		const x = (gridX - halfSize - 0.5) * scale;
-		const y = (gridY - halfSize - 0.5) * scale;
+		const jitter = 0.5;
+		const scaleRandomFactor = 1 + (Math.random() * 0.2 - 0.1);
 
-		// Z basé sur la profondeur (distribution dans le volume)
-		// On utilise une distribution radiale pour créer une sphère
-		const radiusAtDepth = Math.sqrt(1 - Math.pow(depth - 0.5, 2)) * CONFIG.SPHERE_RADIUS;
-		const currentRadius = Math.sqrt(x * x + y * y);
+		const jitteredX = gridX - centerGrid + (Math.random() * 2 - 1) * jitter;
+		const jitteredY = gridY - centerGrid + (Math.random() * 2 - 1) * jitter;
 
-		// Si le point est en dehors du rayon à cette profondeur, on l'ajuste
-		let finalX = x;
-		let finalY = y;
-		let finalZ = (depth - 0.5) * CONFIG.SPHERE_RADIUS * 2;
+		let x = jitteredX * scale * scaleRandomFactor;
+		let y = jitteredY * scale * scaleRandomFactor;
 
-		if (currentRadius > radiusAtDepth) {
-			const factor = radiusAtDepth / currentRadius;
-			finalX = x * factor;
-			finalY = y * factor;
+		const radialDistance = Math.sqrt(x * x + y * y);
+
+		const zFlattenFactor = 2; // plus épais qu’avant
+		const maxRadiusXY = CONFIG.SPHERE_RADIUS;
+
+		// Densité un peu moins utilisée pour compresser Z
+		const density = Math.exp(-radialDistance / (maxRadiusXY / 2.5));
+
+		// Ajouter un léger aléa sur Z combiné à depthFactor
+		const randomZFactor = 1 + Math.random() * 0.5;
+
+		let z = (depthFactor - 0.5) * maxRadiusXY * 2 * zFlattenFactor * density * randomZFactor;
+
+		y *= 1;
+
+		const maxRadius3D = Math.sqrt(x * x + y * y + z * z);
+		if (maxRadius3D > CONFIG.SPHERE_RADIUS) {
+			const factor = CONFIG.SPHERE_RADIUS / maxRadius3D;
+			x *= factor;
+			y *= factor;
+			z *= factor;
 		}
 
-		return new THREE.Vector3(finalX, finalY, finalZ);
+		return new THREE.Vector3(x, y, z);
 	}
 
 	setupScene() {
@@ -240,14 +243,8 @@ class GalaxyViewer {
 		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		this.scene.add(sphere);
 
-		// Grille volumétrique 3D - Plans de coupe
-		this.createVolumetricGrid();
-
 		// Étoiles d'arrière-plan
 		this.createStarfield();
-
-		// Axes de coordonnées holographiques
-		// this.createCoordinateAxes();
 	}
 
 	/**
@@ -323,7 +320,7 @@ class GalaxyViewer {
 			}
 		});
 		// Ajouter 50% de marge pour que la zone englobe bien
-		return maxDistance;
+		return maxDistance * 1.5;
 	}
 
 	/**
@@ -353,72 +350,6 @@ class GalaxyViewer {
 			baseRadius: radius,
 			regionName
 		});
-	}
-
-
-	createVolumetricGrid() {
-		// Plans XY à différentes profondeurs Z
-		for (let z = -1; z <= 1; z += 0.5) {
-			const zPos = z * CONFIG.SPHERE_RADIUS;
-			// Lignes horizontales (Y constant)
-			for (let y = 0; y <= CONFIG.GRID_SIZE; y++) {
-				const points = [];
-				for (let x = 0; x <= CONFIG.GRID_SIZE; x++) {
-					const pos = this.gridTo3D(x, y, z * 0.5 + 0.5);
-					points.push(pos);
-				}
-			}
-
-			// Lignes verticales (X constant)
-			for (let x = 0; x <= CONFIG.GRID_SIZE; x++) {
-				const points = [];
-				for (let y = 0; y <= CONFIG.GRID_SIZE; y++) {
-					const pos = this.gridTo3D(x, y, z * 0.5 + 0.5);
-					points.push(pos);
-				}
-			}
-		}
-	}
-
-	createCoordinateAxes() {
-		// Axes X, Y, Z pour visualiser l'orientation
-		const axisLength = CONFIG.SPHERE_RADIUS * 1.2;
-
-		// Axe X (rouge)
-		const xGeometry = new THREE.BufferGeometry().setFromPoints([
-			new THREE.Vector3(-axisLength, 0, 0),
-			new THREE.Vector3(axisLength, 0, 0)
-		]);
-		const xMaterial = new THREE.LineBasicMaterial({
-			color: 0xff3333,
-			transparent: true,
-			opacity: 0
-		});
-		this.scene.add(new THREE.Line(xGeometry, xMaterial));
-
-		// Axe Y (vert)
-		const yGeometry = new THREE.BufferGeometry().setFromPoints([
-			new THREE.Vector3(0, -axisLength, 0),
-			new THREE.Vector3(0, axisLength, 0)
-		]);
-		const yMaterial = new THREE.LineBasicMaterial({
-			color: 0x33ff33,
-			transparent: true,
-			opacity: 0
-		});
-		this.scene.add(new THREE.Line(yGeometry, yMaterial));
-
-		// Axe Z (bleu)
-		const zGeometry = new THREE.BufferGeometry().setFromPoints([
-			new THREE.Vector3(0, 0, -axisLength),
-			new THREE.Vector3(0, 0, axisLength)
-		]);
-		const zMaterial = new THREE.LineBasicMaterial({
-			color: 0x3333ff,
-			transparent: true,
-			opacity: 0
-		});
-		this.scene.add(new THREE.Line(zGeometry, zMaterial));
 	}
 
 	createStarfield() {
