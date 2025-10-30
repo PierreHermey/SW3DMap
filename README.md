@@ -31,21 +31,6 @@
 - `npm run dev` - Lancer le serveur de développement
 - `npm start` - Parser + lancer le serveur
 
-
-✅ Projet Node.js créé avec succès!
-
-📁 Structure:
-  SW3DMap/
-  ├── assets/          (placer ici le PDF et l'image)
-  ├── parser/
-  │   └── parse-planets.js
-  ├── src/
-  │   ├── index.html
-  │   ├── main.js
-  │   └── planets.json (sera généré)
-  ├── package.json
-  └── README.md
-
 🚀 Prochaines étapes:
   1. npm install
   2. Copier le PDF dans assets/star_wars_galaxy.pdf
