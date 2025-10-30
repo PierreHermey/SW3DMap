@@ -4,7 +4,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 // Configuration
 const CONFIG = {
 	GRID_SIZE: 21,
-	SPHERE_RADIUS: 100,
+	SPHERE_RADIUS: 200,
 	PLANET_SIZE: 0.5,
 	ANIMATION_SPEED: 0.5,
 };
@@ -56,6 +56,8 @@ class GalaxyViewer {
 			this.planets = await response.json();
 			console.log(`✅ ${this.planets.length} planètes chargées`);
 			document.getElementById('planet-count').textContent =
+				`Planètes: ${this.planets.length}`;
+			document.getElementById('planet-count-mobile').textContent =
 				`Planètes: ${this.planets.length}`;
 		} catch (error) {
 			console.error('❌ Erreur lors du chargement des planètes:', error);
@@ -1005,7 +1007,6 @@ class GalaxyViewer {
 		const planet = this.planetData[instanceId];
 		planet.focused = true;
 
-		// ← Réduire minDistance pour zoom close-up
 		this.controls.minDistance = CONFIG.PLANET_SIZE * 2;
 
 		this.planetData.forEach((data, index) => {
@@ -1014,7 +1015,7 @@ class GalaxyViewer {
 			}
 		});
 
-		// ← AJOUTER CET AFFICHAGE D'INFOS
+		// ← AJOUTER AFFICHAGE INFOS DESKTOP
 		document.getElementById('planet-info').innerHTML = `
         <div class="space-y-3">
             <div class="text-base font-semibold text-white">
@@ -1076,6 +1077,9 @@ class GalaxyViewer {
             </div>
         </div>
     `;
+
+		// ← AJOUTER MODAL MOBILE
+		window.showPlanetModal(planet);
 
 		this.animateCameraTo(planet.position);
 	}

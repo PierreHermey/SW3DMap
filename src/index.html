@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Star Wars Galaxy Map 3D</title>
 
     <!-- Tailwind CSS v4 CDN -->
@@ -14,7 +14,6 @@
             --color-deep-space: #000011;
         }
 
-        /* Modern glass effect - subtle and clean */
         .glass {
             background: rgba(10, 10, 25, 0.6);
             backdrop-filter: blur(16px) saturate(180%);
@@ -31,13 +30,11 @@
             border-color: rgba(255, 232, 31, 0.15);
         }
 
-        /* Subtle focus states */
         input:focus {
             outline: none;
             border-color: rgba(255, 232, 31, 0.3);
         }
 
-        /* Loading spinner */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -46,7 +43,6 @@
             animation: spin 2s linear infinite;
         }
 
-        /* Focus pulse animation */
         @keyframes focusPulse {
             0%, 100% {
                 transform: scale(1);
@@ -62,7 +58,6 @@
             animation: focusPulse 1.5s ease-in-out infinite;
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -79,12 +74,45 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 232, 31, 0.3);
         }
+
+        body {
+            overscroll-behavior: none;
+        }
+
+        button, input[type="checkbox"] {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .modal-tooltip {
+            animation: slideUp 0.3s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
+                padding-top: max(0px, env(safe-area-inset-top));
+                padding-bottom: max(0px, env(safe-area-inset-bottom));
+            }
+        }
     </style>
 </head>
 <body class="m-0 overflow-hidden bg-deep-space">
 <!-- Loading Screen -->
 <div id="loading" class="fixed inset-0 flex items-center justify-center z-50 bg-deep-space">
-    <div class="text-center">
+    <div class="text-center px-4">
         <div class="text-xl font-medium text-star-wars mb-6">
             Chargement de la galaxie...
         </div>
@@ -93,7 +121,7 @@
 </div>
 
 <!-- Search Bar -->
-<div id="search-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 glass rounded-lg px-4 py-2.5">
+<div id="search-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 glass rounded-lg px-4 py-2.5 w-80 max-w-[calc(100vw-2rem)]">
     <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
     </svg>
@@ -104,7 +132,7 @@
             list="planets-list"
             placeholder="Rechercher une planète..."
             autocomplete="off"
-            class="w-80 bg-transparent border-none outline-none text-white placeholder-gray-500 text-sm"
+            class="flex-1 bg-transparent border-none outline-none text-white placeholder-gray-500 text-sm"
     />
     <datalist id="planets-list"></datalist>
 
@@ -117,8 +145,8 @@
     </button>
 </div>
 
-<!-- Info Panel -->
-<div id="info" class="fixed top-4 left-4 w-72 glass rounded-lg p-5 z-20">
+<!-- Info Panel - Desktop Only -->
+<div id="info" class="fixed top-4 left-4 w-72 glass rounded-lg p-5 z-20 max-h-[80vh] overflow-y-auto hidden md:block">
     <div class="flex items-center gap-2 mb-3">
         <svg class="w-5 h-5 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
@@ -131,89 +159,206 @@
     <div id="planet-info" class="mt-4 pt-4 border-t border-white/10 text-gray-400"></div>
 </div>
 
-<!-- Stats Panel -->
-<div id="stats" class="fixed top-4 right-4 glass rounded-lg p-5 z-20">
-    <div class="flex items-center gap-2 mb-4">
-        <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
-        </svg>
-        <h2 class="text-sm font-semibold text-white">Statistiques</h2>
-    </div>
-    <div id="planet-count" class="text-gray-400 text-xs mb-4">
-        Planètes: --
+<!-- Stats et Controls Panel - Bottom Sheet (Mobile) -->
+<div id="bottom-sheet" class="fixed bottom-0 left-0 right-0 z-20 md:hidden glass rounded-t-2xl max-h-[70vh] overflow-y-auto transition-transform duration-300 ease-out translate-y-full">
+    <!-- Drag handle -->
+    <div class="flex justify-center p-2">
+        <div class="w-12 h-1 bg-gray-600 rounded-full"></div>
     </div>
 
-    <!-- Legend -->
-    <div class="space-y-1.5">
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #ffffff;"></div>
-            <span>Deep Core</span>
+    <!-- Tabs -->
+    <div class="flex border-b border-white/10 px-4 sticky top-0 bg-deep-space/80 backdrop-blur">
+        <button id="tab-controls" class="flex-1 py-3 px-2 text-sm font-semibold text-white border-b-2 border-star-wars">
+            Contrôles
+        </button>
+        <button id="tab-stats" class="flex-1 py-3 px-2 text-sm font-semibold text-gray-400 border-b-2 border-transparent hover:text-white">
+            Statistiques
+        </button>
+    </div>
+
+    <!-- Controls Tab -->
+    <div id="tab-controls-content" class="p-4 space-y-3">
+        <div class="text-xs text-gray-400">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="text-gray-500">⬅️</span>
+                <span>Clic gauche → Rotation</span>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+                <span class="text-gray-500">🔍</span>
+                <span>Molette → Zoom</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gray-500">➡️</span>
+                <span>Clic droit → Pan</span>
+            </div>
         </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #fcd788;"></div>
-            <span>Core Worlds</span>
+
+        <!-- Toggle pour les zones -->
+        <div class="pt-3 border-t border-white/10">
+            <label class="flex items-center gap-2 cursor-pointer text-xs text-gray-300 hover:text-white transition">
+                <input type="checkbox" id="toggle-zones" class="w-4 h-4 rounded bg-transparent border border-gray-500 text-star-wars focus:ring-star-wars focus:ring-offset-0 cursor-pointer">
+                <span>Afficher les régions</span>
+            </label>
         </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #c687f8;"></div>
-            <span>Colonies</span>
+    </div>
+
+    <!-- Stats Tab -->
+    <div id="tab-stats-content" class="p-4 hidden">
+        <div id="planet-count-mobile" class="text-gray-400 text-xs mb-4">
+            Planètes: --
         </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #b939af;"></div>
-            <span>Mid Rim</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #85ddf1;"></div>
-            <span>Expansion Region</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #00ffd9;"></div>
-            <span>Outer Rim</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #9a9a9a;"></div>
-            <span>Unknown Regions</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #41ff00;"></div>
-            <span>Wild Space</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-400">
-            <div class="w-2 h-2 rounded-full" style="background: #ff0000;"></div>
-            <span>Hutt Space</span>
+
+        <!-- Legend -->
+        <div class="space-y-2">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #ffffff;"></div>
+                <span>Deep Core</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #fcd788;"></div>
+                <span>Core Worlds</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #c687f8;"></div>
+                <span>Colonies</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #b939af;"></div>
+                <span>Mid Rim</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #85ddf1;"></div>
+                <span>Expansion Region</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #00ffd9;"></div>
+                <span>Outer Rim</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #9a9a9a;"></div>
+                <span>Unknown Regions</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #41ff00;"></div>
+                <span>Wild Space</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #ff0000;"></div>
+                <span>Hutt Space</span>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Controls Panel -->
-<!-- Dans le panel des contrôles, ajoute: -->
-<div id="controls" class="fixed bottom-4 left-4 glass rounded-lg p-4 z-20">
-    <div class="flex items-center gap-2 mb-3">
-        <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-        </svg>
-        <h2 class="text-sm font-semibold text-white">Contrôles</h2>
-    </div>
-    <div class="space-y-1.5 text-xs text-gray-400">
-        <div class="flex items-center gap-2">
-            <span class="text-gray-500">⬅️</span>
-            <span>Clic gauche → Rotation</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-gray-500">🔍</span>
-            <span>Molette → Zoom</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-gray-500">➡️</span>
-            <span>Clic droit → Pan</span>
-        </div>
-    </div>
+<!-- Bottom Sheet Toggle Button -->
+<button id="open-bottom-sheet" class="fixed bottom-0 left-0 right-0 z-30 md:hidden glass rounded-lg p-3 text-star-wars hover:bg-white/10 transition flex items-center justify-center gap-2">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="text-sm font-medium">Menu</span>
+</button>
 
-    <!-- Toggle pour les zones -->
-    <div class="mt-4 pt-3 border-t border-white/10">
-        <label class="flex items-center gap-2 cursor-pointer text-xs text-gray-300 hover:text-white transition">
-            <input type="checkbox" id="toggle-zones" class="w-3.5 h-3.5 rounded bg-transparent border-gray-500 text-star-wars focus:ring-star-wars focus:ring-offset-0">
-            <span>Afficher les régions</span>
-        </label>
+<!-- Desktop Controls Panel -->
+<div id="controls-container" class="fixed bottom-4 left-4 z-20 hidden md:block md:max-w-xs">
+    <div id="controls" class="glass rounded-lg p-4 max-h-[60vh] overflow-y-auto">
+        <div class="flex items-center gap-2 mb-3">
+            <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+            </svg>
+            <h2 class="text-sm font-semibold text-white">Contrôles</h2>
+        </div>
+
+        <div class="space-y-1.5 text-xs text-gray-400 mb-3">
+            <div class="flex items-center gap-2">
+                <span class="text-gray-500">⬅️</span>
+                <span>Clic gauche → Rotation</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gray-500">🔍</span>
+                <span>Molette → Zoom</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gray-500">➡️</span>
+                <span>Clic droit → Pan</span>
+            </div>
+        </div>
+
+        <div class="pt-3 border-t border-white/10">
+            <label class="flex items-center gap-2 cursor-pointer text-xs text-gray-300 hover:text-white transition">
+                <input type="checkbox" id="toggle-zones" class="w-4 h-4 rounded bg-transparent border border-gray-500 text-star-wars focus:ring-star-wars focus:ring-offset-0 cursor-pointer">
+                <span>Afficher les régions</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- Desktop Stats Panel -->
+<div id="stats-container" class="fixed top-4 right-4 z-20 hidden md:block md:max-w-none">
+    <div id="stats" class="glass rounded-lg p-5 max-h-[60vh] overflow-y-auto">
+        <div class="flex items-center gap-2 mb-4">
+            <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+            </svg>
+            <h2 class="text-sm font-semibold text-white">Statistiques</h2>
+        </div>
+        <div id="planet-count" class="text-gray-400 text-xs mb-4">
+            Planètes: --
+        </div>
+
+        <!-- Legend -->
+        <div class="space-y-1.5">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #ffffff;"></div>
+                <span>Deep Core</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #fcd788;"></div>
+                <span>Core Worlds</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #c687f8;"></div>
+                <span>Colonies</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #b939af;"></div>
+                <span>Mid Rim</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #85ddf1;"></div>
+                <span>Expansion Region</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #00ffd9;"></div>
+                <span>Outer Rim</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #9a9a9a;"></div>
+                <span>Unknown Regions</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #41ff00;"></div>
+                <span>Wild Space</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+                <div class="w-2 h-2 rounded-full" style="background: #ff0000;"></div>
+                <span>Hutt Space</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Planet Info Modal (Mobile Tooltip) -->
+<div id="planet-modal" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden flex items-end">
+    <div class="w-full glass rounded-t-lg p-5 modal-tooltip max-h-[80vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-4">
+            <h3 id="modal-planet-name" class="text-lg font-semibold text-white"></h3>
+            <button id="close-modal" class="w-6 h-6 flex items-center justify-center rounded hover:bg-white/10">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="modal-planet-info" class="space-y-3 text-xs text-gray-400"></div>
     </div>
 </div>
 
@@ -227,5 +372,109 @@
 </script>
 
 <script type="module" src="./main.js"></script>
+
+<script>
+	// Bottom Sheet Logic
+	const bottomSheet = document.getElementById('bottom-sheet');
+	const openBtn = document.getElementById('open-bottom-sheet');
+	const tabControls = document.getElementById('tab-controls');
+	const tabStats = document.getElementById('tab-stats');
+	const tabControlsContent = document.getElementById('tab-controls-content');
+	const tabStatsContent = document.getElementById('tab-stats-content');
+	const dragHandle = bottomSheet.querySelector('.flex.justify-center');
+
+	// Open bottom sheet
+	openBtn.addEventListener('click', () => {
+		bottomSheet.classList.remove('translate-y-full');
+		openBtn.classList.add('hidden');
+	});
+
+	// Close bottom sheet
+	const closeBottomSheet = () => {
+		bottomSheet.classList.add('translate-y-full');
+		openBtn.classList.remove('hidden');
+	};
+
+	// Fermer en cliquant sur le drag handle
+	dragHandle.addEventListener('click', closeBottomSheet);
+
+	// Fermer en swipant vers le bas
+	let touchStartY = 0;
+	bottomSheet.addEventListener('touchstart', (e) => {
+		touchStartY = e.touches[0].clientY;
+	});
+
+	bottomSheet.addEventListener('touchend', (e) => {
+		const touchEndY = e.changedTouches[0].clientY;
+		const diff = touchEndY - touchStartY;
+
+		// Si on swipe vers le bas de plus de 50px, fermer
+		if (diff > 50) {
+			closeBottomSheet();
+		}
+	});
+
+	// Tab switching
+	tabControls.addEventListener('click', () => {
+		tabControlsContent.classList.remove('hidden');
+		tabStatsContent.classList.add('hidden');
+		tabControls.classList.add('border-star-wars', 'text-white');
+		tabControls.classList.remove('border-transparent', 'text-gray-400');
+		tabStats.classList.remove('border-star-wars', 'text-white');
+		tabStats.classList.add('border-transparent', 'text-gray-400');
+	});
+
+	tabStats.addEventListener('click', () => {
+		tabStatsContent.classList.remove('hidden');
+		tabControlsContent.classList.add('hidden');
+		tabStats.classList.add('border-star-wars', 'text-white');
+		tabStats.classList.remove('border-transparent', 'text-gray-400');
+		tabControls.classList.remove('border-star-wars', 'text-white');
+		tabControls.classList.add('border-transparent', 'text-gray-400');
+	});
+
+	// Modal Management
+	window.showPlanetModal = (planetData) => {
+		if (window.innerWidth >= 768) return;
+
+		closeBottomSheet();
+
+		const modal = document.getElementById('planet-modal');
+		document.getElementById('modal-planet-name').textContent = planetData.name;
+
+		document.getElementById('modal-planet-info').innerHTML = `
+        <div class="grid grid-cols-2 gap-3">
+            <div>
+                <div class="text-gray-500 text-xs mb-1">Grille</div>
+                <div class="text-white font-medium">${planetData.grid}</div>
+            </div>
+            <div>
+                <div class="text-gray-500 text-xs mb-1">Secteur</div>
+                <div class="text-white">${planetData.sector}</div>
+            </div>
+            <div class="col-span-2">
+                <div class="text-gray-500 text-xs mb-1">Région</div>
+                <div class="text-white">${planetData.region}</div>
+            </div>
+            <div class="col-span-2">
+                <div class="text-gray-500 text-xs mb-1">Biome</div>
+                <div class="text-white capitalize">${planetData.biome}</div>
+            </div>
+            <div class="col-span-2">
+                <div class="text-gray-500 text-xs mb-1">Position 3D</div>
+                <div class="text-white font-mono text-xs">
+                    (${Math.round(planetData.position.x)}, ${Math.round(planetData.position.y)}, ${Math.round(planetData.position.z)})
+                </div>
+            </div>
+        </div>
+    `;
+
+		modal.classList.remove('hidden');
+	};
+
+	document.getElementById('close-modal').addEventListener('click', () => {
+		document.getElementById('planet-modal').classList.add('hidden');
+	});
+</script>
 </body>
 </html>
