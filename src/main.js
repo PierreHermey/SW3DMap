@@ -13,9 +13,17 @@ class GalaxyViewer {
 	constructor() {
 		this.planets = [];
 		this.planetMeshes = [];
+		this.planetVelocities = new Map();  // ← Ajouter
 		this.selectedPlanet = null;
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
+
+		// Configuration de répulsion
+		this.REPULSION_CONFIG = {
+			radius: 40,           // Rayon de la zone de répulsion
+			strength: 0.8,        // Force de l'écartement (0-1)
+			dampingFactor: 0.92   // Amortissement (0-1)
+		};
 
 		this.init();
 	}
@@ -522,6 +530,9 @@ class GalaxyViewer {
 			mesh.userData.originalScale = 1.0;
 			mesh.userData.pulseSpeed = 0.5 + Math.random() * 0.5;
 			mesh.userData.pulseOffset = Math.random() * Math.PI * 2;
+			mesh.userData.originalPosition = position.clone();
+
+			this.planetVelocities.set(mesh, new THREE.Vector3(0, 0, 0));
 
 			this.scene.add(mesh);
 			this.planetMeshes.push(mesh);
@@ -556,6 +567,99 @@ class GalaxyViewer {
 
 		console.log(`✨ ${this.planetMeshes.length} planètes créées dans le volume 3D`);
 	}
+
+	/**
+	 * Calcule et applique les forces de répulsion autour de la planète sélectionnée
+	 */
+	applyRepulsionForces() {
+		if (!this.selectedPlanet) return;
+
+		const selectedPos = this.selectedPlanet.position;
+		const { radius, strength, dampingFactor } = this.REPULSION_CONFIG;
+
+		this.planetMeshes.forEach(mesh => {
+			if (mesh === this.selectedPlanet) return;
+
+			const distance = mesh.position.distanceTo(selectedPos);
+
+			// Seulement si la planète est dans le rayon de répulsion
+			if (distance < radius && distance > 0) {
+				// Vecteur de direction (direction d'écartement)
+				const direction = mesh.position.clone()
+					.sub(selectedPos)
+					.normalize();
+
+				// Force diminue avec la distance (plus proche = plus fort)
+				const forceMagnitude = (1 - distance / radius) * strength;
+
+				// Récupère ou crée la vélocité
+				let velocity = this.planetVelocities.get(mesh);
+				if (!velocity) {
+					velocity = new THREE.Vector3();
+					this.planetVelocities.set(mesh, velocity);
+				}
+
+				// Ajoute la force de répulsion
+				velocity.add(direction.multiplyScalar(forceMagnitude));
+			}
+		});
+	}
+
+	/**
+	 * Restaure toutes les planètes à leur position initiale avec animation
+	 */
+	restorePlanetsToOriginalPositions(duration = 0.8) {
+		const startTime = Date.now();
+		const startPositions = new Map(
+			this.planetMeshes.map(mesh => [mesh, mesh.position.clone()])
+		);
+
+		const animate = () => {
+			const elapsed = (Date.now() - startTime) / 1000;
+			const progress = Math.min(elapsed / duration, 1);
+
+			// Easing ease-out-cubic pour un mouvement naturel
+			const eased = 1 - Math.pow(1 - progress, 3);
+
+			this.planetMeshes.forEach(mesh => {
+				const startPos = startPositions.get(mesh);
+				const targetPos = mesh.userData.originalPosition;
+
+				mesh.position.lerpVectors(startPos, targetPos, eased);
+
+				// Réinitialiser la vélocité progressivement
+				const velocity = this.planetVelocities.get(mesh);
+				if (velocity) {
+					velocity.multiplyScalar(1 - progress);
+				}
+			});
+
+			if (progress < 1) {
+				requestAnimationFrame(animate);
+			}
+		};
+
+		animate();
+	}
+
+	/**
+	 * Applique les vélocités calculées et les amortit
+	 */
+	updatePlanetVelocities() {
+		const { dampingFactor } = this.REPULSION_CONFIG;
+
+		this.planetMeshes.forEach(mesh => {
+			const velocity = this.planetVelocities.get(mesh);
+			if (velocity && velocity.length() > 0) {
+				// Applique la vélocité à la position
+				mesh.position.add(velocity);
+
+				// Amortissement (ralentit progressivement)
+				velocity.multiplyScalar(dampingFactor);
+			}
+		});
+	}
+
 
 	setupEvents() {
 		window.addEventListener('resize', () => this.onWindowResize());
@@ -632,63 +736,73 @@ class GalaxyViewer {
 	}
 
 	focusOnPlanet(planetMesh) {
-		this.clearPlanetFocus();
+		// Si on change de focus, restaurer d'abord les positions
+		if (this.selectedPlanet && this.selectedPlanet !== planetMesh) {
+			this.restorePlanetsToOriginalPositions(0.5); // Animation plus rapide
+		}
 
 		this.selectedPlanet = planetMesh;
 		planetMesh.userData.focused = true;
 
+		// ← Initialiser les vélocités à zéro pour un "burst" initial
+		this.planetMeshes.forEach(mesh => {
+			if (mesh !== planetMesh) {
+				this.planetVelocities.set(mesh, new THREE.Vector3());
+			}
+		});
+
 		const planet = planetMesh.userData;
 		document.getElementById('planet-info').innerHTML = `
-            <div class="space-y-3">
-                <div class="text-base font-semibold text-white">
-                    ${planet.name}
+        <div class="space-y-3">
+            <div class="text-base font-semibold text-white">
+                ${planet.name}
+            </div>
+            
+            <div class="space-y-2 text-xs">
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Grille</div>
+                        <div class="text-star-wars font-medium">${planet.grid}</div>
+                    </div>
                 </div>
                 
-                <div class="space-y-2 text-xs">
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Grille</div>
-                            <div class="text-star-wars font-medium">${planet.grid}</div>
-                        </div>
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Secteur</div>
+                        <div class="text-white">${planet.sector}</div>
                     </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Secteur</div>
-                            <div class="text-white">${planet.sector}</div>
-                        </div>
+                </div>
+                
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Région</div>
+                        <div class="text-white">${planet.region}</div>
                     </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Région</div>
-                            <div class="text-white">${planet.region}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Position 3D</div>
-                            <div class="text-white font-mono text-xs">
-                                (${Math.round(planetMesh.position.x)}, ${Math.round(planetMesh.position.y)}, ${Math.round(planetMesh.position.z)})
-                            </div>
+                </div>
+                
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Position 3D</div>
+                        <div class="text-white font-mono text-xs">
+                            (${Math.round(planetMesh.position.x)}, ${Math.round(planetMesh.position.y)}, ${Math.round(planetMesh.position.z)})
                         </div>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+    `;
 
 		this.animateCameraTo(planetMesh.position);
 	}
@@ -727,6 +841,14 @@ class GalaxyViewer {
 		if (this.selectedPlanet) {
 			this.selectedPlanet.userData.focused = false;
 			this.selectedPlanet = null;
+
+			// ← Restaurer les positions avec animation
+			this.restorePlanetsToOriginalPositions();
+
+			// Réinitialiser les vélocités immédiatement
+			this.planetVelocities.forEach((velocity) => {
+				velocity.set(0, 0, 0);
+			});
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
@@ -735,6 +857,10 @@ class GalaxyViewer {
 		requestAnimationFrame(() => this.animate());
 
 		const time = Date.now() * 0.001 * CONFIG.ANIMATION_SPEED;
+
+		// ← Appliquer les forces et vélocités
+		this.applyRepulsionForces();
+		this.updatePlanetVelocities();
 
 		// Animation des planètes
 		this.planetMeshes.forEach(mesh => {
