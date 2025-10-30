@@ -1,0 +1,18 @@
+{
+  "name": "sw3dmap",
+  "version": "1.0.0",
+  "description": "Star Wars Galaxy Map 3D avec Three.js",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "parse": "node parser/parse-planets.js",
+    "dev": "npx serve src",
+    "start": "npm run parse && npm run dev"
+  },
+  "keywords": ["star-wars", "3d", "threejs", "galaxy-map"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}

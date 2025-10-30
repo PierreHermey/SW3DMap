@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Galaxy Map 3D</title>
+
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --color-star-wars: #FFE81F;
+            --color-deep-space: #000011;
+        }
+
+        /* Modern glass effect - subtle and clean */
+        .glass {
+            background: rgba(10, 10, 25, 0.6);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-hover {
+            transition: all 0.2s ease;
+        }
+
+        .glass-hover:hover {
+            background: rgba(15, 15, 30, 0.7);
+            border-color: rgba(255, 232, 31, 0.15);
+        }
+
+        /* Subtle focus states */
+        input:focus {
+            outline: none;
+            border-color: rgba(255, 232, 31, 0.3);
+        }
+
+        /* Loading spinner */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin-slow {
+            animation: spin 2s linear infinite;
+        }
+
+        /* Focus pulse animation */
+        @keyframes focusPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(2.5);
+                opacity: 0.8;
+            }
+        }
+
+        .planet-focused {
+            animation: focusPulse 1.5s ease-in-out infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 232, 31, 0.2);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 232, 31, 0.3);
+        }
+    </style>
+</head>
+<body class="m-0 overflow-hidden bg-deep-space">
+<!-- Loading Screen -->
+<div id="loading" class="fixed inset-0 flex items-center justify-center z-50 bg-deep-space">
+    <div class="text-center">
+        <div class="text-xl font-medium text-star-wars mb-6">
+            Chargement de la galaxie...
+        </div>
+        <div class="w-12 h-12 border-2 border-star-wars/20 border-t-star-wars rounded-full animate-spin-slow mx-auto"></div>
+    </div>
+</div>
+
+<!-- Search Bar -->
+<div id="search-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 glass rounded-lg px-4 py-2.5">
+    <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    </svg>
+
+    <input
+            type="text"
+            id="planet-search"
+            list="planets-list"
+            placeholder="Rechercher une planète..."
+            autocomplete="off"
+            class="w-80 bg-transparent border-none outline-none text-white placeholder-gray-500 text-sm"
+    />
+    <datalist id="planets-list"></datalist>
+
+    <button id="clear-search"
+            class="w-6 h-6 flex items-center justify-center rounded text-gray-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+            title="Effacer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Info Panel -->
+<div id="info" class="fixed top-4 left-4 w-72 glass rounded-lg p-5 z-20">
+    <div class="flex items-center gap-2 mb-3">
+        <svg class="w-5 h-5 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
+        </svg>
+        <h1 class="text-lg font-semibold text-white">Star Wars Galaxy</h1>
+    </div>
+    <p class="text-gray-400 text-xs leading-relaxed">
+        Cliquez sur une planète pour découvrir ses informations
+    </p>
+    <div id="planet-info" class="mt-4 pt-4 border-t border-white/10 text-gray-400"></div>
+</div>
+
+<!-- Stats Panel -->
+<div id="stats" class="fixed top-4 right-4 glass rounded-lg p-5 z-20">
+    <div class="flex items-center gap-2 mb-4">
+        <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+        </svg>
+        <h2 class="text-sm font-semibold text-white">Statistiques</h2>
+    </div>
+    <div id="planet-count" class="text-gray-400 text-xs mb-4">
+        Planètes: --
+    </div>
+
+    <!-- Legend -->
+    <div class="space-y-1.5">
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #00FFFF;"></div>
+            <span>Deep Core</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #4444FF;"></div>
+            <span>Core Worlds</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #00AAFF;"></div>
+            <span>Colonies</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #FFAA00;"></div>
+            <span>Mid Rim</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #FF4444;"></div>
+            <span>Outer Rim</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #FF00FF;"></div>
+            <span>Unknown Regions</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="w-2 h-2 rounded-full" style="background: #00FF00;"></div>
+            <span>Hutt Space</span>
+        </div>
+    </div>
+</div>
+
+<!-- Controls Panel -->
+<div id="controls" class="fixed bottom-4 left-4 glass rounded-lg p-4 z-20">
+    <div class="flex items-center gap-2 mb-3">
+        <svg class="w-4 h-4 text-star-wars" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+        </svg>
+        <h2 class="text-sm font-semibold text-white">Contrôles</h2>
+    </div>
+    <div class="space-y-1.5 text-xs text-gray-400">
+        <div class="flex items-center gap-2">
+            <span class="text-gray-500">⬅️</span>
+            <span>Clic gauche → Rotation</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="text-gray-500">🔍</span>
+            <span>Molette → Zoom</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="text-gray-500">➡️</span>
+            <span>Clic droit → Pan</span>
+        </div>
+    </div>
+</div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+    }
+</script>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
