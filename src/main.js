@@ -222,15 +222,6 @@ class GalaxyViewer {
 		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		this.scene.add(sphere);
 
-		// Bordure holographique de la sphère
-		const edgeGeometry = new THREE.EdgesGeometry(sphereGeometry);
-		const edgeMaterial = new THREE.LineBasicMaterial({
-			color: 0x3366aa,
-			transparent: true,
-			opacity: 0
-		});
-
-
 		// Grille volumétrique 3D - Plans de coupe
 		this.createVolumetricGrid();
 
@@ -238,7 +229,7 @@ class GalaxyViewer {
 		this.createStarfield();
 
 		// Axes de coordonnées holographiques
-		this.createCoordinateAxes();
+		// this.createCoordinateAxes();
 	}
 
 	/**
@@ -325,7 +316,7 @@ class GalaxyViewer {
 		const sphereMaterial = new THREE.MeshBasicMaterial({
 			color: color,
 			transparent: true,
-			opacity: 0.03,
+			opacity: 0.02,
 			side: THREE.DoubleSide,
 			depthWrite: false
 		});
@@ -334,24 +325,10 @@ class GalaxyViewer {
 		sphere.userData.region = regionName;
 		this.scene.add(sphere);
 
-		// Contour wireframe de la zone
-		const edgesGeometry = new THREE.EdgesGeometry(sphereGeometry);
-		const edgesMaterial = new THREE.LineBasicMaterial({
-			color: color,
-			transparent: true,
-			opacity: 0,
-			linewidth: 0
-		});
-		const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
-		edges.position.copy(center);
-		edges.userData.region = regionName;
-		this.scene.add(edges);
-
 		// Stocker pour animation et toggle
 		if (!this.regionalSpheres) this.regionalSpheres = [];
 		this.regionalSpheres.push({
 			sphere,
-			edges,
 			center,
 			baseRadius: radius,
 			regionName
@@ -360,16 +337,9 @@ class GalaxyViewer {
 
 
 	createVolumetricGrid() {
-		const gridMaterial = new THREE.LineBasicMaterial({
-			color: 0x444466,
-			transparent: true,
-			opacity: 0
-		});
-
 		// Plans XY à différentes profondeurs Z
 		for (let z = -1; z <= 1; z += 0.5) {
 			const zPos = z * CONFIG.SPHERE_RADIUS;
-
 			// Lignes horizontales (Y constant)
 			for (let y = 0; y <= CONFIG.GRID_SIZE; y++) {
 				const points = [];
@@ -377,9 +347,6 @@ class GalaxyViewer {
 					const pos = this.gridTo3D(x, y, z * 0.5 + 0.5);
 					points.push(pos);
 				}
-				const geometry = new THREE.BufferGeometry().setFromPoints(points);
-				const line = new THREE.Line(geometry, gridMaterial);
-				this.scene.add(line);
 			}
 
 			// Lignes verticales (X constant)
@@ -389,9 +356,6 @@ class GalaxyViewer {
 					const pos = this.gridTo3D(x, y, z * 0.5 + 0.5);
 					points.push(pos);
 				}
-				const geometry = new THREE.BufferGeometry().setFromPoints(points);
-				const line = new THREE.Line(geometry, gridMaterial);
-				this.scene.add(line);
 			}
 		}
 	}
@@ -470,7 +434,7 @@ class GalaxyViewer {
 		const starsMaterial = new THREE.PointsMaterial({
 			size: 0.5,
 			transparent: true,
-			opacity: 0,
+			opacity: 0.02,
 			vertexColors: true,
 			sizeAttenuation: true
 		});
@@ -532,12 +496,11 @@ class GalaxyViewer {
 
 			const material = new THREE.MeshPhongMaterial({
 				color: color,
-				emissive: new THREE.Color(planet.color), // Légère émission de la couleur régionale
-				emissiveIntensity: 0,
-				shininess: 60,
+				//emissive: new THREE.Color(planet.color), // Légère émission de la couleur régionale
+				//emissiveIntensity: 0,
+				shininess: 100,
 				transparent: true,
 				opacity: 0.95,
-				metalness: 0.5
 			});
 
 			const mesh = new THREE.Mesh(planetGeometry, material);
@@ -593,9 +556,8 @@ class GalaxyViewer {
 				const visible = e.target.checked;
 
 				if (this.regionalSpheres) {
-					this.regionalSpheres.forEach(({ sphere, edges }) => {
+					this.regionalSpheres.forEach(({ sphere }) => {
 						sphere.visible = visible;
-						edges.visible = visible;
 					});
 				}
 			});
@@ -770,10 +732,9 @@ class GalaxyViewer {
 
 		// Animation subtile des zones régionales (pulsation légère)
 		if (this.regionalSpheres) {
-			this.regionalSpheres.forEach(({ sphere, edges }) => {
+			this.regionalSpheres.forEach(({ sphere }) => {
 				const pulse = Math.sin(time * 0.3) * 0.03 + 1;
 				sphere.scale.setScalar(pulse);
-				edges.scale.setScalar(pulse);
 			});
 		}
 
