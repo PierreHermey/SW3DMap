@@ -9471,9 +9471,9 @@
     "name": "Gandeal",
     "sector": "Unknown",
     "region": "Core Worlds",
-    "grid": "M-1",
+    "grid": "M-12",
     "x": 13,
-    "y": 1,
+    "y": 12,
     "color": "#fcd788"
   },
   {
@@ -9966,9 +9966,9 @@
     "name": "Ghorman",
     "sector": "Sern",
     "region": "Colonies",
-    "grid": "L-1",
+    "grid": "L-13",
     "x": 12,
-    "y": 1,
+    "y": 13,
     "color": "#c687f8"
   },
   {
@@ -10470,9 +10470,9 @@
     "name": "Greeve",
     "sector": "Grumani",
     "region": "Outer Rim Territories",
-    "grid": "N-1",
+    "grid": "N-17",
     "x": 14,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -10974,9 +10974,9 @@
     "name": "Haurgab",
     "sector": "Spirva",
     "region": "Mid Rim",
-    "grid": "L-1",
+    "grid": "L-16",
     "x": 12,
-    "y": 1,
+    "y": 16,
     "color": "#b939af"
   },
   {
@@ -13449,9 +13449,9 @@
     "name": "Keral",
     "sector": "Corellian",
     "region": "Core Worlds",
-    "grid": "M-1",
+    "grid": "M-11",
     "x": 13,
-    "y": 1,
+    "y": 11,
     "color": "#fcd788"
   },
   {
@@ -15969,9 +15969,9 @@
     "name": "Malenko",
     "sector": "Eidoloni",
     "region": "Mid Rim",
-    "grid": "L-1",
+    "grid": "L-16",
     "x": 12,
-    "y": 1,
+    "y": 16,
     "color": "#b939af"
   },
   {
@@ -17985,9 +17985,9 @@
     "name": "Netolio",
     "sector": "Tapani",
     "region": "Colonies",
-    "grid": "L-1",
+    "grid": "L-13",
     "x": 12,
-    "y": 1,
+    "y": 13,
     "color": "#c687f8"
   },
   {
@@ -20001,9 +20001,9 @@
     "name": "Parcovey Minor",
     "sector": "Hune",
     "region": "Mid Rim",
-    "grid": "Q-1",
+    "grid": "Q-12",
     "x": 17,
-    "y": 1,
+    "y": 12,
     "color": "#b939af"
   },
   {
@@ -21513,9 +21513,9 @@
     "name": "Radnor",
     "sector": "Daimar",
     "region": "Mid Rim",
-    "grid": "Q-1",
+    "grid": "Q-16",
     "x": 17,
-    "y": 1,
+    "y": 16,
     "color": "#b939af"
   },
   {
@@ -22017,9 +22017,9 @@
     "name": "Rellio",
     "sector": "Tapani",
     "region": "Colonies",
-    "grid": "L-1",
+    "grid": "L-13",
     "x": 12,
-    "y": 1,
+    "y": 13,
     "color": "#c687f8"
   },
   {
@@ -23025,9 +23025,9 @@
     "name": "Sanbra",
     "sector": "Sanbra",
     "region": "Outer Rim Territories",
-    "grid": "O-1",
+    "grid": "O-17",
     "x": 15,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -24033,9 +24033,9 @@
     "name": "Siluria",
     "sector": "Atravis",
     "region": "Outer Rim Territories",
-    "grid": "L-1",
+    "grid": "L-19",
     "x": 12,
-    "y": 1,
+    "y": 19,
     "color": "#00ffd9"
   },
   {
@@ -25041,9 +25041,9 @@
     "name": "Svivren",
     "sector": "Svivreni",
     "region": "Outer Rim Territories",
-    "grid": "O-1",
+    "grid": "O-19",
     "x": 15,
-    "y": 1,
+    "y": 19,
     "color": "#00ffd9"
   },
   {
@@ -25545,9 +25545,9 @@
     "name": "Tarhassan",
     "sector": "Harron",
     "region": "Expansion Region",
-    "grid": "O-1",
+    "grid": "O-11",
     "x": 15,
-    "y": 1,
+    "y": 11,
     "color": "#85ddf1"
   },
   {
@@ -26049,9 +26049,9 @@
     "name": "Tevu",
     "sector": "Arc d'Stot",
     "region": "Expansion Region",
-    "grid": "K-1",
+    "grid": "K-16",
     "x": 11,
-    "y": 1,
+    "y": 16,
     "color": "#85ddf1"
   },
   {
@@ -27057,9 +27057,9 @@
     "name": "Trigalis",
     "sector": "Juris",
     "region": "Outer Rim Territories",
-    "grid": "P-1",
+    "grid": "P-17",
     "x": 16,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -27561,9 +27561,9 @@
     "name": "Unavartan",
     "sector": "Gaulus",
     "region": "Outer Rim Territories",
-    "grid": "S-1",
+    "grid": "S-17",
     "x": 19,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -31440,9 +31440,9 @@
     "name": "Aplooine",
     "sector": "Grumani",
     "region": "Outer Rim Territories",
-    "grid": "N-1",
+    "grid": "N-17",
     "x": 14,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -42024,9 +42024,9 @@
     "name": "Ifron",
     "sector": "Thuris",
     "region": "Outer Rim Territories",
-    "grid": "P-1",
+    "grid": "P-18",
     "x": 16,
-    "y": 1,
+    "y": 18,
     "color": "#00ffd9"
   },
   {
@@ -43536,9 +43536,9 @@
     "name": "Karvathia",
     "sector": "Tokamac",
     "region": "Expansion Region",
-    "grid": "N-1",
+    "grid": "N-13",
     "x": 14,
-    "y": 1,
+    "y": 13,
     "color": "#85ddf1"
   },
   {
@@ -44040,9 +44040,9 @@
     "name": "Kiffex",
     "sector": "Kiffu",
     "region": "Inner Rim",
-    "grid": "L-1",
+    "grid": "L-14",
     "x": 12,
-    "y": 1,
+    "y": 14,
     "color": "#f6b16b"
   },
   {
@@ -44539,6 +44539,15 @@
     "x": 11,
     "y": 12,
     "color": "#fcd788"
+  },
+  {
+    "name": "Kor Nasirii",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-10",
+    "x": 19,
+    "y": 10,
+    "color": "#ff0000"
   },
   {
     "name": "Kor Nijiladii",
@@ -47055,9 +47064,9 @@
     "name": "Metharg",
     "sector": "Hook Nebula",
     "region": "Outer Rim Territories",
-    "grid": "O-1",
+    "grid": "O-17",
     "x": 15,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -48063,9 +48072,9 @@
     "name": "Narkina",
     "sector": "Abrion",
     "region": "Outer Rim Territories",
-    "grid": "S-1",
+    "grid": "S-15",
     "x": 19,
-    "y": 1,
+    "y": 15,
     "color": "#00ffd9"
   },
   {
@@ -48567,9 +48576,9 @@
     "name": "Nimgorrhea",
     "sector": "Yminis",
     "region": "Outer Rim Territories",
-    "grid": "S-1",
+    "grid": "S-14",
     "x": 19,
-    "y": 1,
+    "y": 14,
     "color": "#00ffd9"
   },
   {
@@ -52086,9 +52095,9 @@
     "name": "Ravaath",
     "sector": "Pacanth Reach",
     "region": "Outer Rim Territories",
-    "grid": "H-1",
+    "grid": "H-16",
     "x": 8,
-    "y": 1,
+    "y": 16,
     "color": "#00ffd9"
   },
   {
@@ -52590,9 +52599,9 @@
     "name": "Riesa",
     "sector": "Tapani",
     "region": "Colonies",
-    "grid": "L-1",
+    "grid": "L-13",
     "x": 12,
-    "y": 1,
+    "y": 13,
     "color": "#c687f8"
   },
   {
@@ -55110,9 +55119,9 @@
     "name": "Stend",
     "sector": "Juris",
     "region": "Outer Rim Territories",
-    "grid": "P-1",
+    "grid": "P-17",
     "x": 16,
-    "y": 1,
+    "y": 17,
     "color": "#00ffd9"
   },
   {
@@ -58125,9 +58134,9 @@
     "name": "Uvadala",
     "sector": "Ividal",
     "region": "Mid Rim",
-    "grid": "P-1",
+    "grid": "P-15",
     "x": 16,
-    "y": 1,
+    "y": 15,
     "color": "#b939af"
   },
   {
