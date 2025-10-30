@@ -1,28 +1,29 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 // Configuration
 const CONFIG = {
-	GRID_SIZE: 21,           // A-U (21 lettres)
-	SPHERE_RADIUS: 100,       // Rayon de la sphère
-	PLANET_SIZE: 0.5,       // Taille des planètes
+	GRID_SIZE: 21,
+	SPHERE_RADIUS: 100,
+	PLANET_SIZE: 0.5,
 	ANIMATION_SPEED: 0.5,
 };
 
 class GalaxyViewer {
 	constructor() {
 		this.planets = [];
-		this.planetMeshes = [];
-		this.planetVelocities = new Map();  // ← Ajouter
-		this.selectedPlanet = null;
+		this.planetData = [];
+		this.planetVelocities = new Map();
+		this.selectedPlanetIndex = null;
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
+		this.regionalSpheres = [];
 
-		// Configuration de répulsion
+		// Repulsion config
 		this.REPULSION_CONFIG = {
-			radius: 40,           // Rayon de la zone de répulsion
-			strength: 0.8,        // Force de l'écartement (0-1)
-			dampingFactor: 0.92   // Amortissement (0-1)
+			radius: 40,
+			strength: 0.8,
+			dampingFactor: 0.92
 		};
 
 		this.init();
@@ -39,8 +40,8 @@ class GalaxyViewer {
 		this.setupControls();
 		this.setupLights();
 		this.createVolumetricGalaxy();
-		this.createPlanets();              // ← D'ABORD les planètes
-		this.createRegionalZones();         // ← PUIS les zones (qui utilisent planetMeshes)
+		this.createInstancedPlanets();
+		this.createRegionalZones();
 		this.setupEvents();
 		this.setupSearchEvents();
 		this.animate();
@@ -112,10 +113,10 @@ class GalaxyViewer {
 		);
 
 		if (planet) {
-			const planetMesh = this.planetMeshes.find(mesh =>
-				mesh.userData.name === planet.name
+			const planetData = this.planetData.find(d =>
+				d.name === planet.name
 			);
-			if (planetMesh) this.focusOnPlanet(planetMesh);
+			if (planetData) this.focusOnPlanet(planetData.index);
 		}
 	}
 
@@ -134,13 +135,10 @@ class GalaxyViewer {
 
 		const radialDistance = Math.sqrt(x * x + y * y);
 
-		const zFlattenFactor = 2; // plus épais qu’avant
+		const zFlattenFactor = 2;
 		const maxRadiusXY = CONFIG.SPHERE_RADIUS;
 
-		// Densité un peu moins utilisée pour compresser Z
 		const density = Math.exp(-radialDistance / (maxRadiusXY / 2.5));
-
-		// Ajouter un léger aléa sur Z combiné à depthFactor
 		const randomZFactor = 1 + Math.random() * 0.5;
 
 		let z = (depthFactor - 0.5) * maxRadiusXY * 2 * zFlattenFactor * density * randomZFactor;
@@ -198,27 +196,22 @@ class GalaxyViewer {
 	}
 
 	setupLights() {
-		// Réduire l'ambient pour plus de contraste
 		const ambientLight = new THREE.AmbientLight(0x1a3a4d, 0.6);
 		this.scene.add(ambientLight);
 
-		// Lumière centrale PLUS FORTE et plus chaude (énergie galactique)
 		const coreLight = new THREE.PointLight(0xffcc99, 3.5, CONFIG.SPHERE_RADIUS * 4);
 		coreLight.position.set(0, 0, 0);
 		coreLight.castShadow = true;
 		this.scene.add(coreLight);
 
-		// Lumière secondaire (cool, ombre douce)
 		const rimLight = new THREE.PointLight(0x6688ff, 1.8, CONFIG.SPHERE_RADIUS * 3.5);
 		rimLight.position.set(CONFIG.SPHERE_RADIUS * 1.2, CONFIG.SPHERE_RADIUS * 0.8, -CONFIG.SPHERE_RADIUS * 0.8);
 		this.scene.add(rimLight);
 
-		// Lumière de remplissage (accent chaud contre le rim)
 		const fillLight = new THREE.PointLight(0xff6644, 1.2, CONFIG.SPHERE_RADIUS * 3);
 		fillLight.position.set(-CONFIG.SPHERE_RADIUS * 1.5, -CONFIG.SPHERE_RADIUS * 0.5, CONFIG.SPHERE_RADIUS * 1.2);
 		this.scene.add(fillLight);
 
-		// Directional light subtile pour les planètes (contraste XYZ)
 		const directional = new THREE.DirectionalLight(0xffffff, 0.4);
 		directional.position.set(100, 100, 100);
 		directional.target.position.set(0, 0, 0);
@@ -227,7 +220,6 @@ class GalaxyViewer {
 	}
 
 	createVolumetricGalaxy() {
-		// Sphère holographique transparente
 		const sphereGeometry = new THREE.SphereGeometry(
 			CONFIG.SPHERE_RADIUS,
 			64,
@@ -243,113 +235,7 @@ class GalaxyViewer {
 		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		this.scene.add(sphere);
 
-		// Étoiles d'arrière-plan
 		this.createStarfield();
-	}
-
-	/**
-	 * Crée des zones volumétriques basées sur les positions réelles des planètes
-	 */
-	createRegionalZones() {
-		// Grouper les planètes par région
-		const regionGroups = {};
-
-		this.planetMeshes.forEach(mesh => {
-			const region = mesh.userData.region;
-			if (!regionGroups[region]) {
-				regionGroups[region] = {
-					planets: [],
-					color: mesh.userData.color
-				};
-			}
-			regionGroups[region].planets.push(mesh.position.clone());
-		});
-
-		// Définition des couleurs par région
-		const regionColors = {
-			'Deep Core': '#ffffff',
-			'Core Worlds': '#fcd788',
-			'Colonies': '#c687f8',
-			'Mid Rim': '#b939af',
-			'Inner Rim': '#f6b16b',
-			'Expansion Region': '#85ddf1',
-			'Outer Rim Territories': '#00ffd9',
-			'Unknown Regions': '#9a9a9a',
-			'Wild Space': '#41ff00',
-			'Hutt Space': '#ff0000',
-		};
-
-		// Créer une zone pour chaque région
-		Object.entries(regionGroups).forEach(([regionName, data]) => {
-			if (data.planets.length < 1) {
-				return;
-			}
-
-			const color = regionColors[regionName] || 0xFFE81F;
-
-			// Calculer le centre et le rayon englobant
-			const center = this.calculateCenter(data.planets);
-			const radius = this.calculateBoundingRadius(data.planets, center);
-
-			// Créer une zone simple et minimaliste
-			this.createSimpleRegionalZone(center, radius, color, regionName);
-
-			console.log(`🌈 Zone ${regionName}: ${data.planets.length} planètes`);
-		});
-	}
-
-	/**
-	 * Calcule le centre géométrique d'un groupe de points
-	 */
-	calculateCenter(points) {
-		const center = new THREE.Vector3();
-		points.forEach(point => center.add(point));
-		center.divideScalar(points.length);
-		return center;
-	}
-
-	/**
-	 * Calcule le rayon qui englobe tous les points avec une marge
-	 */
-	calculateBoundingRadius(points, center) {
-		let maxDistance = 0;
-		points.forEach(point => {
-			const distance = point.distanceTo(center);
-			if (distance > maxDistance) {
-				maxDistance = distance;
-			}
-		});
-		// Ajouter 50% de marge pour que la zone englobe bien
-		return maxDistance * 1.5;
-	}
-
-	/**
-	 * Crée une zone simple et minimaliste autour d'une région
-	 */
-	createSimpleRegionalZone(center, radius, color, regionName) {
-		// Sphère transparente colorée
-		const sphereGeometry = new THREE.SphereGeometry(radius, 32, 32);
-		const sphereMaterial = new THREE.MeshBasicMaterial({
-			color: color,
-			transparent: true,
-			opacity: 0.02,
-			side: THREE.DoubleSide,
-			depthWrite: false
-		});
-		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-		sphere.position.copy(center);
-		sphere.userData.region = regionName;
-		sphere.visible = false;
-		this.scene.add(sphere);
-
-		// Stocker pour animation et toggle
-		if (!this.regionalSpheres) this.regionalSpheres = [];
-		this.regionalSpheres.push({
-			sphere,
-			center,
-			baseRadius: radius,
-			regionName
-		});
 	}
 
 	createStarfield() {
@@ -394,10 +280,25 @@ class GalaxyViewer {
 		this.scene.add(stars);
 	}
 
-	createPlanets() {
-		const planetGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE, 16, 16);
+	createInstancedPlanets() {
+		const planetGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE, 32, 32);
 
-		// Grouper les planètes par grille
+		const material = new THREE.MeshPhongMaterial({
+			color: 0xFFFFFF,
+			shininess: 100,
+			transparent: true,
+			opacity: 0.95,
+			side: THREE.FrontSide
+		});
+
+		const instancedMesh = new THREE.InstancedMesh(
+			planetGeometry,
+			material,
+			this.planets.length
+		);
+
+		instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+
 		const gridGroups = {};
 		this.planets.forEach(planet => {
 			if (!gridGroups[planet.grid]) {
@@ -408,23 +309,14 @@ class GalaxyViewer {
 
 		this.planets.forEach((planet, index) => {
 			const planetsInGrid = gridGroups[planet.grid];
-
-			// Profondeur Z basée sur la région
 			let depth = 0.5;
 
-			if (planet.region.includes('Deep Core')) {
-				depth = 0.5;
-			} else if (planet.region.includes('Core Worlds')) {
-				depth = 0.4 + Math.random() * 0.2;
-			} else if (planet.region.includes('Colonies')) {
-				depth = 0.3 + Math.random() * 0.4;
-			} else if (planet.region.includes('Mid Rim')) {
-				depth = 0.35 + Math.random() * 0.3;
-			} else if (planet.region.includes('Outer Rim')) {
-				depth = 0.1 + Math.random() * 0.3;
-			} else if (planet.region.includes('Unknown')) {
-				depth = Math.random();
-			}
+			if (planet.region.includes('Deep Core')) depth = 0.5;
+			else if (planet.region.includes('Core Worlds')) depth = 0.4 + Math.random() * 0.2;
+			else if (planet.region.includes('Colonies')) depth = 0.3 + Math.random() * 0.4;
+			else if (planet.region.includes('Mid Rim')) depth = 0.35 + Math.random() * 0.3;
+			else if (planet.region.includes('Outer Rim')) depth = 0.1 + Math.random() * 0.3;
+			else if (planet.region.includes('Unknown')) depth = Math.random();
 
 			if (planetsInGrid.length > 1) {
 				const indexInGrid = planetsInGrid.indexOf(planet);
@@ -433,117 +325,553 @@ class GalaxyViewer {
 			}
 
 			const basePosition = this.gridTo3D(planet.x, planet.y, depth);
-
 			const offset = new THREE.Vector3(
 				(Math.random() - 0.5) * 2,
 				(Math.random() - 0.5) * 2,
 				(Math.random() - 0.5) * 2
 			);
-
 			const position = basePosition.clone().add(offset);
 
-			// Planètes blanches/argentées au lieu de colorées
-			const color = new THREE.Color(0xFFFFFF);
+			const matrix = new THREE.Matrix4();
+			matrix.setPosition(position);
+			instancedMesh.setMatrixAt(index, matrix);
 
-			const material = new THREE.MeshPhongMaterial({
-				color: color,
-				emissive: new THREE.Color(planet.color),
-				emissiveIntensity: 0.3,  // ← Ajouter légère émission régionale
-				shininess: 120,
-				transparent: true,
-				opacity: 0.95,
-				side: THREE.FrontSide  // ← Éviter les faces arrière
+			// ← Couleur UNIQUE pour la sphère solide
+			const biomeData = this.generateBiomeColor();
+			const uniqueMaterial = material.clone();
+			uniqueMaterial.color = biomeData.color;
+			uniqueMaterial.emissive = biomeData.color;
+			uniqueMaterial.emissiveIntensity = 0.2;
+
+			instancedMesh.setColorAt(index, biomeData.color);
+
+
+			const textureGeometry = new THREE.IcosahedronGeometry(CONFIG.PLANET_SIZE * 1.05, 5);
+			// ← RANDOMISER: 50% de chance d'avoir une texture
+			const hasTexture = Math.random() > 0.5;
+
+			let textureMesh = null;
+
+			if (hasTexture) {
+				const textureCanvas = this.generateBiomeTexture(biomeData.biome);
+				const heightCanvas = this.generateHeightmap(biomeData.biome);
+
+				const texture = this.canvasToThreeTexture(textureCanvas);
+				const displacementMap = this.canvasToThreeTexture(heightCanvas);
+
+				// ← FIX COUPURE: Répéter la texture au lieu de l'étirer
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set(2, 2);  // Répète 2x2 pour éviter les coupures
+
+				displacementMap.wrapS = THREE.RepeatWrapping;
+				displacementMap.wrapT = THREE.RepeatWrapping;
+				displacementMap.repeat.set(2, 2);
+
+				const textureMaterial = new THREE.MeshPhongMaterial({
+					map: texture,
+					displacementMap: displacementMap,
+					displacementScale: 0.3,
+					transparent: true,
+					opacity: 1,
+					side: THREE.FrontSide,
+					shininess: 50
+				});
+
+				textureMesh = new THREE.Mesh(textureGeometry, textureMaterial);
+				textureMesh.position.copy(position);
+				this.scene.add(textureMesh);
+			}
+
+			this.planetData.push({
+				...planet,
+				index,
+				position: position.clone(),
+				originalPosition: position.clone(),
+				pulseSpeed: 0.5 + Math.random() * 0.5,
+				pulseOffset: Math.random() * Math.PI * 2,
+				hovered: false,
+				focused: false,
+				biomeColor: biomeData.color,
+				biome: biomeData.biome,
+				textureMesh: textureMesh
 			});
 
-
-			const mesh = new THREE.Mesh(planetGeometry, material);
-			mesh.position.copy(position);
-			mesh.userData = planet;
-			mesh.userData.originalScale = 1.0;
-			mesh.userData.pulseSpeed = 0.5 + Math.random() * 0.5;
-			mesh.userData.pulseOffset = Math.random() * Math.PI * 2;
-			mesh.userData.originalPosition = position.clone();
-
-			this.planetVelocities.set(mesh, new THREE.Vector3(0, 0, 0));
-
-			this.scene.add(mesh);
-			this.planetMeshes.push(mesh);
-
-			// Halo lumineux avec la couleur de la région
-			const glowGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 2, 16, 16);
-			const glowMaterial = new THREE.MeshBasicMaterial({
-				color: new THREE.Color(planet.color),
-				transparent: true,
-				opacity: 0.15,
-				side: THREE.BackSide
-			});
-			const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-			mesh.add(glow);
-
-			// Anneau orbital très subtil
-			const ringGeometry = new THREE.RingGeometry(
-				CONFIG.PLANET_SIZE * 1.5,
-				CONFIG.PLANET_SIZE * 2,
-				32
-			);
-			const ringMaterial = new THREE.MeshBasicMaterial({
-				color: new THREE.Color(planet.color),
-				transparent: true,
-				opacity: 0.1,
-				side: THREE.DoubleSide
-			});
-			const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-			ring.rotation.x = Math.PI / 2;
-			mesh.add(ring);
+			this.planetVelocities.set(index, new THREE.Vector3());
 		});
 
-		console.log(`✨ ${this.planetMeshes.length} planètes créées dans le volume 3D`);
+		instancedMesh.instanceMatrix.needsUpdate = true;
+		this.instancedMesh = instancedMesh;
+		this.scene.add(instancedMesh);
+
+		this.createPlanetHalos();
+
+		console.log(`✨ ${this.planets.length} planètes: sphères colorées + textures + halos`);
 	}
 
-	/**
-	 * Calcule et applique les forces de répulsion autour de la planète sélectionnée
-	 */
-	applyRepulsionForces() {
-		if (!this.selectedPlanet) return;
+	canvasToThreeTexture(canvas) {
+		const texture = new THREE.CanvasTexture(canvas);
+		texture.magFilter = THREE.NearestFilter;
+		texture.minFilter = THREE.NearestFilter;
+		return texture;
+	}
 
-		const selectedPos = this.selectedPlanet.position;
+	generateHeightmap(biome) {
+		const canvas = document.createElement('canvas');
+		canvas.width = 128;
+		canvas.height = 128;
+		const ctx = canvas.getContext('2d');
+		const imageData = ctx.createImageData(128, 128);
+		const data = imageData.data;
+
+		switch(biome) {
+			case 'water':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const wave = Math.sin(x * 0.1) * 20 + Math.sin(y * 0.08) * 15;
+						const height = 128 + wave;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = height;
+						data[idx + 1] = height;
+						data[idx + 2] = height;
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'ice':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const crystal = Math.sin(x * 0.2) * 30 + Math.cos(y * 0.2) * 25;
+						const height = 128 + crystal;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.min(255, Math.max(0, height));
+						data[idx + 1] = data[idx];
+						data[idx + 2] = data[idx];
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'earth':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const mountain = Math.sin(x * 0.08) * 40 + Math.cos(y * 0.08) * 35;
+						const height = 128 + mountain;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.min(255, Math.max(0, height));
+						data[idx + 1] = data[idx];
+						data[idx + 2] = data[idx];
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'desert':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const dune = Math.sin(x * 0.06 + y * 0.04) * 45;
+						const height = 128 + dune;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.min(255, Math.max(0, height));
+						data[idx + 1] = data[idx];
+						data[idx + 2] = data[idx];
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'city':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const building = Math.floor(x / 16) + Math.floor(y / 16);
+						const height = 100 + (building % 3) * 40;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = height;
+						data[idx + 1] = height;
+						data[idx + 2] = height;
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'marsh':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const swamp = Math.sin(x * 0.1) * 20 + Math.cos(y * 0.1) * 15;
+						const water = Math.random() > 0.7 ? -20 : 0;
+						const height = 128 + swamp + water;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.min(255, Math.max(0, height));
+						data[idx + 1] = data[idx];
+						data[idx + 2] = data[idx];
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+		}
+
+		ctx.putImageData(imageData, 0, 0);
+		return canvas;
+	}
+
+
+	generateBiomeTexture(biome) {
+		const canvas = document.createElement('canvas');
+		canvas.width = 128;
+		canvas.height = 128;
+		const ctx = canvas.getContext('2d');
+		const imageData = ctx.createImageData(128, 128);
+		const data = imageData.data;
+
+		switch(biome) {
+			case 'water':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const wave = Math.sin(x * 0.1 + Math.random() * 0.5) * 10;
+						const brightness = 122 + wave;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = 26;
+						data[idx + 1] = 107;
+						data[idx + 2] = Math.max(100, brightness);
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'ice':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const noise = Math.sin(x * 0.05) * Math.cos(y * 0.05);
+						const brightness = 240 + noise * 15;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = brightness;
+						data[idx + 1] = brightness;
+						data[idx + 2] = 255;
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'earth':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const terrain = Math.sin(x * 0.08) + Math.cos(y * 0.08);
+						const forest = Math.sin(x * 0.3) * Math.cos(y * 0.3);
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.floor(61 + terrain * 10 + forest * 20);
+						data[idx + 1] = Math.floor(100 + terrain * 15);
+						data[idx + 2] = Math.floor(45 + terrain * 8);
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'desert':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const dune = Math.sin(x * 0.06) * 20;
+						const shadow = Math.cos(y * 0.04) * 10;
+						const idx = (y * 128 + x) * 4;
+						data[idx] = Math.floor(212 + dune + shadow);
+						data[idx + 1] = Math.floor(165 + dune * 0.7);
+						data[idx + 2] = Math.floor(116 + dune * 0.5);
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'city':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const light = Math.random() > 0.4;
+						const shadow = Math.abs(Math.sin(x * 0.1)) * 20;
+						const idx = (y * 128 + x) * 4;
+
+						if (light) {
+							data[idx] = 200;
+							data[idx + 1] = 200;
+							data[idx + 2] = 100;
+						} else {
+							data[idx] = Math.floor(80 - shadow);
+							data[idx + 1] = Math.floor(80 - shadow);
+							data[idx + 2] = Math.floor(80 - shadow);
+						}
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+
+			case 'marsh':
+				for (let y = 0; y < 128; y++) {
+					for (let x = 0; x < 128; x++) {
+						const swamp = Math.sin(x * 0.05) * Math.cos(y * 0.05);
+						const water = Math.sin(x * 0.1) * 10;
+						const idx = (y * 128 + x) * 4;
+
+						if (Math.random() > 0.6) {
+							data[idx] = 26;
+							data[idx + 1] = 58 + water;
+							data[idx + 2] = 92;
+						} else {
+							data[idx] = Math.floor(61 + swamp * 15);
+							data[idx + 1] = Math.floor(92 + swamp * 10);
+							data[idx + 2] = Math.floor(45 + swamp * 8);
+						}
+						data[idx + 3] = 255;
+					}
+				}
+				break;
+		}
+
+		ctx.putImageData(imageData, 0, 0);
+		return canvas;
+	}
+
+	// generateNormalMap(biome) {
+	// 	const canvas = document.createElement('canvas');
+	// 	canvas.width = 128;
+	// 	canvas.height = 128;
+	// 	const ctx = canvas.getContext('2d');
+	// 	const imageData = ctx.createImageData(128, 128);
+	// 	const data = imageData.data;
+	//
+	// 	for (let y = 1; y < 127; y++) {
+	// 		for (let x = 1; x < 127; x++) {
+	// 			const idx = (y * 128 + x) * 4;
+	// 			let nx = 0, ny = 0, nz = 1;
+	//
+	// 			switch(biome) {
+	// 				case 'water':
+	// 					nx = Math.sin(x * 0.1) * 0.3;
+	// 					ny = Math.cos(y * 0.1) * 0.3;
+	// 					break;
+	// 				case 'ice':
+	// 					nx = Math.sin(x * 0.2) * 0.4;
+	// 					ny = Math.cos(y * 0.2) * 0.4;
+	// 					break;
+	// 				case 'earth':
+	// 					nx = Math.sin(x * 0.08) * 0.3;
+	// 					ny = Math.cos(y * 0.08) * 0.3;
+	// 					break;
+	// 				case 'desert':
+	// 					nx = Math.sin(x * 0.06) * 0.35;
+	// 					ny = Math.cos(y * 0.06) * 0.35;
+	// 					break;
+	// 				case 'city':
+	// 					nx = Math.sin(x * 0.15) * 0.4;
+	// 					ny = Math.sin(y * 0.15) * 0.4;
+	// 					break;
+	// 				case 'marsh':
+	// 					nx = Math.sin(x * 0.1) * 0.25;
+	// 					ny = Math.cos(y * 0.1) * 0.25;
+	// 					break;
+	// 			}
+	//
+	// 			const len = Math.sqrt(nx * nx + ny * ny + nz * nz);
+	// 			nx /= len;
+	// 			ny /= len;
+	// 			nz /= len;
+	//
+	// 			data[idx] = Math.floor((nx + 1) * 127.5);
+	// 			data[idx + 1] = Math.floor((ny + 1) * 127.5);
+	// 			data[idx + 2] = Math.floor((nz + 1) * 127.5);
+	// 			data[idx + 3] = 255;
+	// 		}
+	// 	}
+	//
+	// 	ctx.putImageData(imageData, 0, 0);
+	// 	return canvas;
+	// }
+
+	generateBiomeColor() {
+		const biomes = {
+			water: {
+				colors: [0x1a4d7a, 0x2d5fa3, 0x1f5a96, 0x0d3b66, 0x2d6a8f],
+				name: 'water'
+			},
+			ice: {
+				colors: [0xf0f8ff, 0xe0f6ff, 0xd4ebf7, 0xb3e5fc, 0x81d4fa],
+				name: 'ice'
+			},
+			earth: {
+				colors: [0x3d5c1d, 0x556b2f, 0x6b8e23, 0x228b22, 0x2d5016],
+				name: 'earth'
+			},
+			desert: {
+				colors: [0xd4a574, 0xe6b84d, 0xcc8800, 0xd2691e, 0xff8c00],
+				name: 'desert'
+			},
+			city: {
+				colors: [0x696969, 0x808080, 0xa9a9a9, 0xffff00, 0xffa500],
+				name: 'city'
+			},
+			marsh: {
+				colors: [0x3d5c1d, 0x1a3a1a, 0x4a6741, 0x2d4a2f, 0x556b2f],
+				name: 'marsh'
+			}
+		};
+
+		const biomeArray = Object.values(biomes);
+		const randomBiome = biomeArray[Math.floor(Math.random() * biomeArray.length)];
+		const randomColor = randomBiome.colors[Math.floor(Math.random() * randomBiome.colors.length)];
+
+		return {
+			hex: randomColor,
+			color: new THREE.Color(randomColor),
+			biome: randomBiome.name
+		};
+	}
+
+	createPlanetHalos() {
+		const regionColors = {
+			'Deep Core': 0xffffff,
+			'Core Worlds': 0xfcd788,
+			'Colonies': 0xc687f8,
+			'Mid Rim': 0xb939af,
+			'Inner Rim': 0xf6b16b,
+			'Expansion Region': 0x85ddf1,
+			'Outer Rim Territories': 0x00ffd9,
+			'Unknown Regions': 0x9a9a9a,
+			'Wild Space': 0x41ff00,
+			'Hutt Space': 0xff0000,
+		};
+
+		this.planetData.forEach((data) => {
+			const regionColor = regionColors[data.region] || 0xFFE81F;
+
+			const haloGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 1.8, 16, 16);
+			const haloMaterial = new THREE.MeshBasicMaterial({
+				color: regionColor,
+				transparent: true,
+				opacity: 0.12,
+				side: THREE.BackSide
+			});
+			const halo = new THREE.Mesh(haloGeometry, haloMaterial);
+			halo.position.copy(data.position);
+
+			this.scene.add(halo);
+			data.haloMesh = halo;
+		});
+	}
+
+	createRegionalZones() {
+		const regionGroups = {};
+
+		this.planetData.forEach(data => {
+			const region = data.region;
+			if (!regionGroups[region]) {
+				regionGroups[region] = {
+					planets: [],
+					color: data.color
+				};
+			}
+			regionGroups[region].planets.push(data.position.clone());
+		});
+
+		const regionColors = {
+			'Deep Core': '#ffffff',
+			'Core Worlds': '#fcd788',
+			'Colonies': '#c687f8',
+			'Mid Rim': '#b939af',
+			'Inner Rim': '#f6b16b',
+			'Expansion Region': '#85ddf1',
+			'Outer Rim Territories': '#00ffd9',
+			'Unknown Regions': '#9a9a9a',
+			'Wild Space': '#41ff00',
+			'Hutt Space': '#ff0000',
+		};
+
+		Object.entries(regionGroups).forEach(([regionName, data]) => {
+			if (data.planets.length < 1) {
+				return;
+			}
+
+			const color = regionColors[regionName] || 0xFFE81F;
+			const center = this.calculateCenter(data.planets);
+			const radius = this.calculateBoundingRadius(data.planets, center);
+
+			this.createSimpleRegionalZone(center, radius, color, regionName);
+
+			console.log(`🌈 Zone ${regionName}: ${data.planets.length} planètes`);
+		});
+	}
+
+	calculateCenter(points) {
+		const center = new THREE.Vector3();
+		points.forEach(point => center.add(point));
+		center.divideScalar(points.length);
+		return center;
+	}
+
+	calculateBoundingRadius(points, center) {
+		let maxDistance = 0;
+		points.forEach(point => {
+			const distance = point.distanceTo(center);
+			if (distance > maxDistance) {
+				maxDistance = distance;
+			}
+		});
+		return maxDistance * 1.5;
+	}
+
+	createSimpleRegionalZone(center, radius, color, regionName) {
+		const sphereGeometry = new THREE.SphereGeometry(radius, 32, 32);
+		const sphereMaterial = new THREE.MeshBasicMaterial({
+			color: color,
+			transparent: true,
+			opacity: 0.02,
+			side: THREE.DoubleSide,
+			depthWrite: false
+		});
+		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+		sphere.position.copy(center);
+		sphere.userData.region = regionName;
+		sphere.visible = false;
+		this.scene.add(sphere);
+
+		this.regionalSpheres.push({
+			sphere,
+			center,
+			baseRadius: radius,
+			regionName
+		});
+	}
+
+	applyRepulsionForces() {
+		if (this.selectedPlanetIndex === null) return;
+
+		const selectedData = this.planetData[this.selectedPlanetIndex];
+		const selectedPos = selectedData.position;
 		const { radius, strength, dampingFactor } = this.REPULSION_CONFIG;
 
-		this.planetMeshes.forEach(mesh => {
-			if (mesh === this.selectedPlanet) return;
+		this.planetData.forEach((data, index) => {
+			if (index === this.selectedPlanetIndex) return;
 
-			const distance = mesh.position.distanceTo(selectedPos);
+			const distance = data.position.distanceTo(selectedPos);
 
-			// Seulement si la planète est dans le rayon de répulsion
 			if (distance < radius && distance > 0) {
-				// Vecteur de direction (direction d'écartement)
-				const direction = mesh.position.clone()
+				const direction = data.position.clone()
 					.sub(selectedPos)
 					.normalize();
 
-				// Force diminue avec la distance (plus proche = plus fort)
 				const forceMagnitude = (1 - distance / radius) * strength;
 
-				// Récupère ou crée la vélocité
-				let velocity = this.planetVelocities.get(mesh);
+				let velocity = this.planetVelocities.get(index);
 				if (!velocity) {
 					velocity = new THREE.Vector3();
-					this.planetVelocities.set(mesh, velocity);
+					this.planetVelocities.set(index, velocity);
 				}
 
-				// Ajoute la force de répulsion
 				velocity.add(direction.multiplyScalar(forceMagnitude));
 			}
 		});
 	}
 
-	/**
-	 * Restaure toutes les planètes à leur position initiale avec animation
-	 */
 	restorePlanetsToOriginalPositions(duration = 0.8) {
 		const startTime = Date.now();
 		const startPositions = new Map(
-			this.planetMeshes.map(mesh => [mesh, mesh.position.clone()])
+			this.planetData.map(data => [data.index, data.position.clone()])
 		);
 
 		const animate = () => {
@@ -553,18 +881,36 @@ class GalaxyViewer {
 			// Easing ease-out-cubic pour un mouvement naturel
 			const eased = 1 - Math.pow(1 - progress, 3);
 
-			this.planetMeshes.forEach(mesh => {
-				const startPos = startPositions.get(mesh);
-				const targetPos = mesh.userData.originalPosition;
+			this.planetData.forEach(data => {
+				const startPos = startPositions.get(data.index);
+				const targetPos = data.originalPosition;
 
-				mesh.position.lerpVectors(startPos, targetPos, eased);
+				// Interpoler la position
+				data.position.lerpVectors(startPos, targetPos, eased);
+
+				// Mettre à jour la matrice de l'InstancedMesh
+				const matrix = new THREE.Matrix4();
+				matrix.setPosition(data.position);
+				this.instancedMesh.setMatrixAt(data.index, matrix);
+
+				// ← Mettre à jour position du skin texturé
+				if (data.textureMesh) {
+					data.textureMesh.position.copy(data.position);
+				}
+
+				// ← Mettre à jour position du halo aussi
+				if (data.haloMesh) {
+					data.haloMesh.position.copy(data.position);
+				}
 
 				// Réinitialiser la vélocité progressivement
-				const velocity = this.planetVelocities.get(mesh);
+				const velocity = this.planetVelocities.get(data.index);
 				if (velocity) {
 					velocity.multiplyScalar(1 - progress);
 				}
 			});
+
+			this.instancedMesh.instanceMatrix.needsUpdate = true;
 
 			if (progress < 1) {
 				requestAnimationFrame(animate);
@@ -574,40 +920,39 @@ class GalaxyViewer {
 		animate();
 	}
 
-	/**
-	 * Applique les vélocités calculées et les amortit
-	 */
 	updatePlanetVelocities() {
 		const { dampingFactor } = this.REPULSION_CONFIG;
 
-		this.planetMeshes.forEach(mesh => {
-			const velocity = this.planetVelocities.get(mesh);
+		this.planetData.forEach(data => {
+			const velocity = this.planetVelocities.get(data.index);
 			if (velocity && velocity.length() > 0) {
-				// Applique la vélocité à la position
-				mesh.position.add(velocity);
-
-				// Amortissement (ralentit progressivement)
+				data.position.add(velocity);
 				velocity.multiplyScalar(dampingFactor);
+
+				const matrix = new THREE.Matrix4();
+				matrix.setPosition(data.position);
+				this.instancedMesh.setMatrixAt(data.index, matrix);
+
+				if (data.textureMesh) data.textureMesh.position.copy(data.position);
+				if (data.haloMesh) data.haloMesh.position.copy(data.position);
 			}
 		});
-	}
 
+		this.instancedMesh.instanceMatrix.needsUpdate = true;
+	}
 
 	setupEvents() {
 		window.addEventListener('resize', () => this.onWindowResize());
 		window.addEventListener('click', (e) => this.onMouseClick(e));
 		window.addEventListener('mousemove', (e) => this.onMouseMove(e));
 
-		// Toggle des zones régionales
 		const toggleZones = document.getElementById('toggle-zones');
 		if (toggleZones) {
 			toggleZones.addEventListener('change', (e) => {
 				const visible = e.target.checked;
-				if (this.regionalSpheres) {
-					this.regionalSpheres.forEach(({ sphere }) => {
-						sphere.visible = visible;
-					});
-				}
+				this.regionalSpheres.forEach(({ sphere }) => {
+					sphere.visible = visible;
+				});
 			});
 		}
 	}
@@ -623,16 +968,15 @@ class GalaxyViewer {
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-		const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+		const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
-		this.planetMeshes.forEach(mesh => {
-			if (mesh !== this.selectedPlanet) {
-				mesh.userData.hovered = false;
-			}
+		this.planetData.forEach(data => {
+			data.hovered = false;
 		});
 
 		if (intersects.length > 0) {
-			intersects[0].object.userData.hovered = true;
+			const instanceId = intersects[0].instanceId;
+			this.planetData[instanceId].hovered = true;
 			document.body.style.cursor = 'pointer';
 		} else {
 			document.body.style.cursor = 'default';
@@ -644,46 +988,33 @@ class GalaxyViewer {
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-
-		// Chercher les intersections avec TOUS les objets
-		const intersects = this.raycaster.intersectObjects(this.scene.children, true);
+		const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
 		if (intersects.length > 0) {
-			// Trouver la première intersection valide
-			for (let intersection of intersects) {
-				let targetMesh = intersection.object;
-
-				// Si c'est un élément enfant (halo, anneau, orbite), trouver la planète parente
-				if (targetMesh.parent && targetMesh.parent.userData && targetMesh.parent.userData.region) {
-					targetMesh = targetMesh.parent;
-				}
-
-				// Vérifier si c'est une planète
-				if (targetMesh.userData && targetMesh.userData.name && this.planetMeshes.includes(targetMesh)) {
-					this.focusOnPlanet(targetMesh);
-					return;
-				}
-			}
+			const instanceId = intersects[0].instanceId;
+			this.focusOnPlanet(instanceId);
 		}
 	}
 
-	focusOnPlanet(planetMesh) {
-		// Si on change de focus, restaurer d'abord les positions
-		if (this.selectedPlanet && this.selectedPlanet !== planetMesh) {
-			this.restorePlanetsToOriginalPositions(0.5); // Animation plus rapide
+	focusOnPlanet(instanceId) {
+		if (this.selectedPlanetIndex !== null && this.selectedPlanetIndex !== instanceId) {
+			this.restorePlanetsToOriginalPositions(0.5);
 		}
 
-		this.selectedPlanet = planetMesh;
-		planetMesh.userData.focused = true;
+		this.selectedPlanetIndex = instanceId;
+		const planet = this.planetData[instanceId];
+		planet.focused = true;
 
-		// ← Initialiser les vélocités à zéro pour un "burst" initial
-		this.planetMeshes.forEach(mesh => {
-			if (mesh !== planetMesh) {
-				this.planetVelocities.set(mesh, new THREE.Vector3());
+		// ← Réduire minDistance pour zoom close-up
+		this.controls.minDistance = CONFIG.PLANET_SIZE * 2;
+
+		this.planetData.forEach((data, index) => {
+			if (index !== instanceId) {
+				this.planetVelocities.set(index, new THREE.Vector3());
 			}
 		});
 
-		const planet = planetMesh.userData;
+		// ← AJOUTER CET AFFICHAGE D'INFOS
 		document.getElementById('planet-info').innerHTML = `
         <div class="space-y-3">
             <div class="text-base font-semibold text-white">
@@ -728,19 +1059,47 @@ class GalaxyViewer {
                     <div class="flex-1">
                         <div class="text-gray-500 mb-0.5">Position 3D</div>
                         <div class="text-white font-mono text-xs">
-                            (${Math.round(planetMesh.position.x)}, ${Math.round(planetMesh.position.y)}, ${Math.round(planetMesh.position.z)})
+                            (${Math.round(planet.position.x)}, ${Math.round(planet.position.y)}, ${Math.round(planet.position.z)})
                         </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 11-2 0V7H3v9a1 1 0 11-2 0V4zm8 0a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 11-2 0V7h-3v9a1 1 0 11-2 0V4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Biome</div>
+                        <div class="text-white capitalize">${planet.biome}</div>
                     </div>
                 </div>
             </div>
         </div>
     `;
 
-		this.animateCameraTo(planetMesh.position);
+		this.animateCameraTo(planet.position);
 	}
 
+	clearPlanetFocus() {
+		if (this.selectedPlanetIndex !== null) {
+			this.planetData[this.selectedPlanetIndex].focused = false;
+			this.selectedPlanetIndex = null;
+
+			// ← Restaurer minDistance pour vue galaxie
+			this.controls.minDistance = CONFIG.SPHERE_RADIUS * 0.5;
+
+			this.restorePlanetsToOriginalPositions();
+
+			this.planetVelocities.forEach((velocity) => {
+				velocity.set(0, 0, 0);
+			});
+		}
+		document.getElementById('planet-info').innerHTML = '';
+	}
+
+
 	animateCameraTo(targetPosition) {
-		const distance = CONFIG.SPHERE_RADIUS * 0.8;
+		const distance = CONFIG.SPHERE_RADIUS * 0.03;
 		const direction = targetPosition.clone().normalize();
 		const cameraTarget = targetPosition.clone().add(direction.multiplyScalar(distance));
 
@@ -769,54 +1128,14 @@ class GalaxyViewer {
 		animate();
 	}
 
-	clearPlanetFocus() {
-		if (this.selectedPlanet) {
-			this.selectedPlanet.userData.focused = false;
-			this.selectedPlanet = null;
-
-			// ← Restaurer les positions avec animation
-			this.restorePlanetsToOriginalPositions();
-
-			// Réinitialiser les vélocités immédiatement
-			this.planetVelocities.forEach((velocity) => {
-				velocity.set(0, 0, 0);
-			});
-		}
-		document.getElementById('planet-info').innerHTML = '';
-	}
-
 	animate() {
 		requestAnimationFrame(() => this.animate());
 
 		const time = Date.now() * 0.001 * CONFIG.ANIMATION_SPEED;
 
-		// ← Appliquer les forces et vélocités
 		this.applyRepulsionForces();
 		this.updatePlanetVelocities();
 
-		// Animation des planètes
-		this.planetMeshes.forEach(mesh => {
-			const pulse = Math.sin(time * mesh.userData.pulseSpeed + mesh.userData.pulseOffset);
-			let targetScale = 1.0 + pulse * 0.08;
-
-			if (mesh.userData.hovered) {
-				targetScale *= 1.5;
-			}
-
-			if (mesh.userData.focused) {
-				targetScale *= 2.0;
-				const focusPulse = Math.sin(time * 2) * 0.3 + 1;
-				targetScale *= focusPulse;
-			}
-
-			const currentScale = mesh.scale.x;
-			const newScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.1);
-			mesh.scale.set(newScale, newScale, newScale);
-
-			mesh.rotation.y += 0.005;
-		});
-
-		// Animation subtile des zones régionales (pulsation légère)
 		if (this.regionalSpheres) {
 			this.regionalSpheres.forEach(({ sphere }) => {
 				const pulse = Math.sin(time * 0.3) * 0.03 + 1;
