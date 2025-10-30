@@ -482,7 +482,6 @@ class GalaxyViewer {
 	createPlanets() {
 		const planetGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE, 16, 16);
 
-		// Grouper les planètes par grille
 		const gridGroups = {};
 		this.planets.forEach(planet => {
 			if (!gridGroups[planet.grid]) {
@@ -494,7 +493,6 @@ class GalaxyViewer {
 		this.planets.forEach((planet, index) => {
 			const planetsInGrid = gridGroups[planet.grid];
 
-			// Profondeur Z basée sur la région
 			let depth = 0.5;
 
 			if (planet.region.includes('Deep Core')) {
@@ -527,12 +525,11 @@ class GalaxyViewer {
 
 			const position = basePosition.clone().add(offset);
 
-			// Planètes blanches/argentées au lieu de colorées
-			const color = new THREE.Color(0x000000);
+			const color = new THREE.Color(0xFFFFFF);
 
 			const material = new THREE.MeshPhongMaterial({
 				color: color,
-				emissive: new THREE.Color(planet.color), // Légère émission de la couleur régionale
+				emissive: new THREE.Color(planet.color),
 				emissiveIntensity: 0,
 				shininess: 60,
 				transparent: true,
@@ -550,35 +547,48 @@ class GalaxyViewer {
 			this.scene.add(mesh);
 			this.planetMeshes.push(mesh);
 
-			// Halo lumineux avec la couleur de la région
-			const glowGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 2, 16, 16);
-			const glowMaterial = new THREE.MeshBasicMaterial({
-				color: new THREE.Color(planet.color),
-				transparent: true,
-				opacity: 0.15,
-				side: THREE.BackSide
-			});
-			const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-			mesh.add(glow);
+			// Randomiser les éléments autour de la planète
+			const hasRing = Math.random() > 0.3;              // 70% ont un anneau
+			const hasHalo = Math.random() > 0.2;              // 80% ont un halo
 
-			// Anneau orbital très subtil
-			const ringGeometry = new THREE.RingGeometry(
-				CONFIG.PLANET_SIZE * 1.5,
-				CONFIG.PLANET_SIZE * 2,
-				32
-			);
-			const ringMaterial = new THREE.MeshBasicMaterial({
-				color: new THREE.Color(planet.color),
-				transparent: true,
-				opacity: 0.1,
-				side: THREE.DoubleSide
-			});
-			const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-			ring.rotation.x = Math.PI / 2;
-			mesh.add(ring);
+			// Halo lumineux aléatoire
+			if (hasHalo) {
+				const glowGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 2, 16, 16);
+				const glowMaterial = new THREE.MeshBasicMaterial({
+					color: new THREE.Color(planet.color),
+					transparent: true,
+					opacity: 0.15,
+					side: THREE.BackSide
+				});
+				const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+				glow.userData.parentPlanet = mesh; // Lier au mesh parent
+				mesh.add(glow);
+			}
+
+			// Anneau orbital aléatoire
+			if (hasRing) {
+				// Randomiser le style d'anneau
+				const ringTypes = ['thin', 'thick', 'scattered'];
+				const ringType = ringTypes[Math.floor(Math.random() * ringTypes.length)];
+
+				const ringRadiusMin = CONFIG.PLANET_SIZE * (1.2 + Math.random() * 0.5);
+				const ringRadiusMax = CONFIG.PLANET_SIZE * (2 + Math.random() * 0.8);
+
+				const ringGeometry = new THREE.RingGeometry(ringRadiusMin, ringRadiusMax, 32);
+				const ringMaterial = new THREE.MeshBasicMaterial({
+					color: new THREE.Color(planet.color),
+					transparent: true,
+					opacity: 0.08 + Math.random() * 0.08,
+					side: THREE.DoubleSide
+				});
+				const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+				ring.rotation.x = (Math.random() - 0.5) * Math.PI * 0.8; // Rotation aléatoire
+				ring.userData.parentPlanet = mesh; // Lier au mesh parent
+				mesh.add(ring);
+			}
+
+			console.log(`✨ ${this.planetMeshes.length} planètes créées dans le volume 3D`);
 		});
-
-		console.log(`✨ ${this.planetMeshes.length} planètes créées dans le volume 3D`);
 	}
 
 	setupEvents() {
@@ -634,10 +644,25 @@ class GalaxyViewer {
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-		const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+		// Chercher les intersections avec TOUS les objets
+		const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
 		if (intersects.length > 0) {
-			this.focusOnPlanet(intersects[0].object);
+			// Trouver la première intersection valide
+			for (let intersection of intersects) {
+				let targetMesh = intersection.object;
+
+				// Si c'est un élément enfant (halo, anneau, orbite), trouver la planète parente
+				if (targetMesh.parent && targetMesh.parent.userData && targetMesh.parent.userData.region) {
+					targetMesh = targetMesh.parent;
+				}
+
+				// Vérifier si c'est une planète
+				if (targetMesh.userData && targetMesh.userData.name && this.planetMeshes.includes(targetMesh)) {
+					this.focusOnPlanet(targetMesh);
+					return;
+				}
+			}
 		}
 	}
 
@@ -647,97 +672,176 @@ class GalaxyViewer {
 		this.selectedPlanet = planetMesh;
 		planetMesh.userData.focused = true;
 
+		// Masquer toutes les autres planètes et leurs zones
+		this.planetMeshes.forEach(mesh => {
+			if (mesh !== planetMesh) {
+				mesh.visible = false;
+				// Masquer le halo aussi
+				mesh.children.forEach(child => {
+					child.visible = false;
+				});
+			}
+		});
+
+		// Masquer les zones régionales
+		if (this.regionalSpheres) {
+			this.regionalSpheres.forEach(({ sphere, edges }) => {
+				sphere.visible = false;
+				edges.visible = false;
+			});
+		}
+
+		// Masquer la grille et les étoiles
+		this.scene.children.forEach(child => {
+			if (child instanceof THREE.Line || child instanceof THREE.Points) {
+				if (child !== planetMesh && !planetMesh.children.includes(child)) {
+					child.visible = false;
+				}
+			}
+		});
+
 		const planet = planetMesh.userData;
 		document.getElementById('planet-info').innerHTML = `
-            <div class="space-y-3">
-                <div class="text-base font-semibold text-white">
-                    ${planet.name}
+        <div class="space-y-3">
+            <div class="text-base font-semibold text-white">
+                ${planet.name}
+            </div>
+            
+            <div class="space-y-2 text-xs">
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Grille</div>
+                        <div class="text-star-wars font-medium">${planet.grid}</div>
+                    </div>
                 </div>
                 
-                <div class="space-y-2 text-xs">
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Grille</div>
-                            <div class="text-star-wars font-medium">${planet.grid}</div>
-                        </div>
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Secteur</div>
+                        <div class="text-white">${planet.sector}</div>
                     </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Secteur</div>
-                            <div class="text-white">${planet.sector}</div>
-                        </div>
+                </div>
+                
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Région</div>
+                        <div class="text-white">${planet.region}</div>
                     </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Région</div>
-                            <div class="text-white">${planet.region}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start gap-2.5 text-gray-300">
-                        <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div class="flex-1">
-                            <div class="text-gray-500 mb-0.5">Position 3D</div>
-                            <div class="text-white font-mono text-xs">
-                                (${Math.round(planetMesh.position.x)}, ${Math.round(planetMesh.position.y)}, ${Math.round(planetMesh.position.z)})
-                            </div>
+                </div>
+                
+                <div class="flex items-start gap-2.5 text-gray-300">
+                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="text-gray-500 mb-0.5">Position 3D</div>
+                        <div class="text-white font-mono text-xs">
+                            (${Math.round(planetMesh.position.x)}, ${Math.round(planetMesh.position.y)}, ${Math.round(planetMesh.position.z)})
                         </div>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+    `;
 
 		this.animateCameraTo(planetMesh.position);
 	}
 
 	animateCameraTo(targetPosition) {
-		const distance = CONFIG.SPHERE_RADIUS * 0.8;
-		const direction = targetPosition.clone().normalize();
-		const cameraTarget = targetPosition.clone().add(direction.multiplyScalar(distance));
+		// Distance juste en dehors de la planète mais proche
+		const finalDistance = CONFIG.PLANET_SIZE * 5;  // ← Augmente ça à 5 ou 6
 
-		const duration = 1.5;
+		const duration = 1.2;
 		const startPosition = this.camera.position.clone();
 		const startTarget = this.controls.target.clone();
 		const startTime = Date.now();
+
+		const initialDirection = startPosition.clone().sub(startTarget).normalize();
+		let angle = 0;
 
 		const animate = () => {
 			const elapsed = (Date.now() - startTime) / 1000;
 			const progress = Math.min(elapsed / duration, 1);
 
-			const eased = progress < 0.5
-				? 2 * progress * progress
-				: 1 - Math.pow(-2 * progress + 2, 2) / 2;
+			const eased = 1 - Math.pow(1 - progress, 3);
 
-			this.camera.position.lerpVectors(startPosition, cameraTarget, eased);
+			angle = eased * Math.PI * 0.3;
+
+			const rotatedDirection = initialDirection.clone();
+			const axis = targetPosition.clone().sub(startTarget).normalize();
+			const quaternion = new THREE.Quaternion();
+			quaternion.setFromAxisAngle(axis, angle);
+			rotatedDirection.applyQuaternion(quaternion);
+
+			const cameraPosition = targetPosition.clone()
+				.add(rotatedDirection.multiplyScalar(finalDistance));
+
+			this.camera.position.lerpVectors(startPosition, cameraPosition, eased);
 			this.controls.target.lerpVectors(startTarget, targetPosition, eased);
+
+			// Ajuster les limites pour ne pas entrer dans la planète
+			this.controls.minDistance = CONFIG.PLANET_SIZE * 20;  // ← Min augmenté
+			this.controls.maxDistance = CONFIG.PLANET_SIZE * 25;
+
 			this.controls.update();
 
 			if (progress < 1) {
 				requestAnimationFrame(animate);
+			} else {
+				this.camera.position.copy(cameraPosition);
+				this.controls.target.copy(targetPosition);
+				this.controls.minDistance = CONFIG.PLANET_SIZE * 20;  // ← Min augmenté
+				this.controls.maxDistance = CONFIG.PLANET_SIZE * 25;
+				this.controls.update();
 			}
 		};
 
 		animate();
 	}
 
+
 	clearPlanetFocus() {
 		if (this.selectedPlanet) {
 			this.selectedPlanet.userData.focused = false;
 			this.selectedPlanet = null;
 		}
+
+		// Réafficher toutes les planètes
+		this.planetMeshes.forEach(mesh => {
+			mesh.visible = true;
+			mesh.children.forEach(child => {
+				child.visible = true;
+			});
+		});
+
+		// Réafficher les zones régionales
+		if (this.regionalSpheres) {
+			this.regionalSpheres.forEach(({ sphere, edges }) => {
+				sphere.visible = true;
+				edges.visible = true;
+			});
+		}
+
+		// Réafficher la grille et les étoiles
+		this.scene.children.forEach(child => {
+			if (child instanceof THREE.Line || child instanceof THREE.Points) {
+				child.visible = true;
+			}
+		});
+
+		// Restaurer les limites de zoom
+		this.controls.minDistance = CONFIG.SPHERE_RADIUS * 0.5;
+		this.controls.maxDistance = CONFIG.SPHERE_RADIUS * 4;
+
 		document.getElementById('planet-info').innerHTML = '';
 	}
 
