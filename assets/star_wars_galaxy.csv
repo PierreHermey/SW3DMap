@@ -1,200 +1,1211 @@
-SYSTEM;SECTOR;REGION;GRID;
-5251977;Quence;Outer Rim Territories;P-18;
-23 Mere;;Colonies;M-13;
-2GS-91E20;;Core Worlds;M-11;
-A-Foroon;Arkanis;Outer Rim Territories;R-16;
-Aaeton;;Core Worlds;K-9;
-Aakaash;Oplovis;Outer Rim Territories;M-5;
-Aaloth;Gaulus;Outer Rim Territories;S-17;
-Aar;Nijune;Outer Rim Territories;N-5;
-Aargau;;Core Worlds;L-10;
-Aargonar;Perkell;Mid Rim;Q-7;
-Aaris;Kathol;Outer Rim Territories;M-21;
-Aaron;Tharin;Outer Rim Territories;S-8;
-Ab Dalis;Gaulus;Outer Rim Territories;R-17;
-Ab'Bshingh;Sujimis;Outer Rim Territories;O-19;
-Abaarian;Abaar;Mid Rim;K-7;
-Abafar;Quelii;Outer Rim Territories;O-6;
-Abar;Tragan Cluster;Outer Rim Territories;N-5;
-Abbaji;Zuma (Spar);Outer Rim Territories;H-16;
-Abecederia;Noolian;Mid Rim;Q-13;
-Abednedo;;Colonies;N-12;
-Abelor;Yushan;Mid Rim;K-17;
-Abersyn;Cyrillian Protectorate;Expansion Region;O-12;
-Abhean;Maldrood;Mid Rim;R-7;
-Abo Dreth;Corporate Sector;Outer Rim Territories;S-3;
-Abonshee;Fakir;Colonies;K-9;
-Abraxas;Yushan;Mid Rim;K-17;
-Abraxin;Tion Hegemony;Outer Rim Territories;S-6;
-Abregado;;Core Worlds;K-13;
-Abridon;Koradin;Outer Rim Territories;J-18;
-Abrihom;Rayter;Outer Rim Territories;J-19;
-Abrion Major;Abrion;Outer Rim Territories;S-15;
-Absanz;Allied Tion;Outer Rim Territories;S-6;
-Absit;Tunka;Outer Rim Territories;I-19;
-Abtin;Danjar;Outer Rim Territories;N-19;
-Abyss;Ash Worlds;Outer Rim Territories;S-7;
-Ac'fren;Calaron;Outer Rim Territories;T-9;
-Acachla;;Colonies;N-10;
-Achillea;Tapani;Colonies;L-13;
-Acomber;;Colonies;M-9;
-Actlyon;Jjannex;Outer Rim Territories;K-19;
-Adalog;Mytaranor;Mid Rim;Q-10;
-Adamastor;;Core Worlds;L-9;
-Adana;;Deep Core;L-10;
-Adari;Adari;Inner Rim;M-9;
-Adarlon Minos ;Cluster Outer;Rim Territories ;M-20;
-Adelphi;Kibilini;Outer Rim Territories;P-17;
-Adikaria;;Core Worlds;K-12;
-Adim;Adari;Inner Rim;M-9;
-Adin;Lostar;Expansion Region;M-7;
-Adinax Nebula;Semagi;Mid Rim;I-16;
-Adner;Yataga;Expansion Region;N-16;
-Adoris;Senex;Mid Rim;L-17;
-Adras;Seswenna;Outer Rim Territories;M-17;
-Adratharpe;;Mid Rim;H-15;
-Adrathorpe;;Wild Space;H-11;
-Aduba;Bheriz;Outer Rim Territories;U-11;
-Adumar;;Wild Space;J-6;
-Aefao;Corosi;Outer Rim Territories;N-5;
-Aeneid;Kessel;Outer Rim Territories;T-10;
-Aeos;Chopani;Outer Rim Territories;M-3;
-Aesolian;;Wild Space;I-15;
-Aestilan;Demetras;Outer Rim Territories;P-7;
-Aeten;;Wild Space;J-6;
-Affa;;Inner Rim;M-13;
-Affadar;Fellwe;Expansion Region;L-8;
-Affavan;;Hutt Space;S-12;
-Agamar;Lahara;Outer Rim Territories;M-5;
-Agaris;;Wild Space;G-14;
-Agash;Great Agash;Expansion Region;K-15;
-Aggarda;Metatessu;Mid Rim;R-10;
-Agoliba-Tu;Veragi;Outer Rim Territories;K-3;
-Agomar;Seswenna;Outer Rim Territories;M-18;
-Agon;Ash Worlds;Outer Rim Territories;T-7;
-Agora;Sluis;Outer Rim Territories;M-19;
-Agridorn;;Colonies;N-12;
-Agriworld-2079;M'shinni;Mid Rim;L-7;
-Aguarl;Mbandamonte;Expansion Region;N-15;
-Ahakista;Myto;Outer Rim Territories;K-3;
-Ahch-To;;Unknown Regions;F-13;
-Ahn Krantarium;Esuain;Mid Rim;P-7;
-Ai'ken Prime;;Inner Rim;O-10;
-Aida;Aida;Mid Rim;Q-13;
-Aikhibba;Fei Hu;Mid Rim;P-13;
-Ailon;;Inner Rim;N-12;
-Aiqin;Airam;Outer Rim Territories;L-20;
-Ajan Kloss;Cademimu;Outer Rim Territories;L-5;
-Ak-Hurst;Tarabba;Outer Rim Territories;M-19;
-Akrit'tar;Calaron;Outer Rim Territories;T-9;
-Akuria;Oplovis;Outer Rim Territories;M-5;
-Al'doleem;Hune;Mid Rim;Q-12;
-Alabash;Fakir;Colonies;K-9;
-Alagon;Tennuutta;Mid Rim;Q-7;
-Alakatha;Var Hagen;Mid Rim;M-16;
-Alamass;Calaron;Outer Rim Territories;T-9;
-Alarevi;Gaulus;Outer Rim Territories;S-17;
-Alashan;;Wild Space;J-5;
-Alaspin;Suolriep;Outer Rim Territories;S-8;
-Alassa Major;Vilonis;Mid Rim;O-16;
-Alba;Belsmuth;Outer Rim Territories;O-6;
-Albarrio;Albarrio;Outer Rim Territories;K-5;
-Albecus;;Core Worlds;L-9;
-Albrae-Don;Sern;Colonies;L-13;
-Alchenaut;Alchenaut;Expansion Region;L-16;
-Alderaan;Alderaan;Core Worlds;M-10;
-Alderath;Alderath;Mid Rim;L-7;
-Alderbathe;Churnis;Mid Rim;J-6;
-Aldereen;;Inner Rim;M-14;
-Aldhani;Cademimu;Outer Rim Territories;M-6;
-Aldin;Aldino;Mid Rim;J-17;
-Aldivy;Illisurevimurasi;Outer Rim Territories;Q-4;
-Aldo Spach;Jospro;Outer Rim Territories;S-7;
-Aldraig;Alderaan;Core Worlds;M-10;
-Alee;;Hutt Space;R-9;
-Aleen;Bright Jewel;Mid Rim;L-7;
-Aleen Minor;;Inner Rim;M-13;
-Aleron;Tapani;Colonies;L-13;
-Alfestril;;Inner Rim;N-12;
-Algara;Lambda;Mid Rim;P-15;
-Algarian;Dufilvian;Mid Rim;Q-15;
-Algarra;Thrasybule;Outer Rim Territories;P-6;
-Algnadesh;Hapes Cluster;Inner Rim;O-9;
-Algor;Cronese Mandate;Outer Rim Territories;S-6;
-Algunnis;Trax;Mid Rim;Q-10;
-Alion;;Inner Rim;L-14;
-Alios;Rachuk;Colonies;N-11;
-Alis Point;Tamarin;Outer Rim Territories;N-18;
-Alisandor;Tapani;Colonies;L-13;
-Alk'Lellish;Sumitra;Expansion Region;N-7;
-Alkenak;;Core Worlds;M-12;
-Alland;;Core Worlds;K-10;
-Allandor;Tapani;Colonies;L-13;
-Allanteen;Tynna;Expansion Region;O-14;
-Allard;Svivreni;Outer Rim Territories;O-19;
-Alliga;Phelleem;Outer Rim Territories;S-7;
-Allst Prime;Taldot;Mid Rim;Q-8;
-Alluuvia;Elrood;Outer Rim Territories;M-19;
-Allyuen;Javin (Anoat);Outer Rim Territories;K-18;
-"Almagest, The";;Inner Rim ;J-13;
-Almak;Almak;Mid Rim;J-17;
-Almakar;;Inner Rim;N-9;
-Almania;Mortex (Almanian);Outer Rim Territories;S-5;
-Almar;Elrood;Outer Rim Territories;M-19;
-Almera;;Inner Rim;M-8;
-Alnaria;;Colonies;J-9;
-Aloxl;;Deep Core;L-10;
-Aloxor;Kontahr;Mid Rim;R-11;
-Alpheridies;Farstey;Expansion Region;O-8;
-Alphoresis;Grumani;Outer Rim Territories;M-17;
-Alpinn;Kanz;Outer Rim Territories;N-4;
-Alsakan;Alsaka;Core Worlds;L-9;
-Altair;Thrasybule;Outer Rim Territories;P-6;
-Altano;Piryn Shar;Expansion Region;K-16;
-Altarrn;Glythe;Mid Rim;J-7;
-Altawar;Corellian;Core Worlds;M-11;
-Althir;Rolion;Outer Rim Territories;P-6;
-Altier;Altier;Expansion Region;O-13;
-Altikar;Toblain;Outer Rim Territories;O-18;
-Altooni;Corellian;Core Worlds;M-11;
-Altor;Zoraster;Outer Rim Territories;U-13;
-Altora;Dalonbian;Outer Rim Territories;L-3;
-Altratonne;Ash Worlds;Outer Rim Territories;S-7;
-Altunna;Cassander;Outer Rim Territories;K-5;
-Altyr;Morshdine;Outer Rim Territories;O-5;
-Aludia;Trilon;Outer Rim Territories;H-16;
-Alui;Alui;Mid Rim;O-17;
-Alun;Oriolan;Mid Rim;J-16;
-Alurion;Raioballo;Outer Rim Territories;L-4;
-Alvadorjia;Andirma;Expansion Region;L-15;
-Alvorine;Yminis;Outer Rim Territories;S-14;
-Alzar;Thanium;Outer Rim Territories;R-6;
-Alzoc;Sujimis;Outer Rim Territories;P-19;
-Amaltanna;Kanz;Outer Rim Territories;N-4;
-Amar;Airon;Inner Rim;O-10;
-Amarin;Allied Tion;Outer Rim Territories;S-6;
-Amaxine Station;Tunka;Outer Rim Territories;J-19;
-Ambria;Airon;Inner Rim;O-10;
-Amethia Prime;;Inner Rim;L-14;
-Amfar;;Inner Rim;O-8;
-Amloch;Rayter;Outer Rim Territories;J-19;
-Ammon;Ciutric;Outer Rim Territories;N-5;
-Ammuud;Corporate Sector;Outer Rim Territories;S-4;
-Amorphiia;Eidoloni;Mid Rim;L-16;
-Amorris;Quelii;Outer Rim Territories;O-6;
-Ampliquen;Meridian;Outer Rim Territories;R-7;
-Anadeen;;Inner Rim;O-9;
-Anantapar;Javin (Yarith);Outer Rim Territories;K-18;
-Anarak;Wyl;Outer Rim Territories;R-4;
-Anaxes;Antemeridian;Outer Rim Territories;R-7;
-Ancathia;Albarrio;Outer Rim Territories;K-5;
-Anchoron;Mayagil;Outer Rim Territories;M-18;
-Andalia;Hapes Cluster;Inner Rim;O-9;
-Andara;;Core Worlds;L-13;
-Andasala;Cor'ric;Outer Rim Territories;P-18;
-Andelm;Svivreni;Outer Rim Territories;O-19;
-Ando;Lambda;Mid Rim;Q-15;
-Andooweel;Arkanis;Outer Rim Territories;R-16;
-Andosha;Lambda;Mid Rim;P-15;
-Andraven;Wazta;Outer Rim Territories;J-18;
-Andulia;Doldur;Mid Rim;P-15;
+SYSTEM;SECTOR;REGION;GRID
+5251977;Quence;Outer Rim Territories;P-18
+23 Mere;;Colonies;M-13
+2GS-91E20;;Core Worlds;M-11
+A-Foroon;Arkanis;Outer Rim Territories;R-16
+Aaeton;;Core Worlds;K-9
+Aakaash;Oplovis;Outer Rim Territories;M-5
+Aaloth;Gaulus;Outer Rim Territories;S-17
+Aar;Nijune;Outer Rim Territories;N-5
+Aargau;;Core Worlds;L-10
+Aargonar;Perkell;Mid Rim;Q-7
+Aaris;Kathol;Outer Rim Territories;M-21
+Aaron;Tharin;Outer Rim Territories;S-8
+Ab Dalis;Gaulus;Outer Rim Territories;R-17
+Ab'Bshingh;Sujimis;Outer Rim Territories;O-19
+Abaarian;Abaar;Mid Rim;K-7
+Abafar;Quelii;Outer Rim Territories;O-6
+Abar;Tragan Cluster;Outer Rim Territories;N-5
+Abbaji;Zuma (Spar);Outer Rim Territories;H-16
+Abecederia;Noolian;Mid Rim;Q-13
+Abednedo;;Colonies;N-12
+Abelor;Yushan;Mid Rim;K-17
+Abersyn;Cyrillian Protectorate;Expansion Region;O-12
+Abhean;Maldrood;Mid Rim;R-7
+Abo Dreth;Corporate Sector;Outer Rim Territories;S-3
+Abonshee;Fakir;Colonies;K-9
+Abraxas;Yushan;Mid Rim;K-17
+Abraxin;Tion Hegemony;Outer Rim Territories;S-6
+Abregado;;Core Worlds;K-13
+Abridon;Koradin;Outer Rim Territories;J-18
+Abrihom;Rayter;Outer Rim Territories;J-19
+Abrion Major;Abrion;Outer Rim Territories;S-15
+Absanz;Allied Tion;Outer Rim Territories;S-6
+Absit;Tunka;Outer Rim Territories;I-19
+Abtin;Danjar;Outer Rim Territories;N-19
+Abyss;Ash Worlds;Outer Rim Territories;S-7
+Ac'fren;Calaron;Outer Rim Territories;T-9
+Acachla;;Colonies;N-10
+Achillea;Tapani;Colonies;L-13
+Acomber;;Colonies;M-9
+Actlyon;Jjannex;Outer Rim Territories;K-19
+Adalog;Mytaranor;Mid Rim;Q-10
+Adamastor;;Core Worlds;L-9
+Adana;;Deep Core;L-10
+Adari;Adari;Inner Rim;M-9
+Adarlon Minos ;Cluster Outer;Rim Territories ;M-20
+Adelphi;Kibilini;Outer Rim Territories;P-17
+Adikaria;;Core Worlds;K-12
+Adim;Adari;Inner Rim;M-9
+Adin;Lostar;Expansion Region;M-7
+Adinax Nebula;Semagi;Mid Rim;I-16
+Adner;Yataga;Expansion Region;N-16
+Adoris;Senex;Mid Rim;L-17
+Adras;Seswenna;Outer Rim Territories;M-17
+Adratharpe;;Mid Rim;H-15
+Adrathorpe;;Wild Space;H-11
+Aduba;Bheriz;Outer Rim Territories;U-11
+Adumar;;Wild Space;J-6
+Aefao;Corosi;Outer Rim Territories;N-5
+Aeneid;Kessel;Outer Rim Territories;T-10
+Aeos;Chopani;Outer Rim Territories;M-3
+Aesolian;;Wild Space;I-15
+Aestilan;Demetras;Outer Rim Territories;P-7
+Aeten;;Wild Space;J-6
+Affa;;Inner Rim;M-13
+Affadar;Fellwe;Expansion Region;L-8
+Affavan;;Hutt Space;S-12
+Agamar;Lahara;Outer Rim Territories;M-5
+Agaris;;Wild Space;G-14
+Agash;Great Agash;Expansion Region;K-15
+Aggarda;Metatessu;Mid Rim;R-10
+Agoliba-Tu;Veragi;Outer Rim Territories;K-3
+Agomar;Seswenna;Outer Rim Territories;M-18
+Agon;Ash Worlds;Outer Rim Territories;T-7
+Agora;Sluis;Outer Rim Territories;M-19
+Agridorn;;Colonies;N-12
+Agriworld-2079;M'shinni;Mid Rim;L-7
+Aguarl;Mbandamonte;Expansion Region;N-15
+Ahakista;Myto;Outer Rim Territories;K-3
+Ahch-To;;Unknown Regions;F-13
+Ahn Krantarium;Esuain;Mid Rim;P-7
+Ai'ken Prime;;Inner Rim;O-10
+Aida;Aida;Mid Rim;Q-13
+Aikhibba;Fei Hu;Mid Rim;P-13
+Ailon;;Inner Rim;N-12
+Aiqin;Airam;Outer Rim Territories;L-20
+Ajan Kloss;Cademimu;Outer Rim Territories;L-5
+Ak-Hurst;Tarabba;Outer Rim Territories;M-19
+Akrit'tar;Calaron;Outer Rim Territories;T-9
+Akuria;Oplovis;Outer Rim Territories;M-5
+Al'doleem;Hune;Mid Rim;Q-12
+Alabash;Fakir;Colonies;K-9
+Alagon;Tennuutta;Mid Rim;Q-7
+Alakatha;Var Hagen;Mid Rim;M-16
+Alamass;Calaron;Outer Rim Territories;T-9
+Alarevi;Gaulus;Outer Rim Territories;S-17
+Alashan;;Wild Space;J-5
+Alaspin;Suolriep;Outer Rim Territories;S-8
+Alassa Major;Vilonis;Mid Rim;O-16
+Alba;Belsmuth;Outer Rim Territories;O-6
+Albarrio;Albarrio;Outer Rim Territories;K-5
+Albecus;;Core Worlds;L-9
+Albrae-Don;Sern;Colonies;L-13
+Alchenaut;Alchenaut;Expansion Region;L-16
+Alderaan;Alderaan;Core Worlds;M-10
+Alderath;Alderath;Mid Rim;L-7
+Alderbathe;Churnis;Mid Rim;J-6
+Aldereen;;Inner Rim;M-14
+Aldhani;Cademimu;Outer Rim Territories;M-6
+Aldin;Aldino;Mid Rim;J-17
+Aldivy;Illisurevimurasi;Outer Rim Territories;Q-4
+Aldo Spach;Jospro;Outer Rim Territories;S-7
+Aldraig;Alderaan;Core Worlds;M-10
+Alee;;Hutt Space;R-9
+Aleen;Bright Jewel;Mid Rim;L-7
+Aleen Minor;;Inner Rim;M-13
+Aleron;Tapani;Colonies;L-13
+Alfestril;;Inner Rim;N-12
+Algara;Lambda;Mid Rim;P-15
+Algarian;Dufilvian;Mid Rim;Q-15
+Algarra;Thrasybule;Outer Rim Territories;P-6
+Algnadesh;Hapes Cluster;Inner Rim;O-9
+Algor;Cronese Mandate;Outer Rim Territories;S-6
+Algunnis;Trax;Mid Rim;Q-10
+Alion;;Inner Rim;L-14
+Alios;Rachuk;Colonies;N-11
+Alis Point;Tamarin;Outer Rim Territories;N-18
+Alisandor;Tapani;Colonies;L-13
+Alk'Lellish;Sumitra;Expansion Region;N-7
+Alkenak;;Core Worlds;M-12
+Alland;;Core Worlds;K-10
+Allandor;Tapani;Colonies;L-13
+Allanteen;Tynna;Expansion Region;O-14
+Allard;Svivreni;Outer Rim Territories;O-19
+Alliga;Phelleem;Outer Rim Territories;S-7
+Allst Prime;Taldot;Mid Rim;Q-8
+Alluuvia;Elrood;Outer Rim Territories;M-19
+Allyuen;Javin (Anoat);Outer Rim Territories;K-18
+"Almagest, The";;Inner Rim ;J-13
+Almak;Almak;Mid Rim;J-17
+Almakar;;Inner Rim;N-9
+Almania;Mortex (Almanian);Outer Rim Territories;S-5
+Almar;Elrood;Outer Rim Territories;M-19
+Almera;;Inner Rim;M-8
+Alnaria;;Colonies;J-9
+Aloxl;;Deep Core;L-10
+Aloxor;Kontahr;Mid Rim;R-11
+Alpheridies;Farstey;Expansion Region;O-8
+Alphoresis;Grumani;Outer Rim Territories;M-17
+Alpinn;Kanz;Outer Rim Territories;N-4
+Alsakan;Alsaka;Core Worlds;L-9
+Altair;Thrasybule;Outer Rim Territories;P-6
+Altano;Piryn Shar;Expansion Region;K-16
+Altarrn;Glythe;Mid Rim;J-7
+Altawar;Corellian;Core Worlds;M-11
+Althir;Rolion;Outer Rim Territories;P-6
+Altier;Altier;Expansion Region;O-13
+Altikar;Toblain;Outer Rim Territories;O-18
+Altooni;Corellian;Core Worlds;M-11
+Altor;Zoraster;Outer Rim Territories;U-13
+Altora;Dalonbian;Outer Rim Territories;L-3
+Altratonne;Ash Worlds;Outer Rim Territories;S-7
+Altunna;Cassander;Outer Rim Territories;K-5
+Altyr;Morshdine;Outer Rim Territories;O-5
+Aludia;Trilon;Outer Rim Territories;H-16
+Alui;Alui;Mid Rim;O-17
+Alun;Oriolan;Mid Rim;J-16
+Alurion;Raioballo;Outer Rim Territories;L-4
+Alvadorjia;Andirma;Expansion Region;L-15
+Alvorine;Yminis;Outer Rim Territories;S-14
+Alzar;Thanium;Outer Rim Territories;R-6
+Alzoc;Sujimis;Outer Rim Territories;P-19
+Amaltanna;Kanz;Outer Rim Territories;N-4
+Amar;Airon;Inner Rim;O-10
+Amarin;Allied Tion;Outer Rim Territories;S-6
+Amaxine Station;Tunka;Outer Rim Territories;J-19
+Ambria;Airon;Inner Rim;O-10
+Amethia Prime;;Inner Rim;L-14
+Amfar;;Inner Rim;O-8
+Amloch;Rayter;Outer Rim Territories;J-19
+Ammon;Ciutric;Outer Rim Territories;N-5
+Ammuud;Corporate Sector;Outer Rim Territories;S-4
+Amorphiia;Eidoloni;Mid Rim;L-16
+Amorris;Quelii;Outer Rim Territories;O-6
+Ampliquen;Meridian;Outer Rim Territories;R-7
+Anadeen;;Inner Rim;O-9
+Anantapar;Javin (Yarith);Outer Rim Territories;K-18
+Anarak;Wyl;Outer Rim Territories;R-4
+Anaxes;Antemeridian;Outer Rim Territories;R-7
+Ancathia;Albarrio;Outer Rim Territories;K-5
+Anchoron;Mayagil;Outer Rim Territories;M-18
+Andalia;Hapes Cluster;Inner Rim;O-9
+Andara;;Core Worlds;L-13
+Andasala;Cor'ric;Outer Rim Territories;P-18
+Andelm;Svivreni;Outer Rim Territories;O-19
+Ando;Lambda;Mid Rim;Q-15
+Andooweel;Arkanis;Outer Rim Territories;R-16
+Andosha;Lambda;Mid Rim;P-15
+Andraven;Wazta;Outer Rim Territories;J-18
+Andulia;Doldur;Mid Rim;P-15
+Andurkoss;Nouane;Inner Rim;N-8
+Anduvia;Immalia;Expansion Region;K-8
+Anelsana;Farstey;Expansion Region;O-8
+Anemcoro;Albarrio;Outer Rim Territories;K-5
+Anga;Sarka;Mid Rim;Q-8
+Angcord;;Inner Rim;I-13
+Angeria;Venaarian;Mid Rim;O-8
+Angor;Myto;Outer Rim Territories;K-4
+Angrallia;Fath;Outer Rim Territories;K-6
+Angratha;Senex;Mid Rim;L-18
+Anic;Xan;Mid Rim;Q-15
+Ank Ki'Shor;Indrexu;Outer Rim Territories;S-5
+Ank Kit'aar;Druess;Mid Rim;O-15
+Ankhural;;Hutt Space;R-9
+Ankori;Kossa;Expansion Region;P-10
+Ankot Station;Brema;Outer Rim Territories;M-17
+Ankus;;Mid Rim;I-7
+Annaj;Zuma (Moddell);Outer Rim Territories;H-16
+Annamar;Bes Ber Bikade;Expansion Region;L-15
+Annoo;Tharin;Outer Rim Territories;S-8
+Anoat;Javin (Anoat);Outer Rim Territories;K-18
+Anobis;Bright Jewel;Mid Rim;L-7
+Anorelga;Braxant;Outer Rim Territories;K-3
+Anoth;;Wild Space;J-20
+Ansarra;Iskin;Mid Rim;O-16
+Ansata;;Core Worlds;M-11
+Ansek;Eidoloni;Mid Rim;M-17
+Ansillivog;Majoor;Expansion Region;N-15
+Ansion;Churnis;Mid Rim;I-6
+Anstares;Juvex;Mid Rim;L-17
+Antakaria;Bothan;Mid Rim;R-14
+Antamont;Meridian;Outer Rim Territories;R-6
+Antar;;Inner Rim;N-12
+Antared;Esstran;Outer Rim Territories;Q-4
+Antares;;Inner Rim;N-12
+Anteevy;Esuain;Mid Rim;P-7
+Antemeridias;Antemeridian;Outer Rim Territories;R-7
+Anthan;Braxant;Outer Rim Territories;K-3
+Anthus;Brema;Outer Rim Territories;M-17
+Antillion;D'Astan;Outer Rim Territories;O-6
+Antine;;Outer Rim Territories;I-19
+Antipose;Centrality;Outer Rim Territories;U-8
+Antiquity;Senex;Mid Rim;L-18
+Antmuel;Chopani;Outer Rim Territories;M-3
+Anto's Star;Saijo;Outer Rim Territories;K-20
+Antolus;Sarka;Mid Rim;Q-8
+Anturus;Senex;Mid Rim;L-18
+Anukara;Prackla;Expansion Region;O-8
+Anx Minor;Raioballo;Outer Rim Territories;L-4
+Anzat;Bryx;Mid Rim;R-7
+Anzell;Bryx;Mid Rim ;R-7
+Aostai;;Wild Space;I-13
+Apatros;Savareen;Outer Rim Territories;Q-16
+Apgar;Hilo;Expansion Region;O-13
+Apiliria;;Wild Space;T-5
+Aphran;;Inner Rim;K-8
+Aplooine;Grumani;Outer Rim Territories;N-17
+Apoka;Dohlbani;Mid Rim;R-14
+Aq Vetina;Relgim;Outer Rim Territories;M-4
+Aquaris;Sumitra;Expansion Region;N-7
+Aquella;Senex;Mid Rim;L-17
+Aquilae;;Colonies;N-12
+Aquilaris;Sanbra;Outer Rim Territories;O-17
+Aquilaris Minor;Grumani;Outer Rim Territories;M-17
+Arabanth;Hapes Cluster;Inner Rim;O-9
+Aradia;;Core Worlds;K-10
+Arah;Dantus;Outer Rim Territories;J-6
+Arakein;;Inner Rim;N-8
+Aralia;Antemeridian;Outer Rim Territories;R-7
+Aramal;Ryborean;Expansion Region;J-8
+Aramand;Brak;Expansion Region;O-14
+Aramanoo;Bheriz;Outer Rim Territories;U-10
+Arami;Galov;Outer Rim Territories;T-13
+Arantara;Daimar;Mid Rim;Q-16
+Arapia;Dalchon;Outer Rim Territories;R-18
+Arashar;;Inner Rim;J-8
+Arat Fraca;;Colonies;M-12
+Arath;Tunka;Outer Rim Territories;J-19
+Arbiflux;Dalonbian;Outer Rim Territories;L-3
+Arbooine;(Arboo);Outer Rim Territories;T-17
+Arbra;Bon'nyuw-Luq;Outer Rim Territories;N-17
+Arbular;Lambda;Mid Rim;Q-15
+Arc of Eden;Immalia;Expansion Region;K-8
+Arcadi;;Inner Rim;N-10
+Arcan;Cronese Mandate;Outer Rim Territories;S-6
+Arcana;Lahara;Outer Rim Territories;M-5
+Archae Teuthis;Brevost;Expansion Region;O-14
+Archais;Hapes Cluster;Inner Rim;O-9
+Archenar;Metatessu;Mid Rim;R-10
+Archeon Nebula;Lothal;Outer Rim Territories;T-7
+Arcopola;Spadja;Outer Rim Territories;Q-5
+Arcura;;Inner Rim;L-8
+Arda;Gordian Reach;Outer Rim Territories;Q-6
+Ardennia;Fath;Outer Rim Territories;K-6
+Ardis;;Unknown Regions;G-3
+Ardroxia;Elochar;Mid Rim;R-9
+Ardru;Iseno;Inner Rim;N-13
+Argai;Cronese Mandate;Outer Rim Territories;S-6
+Argai Minor;Haldeen;Colonies;M-9
+Argavat;;Colonies;J-13
+Argazda;Kanz;Outer Rim Territories;N-4
+Argo;Tragan Cluster;Outer Rim Territories;N-5
+Argoba;Trilon;Outer Rim Territories;H-15
+Argoon;Tion Hegemony;Outer Rim Territories;S-6
+Argovia;Endocray;Mid Rim;S-14
+Argul;D'Aelgoth;Mid Rim;L-17
+Argus;Lambda;Mid Rim ;P-16
+Aria Prime;;Inner Rim;O-9
+Ariarch-17;Ariarch;Mid Rim;J-6
+Aricho;Danjar (Siannach);Outer Rim Territories;N-18
+Aridinia;;Inner Rim;M-13
+Aridka;Hertae;Mid Rim;Q-14
+Aridus;Narvath;Expansion Region;O-14
+Arieli;Authala;Expansion Region;P-12
+Aris;Albarrio;Outer Rim Territories;K-5
+Aris Minor;Parmel;Outer Rim Territories;O-18
+Arkam;;Inner Rim;M-14
+Arkania;;Colonies;M-8
+Arkanis;Arkanis;Outer Rim Territories;R-17
+Arkax Station;;Inner Rim;M-14
+Arkinnea;Axion;Expansion Region;P-10
+Arkonne;Tarabba;Outer Rim Territories;M-19
+Arkuda;Gordian Reach;Outer Rim Territories;Q-6
+Arleen;Centrality;Outer Rim Territories;T-8
+Arli;Mayagil;Outer Rim Territories;N-18
+Armath;Mikaster;Expansion Region;N-15
+Arnot Station;Far Xandil;Mid Rim;P-16
+Arnt;;Inner Rim;N-8
+Arorua;Sertar;Outer Rim Territories;R-5
+Arporatal-Lanin;Juvex;Mid Rim;K-18
+Arquata Station;Bes Ber Bikade;Expansion Region;L-15
+Arrakan;Kalamith;Outer Rim Territories;P-5
+Arramanx;Cronese Mandate;Outer Rim Territories;S-6
+Arreyel;;Inner Rim;M-14
+Arrgaw;Kira;Expansion Region;N-16
+Arrochar;;Hutt Space;S-8
+Arron Prime;Cassander;Outer Rim Territories;L-5
+Arsteni;;Colonies;L-8
+Artemesium;Lifh;Mid Rim;R-8
+Artesia;Hangshan;Expansion Region;P-11
+Arthon;Ottega;Mid Rim;L-6
+Arthuria;Merthian;Expansion Region;N-14
+Artiod Minor;Morellian CW*;Wild Space;S-3
+Artom;Nuon e Safyd;Expansion Region;P-12
+Artorias;Myto;Outer Rim Territories;K-3
+Artus Prime;Kwymar;Outer Rim Territories;Q-4
+Aruza;;Expansion Region;I-14
+Arvaka Prime;;Inner Rim;N-9
+Arvala;Sevetta;Outer Rim Territories;S-15
+Arveesh Station;Eclorar;Mid Rim;Q-12
+Arvina;Quiberon;Outer Rim Territories;S-15
+Arzid;Calaron;Outer Rim Territories;T-9
+Asamin;Strabin;Mid Rim;M-7
+Asation;Veragi (Gree Enclave);Outer Rim Territories;K-3
+Ash Moon 1;Jubilar (Kartovian);Outer Rim Territories;T-7
+Ashas Ree;Esstran (Sith Worlds);Outer Rim Territories;R-5
+Ashas Rine;Mortex;Outer Rim Territories;R-5
+Ashash;Zarracina;Expansion Region;N-14
+Asher;Sprizen;Outer Rim Territories;N-5
+Asheris;Tagge Space;Core Worlds;L-9
+Ashkas-kov;Shelsha;Colonies;M-9
+Ashteri's Cloud;Kessel;Outer Rim Territories;T-10
+Askaj;Cegul;Outer Rim Territories;M-20
+Askaria;Askarian;Expansion Region;P-12
+Askkto-Fen;;Wild Space;P-19
+Asmall;Ara Dyelle;Inner Rim;O-9
+Asmeru;Senex;Mid Rim;L-17
+Asog;Esstran;Outer Rim Territories;Q-4
+Asran;Brak;Expansion Region;O-14
+Asrat;;Inner Rim;N-8
+Ast Kikorie;Zuma (Moddell);Outer Rim Territories;H-16
+Astenban;Seswenna;Outer Rim Territories;M-18
+Asteph'skaff;;Wild Space;I-6
+Asterios;Narrant;Mid Rim;I-16
+Asternin;Tamarin;Outer Rim Territories;N-19
+Astrali;Var Hagen;Mid Rim;M-16
+Asturias;Epsi Collective;Expansion Region;M-16
+Asuin;;Hutt Space;S-11
+Asusto;Gordian Reach;Outer Rim Territories;P-5
+Asyrphus;Perkell;Mid Rim;Q-7
+At Attin;Quelii;Outer Rim Territories;N-6
+At Aytuu;Trilon;Outer Rim Territories;G-15
+Atalia;Varada;Outer Rim Territories;H-19
+Atanu;Alderath;Mid Rim;L-7
+Atapap;;Inner Rim;N-12
+Atchorb;Corporate Sector;Outer Rim Territories;S-3
+Athallia;Athallia;Expansion Region;M-15
+Athamar;Hewett;Mid Rim;M-7
+Ather;Atravis;Outer Rim Territories;L-20
+Athio;Mayagil;Outer Rim Territories;N-18
+Athiss;Esstran (Sith Worlds);Outer Rim Territories;R-4
+Athus Klee;Kalamith;Outer Rim Territories;P-5
+Atoa;Ghost Nebula;Expansion Region;P-10
+Atollon;Lothal;Outer Rim Territories;T-7
+Ator;;Core Worlds;M-10
+Atorra;Gordian Reach;Outer Rim Territories;Q-5
+Atraken;Rolion;Outer Rim Territories;Q-7
+Atrakus;Mikaster;Expansion Region;M-15
+Atravis;Atravis;Outer Rim Territories;L-19
+Atron;Senex;Mid Rim;L-18
+Attahox;Hocatar;Expansion Region;P-12
+Atterol;Atravis;Outer Rim Territories;L-19
+Atterra;Kanz;Outer Rim Territories;N-4
+Aturi Cluster;Hook Nebula;Outer Rim Territories;O-18
+Atzerri;;Inner Rim;M-13
+Aubadas;Tunka;Outer Rim Territories;I-19
+Aur;;Colonies;J-13
+Auratera;Vorzyd;Outer Rim Territories;R-6
+Aurea;Corellian;Core Worlds;M-11
+Auril;Auril;Outer Rim Territories;R-6
+Aurimaus;;Wild Space;I-16
+Austan;Arkanis;Outer Rim Territories;R-16
+Avedot;;Colonies;L-8
+Avenel;;Inner Rim;O-8
+Avenelle;Lantillian;Mid Rim;P-9
+Averam;Seswenna;Outer Rim Territories;M-18
+Averill;Teraab;Mid Rim;P-11
+Avernio;;Unknown Regions;G-5
+Avery;Belderone;Outer Rim Territories;R-6
+Avidich;Chiss Space*;Unknown Regions;E-8
+Aviles Prime;Hythrope;Expansion Region;M-15
+Awalia;Raioballo;Outer Rim Territories;L-4
+AX-456 ;Barma;Colonies;M-9
+Axion;Axion;Expansion Region;P-10
+Axtria;;Core Worlds;L-9
+Axxila;D'Astan;Outer Rim Territories;O-5
+Aybaria;Steniplis;Outer Rim Territories;L-19
+Ayceezee;Kanz;Outer Rim Territories;N-4
+Aylayl;;Hutt Space;S-12
+Aynaboni;;Outer Rim Territories;J-5
+Ayoh;Phelleem;Outer Rim Territories;S-7
+Azbrian;;Core Worlds;L-12
+Azna;Demetras;Outer Rim Territories;P-6
+Aztubek;Javin;Outer Rim Territories;K-18
+Azum;Itopol;Expansion Region;K-15
+Azura;Oricho;Outer Rim Territories;M-6
+Azure;Truum;Mid Rim;P-8
+Azzameen Station;Garis;Outer Rim Territories;N-17
+B-Foroon;Arkanis;Outer Rim Territories;R-16
+B'Knos;;Wild Space;G-16
+B'nish;Tharin;Outer Rim Territories;S-8
+B'trilla;Gordian Reach;Outer Rim Territories;Q-5
+Baarstal;Sanbra;Outer Rim Territories;N-17
+Babali;Corva;Outer Rim Territories;P-3
+Babbadod;;Inner Rim;N-14
+Bacia;;Inner Rim;M-14
+Bacrana;Brak;Expansion Region;O-14
+Bactriasa;;Inner Rim;O-10
+Badfellow Station;;Core Worlds;M-10
+Badtibira;;Core Worlds;K-12
+Baes Logia;Quence;Outer Rim Territories;O-18
+Baffia;;Deep Core;L-12
+Baffop;Tamarin;Outer Rim Territories;O-19
+Bahalian;Astal;Outer Rim Territories;P-18
+Bahlah;Thesme;Outer Rim Territories;O-6
+Bajic;Bajic;Outer Rim Territories;P-18
+Bakisian Drift;Tragan Cluster;Outer Rim Territories;N-5
+Bakkah;Thrasybule;Outer Rim Territories;P-6
+Baklek;;Inner Rim;N-12
+Bakura;;Wild Space;G-16
+Bal'demnic;Auril;Outer Rim Territories;R-7
+Balagash;Hali;Expansion Region;O-9
+Balaidas;;Colonies;L-8
+Balamak;Taldot;Mid Rim;Q-9
+Balanor;Noonian;Outer Rim Territories;M-6
+Balaria;;Core Worlds;M-12
+Baldavia;Hapes Cluster;Inner Rim;O-9
+Baldur;Nojic;Expansion Region;P-9
+Balfron;Dolomar;Core Worlds;K-9
+Balis-Baurgh;Sombure;Mid Rim;K-16
+Balith;;Inner Rim;N-7
+Balli;Abrion;Outer Rim Territories;S-15
+Ballum;Kastolar;Mid Rim;Q-10
+Balmorra;;Colonies;M-10
+Balnab;Bright Jewel;Mid Rim;L-7
+Balosar;;Core Worlds;L-12
+Balowa;Daalang;Mid Rim;Q-12
+Baltimn;Chorlian;Outer Rim Territories;S-4
+Baltizaar;Corthenia;Mid Rim;K-7
+Baltro;Onatos;Mid Rim;R-15
+Bamasia;;Inner Rim;N-9
+Bamayar;Maldrood;Mid Rim;R-7
+Bampa'k;Prefsbelt;Outer Rim Territories;K-5
+Ban-Satir;Corporate Sector;Outer Rim Territories;S-4
+Banas;Sanbra;Outer Rim Territories;O-17
+Banasthau;;Inner Rim;O-11
+Bancar;Rayter;Outer Rim Territories;J-19
+Banchii;Jjannex;Outer Rim Territories;K-19
+Bandomeer;Meerian;Outer Rim Territories;O-6
+Bandonia;;Core Worlds;L-10
+Bandorra;;Colonies;N-10
+Banfoden Prime;Alchenaut;Expansion Region;L-16
+Bannistar Station;Hevvrol;Mid Rim;O-15
+Bantoo;Samix;Outer Rim Territories;Q-19
+Bantu;Emmo;Core Worlds;M-12
+Banvhar Station;Kriz;Outer Rim Territories;J-18
+Bar Neth;Albarrio;Outer Rim Territories;K-5
+Bar'leth;;Core Worlds;M-10
+Baraan-Fa;Grumani;Outer Rim Territories;N-17
+Barab;Albanin;Outer Rim Territories;U-12
+Barabaras;;Mid Rim;J-15
+Barabesh;;Mid Rim;I-16
+Baraboo;;Core Worlds;M-11
+Baradas;;Colonies;L-8
+Baralou;Varada;Outer Rim Territories;H-20
+Baramorra;Carrion;Outer Rim Territories;J-4
+Barancar;Cronese Mandate;Outer Rim Territories;S-6
+Barayfe;Alchenaut;Expansion Region;L-16
+Barbadel;;Core Worlds;K-13
+Barbeen;;Deep Core;L-10
+Barcaria;Sombure;Mid Rim;K-16
+Barcola;;Colonies;N-10
+Bardelberan;Churnis;Mid Rim;J-6
+Bardotta;Shasos;Colonies;K-13
+Bardram Scoft;;Unknown Regions;D-7
+Barenth;Drannik;Expansion Region;K-8
+Barison;Gordian Reach;Outer Rim Territories;Q-6
+Barkhesh;Seitia;Outer Rim Territories;K-19
+Barlok;Marcol;Inner Rim;L-8
+Barnaba;Tapani;Colonies;L-13
+Barnahof;Yminis;Outer Rim Territories;S-14
+Baroli;Baroli;Expansion Region;N-14
+Baroonda;Calaron;Outer Rim Territories;T-9
+Baros;Lothal;Outer Rim Territories;U-7
+Barpine;Weneen;Outer Rim Territories;N-6
+Barraken;Varada;Outer Rim Territories;H-19
+Barroth;Kriz;Outer Rim Territories;K-19
+Bars Barka;Barsa;Mid Rim;J-6
+Barseg;Allied Tion;Outer Rim Territories;S-6
+Bartokan;Tamarin;Outer Rim Territories;N-19
+Barton;Colundra;Outer Rim Territories;S-5
+Barundi;Thanium;Outer Rim Territories;S-5
+Basan;Churba;Mid Rim;P-15
+;;;
+Basarais;Kossa;Expansion Region;O-11
+Basath;;Colonies;J-13
+Basilisk;;Core Worlds;L-9
+Baskarn;Noonian;Outer Rim Territories;M-6
+Baskron;Trax;Mid Rim;Q-10
+Bassadro;;Colonies;L-13
+Bassel;;Inner Rim;N-13
+Basta Core;Wyl;Outer Rim Territories;R-4
+Bastatha;;Inner Rim;N-10
+Basteel;Corva;Outer Rim Territories;P-3
+Bastion;Braxant;Outer Rim Territories;K-3
+Bastooine;Graador;Mid Rim;I-17
+Bathoris;;Inner Rim;N-8
+Batonn;Ash Worlds (Batonn);Outer Rim Territories;T-7
+Bator Bai;Senex;Mid Rim;L-18
+Batorine;;Colonies;J-9
+Batravia;Serathrace;Expansion Region;P-11
+Batuu;Trilon;Outer Rim Territories;G-15
+Batuv;Askarian;Expansion Region;P-12
+Baummu;Shadola;Outer Rim Territories;U-8
+Bavana;Sertar;Outer Rim Territories;R-5
+Bavva;Javin (Anoat);Outer Rim Territories;K-18
+Baylagon;;Core Worlds;M-10
+Baylin Cluster;Trans-Nebular;Mid Rim;R-16
+Bayora;Extorin;Expansion Region;J-15
+Bazaar;Halthor;Outer Rim Territories;M-6
+Bazarre;Cademimu;Outer Rim Territories;M-6
+Beauchen;Vensori;Mid Rim;P-8
+Beckoning Call Starr;;Inner Rim;O-10
+Bedlam;Thusa;Mid Rim;O-7
+Bedlam Pulsar;Thusa;Mid Rim;O-7
+Beetle Nebula;Bon'nyuw-Luq;Outer Rim Territories;N-18
+Begali;;Inner Rim;M-8
+Begamor;Lahara;Outer Rim Territories;M-5
+Begeren;Esstran (Sith Worlds);Outer Rim Territories;R-4
+Beheboth;Sanbra;Outer Rim Territories;O-17
+Beixander;;Mid Rim;H-15
+Belasco;Belasco;Expansion Region;O-11
+Belassar;Sarla;Expansion Region;J-8
+Belat;Vilonis;Mid Rim;O-16
+Belazura;;Colonies;M-13
+Belderone;Belderone;Outer Rim Territories;R-6
+Beledeen;;Colonies;K-13
+Belgaroth;;Core Worlds;K-13
+Belial;Sanbra;Outer Rim Territories;N-17
+Belkadan;Dalonbian;Outer Rim Territories;L-1
+Belladoon;Myto;Outer Rim Territories;K-3
+Bellassa;;Core Worlds;M-11
+Bellis;Demetras;Outer Rim Territories;P-7
+Belloria;Seswenna;Outer Rim Territories;M-18
+Belnar;Belnar;Colonies;M-9
+Belovia;Ombakond;Expansion Region;P-12
+Belsavis;Bozhnee;Outer Rim Territories;L-18
+Belshar Othacuu;Belshar;Mid Rim;J-7
+Belsmuth;Belsmuth;Outer Rim Territories;O-6
+Belthu;Demetras;Outer Rim Territories;O-7
+Beltire;Narrant;Mid Rim;J-17
+Beltrix;;Inner Rim;M-14
+Belukat;Corpheli;Expansion Region;M-7
+Belvaria;Corweillian;Mid Rim;P-15
+Benath;;Wild Space;I-7
+Bendeluum;Javin (Anoat);Outer Rim Territories;K-18
+Bendii;Seitia;Outer Rim Territories;K-19
+Bendone;Bosph;Outer Rim Territories;R-3
+Benetage;Thanium;Outer Rim Territories;R-6
+Bengat;;Inner Rim;J-8
+Bengely;Tamarin;Outer Rim Territories;N-19
+Benglor;Onatos;Mid Rim;R-15
+Benja-Rihn;Sevastol;Mid Rim;Q-14
+Benkal;;Wild Space;H-17
+Bentora;Samix;Outer Rim Territories;Q-19
+Benwabula;Shadola;Outer Rim Territories;U-7
+Ber de Val;;Colonies;M-9
+Berason;Eclorar;Mid Rim;Q-12
+Berchest;Anthos;Inner Rim;N-8
+Berea;Elrood;Outer Rim Territories;M-19
+Beris;Fei Hu;Mid Rim;Q-13
+Bernilla;;Inner Rim;L-14
+Beroq;Baroli;Expansion Region;N-14
+Berri;;Inner Rim;N-9
+Berrol's Donn;Kriz;Outer Rim Territories;K-19
+Berrun;;Colonies;M-10
+Berullia;Quence;Outer Rim Territories;O-18
+Berzite;;Wild Space;U-8
+Bes;Airam;Outer Rim Territories;M-20
+Besberra;Cegul;Outer Rim Territories;L-20
+Bescane;Obtrexta;Outer Rim Territories;K-3
+Besero;;Deep Core;L-10
+Beshka;Aparo;Outer Rim Territories;R-3
+Besn;Mayagil;Outer Rim Territories;N-18
+Besnia;;Colonies;N-12
+Bespin;Javin (Anoat);Outer Rim Territories;K-18
+Bessimir;;Core Worlds;L-9
+Bestal;Varada;Outer Rim Territories;I-19
+Bestine;;Inner Rim;M-14
+Bestoon;;Colonies;J-9
+Beta Olikark;Wyl;Outer Rim Territories;S-4
+Beta Rhama;Dalchon;Outer Rim Territories;R-17
+Betal;;Wild Space;J-5
+Betha;Corva;Outer Rim Territories;P-4
+Bethal;Tapani;Colonies;L-13
+Bethars;Emmo;Core Worlds;M-12
+Betolio;Tapani;Colonies;L-13
+Betshish;Gordian Reach;Outer Rim Territories;P-5
+Bettel;Javin (Yarith);Outer Rim Territories;K-18
+Betthanie;Wornal;Mid Rim;K-16
+Bettok;Velcar;Outer Rim Territories;J-4
+Bevell;;Inner Rim;L-8
+Bevin;Rolion;Outer Rim Territories;Q-6
+Bextar;Velcar;Outer Rim Territories;J-4
+Bezha;;Colonies;N-10
+Bezim;Vorc;Mid Rim;J-7
+Beznaz;Quiberon;Outer Rim Territories;T-15
+Bhargebba;Esstran (Sith Worlds);Outer Rim Territories ;R-4
+Bheriz;Bheriz;Outer Rim Territories;U-10
+Bhuna Sound;Yushan;Mid Rim;K-17
+Bianas;Tapani;Colonies;L-13
+Bid'jerma;Prefsbelt;Outer Rim Territories;J-5
+Biewa;Corporate Sector;Outer Rim Territories;S-4
+Biitu;Cassander (Tadrin);Outer Rim Territories;K-5
+Biivren;Biivren;Expansion Region;P-9
+Bilbringi;;Inner Rim;J-8
+Bilios;Tapani;Colonies;L-13
+Billaron;Chitarghar;Expansion Region;K-15
+Bilzen;;Wild Space;U-12
+Bimin Three;Majoor;Expansion Region;N-15
+Bimmiel;Kanz;Outer Rim Territories;N-4
+Bimmisaari;Halla;Mid Rim;R-9
+Binaros;Kathol;Outer Rim Territories;M-21
+Binquaros;Ciutric;Outer Rim Territories;N-5
+Biravia;Venaarian;Mid Rim;O-7
+Birba;;Deep Core;M-10
+Birgis;Dalonbian;Outer Rim Territories;M-3
+Birix;Bryx;Mid Rim;R-8
+Birjis;Dalchon;Outer Rim Territories;R-17
+Birren;;Inner Rim;O-10
+Birsingrial;;Core Worlds;L-10
+Birukay;(Gardaji);Outer Rim Territories;M-1
+Bisellia;Clacis;Outer Rim Territories;K-4
+Biskar;;Inner Rim;K-14
+Bissillirus;Trax;Mid Rim;Q-10
+Bith;;Core Worlds;L-13
+Bitmus Cloud;Wazta;Outer Rim Territories;J-18
+Bittelari Cluster;Fath;Outer Rim Territories;K-6
+Bivoli;;Inner Rim;L-15
+Bizikia;Kwymar;Outer Rim Territories;P-4
+Black Bantha;;Inner Rim;K-8
+Black Delve, The;Har Worlds;Expansion Region;J-16
+Black Hole of Nakat;;Inner Rim;N-7
+Black Hole of Quintas;Kriz;Outer Rim Territories;J-19
+Black Nebula;;Colonies;M-12
+Black Widow Nebula;Calaron;Outer Rim Territories;T-9
+Blackfel;Greater Plooriod;Expansion Region;M-7
+Blacktar Cyst;Oktos;Mid Rim;R-12
+Blair Cluster;Airam;Outer Rim Territories;L-20
+Blarrum;Mayagil;Outer Rim Territories;N-18
+Blathar;Yucrales;Mid Rim;R-15
+Blenjeel;Dufilvian;Mid Rim;Q-15
+Bleuf;;Core Worlds;L-13
+Blimph;Kastolar;Mid Rim;Q-10
+Blood Nest;Halori;Mid Rim;P-7
+Bloxia;;Wild Space;I-7
+Blutopia;Vensensor;Expansion Region;K-16
+Blyte;Tapani;Colonies;L-13
+Bnach;Calaron;Outer Rim Territories;T-9
+Bnar;Braxant;Outer Rim Territories;K-3
+Boden;Videnda;Outer Rim Territories;M-18
+Bodoria;Andirma;Expansion Region;L-15
+Bodrin;Elrood;Outer Rim Territories;M-20
+Bofa;Steniplis;Outer Rim Territories ;M-18
+Bogano;Mieru'kar;Outer Rim Territories;N-3
+Bogden;;Inner Rim;M-8
+Bogo Rai;;Unknown Regions;E-8
+Bogoa;Immerian Outback;Expansion Region;N-14
+Boiyuh;;Colonies;J-9
+Bolad;Tharin;Outer Rim Territories;S-8
+Bolbotarp;Corellian;Core Worlds;M-11
+Boldavia;;Expansion Region;I-9
+Boledge;;Inner Rim;N-12
+Bolenia;;Core Worlds;K-9
+Boltiga;;Colonies;M-13
+Boltrunia;Baxel;Outer Rim Territories;U-11
+Bomis Koori;Wornal;Mid Rim;K-16
+Bomodon;Churba;Mid Rim;O-15
+Bompreil;Demetras;Outer Rim Territories;P-7
+Bonadan;Corporate Sector;Outer Rim Territories;S-3
+Boneworld, The;Toblain;Outer Rim Territories;N-18
+Bontormia;Bortele;Mid Rim;R-8
+Boonta;Suolriep;Outer Rim Territories;S-8
+Boordii;Sumitra;Expansion Region;N-7
+Boosodia;;Inner Rim;N-8
+Bootana Shagplan;;Hutt Space;S-10
+Boothi;Abrion;Outer Rim Territories;S-15
+Boranall;Doldur;Mid Rim;P-15
+Boranda;Manda;Mid Rim;R-14
+Borao;;Inner Rim;M-14
+Borcorash;Weneen;Outer Rim Territories;N-6
+Borga;Yminis;Outer Rim Territories;S-14
+Boriin;;Inner Rim;N-14
+Borkeen;Belsmuth;Outer Rim Territories;O-6
+Borkyne;Bes Ber Bikade;Expansion Region;L-15
+Borlax;Jidlor Marches;Mid Rim;J-16
+Borleias;;Colonies;K-9
+Borloria;Dentari;Expansion Region;O-8
+Borlov;Tunka;Outer Rim Territories;J-19
+Bormea;Bormea;Core Worlds;L-9
+Bormter;;Wild Space;H-14
+Bormus;Dustig;Mid Rim;N-16
+Boro-borosa;Senex;Mid Rim;L-18
+Bororn;Rseik;Outer Rim Territories;N-20
+Borosk;Prefsbelt;Outer Rim Territories;K-5
+Bortele Cluster;Bortele;Mid Rim;R-8
+Bortras;Brema (Reithcas);Outer Rim Territories;M-18
+Boruga;;Core Worlds;L-10
+Bos-Una;;Inner Rim;J-14
+Bosch;;Core Worlds;K-10
+Bosph;Bosph;Outer Rim Territories;Q-3
+Bosthirda;Esstran (Sith Worlds);Outer Rim Territories;R-5
+Botajef;Belsmuth;Outer Rim Territories;O-6
+Bothawui;Bothan;Mid Rim;R-14
+Bothsoliman;Hollan;Mid Rim;M-7
+Botor;Botor Enclave;Core Worlds;K-12
+Boudolayz;;Colonies;N-12
+Bovo Yagen;Kailion;Expansion Region;O-13
+Bowane Nebula;Tungra (Fand);Outer Rim Territories;K-18
+Boxer Point Station;Prackla;Expansion Region;O-8
+Boz Pity;Halla;Mid Rim;S-9
+Boztrok;Aparo;Outer Rim Territories;R-3
+Bpfassh;Sluis;Outer Rim Territories;M-19
+Bracca;Lantillian;Mid Rim;P-9
+Braccio;;Wild Space;I-5
+Brachi;Sertar;Outer Rim Territories;R-5
+Brachnis Chorios;Meridian;Outer Rim Territories;R-7
+Brackna;Doldur;Mid Rim;P-15
+Bracront;Tarabba;Outer Rim Territories;M-19
+Bragkis;Belderone;Outer Rim Territories;R-6
+Bramior;;Inner Rim;M-9
+Branteez;Tolonda;Outer Rim Territories;Q-17
+Brask Oto;;Unknown Regions;H-7
+Bravais;;Inner Rim;O-9
+Bravis;Spadja;Outer Rim Territories;R-5
+Bray;Piryn Shar;Expansion Region;K-16
+Breeka;Cadavine;Outer Rim Territories;P-17
+Brella Temior;Barma;Colonies;M-9
+Brendok;;Wild Space;Q-2
+Brentaal;Bormea;Core Worlds;L-9
+Bresallis;Cadma;Outer Rim Territories;T-8
+Bresan;Kathol;Outer Rim Territories;M-21
+Breshig;Mandalore;Outer Rim Territories;O-7
+Breshkall;Khuiumin;Outer Rim Territories;O-19
+Bresnia;Tandon;Mid Rim;Q-14
+Breta Yaga;Mieru'kar;Outer Rim Territories;O-3
+Bretta;Ojoster;Outer Rim Territories;N-7
+Brevost;Brevost;Expansion Region;O-15
+Bri'ahl;Bri'ahl;Outer Rim Territories;I-17
+Bri'n;Lothal;Outer Rim Territories;U-7
+Bridin Anchorage;Portmoak;Outer Rim Territories;P-18
+Brield;;Colonies;M-12
+Brightday;;Inner Rim;K-8
+Brigia;Tion Hegemony;Outer Rim Territories;T-6
+Brink Station;;Wild Space;O-3
+Brint-wo;Koradin;Outer Rim Territories;I-18
+Brintooin;Seswenna;Outer Rim Territories;M-18
+Briston;Shelsha;Colonies;M-9
+Britaxis Minor;;Inner Rim;O-11
+Brix;;Colonies;N-10
+Brochiib;Trianii Space*;Wild Space;S-3
+Brodo Asogi;Perinn;Outer Rim Territories;J-4
+Brodogon;Bozhnee;Outer Rim Territories;L-18
+Broest;;Core Worlds;L-10
+Brolsam;Kathol;Outer Rim Territories;M-21
+Bromlarch;Vish;Mid Rim;O-16
+Bronsoon;Gordian Reach;Outer Rim Territories;P-6
+Bront;Svivreni;Outer Rim Territories;O-19
+Brosi;Corporate Sector;Outer Rim Territories;S-3
+Brunet;Prefsbelt;Outer Rim Territories;J-5
+Bruvia;Harron Marches;Expansion Region;P-11
+Bryexx;Varvenna;Colonies;M-13
+Bryndar;Dalicron;Outer Rim Territories;K-19
+Brynnaria;;Inner Rim;O-9
+Bryx;Bryx;Mid Rim;R-8
+Bseto;Msst;Mid Rim;P-7
+Buamlon Central;Esstran;Outer Rim Territories;Q-4
+Bubble of the Lost;;Wild Space;O-3
+Buchich;Calamari;Outer Rim Territories;U-6
+Budpock;Meridian;Outer Rim Territories;R-7
+Bulano;;Core Worlds;M-10
+Bundil;Ferra;Outer Rim Territories;S-16
+Bundim;Trax;Mid Rim;Q-10
+Bunduki;Pacanth Reach;Outer Rim Territories;H-16
+Bunka;Illisurevimurasi;Outer Rim Territories;Q-4
+Buoyant;;Inner Rim;J-14
+Burna;Cademimu;Outer Rim Territories;L-6
+Burnin Konn;Javin (Anoat);Outer Rim Territories;K-18
+Burnsi;Dustig;Mid Rim;N-16
+Bursant;Taldot;Mid Rim;Q-9
+Burska;;Mid Rim;I-7
+Bursoll;;Wild Space;H-17
+Burundang;Harron;Expansion Region;O-11
+Buruunin;Atravis;Outer Rim Territories;L-19
+Byblos;;Colonies;M-12
+Byllura;Grumani;Outer Rim Territories;N-17
+Bynarria;Lantillian;Mid Rim;P-8
+Byrnum Maw;;Inner Rim;L-8
+Byrsym;Paqwepori;Mid Rim;P-15
+Byss;;Deep Core;K-11
+C-Foroon;Arkanis;Outer Rim Territories;R-16
+Caamas;;Core Worlds;M-9
+Caaraz;Stensen;Outer Rim Territories;H-17
+Caarimon;Meridian;Outer Rim Territories;R-7
+Caarsin Station;Lannik Wilds;Mid Rim;R-13
+Cabarria;;Colonies;M-13
+Cadannia;Msst;Mid Rim;P-7
+Cademimu;Cademimu;Outer Rim Territories;M-6
+Cadinth;Allied Tion;Outer Rim Territories;S-6
+Cadma;Centrality;Outer Rim Territories;T-8
+Cadomai;Aparo (Catarlo);Outer Rim Territories;R-3
+Cal-Seti;Torranix;Core Worlds;K-10
+Calabar;;Core Worlds;L-9
+Calabosh;Arc d'Stot;Expansion Region;K-15
+Calast;Grohl;Outer Rim Territories;R-16
+Calcoraan;;Inner Rim;O-10
+Calderos Station;Bryx;Mid Rim;R-8
+Caldoni;;Core Worlds;M-12
+Caldra Prime;Ado;Mid Rim;M-17
+Caldra Tertius;Ado;Mid Rim;M-17
+Calfa;Hapes Cluster;Inner Rim;O-9
+Calgon;Meridian;Outer Rim Territories;R-7
+Caliban;Savareen;Outer Rim Territories;Q-17
+Calior;Seitia;Outer Rim Territories;K-20
+Calipsa;Tapani;Colonies;L-13
+Calladus;Ojoster;Outer Rim Territories;N-7
+Calline;Dail;Outer Rim Territories;Q-18
+Callonia;Fakir;Colonies;K-9
+Callos;Brema;Outer Rim Territories;M-17
+Calonica;Vensensor;Expansion Region;K-16
+;;;
+Caloria;Tapani;Colonies;L-13
+Caltinia;Senex;Mid Rim;L-17
+Caltrop Belt;Elrood;Outer Rim Territories;M-20
+Calumdarian;Immalia;Expansion Region;K-8
+Calus;;Inner Rim;L-15
+Caluula;Tion Hegemony;Outer Rim Territories;T-6
+Camaria;Tarabba;Outer Rim Territories;M-19
+Camblia;;Colonies;L-13
+Cambria;;Deep Core;L-10
+Camden;Morshdine;Outer Rim Territories;O-5
+Camen;Tamarin;Outer Rim Territories;N-18
+Camson;Abrion;Outer Rim Territories;S-15
+Camus;Illisurevimurasi;Outer Rim Territories;Q-4
+Canastra;;Core Worlds;K-10
+Candoria;;Colonies;J-13
+Candovant;;Colonies;N-12
+Canoliss;Sluis;Outer Rim Territories;M-19
+Canti;Tapani;Colonies;L-13
+Cantonica;Corporate Sector;Outer Rim Territories;S-4
+Cantras Gola;Perinn;Outer Rim Territories;J-4
+Cantros;Saijo;Outer Rim Territories;J-20
+Canyon;Montitian Grant;Expansion Region;J-15
+Capella;Gordian Reach;Outer Rim Territories;Q-6
+Caphexdis;Homon;Mid Rim;M-7
+Caprioril;Dolomar;Core Worlds;K-9
+Capza;Velcar;Outer Rim Territories;K-4
+Caraad;;Colonies;L-8
+Caragon-Viner;;Colonies;N-12
+Carajam;Dalonbian;Outer Rim Territories;M-3
+Caramm;Talcene;Mid Rim;R-8
+Caranthanax;Wazta;Outer Rim Territories;J-18
+Caraxl;Cassander;Outer Rim Territories;K-5
+Carbos;Roche;Mid Rim;Q-8
+Carburo;Itopol;Expansion Region;K-15
+Carcel;Locris;Expansion Region;O-8
+Carconth;;Core Worlds;M-11
+Cardekkia;Corellian;Core Worlds;M-11
+Cardellia;Ojoster;Outer Rim Territories;N-7
+Cardo Minor;Meerian;Outer Rim Territories;O-6
+Cardogia;Tashtor;Mid Rim;J-16
+Cardooine;Jospro;Outer Rim Territories;R-7
+Cardovyte;Oricho;Outer Rim Territories;M-6
+Cardua;;Core Worlds;L-10
+Carest;;Inner Rim;N-8
+Cargamalis;Bruanii;Mid Rim;K-18
+Carida;;Colonies;M-9
+Carlac;Prefsbelt;Outer Rim Territories;K-5
+Carlania;Hapes Cluster;Inner Rim;O-9
+Carlem;;Core Worlds;L-10
+Carlix's Folly;Tharin;Outer Rim Territories;S-8
+Carmeen;Altier;Expansion Region;O-13
+Carnelion;;Wild Space;J-5
+Carnovia;M'shinni;Hutt Space;S-12
+Carnth;;Mid Rim;M-7
+Carosi;Nembus;Outer Rim Territories;P-4
+Carpagia;;Colonies;L-9
+Carpastor;Rolion;Outer Rim Territories;Q-7
+Carrandar;Secundus Portmoak;Outer Rim Territories ;P-18
+Carratos;;Inner Rim;K-8
+Carreras;Atravis;Outer Rim Territories;L-19
+Carrivar;;Unknown Regions;G-9
+Carruthia;D'Astan;Outer Rim Territories;O-6
+Carsanza;Juvex;Mid Rim;L-17
+Cartao;Prackla;Expansion Region;O-8
+Carto;Surron;Expansion Region;O-13
+Cartusio;;Core Worlds;J-12
+Carvandir;Carvandir;Expansion Region;J-7
+Carz;Svivreni;Outer Rim Territories;O-20
+Casfield;Tennuutta;Mid Rim;Q-7
+Caska;;Inner Rim;N-14
+Cassander;Cassander;Outer Rim Territories;K-5
+Cassidode;Aparo;Outer Rim Territories;R-3
+Castell;;Colonies;M-9
+Castilon;Tashtor;Mid Rim;I-16
+Cataalda;Onatos;Mid Rim;R-15
+Cataract of Moons;Tungra (Fand);Outer Rim Territories;K-18
+Cathar;Quelii;Outer Rim Territories;N-6
+Cathis;Jjannex;Outer Rim Territories;K-19
+Catlia;Chiss Space*;Unknown Regions;G-8
+Cato Neimoidia;Quellor;Colonies;N-11
+Cattamascar;Bakura;Outer Rim Territories;G-16
+Caulbon;;Inner Rim;L-14
+Cauldron Nebula;Corva;Outer Rim Territories;P-3
+Caulus Tertius;;Inner Rim;M-8
+Cauper;Tapani;Colonies;L-13
+Caursito;;Colonies;K-8
+Cavaell;Emmo;Core Worlds;M-12
+Cavamina;Doldur;Mid Rim;P-15
+Caviness;Charra;Expansion Region;P-14
+Cedonne;Dononter;Mid Rim;I-16
+Cedre;Quelii;Outer Rim Territories;O-6
+Cedrell;Emmo;Core Worlds;M-12
+Cegul;Cegul;Outer Rim Territories;M-20
+Ceiran;;Inner Rim;N-14
+Ceitia;Bryx;Mid Rim;R-8
+Cejansij;Halla;Mid Rim;R-9
+Cel Amiin;Cantons of Lahag;Expansion Region;J-15
+Celanon;D'Astan;Outer Rim Territories;O-6
+Celdaru;;Wild Space;I-8
+Celegia;Noori;Expansion Region;O-10
+Celen;Elochar;Mid Rim;R-9
+Celes;Herdessa;Mid Rim;Q-16
+"Celestial Wake, The";Kriz;Outer Rim Territories;K-19
+Celsor;Hook Nebula;Outer Rim Territories;O-17
+Celwis;;Unknown Regions;F-8
+Centares;Maldrood;Mid Rim;R-7
+Centori;Iskin;Mid Rim;O-16
+Cerberon;;Deep Core;L-10
+Cerea;Semagi;Mid Rim;I-16
+Cerenia; Mbandamonte;Expansion Region;N-15
+Cerifisis;Varada;Outer Rim Territories;I-19
+Cerilia;Xappyh;Outer Rim Territories;Q-3
+Ceriun;Nuiri;Outer Rim Territories;Q-6
+Cermau;Bakura;Outer Rim Territories ;H-16
+Cerosha;Jospro;Outer Rim Territories;R-7
+Cerroban;Bon'nyuw-Luq ;Outer Rim Territories ;N-18
+CeSai;Illisurevimurasi;Outer Rim Territories;Q-4
+Cesya;Tapani;Colonies;L-13
+Ceti 597;Hollan;Mid Rim;M-7
+Cezith;Clacis;Outer Rim Territories;K-4
+Ch'hodos;Esstran (Sith Worlds);Outer Rim Territories;R-4
+Ch'manss;Var Hagen;Mid Rim;M-17
+Ch'zimi'kho;Zeemacht Cluster;Inner Rim;N-8
+Chaaktil;;Inner Rim;N-14
+Chaastern;Shelsha;Colonies;M-9
+Chabosh;Lahara;Outer Rim Territories;M-5
+Chad;Jospro;Outer Rim Territories;R-7
+Chadawa;Croynar;Inner Rim;N-14
+Chagar;Khuiumin;Outer Rim Territories;O-19
+Chagaria;Danjar;Outer Rim Territories;N-18
+Chal Hudda;Garis;Outer Rim Territories;N-17
+Chalacta;Metatessu;Mid Rim;R-10
+Chalcedon;Tashtor;Mid Rim;I-16
+Challon;;Core Worlds;L-9
+Chamble;Mytaranor;Mid Rim;Q-10
+Chamm;;Core Worlds;M-12
+Champala;;Inner Rim;L-8
+Champat;;Core Worlds;M-12
+Chanceuxi;Kanz;Outer Rim Territories;N-4
+Chandaar;Cronese Mandate;Outer Rim Territories;S-6
+Chandar's Folly;Saijo;Outer Rim Territories;J-20
+Chandel;Ojoster;Outer Rim Territories;N-6
+Chandrila;Bormea;Core Worlds;L-9
+Changa;Tolonda;Outer Rim Territories;Q-18
+Chankin;Jidlor Marches;Mid Rim;I-16
+Chanosant;Harron;Expansion Region;O-11
+Charbodia;;Inner Rim;N-9
+Chardaan;;Inner Rim;N-14
+Chardis;Trilon;Outer Rim Territories;H-16
+Charenthoth;;Colonies;N-9
+Chargona;Citlik;Expansion Region;O-15
+Charis;Kathol;Outer Rim Territories;M-21
+Charissia;Bartahn;Inner Rim;L-15
+Charmath;Farrfin;Core Worlds;K-9
+Charra;Charra;Expansion Region;P-14
+Charros;Numesira;Mid Rim;R-9
+Charubah;Hapes Cluster;Inner Rim;O-9
+Chashima;Auril;Outer Rim Territories;S-6
+Chasidron Shoals;Bortele;Mid Rim;R-8
+Chasin;;Core Worlds;M-12
+Chasmeene;;Inner Rim;O-10
+Chateuse;Tungra;Outer Rim Territories;K-19
+Chaykin;Chaykin;Expansion Region;O-14
+Chazwa;Orus;Inner Rim;N-8
+Cheedoa;;Colonies;M-12
+Cheelit;Semagi;Mid Rim;I-16
+Cheeyoom Matee;;Core Worlds;K-9
+Chekria;Shelsha;Colonies;M-9
+Cheku;Brevost;Expansion Region;O-15
+Chelleya;Seswenna;Outer Rim Territories;M-18
+Chelloa;Grumani;Outer Rim Territories;M-17
+Chemvau;;Colonies;M-13
+Chenley Prime;Savareen;Outer Rim Territories;Q-17
+Chennis;Greater Plooriod;Expansion Region;M-7
+Chenowei;Gordian Reach;Outer Rim Territories;Q-5
+Cheravh;Mandalore;Outer Rim Territories;O-7
+Cherridan;Belnar;Colonies;M-9
+Cheruba;Hapes Cluster;Inner Rim;O-9
+Chespea;Rayter (Berenge);Outer Rim Territories;J-19
+Chestrashus;;Wild Space;Q-3
+Chibbier;Stensen;Outer Rim Territories;I-17
+Chibias;Sombure;Mid Rim;K-17
+Chiloon Rift;;Wild Space;O-3
+Chiron;Ash Worlds;Outer Rim Territories;T-7
+Chirrion;Rolion;Outer Rim Territories;Q-6
+Choah;Mortex;Outer Rim Territories;S-5
+Choi;;Inner Rim;M-13
+Chokan;Maerdocian;Mid Rim;Q-13
+Chol Nebula;;Outer Rim Territories;T-5
+Cholganna;;Outer Rim Territories;T-5
+Chommell Minor;Chommell;Mid Rim;O-17
+Chonsetta;Metatessu;Mid Rim;R-9
+Chorax;Rachuk;Colonies;N-11
+Chorgad;Fei Hu;Mid Rim;Q-13
+Chorin;;Inner Rim;N-14
+Chorra;Bamula;Inner Rim;J-13
+Chortose;Rseik;Outer Rim Territories;N-20
+Chosper;Hapes Cluster;Inner Rim;O-9
+Choss;;Colonies;J-13
+Chrellis;Lahara;Outer Rim Territories;M-5
+Chrelythiumn;;Wild Space;K-2
+Chrenthoan Abyss;Chrenthoa;Inner Rim;J-14
+Christophsis;Savareen;Outer Rim Territories;Q-16
+Chroma Zed;Maerdocian;Mid Rim;Q-12
+Chroman;D'Aelgoth;Mid Rim;K-17
+Chrome Citadel;Harron;Expansion Region;O-11
+Chromovon;Nembus;Outer Rim Territories;P-4
+Chrona;;Inner Rim;O-8
+Chryya;Dustig;Mid Rim;M-17
+Chundu;Cegul;Outer Rim Territories;L-20
+Churr;Quellor;Colonies;N-12
+Churruma;Velcar;Outer Rim Territories;J-5
+Chuzalla;Tammuz;Outer Rim Territories;T-14
+Chyron;Har Worlds;Expansion Region;J-16
+Cianap;Piryn Shar;Expansion Region;K-16
+Ciaox Verith;Croynar;Inner Rim;M-14
+Cificap;Herdessa;Mid Rim;Q-16
+Cilare;Veragi;Outer Rim Territories;K-3
+Cilpar;;Colonies;L-13
+Cimarosa;Irnaj;Mid Rim;K-17
+Cinnabar;Corellian;Core Worlds;M-11
+Cioral;Chiss Space*;Unknown Regions;F-8
+Cioran;;Core Worlds;L-12
+Ciratu;Immerian Outback;Expansion Region;N-14
+;;;
+Circarpous;Circarpous;Expansion Region;O-12
+Circumtore;;Hutt Space ;S-12
+;;;
+Cirilia;Lannik Space;Mid Rim;R-13
+Cirra;Brak;Expansion Region;O-14
+Cirrus;Dantus;Outer Rim Territories;J-6
+Cirtappa;Alui;Mid Rim;O-17
+Cirus;Arkanis;Outer Rim Territories;R-17
+Citlik;Citlik;Expansion Region;O-14
+Ciutric;Ciutric;Outer Rim Territories;N-5
+Clabron;;Core Worlds;K-13
+Claer;Sern;Colonies;L-13
+Clak'dor;Mayagil;Outer Rim Territories;M-18
+Clantaano;Albanin;Outer Rim Territories;U-12
+Clar, The;;Wild Space;I-20
+Clariv;Tion Hegemony;Outer Rim Territories;S-6
+Clear View;;Wild Space;U-13
+Clendor;;Inner Rim;O-8
+Clerion;Palamut;Expansion Region;N-13
+Cloak of the Sith, The;Abrion;Outer Rim Territories;S-15
+Clyne;Corellian;Core Worlds;M-11
+Clysm;D'Astan;Outer Rim Territories;O-5
+Cmaoli Di;Brema;Outer Rim Territories;M-17
+Coachelle;Terr'skiar;Mid Rim;P-10
+Cobal;;Core Worlds;K-13
+Codia;;Mid Rim;H-15
+Cog Hive Seven;Tharin;Outer Rim Territories;S-8
+Cole-Haddon;Dalonbian;Outer Rim Territories;M-3
+Colla;;Inner Rim;N-9
+Collus;Thuldin's Grant;Expansion Region;J-15
+Colonial Station Camco;Chiss Space*;Unknown Regions;F-8
+Colonial Station Chaf;Chiss Space*;Unknown Regions;F-9
+Cols;Kastolar;Mid Rim;Q-10
+Colsassa;Jospro;Outer Rim Territories;R-7
+Columex;Vorzyd;Outer Rim Territories;R-6
+Columus;;Core Worlds;M-11
+Colunda Prime;Phelleem (Colunda);Outer Rim Territories;S-7
+Comantira;Atravis;Outer Rim Territories;L-19
+Cometwash, The;Gordian Reach;Outer Rim Territories;Q-6
+Comkin;;Inner Rim;N-7
+Commenor;;Colonies;N-10
+Comra;Prefsbelt;Outer Rim Territories;J-5
+Cona;Inner Cluster;Inner Rim;O-11
+Concord Dawn;Mandalore;Outer Rim Territories;O-7
+Condular;;Core Worlds;M-12
+Conjenus;Vish;Mid Rim;N-16
+Constancia;;Deep Core;K-12
+Contruum;Truum;Mid Rim;O-8
+Coonee;Brevost;Expansion Region;O-15
+Coorimbus;Tapani;Colonies;L-13
+Copero;Chiss Space*;Unknown Regions;F-9
+Cophrigin;Ash Worlds;Outer Rim Territories;T-7
+Copperline;Vatha;Expansion Region;K-16
+Copul;Pallis;Inner Rim;N-14
+Cor I;Tapani;Colonies;L-13
+Cor II;Tapani;Colonies;L-13
+Cor III;Tapani;Colonies;L-13
+Corann;;Core Worlds;M-9
+Corbantis;Chaykin;Expansion Region ;O-14
+Corbett Cluster;Corbett;Mid Rim;I-17
+Corbos;Esstran;Outer Rim Territories;Q-5
+Cordes;;Inner Rim;N-9
+Cordota;Lantillian;Mid Rim;P-8
+Corellia;Corellian;Core Worlds;M-11
+Corfai;Corellian;Core Worlds;M-11
+Corg;;Wild Space;O-20
+Coriallis;;Core Worlds;K-9
+Corips;;Inner Rim;N-14
+Corjain;Kathol;Outer Rim Territories;M-21
+Corlaasi;Minos Cluster;Outer Rim Territories;M-20
+Corlass;Cronese Mandate;Outer Rim Territories;S-6
+Corlax;Allied Tion;Outer Rim Territories;S-6
+Corlus;Woostri;Expansion Region;M-16
+Cormit;Chiss Space*;Unknown Regions;F-8
+Cornesia;Manda;Mid Rim;R-14
+Coronar;;Colonies;L-9
+Corosi;Corosi;Outer Rim Territories;N-6
+Corphelion;Corpheli;Expansion Region;M-7
+Corrdair;Hevvrol;Mid Rim;O-15
+Corrida;Corridan;Core Worlds;J-10
+Corroth;;Colonies;N-9
+Corsin;Greater Plooriod;Expansion Region;M-7
+Corson Prime;Tharin (Periphery);Outer Rim Territories;S-8
+Corstris;Quelii;Outer Rim Territories;O-6
+Cortella;;Core Worlds;K-9
+Corthenia;Corthenia;Mid Rim;K-7
+Cortilium Major;Eucer;Mid Rim;Q-7
+Cortina;;Core Worlds;K-12
+Corulag;Bormea;Core Worlds;L-9
+Corus;Wyl;Outer Rim Territories;S-4
+Coruscant;Corusca (Coruscant);Core Worlds;L-9
+Coruschal;;Core Worlds;K-10
+Coruscul;;Core Worlds;L-10
+Corutarn;;Core Worlds;M-10
+Corva;Corva;Outer Rim Territories;P-4
+Corva Yag;Rseik;Outer Rim Territories;N-20
+Corvanni;Neshig;Inner Rim;N-9
+Corvis Minor;Ciutric;Outer Rim Territories;N-5
+Corvus;Cronese Mandate;Outer Rim Territories;S-6
+Corweillia;Corweillian;Mid Rim;P-15
+Cosia;;Deep Core;M-11
+Cosmatanic Steppes;Grohl;Outer Rim Territories;R-16
+Cotellier;Rseik;Outer Rim Territories;N-20
+Coth Fuuras;Deadalis;Expansion Region;J-8
+Coto-Xana;;Colonies;L-9
+Council;Javin (Anoat);Outer Rim Territories;K-18
+Couronne;Couronne;Expansion Region;P-10
+Cousault;Semagi;Mid Rim;I-16
+Coveway;Koradin;Outer Rim Territories;I-18
+Cowl Crucible;Oricho;Outer Rim Territories;M-5
+Coxixia;;Core Worlds;M-12
+Coyerti;Bortele;Mid Rim;S-8
+Coyn;Elrood;Outer Rim Territories;M-20
+Craci;Corporate Sector;Outer Rim Territories;R-4
+Crait;Bon'nyuw-Luq ;Outer Rim Territories;N-17

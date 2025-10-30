@@ -1789,5 +1789,9068 @@
     "x": 16,
     "y": 15,
     "color": "#FFAA00"
+  },
+  {
+    "name": "Andurkoss",
+    "sector": "Nouane",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Anduvia",
+    "sector": "Immalia",
+    "region": "Expansion Region",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Anelsana",
+    "sector": "Farstey",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Anemcoro",
+    "sector": "Albarrio",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anga",
+    "sector": "Sarka",
+    "region": "Mid Rim",
+    "grid": "Q-8",
+    "x": 17,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Angcord",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "I-13",
+    "x": 9,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Angeria",
+    "sector": "Venaarian",
+    "region": "Mid Rim",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Angor",
+    "sector": "Myto",
+    "region": "Outer Rim Territories",
+    "grid": "K-4",
+    "x": 11,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Angrallia",
+    "sector": "Fath",
+    "region": "Outer Rim Territories",
+    "grid": "K-6",
+    "x": 11,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Angratha",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anic",
+    "sector": "Xan",
+    "region": "Mid Rim",
+    "grid": "Q-15",
+    "x": 17,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ank Ki'Shor",
+    "sector": "Indrexu",
+    "region": "Outer Rim Territories",
+    "grid": "S-5",
+    "x": 19,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ank Kit'aar",
+    "sector": "Druess",
+    "region": "Mid Rim",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ankhural",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Ankori",
+    "sector": "Kossa",
+    "region": "Expansion Region",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Ankot Station",
+    "sector": "Brema",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ankus",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "I-7",
+    "x": 9,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Annaj",
+    "sector": "Zuma (Moddell)",
+    "region": "Outer Rim Territories",
+    "grid": "H-16",
+    "x": 8,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Annamar",
+    "sector": "Bes Ber Bikade",
+    "region": "Expansion Region",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Annoo",
+    "sector": "Tharin",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anoat",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anobis",
+    "sector": "Bright Jewel",
+    "region": "Mid Rim",
+    "grid": "L-7",
+    "x": 12,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anorelga",
+    "sector": "Braxant",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anoth",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "J-20",
+    "x": 10,
+    "y": 20,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Ansarra",
+    "sector": "Iskin",
+    "region": "Mid Rim",
+    "grid": "O-16",
+    "x": 15,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ansata",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Ansek",
+    "sector": "Eidoloni",
+    "region": "Mid Rim",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ansillivog",
+    "sector": "Majoor",
+    "region": "Expansion Region",
+    "grid": "N-15",
+    "x": 14,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Ansion",
+    "sector": "Churnis",
+    "region": "Mid Rim",
+    "grid": "I-6",
+    "x": 9,
+    "y": 6,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anstares",
+    "sector": "Juvex",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Antakaria",
+    "sector": "Bothan",
+    "region": "Mid Rim",
+    "grid": "R-14",
+    "x": 18,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Antamont",
+    "sector": "Meridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antar",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Antared",
+    "sector": "Esstran",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antares",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Anteevy",
+    "sector": "Esuain",
+    "region": "Mid Rim",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Antemeridias",
+    "sector": "Antemeridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anthan",
+    "sector": "Braxant",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anthus",
+    "sector": "Brema",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antillion",
+    "sector": "D'Astan",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antine",
+    "sector": "Unknown",
+    "region": "Outer Rim Territories",
+    "grid": "I-19",
+    "x": 9,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antipose",
+    "sector": "Centrality",
+    "region": "Outer Rim Territories",
+    "grid": "U-8",
+    "x": 21,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antiquity",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Antmuel",
+    "sector": "Chopani",
+    "region": "Outer Rim Territories",
+    "grid": "M-3",
+    "x": 13,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anto's Star",
+    "sector": "Saijo",
+    "region": "Outer Rim Territories",
+    "grid": "K-20",
+    "x": 11,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Antolus",
+    "sector": "Sarka",
+    "region": "Mid Rim",
+    "grid": "Q-8",
+    "x": 17,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anturus",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anukara",
+    "sector": "Prackla",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Anx Minor",
+    "sector": "Raioballo",
+    "region": "Outer Rim Territories",
+    "grid": "L-4",
+    "x": 12,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Anzat",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Anzell",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aostai",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-13",
+    "x": 9,
+    "y": 13,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Apatros",
+    "sector": "Savareen",
+    "region": "Outer Rim Territories",
+    "grid": "Q-16",
+    "x": 17,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Apgar",
+    "sector": "Hilo",
+    "region": "Expansion Region",
+    "grid": "O-13",
+    "x": 15,
+    "y": 13,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Apiliria",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "T-5",
+    "x": 20,
+    "y": 5,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Aphran",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Aplooine",
+    "sector": "Grumani",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Apoka",
+    "sector": "Dohlbani",
+    "region": "Mid Rim",
+    "grid": "R-14",
+    "x": 18,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aq Vetina",
+    "sector": "Relgim",
+    "region": "Outer Rim Territories",
+    "grid": "M-4",
+    "x": 13,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aquaris",
+    "sector": "Sumitra",
+    "region": "Expansion Region",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Aquella",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aquilae",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Aquilaris",
+    "sector": "Sanbra",
+    "region": "Outer Rim Territories",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aquilaris Minor",
+    "sector": "Grumani",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arabanth",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Aradia",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-10",
+    "x": 11,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Arah",
+    "sector": "Dantus",
+    "region": "Outer Rim Territories",
+    "grid": "J-6",
+    "x": 10,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arakein",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Aralia",
+    "sector": "Antemeridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aramal",
+    "sector": "Ryborean",
+    "region": "Expansion Region",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Aramand",
+    "sector": "Brak",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Aramanoo",
+    "sector": "Bheriz",
+    "region": "Outer Rim Territories",
+    "grid": "U-10",
+    "x": 21,
+    "y": 10,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arami",
+    "sector": "Galov",
+    "region": "Outer Rim Territories",
+    "grid": "T-13",
+    "x": 20,
+    "y": 13,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arantara",
+    "sector": "Daimar",
+    "region": "Mid Rim",
+    "grid": "Q-16",
+    "x": 17,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arapia",
+    "sector": "Dalchon",
+    "region": "Outer Rim Territories",
+    "grid": "R-18",
+    "x": 18,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arashar",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arat Fraca",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Arath",
+    "sector": "Tunka",
+    "region": "Outer Rim Territories",
+    "grid": "J-19",
+    "x": 10,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arbiflux",
+    "sector": "Dalonbian",
+    "region": "Outer Rim Territories",
+    "grid": "L-3",
+    "x": 12,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arbooine",
+    "sector": "(Arboo)",
+    "region": "Outer Rim Territories",
+    "grid": "T-17",
+    "x": 20,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arbra",
+    "sector": "Bon'nyuw-Luq",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arbular",
+    "sector": "Lambda",
+    "region": "Mid Rim",
+    "grid": "Q-15",
+    "x": 17,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arc of Eden",
+    "sector": "Immalia",
+    "region": "Expansion Region",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arcadi",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arcan",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arcana",
+    "sector": "Lahara",
+    "region": "Outer Rim Territories",
+    "grid": "M-5",
+    "x": 13,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Archae Teuthis",
+    "sector": "Brevost",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Archais",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Archenar",
+    "sector": "Metatessu",
+    "region": "Mid Rim",
+    "grid": "R-10",
+    "x": 18,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Archeon Nebula",
+    "sector": "Lothal",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arcopola",
+    "sector": "Spadja",
+    "region": "Outer Rim Territories",
+    "grid": "Q-5",
+    "x": 17,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arcura",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arda",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ardennia",
+    "sector": "Fath",
+    "region": "Outer Rim Territories",
+    "grid": "K-6",
+    "x": 11,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ardis",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "G-3",
+    "x": 7,
+    "y": 3,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Ardroxia",
+    "sector": "Elochar",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ardru",
+    "sector": "Iseno",
+    "region": "Inner Rim",
+    "grid": "N-13",
+    "x": 14,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Argai",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Argai Minor",
+    "sector": "Haldeen",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Argavat",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Argazda",
+    "sector": "Kanz",
+    "region": "Outer Rim Territories",
+    "grid": "N-4",
+    "x": 14,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Argo",
+    "sector": "Tragan Cluster",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Argoba",
+    "sector": "Trilon",
+    "region": "Outer Rim Territories",
+    "grid": "H-15",
+    "x": 8,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Argoon",
+    "sector": "Tion Hegemony",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Argovia",
+    "sector": "Endocray",
+    "region": "Mid Rim",
+    "grid": "S-14",
+    "x": 19,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Argul",
+    "sector": "D'Aelgoth",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Argus",
+    "sector": "Lambda",
+    "region": "Mid Rim",
+    "grid": "P-16",
+    "x": 16,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aria Prime",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Ariarch-17",
+    "sector": "Ariarch",
+    "region": "Mid Rim",
+    "grid": "J-6",
+    "x": 10,
+    "y": 6,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aricho",
+    "sector": "Danjar (Siannach)",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aridinia",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Aridka",
+    "sector": "Hertae",
+    "region": "Mid Rim",
+    "grid": "Q-14",
+    "x": 17,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Aridus",
+    "sector": "Narvath",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arieli",
+    "sector": "Authala",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Aris",
+    "sector": "Albarrio",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aris Minor",
+    "sector": "Parmel",
+    "region": "Outer Rim Territories",
+    "grid": "O-18",
+    "x": 15,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arkam",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arkania",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-8",
+    "x": 13,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Arkanis",
+    "sector": "Arkanis",
+    "region": "Outer Rim Territories",
+    "grid": "R-17",
+    "x": 18,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arkax Station",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arkinnea",
+    "sector": "Axion",
+    "region": "Expansion Region",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arkonne",
+    "sector": "Tarabba",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arkuda",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arleen",
+    "sector": "Centrality",
+    "region": "Outer Rim Territories",
+    "grid": "T-8",
+    "x": 20,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arli",
+    "sector": "Mayagil",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Armath",
+    "sector": "Mikaster",
+    "region": "Expansion Region",
+    "grid": "N-15",
+    "x": 14,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arnot Station",
+    "sector": "Far Xandil",
+    "region": "Mid Rim",
+    "grid": "P-16",
+    "x": 16,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arnt",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arorua",
+    "sector": "Sertar",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arporatal-Lanin",
+    "sector": "Juvex",
+    "region": "Mid Rim",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arquata Station",
+    "sector": "Bes Ber Bikade",
+    "region": "Expansion Region",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arrakan",
+    "sector": "Kalamith",
+    "region": "Outer Rim Territories",
+    "grid": "P-5",
+    "x": 16,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arramanx",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arreyel",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arrgaw",
+    "sector": "Kira",
+    "region": "Expansion Region",
+    "grid": "N-16",
+    "x": 14,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arrochar",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Arron Prime",
+    "sector": "Cassander",
+    "region": "Outer Rim Territories",
+    "grid": "L-5",
+    "x": 12,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arsteni",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Artemesium",
+    "sector": "Lifh",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Artesia",
+    "sector": "Hangshan",
+    "region": "Expansion Region",
+    "grid": "P-11",
+    "x": 16,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arthon",
+    "sector": "Ottega",
+    "region": "Mid Rim",
+    "grid": "L-6",
+    "x": 12,
+    "y": 6,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arthuria",
+    "sector": "Merthian",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Artiod Minor",
+    "sector": "Morellian CW*",
+    "region": "Wild Space",
+    "grid": "S-3",
+    "x": 19,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Artom",
+    "sector": "Nuon e Safyd",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Artorias",
+    "sector": "Myto",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Artus Prime",
+    "sector": "Kwymar",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aruza",
+    "sector": "Unknown",
+    "region": "Expansion Region",
+    "grid": "I-14",
+    "x": 9,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Arvaka Prime",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Arvala",
+    "sector": "Sevetta",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arveesh Station",
+    "sector": "Eclorar",
+    "region": "Mid Rim",
+    "grid": "Q-12",
+    "x": 17,
+    "y": 12,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Arvina",
+    "sector": "Quiberon",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Arzid",
+    "sector": "Calaron",
+    "region": "Outer Rim Territories",
+    "grid": "T-9",
+    "x": 20,
+    "y": 9,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Asamin",
+    "sector": "Strabin",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Asation",
+    "sector": "Veragi (Gree Enclave)",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ash Moon 1",
+    "sector": "Jubilar (Kartovian)",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ashas Ree",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ashas Rine",
+    "sector": "Mortex",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ashash",
+    "sector": "Zarracina",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Asher",
+    "sector": "Sprizen",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Asheris",
+    "sector": "Tagge Space",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Ashkas-kov",
+    "sector": "Shelsha",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Ashteri's Cloud",
+    "sector": "Kessel",
+    "region": "Outer Rim Territories",
+    "grid": "T-10",
+    "x": 20,
+    "y": 10,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Askaj",
+    "sector": "Cegul",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Askaria",
+    "sector": "Askarian",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Askkto-Fen",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "P-19",
+    "x": 16,
+    "y": 19,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Asmall",
+    "sector": "Ara Dyelle",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Asmeru",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Asog",
+    "sector": "Esstran",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Asran",
+    "sector": "Brak",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Asrat",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Ast Kikorie",
+    "sector": "Zuma (Moddell)",
+    "region": "Outer Rim Territories",
+    "grid": "H-16",
+    "x": 8,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Astenban",
+    "sector": "Seswenna",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Asteph'skaff",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-6",
+    "x": 9,
+    "y": 6,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Asterios",
+    "sector": "Narrant",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Asternin",
+    "sector": "Tamarin",
+    "region": "Outer Rim Territories",
+    "grid": "N-19",
+    "x": 14,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Astrali",
+    "sector": "Var Hagen",
+    "region": "Mid Rim",
+    "grid": "M-16",
+    "x": 13,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Asturias",
+    "sector": "Epsi Collective",
+    "region": "Expansion Region",
+    "grid": "M-16",
+    "x": 13,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Asuin",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-11",
+    "x": 19,
+    "y": 11,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Asusto",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "P-5",
+    "x": 16,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Asyrphus",
+    "sector": "Perkell",
+    "region": "Mid Rim",
+    "grid": "Q-7",
+    "x": 17,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "At Attin",
+    "sector": "Quelii",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "At Aytuu",
+    "sector": "Trilon",
+    "region": "Outer Rim Territories",
+    "grid": "G-15",
+    "x": 7,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atalia",
+    "sector": "Varada",
+    "region": "Outer Rim Territories",
+    "grid": "H-19",
+    "x": 8,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atanu",
+    "sector": "Alderath",
+    "region": "Mid Rim",
+    "grid": "L-7",
+    "x": 12,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Atapap",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Atchorb",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-3",
+    "x": 19,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Athallia",
+    "sector": "Athallia",
+    "region": "Expansion Region",
+    "grid": "M-15",
+    "x": 13,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Athamar",
+    "sector": "Hewett",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ather",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-20",
+    "x": 12,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Athio",
+    "sector": "Mayagil",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Athiss",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Athus Klee",
+    "sector": "Kalamith",
+    "region": "Outer Rim Territories",
+    "grid": "P-5",
+    "x": 16,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atoa",
+    "sector": "Ghost Nebula",
+    "region": "Expansion Region",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Atollon",
+    "sector": "Lothal",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ator",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Atorra",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-5",
+    "x": 17,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atraken",
+    "sector": "Rolion",
+    "region": "Outer Rim Territories",
+    "grid": "Q-7",
+    "x": 17,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atrakus",
+    "sector": "Mikaster",
+    "region": "Expansion Region",
+    "grid": "M-15",
+    "x": 13,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Atravis",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atron",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Attahox",
+    "sector": "Hocatar",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Atterol",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atterra",
+    "sector": "Kanz",
+    "region": "Outer Rim Territories",
+    "grid": "N-4",
+    "x": 14,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aturi Cluster",
+    "sector": "Hook Nebula",
+    "region": "Outer Rim Territories",
+    "grid": "O-18",
+    "x": 15,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Atzerri",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Aubadas",
+    "sector": "Tunka",
+    "region": "Outer Rim Territories",
+    "grid": "I-19",
+    "x": 9,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aur",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Auratera",
+    "sector": "Vorzyd",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aurea",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Auril",
+    "sector": "Auril",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aurimaus",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Austan",
+    "sector": "Arkanis",
+    "region": "Outer Rim Territories",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Avedot",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Avenel",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Avenelle",
+    "sector": "Lantillian",
+    "region": "Mid Rim",
+    "grid": "P-9",
+    "x": 16,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Averam",
+    "sector": "Seswenna",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Averill",
+    "sector": "Teraab",
+    "region": "Mid Rim",
+    "grid": "P-11",
+    "x": 16,
+    "y": 11,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Avernio",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "G-5",
+    "x": 7,
+    "y": 5,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Avery",
+    "sector": "Belderone",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Avidich",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "E-8",
+    "x": 5,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Aviles Prime",
+    "sector": "Hythrope",
+    "region": "Expansion Region",
+    "grid": "M-15",
+    "x": 13,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Awalia",
+    "sector": "Raioballo",
+    "region": "Outer Rim Territories",
+    "grid": "L-4",
+    "x": 12,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "AX-456",
+    "sector": "Barma",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Axion",
+    "sector": "Axion",
+    "region": "Expansion Region",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Axtria",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Axxila",
+    "sector": "D'Astan",
+    "region": "Outer Rim Territories",
+    "grid": "O-5",
+    "x": 15,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aybaria",
+    "sector": "Steniplis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ayceezee",
+    "sector": "Kanz",
+    "region": "Outer Rim Territories",
+    "grid": "N-4",
+    "x": 14,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aylayl",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-12",
+    "x": 19,
+    "y": 12,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Aynaboni",
+    "sector": "Unknown",
+    "region": "Outer Rim Territories",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ayoh",
+    "sector": "Phelleem",
+    "region": "Outer Rim Territories",
+    "grid": "S-7",
+    "x": 19,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Azbrian",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-12",
+    "x": 12,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Azna",
+    "sector": "Demetras",
+    "region": "Outer Rim Territories",
+    "grid": "P-6",
+    "x": 16,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Aztubek",
+    "sector": "Javin",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Azum",
+    "sector": "Itopol",
+    "region": "Expansion Region",
+    "grid": "K-15",
+    "x": 11,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Azura",
+    "sector": "Oricho",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Azure",
+    "sector": "Truum",
+    "region": "Mid Rim",
+    "grid": "P-8",
+    "x": 16,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Azzameen Station",
+    "sector": "Garis",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "B-Foroon",
+    "sector": "Arkanis",
+    "region": "Outer Rim Territories",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "B'Knos",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "G-16",
+    "x": 7,
+    "y": 16,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "B'nish",
+    "sector": "Tharin",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "B'trilla",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-5",
+    "x": 17,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baarstal",
+    "sector": "Sanbra",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Babali",
+    "sector": "Corva",
+    "region": "Outer Rim Territories",
+    "grid": "P-3",
+    "x": 16,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Babbadod",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bacia",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bacrana",
+    "sector": "Brak",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bactriasa",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Badfellow Station",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Badtibira",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-12",
+    "x": 11,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baes Logia",
+    "sector": "Quence",
+    "region": "Outer Rim Territories",
+    "grid": "O-18",
+    "x": 15,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baffia",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "L-12",
+    "x": 12,
+    "y": 12,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Baffop",
+    "sector": "Tamarin",
+    "region": "Outer Rim Territories",
+    "grid": "O-19",
+    "x": 15,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bahalian",
+    "sector": "Astal",
+    "region": "Outer Rim Territories",
+    "grid": "P-18",
+    "x": 16,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bahlah",
+    "sector": "Thesme",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bajic",
+    "sector": "Bajic",
+    "region": "Outer Rim Territories",
+    "grid": "P-18",
+    "x": 16,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bakisian Drift",
+    "sector": "Tragan Cluster",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bakkah",
+    "sector": "Thrasybule",
+    "region": "Outer Rim Territories",
+    "grid": "P-6",
+    "x": 16,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baklek",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bakura",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "G-16",
+    "x": 7,
+    "y": 16,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bal'demnic",
+    "sector": "Auril",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Balagash",
+    "sector": "Hali",
+    "region": "Expansion Region",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Balaidas",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Balamak",
+    "sector": "Taldot",
+    "region": "Mid Rim",
+    "grid": "Q-9",
+    "x": 17,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Balanor",
+    "sector": "Noonian",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Balaria",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baldavia",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Baldur",
+    "sector": "Nojic",
+    "region": "Expansion Region",
+    "grid": "P-9",
+    "x": 16,
+    "y": 9,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Balfron",
+    "sector": "Dolomar",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Balis-Baurgh",
+    "sector": "Sombure",
+    "region": "Mid Rim",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Balith",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Balli",
+    "sector": "Abrion",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ballum",
+    "sector": "Kastolar",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Balmorra",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Balnab",
+    "sector": "Bright Jewel",
+    "region": "Mid Rim",
+    "grid": "L-7",
+    "x": 12,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Balosar",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-12",
+    "x": 12,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Balowa",
+    "sector": "Daalang",
+    "region": "Mid Rim",
+    "grid": "Q-12",
+    "x": 17,
+    "y": 12,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Baltimn",
+    "sector": "Chorlian",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baltizaar",
+    "sector": "Corthenia",
+    "region": "Mid Rim",
+    "grid": "K-7",
+    "x": 11,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Baltro",
+    "sector": "Onatos",
+    "region": "Mid Rim",
+    "grid": "R-15",
+    "x": 18,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bamasia",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bamayar",
+    "sector": "Maldrood",
+    "region": "Mid Rim",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bampa'k",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ban-Satir",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Banas",
+    "sector": "Sanbra",
+    "region": "Outer Rim Territories",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Banasthau",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bancar",
+    "sector": "Rayter",
+    "region": "Outer Rim Territories",
+    "grid": "J-19",
+    "x": 10,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Banchii",
+    "sector": "Jjannex",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bandomeer",
+    "sector": "Meerian",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bandonia",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bandorra",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Banfoden Prime",
+    "sector": "Alchenaut",
+    "region": "Expansion Region",
+    "grid": "L-16",
+    "x": 12,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bannistar Station",
+    "sector": "Hevvrol",
+    "region": "Mid Rim",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bantoo",
+    "sector": "Samix",
+    "region": "Outer Rim Territories",
+    "grid": "Q-19",
+    "x": 17,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bantu",
+    "sector": "Emmo",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Banvhar Station",
+    "sector": "Kriz",
+    "region": "Outer Rim Territories",
+    "grid": "J-18",
+    "x": 10,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bar Neth",
+    "sector": "Albarrio",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bar'leth",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baraan-Fa",
+    "sector": "Grumani",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barab",
+    "sector": "Albanin",
+    "region": "Outer Rim Territories",
+    "grid": "U-12",
+    "x": 21,
+    "y": 12,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barabaras",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "J-15",
+    "x": 10,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Barabesh",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Baraboo",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baradas",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Baralou",
+    "sector": "Varada",
+    "region": "Outer Rim Territories",
+    "grid": "H-20",
+    "x": 8,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baramorra",
+    "sector": "Carrion",
+    "region": "Outer Rim Territories",
+    "grid": "J-4",
+    "x": 10,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barancar",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barayfe",
+    "sector": "Alchenaut",
+    "region": "Expansion Region",
+    "grid": "L-16",
+    "x": 12,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Barbadel",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Barbeen",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Barcaria",
+    "sector": "Sombure",
+    "region": "Mid Rim",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Barcola",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bardelberan",
+    "sector": "Churnis",
+    "region": "Mid Rim",
+    "grid": "J-6",
+    "x": 10,
+    "y": 6,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bardotta",
+    "sector": "Shasos",
+    "region": "Colonies",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bardram Scoft",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "D-7",
+    "x": 4,
+    "y": 7,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Barenth",
+    "sector": "Drannik",
+    "region": "Expansion Region",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Barison",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barkhesh",
+    "sector": "Seitia",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barlok",
+    "sector": "Marcol",
+    "region": "Inner Rim",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Barnaba",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Barnahof",
+    "sector": "Yminis",
+    "region": "Outer Rim Territories",
+    "grid": "S-14",
+    "x": 19,
+    "y": 14,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baroli",
+    "sector": "Baroli",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Baroonda",
+    "sector": "Calaron",
+    "region": "Outer Rim Territories",
+    "grid": "T-9",
+    "x": 20,
+    "y": 9,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baros",
+    "sector": "Lothal",
+    "region": "Outer Rim Territories",
+    "grid": "U-7",
+    "x": 21,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barpine",
+    "sector": "Weneen",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barraken",
+    "sector": "Varada",
+    "region": "Outer Rim Territories",
+    "grid": "H-19",
+    "x": 8,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barroth",
+    "sector": "Kriz",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bars Barka",
+    "sector": "Barsa",
+    "region": "Mid Rim",
+    "grid": "J-6",
+    "x": 10,
+    "y": 6,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Barseg",
+    "sector": "Allied Tion",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bartokan",
+    "sector": "Tamarin",
+    "region": "Outer Rim Territories",
+    "grid": "N-19",
+    "x": 14,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barton",
+    "sector": "Colundra",
+    "region": "Outer Rim Territories",
+    "grid": "S-5",
+    "x": 19,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Barundi",
+    "sector": "Thanium",
+    "region": "Outer Rim Territories",
+    "grid": "S-5",
+    "x": 19,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Basan",
+    "sector": "Churba",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Basarais",
+    "sector": "Kossa",
+    "region": "Expansion Region",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Basath",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Basilisk",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baskarn",
+    "sector": "Noonian",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baskron",
+    "sector": "Trax",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bassadro",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bassel",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-13",
+    "x": 14,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Basta Core",
+    "sector": "Wyl",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bastatha",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Basteel",
+    "sector": "Corva",
+    "region": "Outer Rim Territories",
+    "grid": "P-3",
+    "x": 16,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bastion",
+    "sector": "Braxant",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bastooine",
+    "sector": "Graador",
+    "region": "Mid Rim",
+    "grid": "I-17",
+    "x": 9,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bathoris",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Batonn",
+    "sector": "Ash Worlds (Batonn)",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bator Bai",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Batorine",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-9",
+    "x": 10,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Batravia",
+    "sector": "Serathrace",
+    "region": "Expansion Region",
+    "grid": "P-11",
+    "x": 16,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Batuu",
+    "sector": "Trilon",
+    "region": "Outer Rim Territories",
+    "grid": "G-15",
+    "x": 7,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Batuv",
+    "sector": "Askarian",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Baummu",
+    "sector": "Shadola",
+    "region": "Outer Rim Territories",
+    "grid": "U-8",
+    "x": 21,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bavana",
+    "sector": "Sertar",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bavva",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Baylagon",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Baylin Cluster",
+    "sector": "Trans-Nebular",
+    "region": "Mid Rim",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bayora",
+    "sector": "Extorin",
+    "region": "Expansion Region",
+    "grid": "J-15",
+    "x": 10,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bazaar",
+    "sector": "Halthor",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bazarre",
+    "sector": "Cademimu",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beauchen",
+    "sector": "Vensori",
+    "region": "Mid Rim",
+    "grid": "P-8",
+    "x": 16,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Beckoning Call Starr",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bedlam",
+    "sector": "Thusa",
+    "region": "Mid Rim",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bedlam Pulsar",
+    "sector": "Thusa",
+    "region": "Mid Rim",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Beetle Nebula",
+    "sector": "Bon'nyuw-Luq",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Begali",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-8",
+    "x": 13,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Begamor",
+    "sector": "Lahara",
+    "region": "Outer Rim Territories",
+    "grid": "M-5",
+    "x": 13,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Begeren",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beheboth",
+    "sector": "Sanbra",
+    "region": "Outer Rim Territories",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beixander",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "H-15",
+    "x": 8,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Belasco",
+    "sector": "Belasco",
+    "region": "Expansion Region",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Belassar",
+    "sector": "Sarla",
+    "region": "Expansion Region",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Belat",
+    "sector": "Vilonis",
+    "region": "Mid Rim",
+    "grid": "O-16",
+    "x": 15,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Belazura",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Belderone",
+    "sector": "Belderone",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beledeen",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Belgaroth",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Belial",
+    "sector": "Sanbra",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belkadan",
+    "sector": "Dalonbian",
+    "region": "Outer Rim Territories",
+    "grid": "L-1",
+    "x": 12,
+    "y": 1,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belladoon",
+    "sector": "Myto",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bellassa",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bellis",
+    "sector": "Demetras",
+    "region": "Outer Rim Territories",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belloria",
+    "sector": "Seswenna",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belnar",
+    "sector": "Belnar",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Belovia",
+    "sector": "Ombakond",
+    "region": "Expansion Region",
+    "grid": "P-12",
+    "x": 16,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Belsavis",
+    "sector": "Bozhnee",
+    "region": "Outer Rim Territories",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belshar Othacuu",
+    "sector": "Belshar",
+    "region": "Mid Rim",
+    "grid": "J-7",
+    "x": 10,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Belsmuth",
+    "sector": "Belsmuth",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Belthu",
+    "sector": "Demetras",
+    "region": "Outer Rim Territories",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beltire",
+    "sector": "Narrant",
+    "region": "Mid Rim",
+    "grid": "J-17",
+    "x": 10,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Beltrix",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Belukat",
+    "sector": "Corpheli",
+    "region": "Expansion Region",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Belvaria",
+    "sector": "Corweillian",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Benath",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-7",
+    "x": 9,
+    "y": 7,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bendeluum",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bendii",
+    "sector": "Seitia",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bendone",
+    "sector": "Bosph",
+    "region": "Outer Rim Territories",
+    "grid": "R-3",
+    "x": 18,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Benetage",
+    "sector": "Thanium",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bengat",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bengely",
+    "sector": "Tamarin",
+    "region": "Outer Rim Territories",
+    "grid": "N-19",
+    "x": 14,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Benglor",
+    "sector": "Onatos",
+    "region": "Mid Rim",
+    "grid": "R-15",
+    "x": 18,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Benja-Rihn",
+    "sector": "Sevastol",
+    "region": "Mid Rim",
+    "grid": "Q-14",
+    "x": 17,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Benkal",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "H-17",
+    "x": 8,
+    "y": 17,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bentora",
+    "sector": "Samix",
+    "region": "Outer Rim Territories",
+    "grid": "Q-19",
+    "x": 17,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Benwabula",
+    "sector": "Shadola",
+    "region": "Outer Rim Territories",
+    "grid": "U-7",
+    "x": 21,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ber de Val",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Berason",
+    "sector": "Eclorar",
+    "region": "Mid Rim",
+    "grid": "Q-12",
+    "x": 17,
+    "y": 12,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Berchest",
+    "sector": "Anthos",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Berea",
+    "sector": "Elrood",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beris",
+    "sector": "Fei Hu",
+    "region": "Mid Rim",
+    "grid": "Q-13",
+    "x": 17,
+    "y": 13,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bernilla",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-14",
+    "x": 12,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Beroq",
+    "sector": "Baroli",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Berri",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Berrol's Donn",
+    "sector": "Kriz",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Berrun",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Berullia",
+    "sector": "Quence",
+    "region": "Outer Rim Territories",
+    "grid": "O-18",
+    "x": 15,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Berzite",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "U-8",
+    "x": 21,
+    "y": 8,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bes",
+    "sector": "Airam",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Besberra",
+    "sector": "Cegul",
+    "region": "Outer Rim Territories",
+    "grid": "L-20",
+    "x": 12,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bescane",
+    "sector": "Obtrexta",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Besero",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Beshka",
+    "sector": "Aparo",
+    "region": "Outer Rim Territories",
+    "grid": "R-3",
+    "x": 18,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Besn",
+    "sector": "Mayagil",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Besnia",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bespin",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bessimir",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bestal",
+    "sector": "Varada",
+    "region": "Outer Rim Territories",
+    "grid": "I-19",
+    "x": 9,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bestine",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bestoon",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-9",
+    "x": 10,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Beta Olikark",
+    "sector": "Wyl",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Beta Rhama",
+    "sector": "Dalchon",
+    "region": "Outer Rim Territories",
+    "grid": "R-17",
+    "x": 18,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Betal",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Betha",
+    "sector": "Corva",
+    "region": "Outer Rim Territories",
+    "grid": "P-4",
+    "x": 16,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bethal",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bethars",
+    "sector": "Emmo",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Betolio",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Betshish",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "P-5",
+    "x": 16,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bettel",
+    "sector": "Javin (Yarith)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Betthanie",
+    "sector": "Wornal",
+    "region": "Mid Rim",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bettok",
+    "sector": "Velcar",
+    "region": "Outer Rim Territories",
+    "grid": "J-4",
+    "x": 10,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bevell",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bevin",
+    "sector": "Rolion",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bextar",
+    "sector": "Velcar",
+    "region": "Outer Rim Territories",
+    "grid": "J-4",
+    "x": 10,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bezha",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bezim",
+    "sector": "Vorc",
+    "region": "Mid Rim",
+    "grid": "J-7",
+    "x": 10,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Beznaz",
+    "sector": "Quiberon",
+    "region": "Outer Rim Territories",
+    "grid": "T-15",
+    "x": 20,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bhargebba",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bheriz",
+    "sector": "Bheriz",
+    "region": "Outer Rim Territories",
+    "grid": "U-10",
+    "x": 21,
+    "y": 10,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bhuna Sound",
+    "sector": "Yushan",
+    "region": "Mid Rim",
+    "grid": "K-17",
+    "x": 11,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bianas",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bid'jerma",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Biewa",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Biitu",
+    "sector": "Cassander (Tadrin)",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Biivren",
+    "sector": "Biivren",
+    "region": "Expansion Region",
+    "grid": "P-9",
+    "x": 16,
+    "y": 9,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bilbringi",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bilios",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Billaron",
+    "sector": "Chitarghar",
+    "region": "Expansion Region",
+    "grid": "K-15",
+    "x": 11,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bilzen",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "U-12",
+    "x": 21,
+    "y": 12,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bimin Three",
+    "sector": "Majoor",
+    "region": "Expansion Region",
+    "grid": "N-15",
+    "x": 14,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bimmiel",
+    "sector": "Kanz",
+    "region": "Outer Rim Territories",
+    "grid": "N-4",
+    "x": 14,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bimmisaari",
+    "sector": "Halla",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Binaros",
+    "sector": "Kathol",
+    "region": "Outer Rim Territories",
+    "grid": "M-21",
+    "x": 13,
+    "y": 21,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Binquaros",
+    "sector": "Ciutric",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Biravia",
+    "sector": "Venaarian",
+    "region": "Mid Rim",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Birba",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Birgis",
+    "sector": "Dalonbian",
+    "region": "Outer Rim Territories",
+    "grid": "M-3",
+    "x": 13,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Birix",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Birjis",
+    "sector": "Dalchon",
+    "region": "Outer Rim Territories",
+    "grid": "R-17",
+    "x": 18,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Birren",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Birsingrial",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Birukay",
+    "sector": "(Gardaji)",
+    "region": "Outer Rim Territories",
+    "grid": "M-1",
+    "x": 13,
+    "y": 1,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bisellia",
+    "sector": "Clacis",
+    "region": "Outer Rim Territories",
+    "grid": "K-4",
+    "x": 11,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Biskar",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "K-14",
+    "x": 11,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bissillirus",
+    "sector": "Trax",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bith",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bitmus Cloud",
+    "sector": "Wazta",
+    "region": "Outer Rim Territories",
+    "grid": "J-18",
+    "x": 10,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bittelari Cluster",
+    "sector": "Fath",
+    "region": "Outer Rim Territories",
+    "grid": "K-6",
+    "x": 11,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bivoli",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bizikia",
+    "sector": "Kwymar",
+    "region": "Outer Rim Territories",
+    "grid": "P-4",
+    "x": 16,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Black Bantha",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Black Delve, The",
+    "sector": "Har Worlds",
+    "region": "Expansion Region",
+    "grid": "J-16",
+    "x": 10,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Black Hole of Nakat",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Black Hole of Quintas",
+    "sector": "Kriz",
+    "region": "Outer Rim Territories",
+    "grid": "J-19",
+    "x": 10,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Black Nebula",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Black Widow Nebula",
+    "sector": "Calaron",
+    "region": "Outer Rim Territories",
+    "grid": "T-9",
+    "x": 20,
+    "y": 9,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Blackfel",
+    "sector": "Greater Plooriod",
+    "region": "Expansion Region",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Blacktar Cyst",
+    "sector": "Oktos",
+    "region": "Mid Rim",
+    "grid": "R-12",
+    "x": 18,
+    "y": 12,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Blair Cluster",
+    "sector": "Airam",
+    "region": "Outer Rim Territories",
+    "grid": "L-20",
+    "x": 12,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Blarrum",
+    "sector": "Mayagil",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Blathar",
+    "sector": "Yucrales",
+    "region": "Mid Rim",
+    "grid": "R-15",
+    "x": 18,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Blenjeel",
+    "sector": "Dufilvian",
+    "region": "Mid Rim",
+    "grid": "Q-15",
+    "x": 17,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bleuf",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Blimph",
+    "sector": "Kastolar",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Blood Nest",
+    "sector": "Halori",
+    "region": "Mid Rim",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bloxia",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-7",
+    "x": 9,
+    "y": 7,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Blutopia",
+    "sector": "Vensensor",
+    "region": "Expansion Region",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Blyte",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bnach",
+    "sector": "Calaron",
+    "region": "Outer Rim Territories",
+    "grid": "T-9",
+    "x": 20,
+    "y": 9,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bnar",
+    "sector": "Braxant",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boden",
+    "sector": "Videnda",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bodoria",
+    "sector": "Andirma",
+    "region": "Expansion Region",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bodrin",
+    "sector": "Elrood",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bofa",
+    "sector": "Steniplis",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bogano",
+    "sector": "Mieru'kar",
+    "region": "Outer Rim Territories",
+    "grid": "N-3",
+    "x": 14,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bogden",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-8",
+    "x": 13,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bogo Rai",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "E-8",
+    "x": 5,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Bogoa",
+    "sector": "Immerian Outback",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Boiyuh",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-9",
+    "x": 10,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bolad",
+    "sector": "Tharin",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bolbotarp",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Boldavia",
+    "sector": "Unknown",
+    "region": "Expansion Region",
+    "grid": "I-9",
+    "x": 9,
+    "y": 9,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Boledge",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bolenia",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Boltiga",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Boltrunia",
+    "sector": "Baxel",
+    "region": "Outer Rim Territories",
+    "grid": "U-11",
+    "x": 21,
+    "y": 11,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bomis Koori",
+    "sector": "Wornal",
+    "region": "Mid Rim",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bomodon",
+    "sector": "Churba",
+    "region": "Mid Rim",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bompreil",
+    "sector": "Demetras",
+    "region": "Outer Rim Territories",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bonadan",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-3",
+    "x": 19,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boneworld, The",
+    "sector": "Toblain",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bontormia",
+    "sector": "Bortele",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Boonta",
+    "sector": "Suolriep",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boordii",
+    "sector": "Sumitra",
+    "region": "Expansion Region",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Boosodia",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bootana Shagplan",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-10",
+    "x": 19,
+    "y": 10,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Boothi",
+    "sector": "Abrion",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boranall",
+    "sector": "Doldur",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Boranda",
+    "sector": "Manda",
+    "region": "Mid Rim",
+    "grid": "R-14",
+    "x": 18,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Borao",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Borcorash",
+    "sector": "Weneen",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Borga",
+    "sector": "Yminis",
+    "region": "Outer Rim Territories",
+    "grid": "S-14",
+    "x": 19,
+    "y": 14,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boriin",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Borkeen",
+    "sector": "Belsmuth",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Borkyne",
+    "sector": "Bes Ber Bikade",
+    "region": "Expansion Region",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Borlax",
+    "sector": "Jidlor Marches",
+    "region": "Mid Rim",
+    "grid": "J-16",
+    "x": 10,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Borleias",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Borloria",
+    "sector": "Dentari",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Borlov",
+    "sector": "Tunka",
+    "region": "Outer Rim Territories",
+    "grid": "J-19",
+    "x": 10,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bormea",
+    "sector": "Bormea",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bormter",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "H-14",
+    "x": 8,
+    "y": 14,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Bormus",
+    "sector": "Dustig",
+    "region": "Mid Rim",
+    "grid": "N-16",
+    "x": 14,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Boro-borosa",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bororn",
+    "sector": "Rseik",
+    "region": "Outer Rim Territories",
+    "grid": "N-20",
+    "x": 14,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Borosk",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bortele Cluster",
+    "sector": "Bortele",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bortras",
+    "sector": "Brema (Reithcas)",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boruga",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bos-Una",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "J-14",
+    "x": 10,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bosch",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-10",
+    "x": 11,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bosph",
+    "sector": "Bosph",
+    "region": "Outer Rim Territories",
+    "grid": "Q-3",
+    "x": 17,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bosthirda",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Botajef",
+    "sector": "Belsmuth",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bothawui",
+    "sector": "Bothan",
+    "region": "Mid Rim",
+    "grid": "R-14",
+    "x": 18,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bothsoliman",
+    "sector": "Hollan",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Botor",
+    "sector": "Botor Enclave",
+    "region": "Core Worlds",
+    "grid": "K-12",
+    "x": 11,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Boudolayz",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bovo Yagen",
+    "sector": "Kailion",
+    "region": "Expansion Region",
+    "grid": "O-13",
+    "x": 15,
+    "y": 13,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bowane Nebula",
+    "sector": "Tungra (Fand)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Boxer Point Station",
+    "sector": "Prackla",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Boz Pity",
+    "sector": "Halla",
+    "region": "Mid Rim",
+    "grid": "S-9",
+    "x": 19,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Boztrok",
+    "sector": "Aparo",
+    "region": "Outer Rim Territories",
+    "grid": "R-3",
+    "x": 18,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bpfassh",
+    "sector": "Sluis",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bracca",
+    "sector": "Lantillian",
+    "region": "Mid Rim",
+    "grid": "P-9",
+    "x": 16,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Braccio",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-5",
+    "x": 9,
+    "y": 5,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Brachi",
+    "sector": "Sertar",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brachnis Chorios",
+    "sector": "Meridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brackna",
+    "sector": "Doldur",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bracront",
+    "sector": "Tarabba",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bragkis",
+    "sector": "Belderone",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bramior",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Branteez",
+    "sector": "Tolonda",
+    "region": "Outer Rim Territories",
+    "grid": "Q-17",
+    "x": 17,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brask Oto",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "H-7",
+    "x": 8,
+    "y": 7,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Bravais",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bravis",
+    "sector": "Spadja",
+    "region": "Outer Rim Territories",
+    "grid": "R-5",
+    "x": 18,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bray",
+    "sector": "Piryn Shar",
+    "region": "Expansion Region",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Breeka",
+    "sector": "Cadavine",
+    "region": "Outer Rim Territories",
+    "grid": "P-17",
+    "x": 16,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brella Temior",
+    "sector": "Barma",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Brendok",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "Q-2",
+    "x": 17,
+    "y": 2,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Brentaal",
+    "sector": "Bormea",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bresallis",
+    "sector": "Cadma",
+    "region": "Outer Rim Territories",
+    "grid": "T-8",
+    "x": 20,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bresan",
+    "sector": "Kathol",
+    "region": "Outer Rim Territories",
+    "grid": "M-21",
+    "x": 13,
+    "y": 21,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Breshig",
+    "sector": "Mandalore",
+    "region": "Outer Rim Territories",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Breshkall",
+    "sector": "Khuiumin",
+    "region": "Outer Rim Territories",
+    "grid": "O-19",
+    "x": 15,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bresnia",
+    "sector": "Tandon",
+    "region": "Mid Rim",
+    "grid": "Q-14",
+    "x": 17,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Breta Yaga",
+    "sector": "Mieru'kar",
+    "region": "Outer Rim Territories",
+    "grid": "O-3",
+    "x": 15,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bretta",
+    "sector": "Ojoster",
+    "region": "Outer Rim Territories",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brevost",
+    "sector": "Brevost",
+    "region": "Expansion Region",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bri'ahl",
+    "sector": "Bri'ahl",
+    "region": "Outer Rim Territories",
+    "grid": "I-17",
+    "x": 9,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bri'n",
+    "sector": "Lothal",
+    "region": "Outer Rim Territories",
+    "grid": "U-7",
+    "x": 21,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bridin Anchorage",
+    "sector": "Portmoak",
+    "region": "Outer Rim Territories",
+    "grid": "P-18",
+    "x": 16,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brield",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Brightday",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Brigia",
+    "sector": "Tion Hegemony",
+    "region": "Outer Rim Territories",
+    "grid": "T-6",
+    "x": 20,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brink Station",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "O-3",
+    "x": 15,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Brint-wo",
+    "sector": "Koradin",
+    "region": "Outer Rim Territories",
+    "grid": "I-18",
+    "x": 9,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brintooin",
+    "sector": "Seswenna",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Briston",
+    "sector": "Shelsha",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Britaxis Minor",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Brix",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Brochiib",
+    "sector": "Trianii Space*",
+    "region": "Wild Space",
+    "grid": "S-3",
+    "x": 19,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Brodo Asogi",
+    "sector": "Perinn",
+    "region": "Outer Rim Territories",
+    "grid": "J-4",
+    "x": 10,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brodogon",
+    "sector": "Bozhnee",
+    "region": "Outer Rim Territories",
+    "grid": "L-18",
+    "x": 12,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Broest",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Brolsam",
+    "sector": "Kathol",
+    "region": "Outer Rim Territories",
+    "grid": "M-21",
+    "x": 13,
+    "y": 21,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bromlarch",
+    "sector": "Vish",
+    "region": "Mid Rim",
+    "grid": "O-16",
+    "x": 15,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bronsoon",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "P-6",
+    "x": 16,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bront",
+    "sector": "Svivreni",
+    "region": "Outer Rim Territories",
+    "grid": "O-19",
+    "x": 15,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brosi",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-3",
+    "x": 19,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brunet",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bruvia",
+    "sector": "Harron Marches",
+    "region": "Expansion Region",
+    "grid": "P-11",
+    "x": 16,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Bryexx",
+    "sector": "Varvenna",
+    "region": "Colonies",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Bryndar",
+    "sector": "Dalicron",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Brynnaria",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Bryx",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bseto",
+    "sector": "Msst",
+    "region": "Mid Rim",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Buamlon Central",
+    "sector": "Esstran",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bubble of the Lost",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "O-3",
+    "x": 15,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Buchich",
+    "sector": "Calamari",
+    "region": "Outer Rim Territories",
+    "grid": "U-6",
+    "x": 21,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Budpock",
+    "sector": "Meridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bulano",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Bundil",
+    "sector": "Ferra",
+    "region": "Outer Rim Territories",
+    "grid": "S-16",
+    "x": 19,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bundim",
+    "sector": "Trax",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bunduki",
+    "sector": "Pacanth Reach",
+    "region": "Outer Rim Territories",
+    "grid": "H-16",
+    "x": 8,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bunka",
+    "sector": "Illisurevimurasi",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Buoyant",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "J-14",
+    "x": 10,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Burna",
+    "sector": "Cademimu",
+    "region": "Outer Rim Territories",
+    "grid": "L-6",
+    "x": 12,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Burnin Konn",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Burnsi",
+    "sector": "Dustig",
+    "region": "Mid Rim",
+    "grid": "N-16",
+    "x": 14,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bursant",
+    "sector": "Taldot",
+    "region": "Mid Rim",
+    "grid": "Q-9",
+    "x": 17,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Burska",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "I-7",
+    "x": 9,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Bursoll",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "H-17",
+    "x": 8,
+    "y": 17,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Burundang",
+    "sector": "Harron",
+    "region": "Expansion Region",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Buruunin",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Byblos",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Byllura",
+    "sector": "Grumani",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Bynarria",
+    "sector": "Lantillian",
+    "region": "Mid Rim",
+    "grid": "P-8",
+    "x": 16,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Byrnum Maw",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Byrsym",
+    "sector": "Paqwepori",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Byss",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "K-11",
+    "x": 11,
+    "y": 11,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "C-Foroon",
+    "sector": "Arkanis",
+    "region": "Outer Rim Territories",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caamas",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Caaraz",
+    "sector": "Stensen",
+    "region": "Outer Rim Territories",
+    "grid": "H-17",
+    "x": 8,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caarimon",
+    "sector": "Meridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caarsin Station",
+    "sector": "Lannik Wilds",
+    "region": "Mid Rim",
+    "grid": "R-13",
+    "x": 18,
+    "y": 13,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cabarria",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cadannia",
+    "sector": "Msst",
+    "region": "Mid Rim",
+    "grid": "P-7",
+    "x": 16,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cademimu",
+    "sector": "Cademimu",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cadinth",
+    "sector": "Allied Tion",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cadma",
+    "sector": "Centrality",
+    "region": "Outer Rim Territories",
+    "grid": "T-8",
+    "x": 20,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cadomai",
+    "sector": "Aparo (Catarlo)",
+    "region": "Outer Rim Territories",
+    "grid": "R-3",
+    "x": 18,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cal-Seti",
+    "sector": "Torranix",
+    "region": "Core Worlds",
+    "grid": "K-10",
+    "x": 11,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Calabar",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Calabosh",
+    "sector": "Arc d'Stot",
+    "region": "Expansion Region",
+    "grid": "K-15",
+    "x": 11,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Calast",
+    "sector": "Grohl",
+    "region": "Outer Rim Territories",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calcoraan",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Calderos Station",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caldoni",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Caldra Prime",
+    "sector": "Ado",
+    "region": "Mid Rim",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caldra Tertius",
+    "sector": "Ado",
+    "region": "Mid Rim",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Calfa",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Calgon",
+    "sector": "Meridian",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caliban",
+    "sector": "Savareen",
+    "region": "Outer Rim Territories",
+    "grid": "Q-17",
+    "x": 17,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calior",
+    "sector": "Seitia",
+    "region": "Outer Rim Territories",
+    "grid": "K-20",
+    "x": 11,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calipsa",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Calladus",
+    "sector": "Ojoster",
+    "region": "Outer Rim Territories",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calline",
+    "sector": "Dail",
+    "region": "Outer Rim Territories",
+    "grid": "Q-18",
+    "x": 17,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Callonia",
+    "sector": "Fakir",
+    "region": "Colonies",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Callos",
+    "sector": "Brema",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calonica",
+    "sector": "Vensensor",
+    "region": "Expansion Region",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Caloria",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Caltinia",
+    "sector": "Senex",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caltrop Belt",
+    "sector": "Elrood",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Calumdarian",
+    "sector": "Immalia",
+    "region": "Expansion Region",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Calus",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Caluula",
+    "sector": "Tion Hegemony",
+    "region": "Outer Rim Territories",
+    "grid": "T-6",
+    "x": 20,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Camaria",
+    "sector": "Tarabba",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Camblia",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cambria",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Camden",
+    "sector": "Morshdine",
+    "region": "Outer Rim Territories",
+    "grid": "O-5",
+    "x": 15,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Camen",
+    "sector": "Tamarin",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Camson",
+    "sector": "Abrion",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Camus",
+    "sector": "Illisurevimurasi",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Canastra",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-10",
+    "x": 11,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Candoria",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Candovant",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Canoliss",
+    "sector": "Sluis",
+    "region": "Outer Rim Territories",
+    "grid": "M-19",
+    "x": 13,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Canti",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cantonica",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cantras Gola",
+    "sector": "Perinn",
+    "region": "Outer Rim Territories",
+    "grid": "J-4",
+    "x": 10,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cantros",
+    "sector": "Saijo",
+    "region": "Outer Rim Territories",
+    "grid": "J-20",
+    "x": 10,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Canyon",
+    "sector": "Montitian Grant",
+    "region": "Expansion Region",
+    "grid": "J-15",
+    "x": 10,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Capella",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caphexdis",
+    "sector": "Homon",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caprioril",
+    "sector": "Dolomar",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Capza",
+    "sector": "Velcar",
+    "region": "Outer Rim Territories",
+    "grid": "K-4",
+    "x": 11,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caraad",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Caragon-Viner",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Carajam",
+    "sector": "Dalonbian",
+    "region": "Outer Rim Territories",
+    "grid": "M-3",
+    "x": 13,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caramm",
+    "sector": "Talcene",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caranthanax",
+    "sector": "Wazta",
+    "region": "Outer Rim Territories",
+    "grid": "J-18",
+    "x": 10,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caraxl",
+    "sector": "Cassander",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carbos",
+    "sector": "Roche",
+    "region": "Mid Rim",
+    "grid": "Q-8",
+    "x": 17,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Carburo",
+    "sector": "Itopol",
+    "region": "Expansion Region",
+    "grid": "K-15",
+    "x": 11,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Carcel",
+    "sector": "Locris",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Carconth",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Cardekkia",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Cardellia",
+    "sector": "Ojoster",
+    "region": "Outer Rim Territories",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cardo Minor",
+    "sector": "Meerian",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cardogia",
+    "sector": "Tashtor",
+    "region": "Mid Rim",
+    "grid": "J-16",
+    "x": 10,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cardooine",
+    "sector": "Jospro",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cardovyte",
+    "sector": "Oricho",
+    "region": "Outer Rim Territories",
+    "grid": "M-6",
+    "x": 13,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cardua",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Carest",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cargamalis",
+    "sector": "Bruanii",
+    "region": "Mid Rim",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Carida",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Carlac",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carlania",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Carlem",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Carlix's Folly",
+    "sector": "Tharin",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carmeen",
+    "sector": "Altier",
+    "region": "Expansion Region",
+    "grid": "O-13",
+    "x": 15,
+    "y": 13,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Carnelion",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Carnovia",
+    "sector": "M'shinni",
+    "region": "Hutt Space",
+    "grid": "S-12",
+    "x": 19,
+    "y": 12,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Carnth",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Carosi",
+    "sector": "Nembus",
+    "region": "Outer Rim Territories",
+    "grid": "P-4",
+    "x": 16,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carpagia",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Carpastor",
+    "sector": "Rolion",
+    "region": "Outer Rim Territories",
+    "grid": "Q-7",
+    "x": 17,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carrandar",
+    "sector": "Secundus Portmoak",
+    "region": "Outer Rim Territories",
+    "grid": "P-18",
+    "x": 16,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carratos",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Carreras",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carrivar",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "G-9",
+    "x": 7,
+    "y": 9,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Carruthia",
+    "sector": "D'Astan",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Carsanza",
+    "sector": "Juvex",
+    "region": "Mid Rim",
+    "grid": "L-17",
+    "x": 12,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cartao",
+    "sector": "Prackla",
+    "region": "Expansion Region",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Carto",
+    "sector": "Surron",
+    "region": "Expansion Region",
+    "grid": "O-13",
+    "x": 15,
+    "y": 13,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cartusio",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "J-12",
+    "x": 10,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Carvandir",
+    "sector": "Carvandir",
+    "region": "Expansion Region",
+    "grid": "J-7",
+    "x": 10,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Carz",
+    "sector": "Svivreni",
+    "region": "Outer Rim Territories",
+    "grid": "O-20",
+    "x": 15,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Casfield",
+    "sector": "Tennuutta",
+    "region": "Mid Rim",
+    "grid": "Q-7",
+    "x": 17,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caska",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cassander",
+    "sector": "Cassander",
+    "region": "Outer Rim Territories",
+    "grid": "K-5",
+    "x": 11,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cassidode",
+    "sector": "Aparo",
+    "region": "Outer Rim Territories",
+    "grid": "R-3",
+    "x": 18,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Castell",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Castilon",
+    "sector": "Tashtor",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cataalda",
+    "sector": "Onatos",
+    "region": "Mid Rim",
+    "grid": "R-15",
+    "x": 18,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cataract of Moons",
+    "sector": "Tungra (Fand)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cathar",
+    "sector": "Quelii",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cathis",
+    "sector": "Jjannex",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Catlia",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "G-8",
+    "x": 7,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Cato Neimoidia",
+    "sector": "Quellor",
+    "region": "Colonies",
+    "grid": "N-11",
+    "x": 14,
+    "y": 11,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cattamascar",
+    "sector": "Bakura",
+    "region": "Outer Rim Territories",
+    "grid": "G-16",
+    "x": 7,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caulbon",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-14",
+    "x": 12,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cauldron Nebula",
+    "sector": "Corva",
+    "region": "Outer Rim Territories",
+    "grid": "P-3",
+    "x": 16,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Caulus Tertius",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-8",
+    "x": 13,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cauper",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Caursito",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "K-8",
+    "x": 11,
+    "y": 8,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cavaell",
+    "sector": "Emmo",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Cavamina",
+    "sector": "Doldur",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Caviness",
+    "sector": "Charra",
+    "region": "Expansion Region",
+    "grid": "P-14",
+    "x": 16,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cedonne",
+    "sector": "Dononter",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cedre",
+    "sector": "Quelii",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cedrell",
+    "sector": "Emmo",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Cegul",
+    "sector": "Cegul",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ceiran",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Ceitia",
+    "sector": "Bryx",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cejansij",
+    "sector": "Halla",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cel Amiin",
+    "sector": "Cantons of Lahag",
+    "region": "Expansion Region",
+    "grid": "J-15",
+    "x": 10,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Celanon",
+    "sector": "D'Astan",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Celdaru",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-8",
+    "x": 9,
+    "y": 8,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Celegia",
+    "sector": "Noori",
+    "region": "Expansion Region",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Celen",
+    "sector": "Elochar",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Celes",
+    "sector": "Herdessa",
+    "region": "Mid Rim",
+    "grid": "Q-16",
+    "x": 17,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "\"Celestial Wake, The\"",
+    "sector": "Kriz",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Celsor",
+    "sector": "Hook Nebula",
+    "region": "Outer Rim Territories",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Celwis",
+    "sector": "Unknown",
+    "region": "Unknown Regions",
+    "grid": "F-8",
+    "x": 6,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Centares",
+    "sector": "Maldrood",
+    "region": "Mid Rim",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Centori",
+    "sector": "Iskin",
+    "region": "Mid Rim",
+    "grid": "O-16",
+    "x": 15,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cerberon",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Cerea",
+    "sector": "Semagi",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cerenia",
+    "sector": "Mbandamonte",
+    "region": "Expansion Region",
+    "grid": "N-15",
+    "x": 14,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cerifisis",
+    "sector": "Varada",
+    "region": "Outer Rim Territories",
+    "grid": "I-19",
+    "x": 9,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cerilia",
+    "sector": "Xappyh",
+    "region": "Outer Rim Territories",
+    "grid": "Q-3",
+    "x": 17,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ceriun",
+    "sector": "Nuiri",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cermau",
+    "sector": "Bakura",
+    "region": "Outer Rim Territories",
+    "grid": "H-16",
+    "x": 8,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cerosha",
+    "sector": "Jospro",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cerroban",
+    "sector": "Bon'nyuw-Luq",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "CeSai",
+    "sector": "Illisurevimurasi",
+    "region": "Outer Rim Territories",
+    "grid": "Q-4",
+    "x": 17,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cesya",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Ceti 597",
+    "sector": "Hollan",
+    "region": "Mid Rim",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cezith",
+    "sector": "Clacis",
+    "region": "Outer Rim Territories",
+    "grid": "K-4",
+    "x": 11,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ch'hodos",
+    "sector": "Esstran (Sith Worlds)",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Ch'manss",
+    "sector": "Var Hagen",
+    "region": "Mid Rim",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Ch'zimi'kho",
+    "sector": "Zeemacht Cluster",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chaaktil",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chaastern",
+    "sector": "Shelsha",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Chabosh",
+    "sector": "Lahara",
+    "region": "Outer Rim Territories",
+    "grid": "M-5",
+    "x": 13,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chad",
+    "sector": "Jospro",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chadawa",
+    "sector": "Croynar",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chagar",
+    "sector": "Khuiumin",
+    "region": "Outer Rim Territories",
+    "grid": "O-19",
+    "x": 15,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chagaria",
+    "sector": "Danjar",
+    "region": "Outer Rim Territories",
+    "grid": "N-18",
+    "x": 14,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chal Hudda",
+    "sector": "Garis",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chalacta",
+    "sector": "Metatessu",
+    "region": "Mid Rim",
+    "grid": "R-10",
+    "x": 18,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chalcedon",
+    "sector": "Tashtor",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Challon",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Chamble",
+    "sector": "Mytaranor",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chamm",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Champala",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "L-8",
+    "x": 12,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Champat",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Chanceuxi",
+    "sector": "Kanz",
+    "region": "Outer Rim Territories",
+    "grid": "N-4",
+    "x": 14,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chandaar",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chandar's Folly",
+    "sector": "Saijo",
+    "region": "Outer Rim Territories",
+    "grid": "J-20",
+    "x": 10,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chandel",
+    "sector": "Ojoster",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chandrila",
+    "sector": "Bormea",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Changa",
+    "sector": "Tolonda",
+    "region": "Outer Rim Territories",
+    "grid": "Q-18",
+    "x": 17,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chankin",
+    "sector": "Jidlor Marches",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chanosant",
+    "sector": "Harron",
+    "region": "Expansion Region",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Charbodia",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chardaan",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chardis",
+    "sector": "Trilon",
+    "region": "Outer Rim Territories",
+    "grid": "H-16",
+    "x": 8,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Charenthoth",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Chargona",
+    "sector": "Citlik",
+    "region": "Expansion Region",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Charis",
+    "sector": "Kathol",
+    "region": "Outer Rim Territories",
+    "grid": "M-21",
+    "x": 13,
+    "y": 21,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Charissia",
+    "sector": "Bartahn",
+    "region": "Inner Rim",
+    "grid": "L-15",
+    "x": 12,
+    "y": 15,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Charmath",
+    "sector": "Farrfin",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Charra",
+    "sector": "Charra",
+    "region": "Expansion Region",
+    "grid": "P-14",
+    "x": 16,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Charros",
+    "sector": "Numesira",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Charubah",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chashima",
+    "sector": "Auril",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chasidron Shoals",
+    "sector": "Bortele",
+    "region": "Mid Rim",
+    "grid": "R-8",
+    "x": 18,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chasin",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Chasmeene",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-10",
+    "x": 15,
+    "y": 10,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chateuse",
+    "sector": "Tungra",
+    "region": "Outer Rim Territories",
+    "grid": "K-19",
+    "x": 11,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chaykin",
+    "sector": "Chaykin",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Chazwa",
+    "sector": "Orus",
+    "region": "Inner Rim",
+    "grid": "N-8",
+    "x": 14,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cheedoa",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cheelit",
+    "sector": "Semagi",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cheeyoom Matee",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Chekria",
+    "sector": "Shelsha",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cheku",
+    "sector": "Brevost",
+    "region": "Expansion Region",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Chelleya",
+    "sector": "Seswenna",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chelloa",
+    "sector": "Grumani",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chemvau",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Chenley Prime",
+    "sector": "Savareen",
+    "region": "Outer Rim Territories",
+    "grid": "Q-17",
+    "x": 17,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chennis",
+    "sector": "Greater Plooriod",
+    "region": "Expansion Region",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Chenowei",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-5",
+    "x": 17,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cheravh",
+    "sector": "Mandalore",
+    "region": "Outer Rim Territories",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cherridan",
+    "sector": "Belnar",
+    "region": "Colonies",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cheruba",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chespea",
+    "sector": "Rayter (Berenge)",
+    "region": "Outer Rim Territories",
+    "grid": "J-19",
+    "x": 10,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chestrashus",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "Q-3",
+    "x": 17,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Chibbier",
+    "sector": "Stensen",
+    "region": "Outer Rim Territories",
+    "grid": "I-17",
+    "x": 9,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chibias",
+    "sector": "Sombure",
+    "region": "Mid Rim",
+    "grid": "K-17",
+    "x": 11,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chiloon Rift",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "O-3",
+    "x": 15,
+    "y": 3,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Chiron",
+    "sector": "Ash Worlds",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chirrion",
+    "sector": "Rolion",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Choah",
+    "sector": "Mortex",
+    "region": "Outer Rim Territories",
+    "grid": "S-5",
+    "x": 19,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Choi",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "M-13",
+    "x": 13,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chokan",
+    "sector": "Maerdocian",
+    "region": "Mid Rim",
+    "grid": "Q-13",
+    "x": 17,
+    "y": 13,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chol Nebula",
+    "sector": "Unknown",
+    "region": "Outer Rim Territories",
+    "grid": "T-5",
+    "x": 20,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cholganna",
+    "sector": "Unknown",
+    "region": "Outer Rim Territories",
+    "grid": "T-5",
+    "x": 20,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chommell Minor",
+    "sector": "Chommell",
+    "region": "Mid Rim",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chonsetta",
+    "sector": "Metatessu",
+    "region": "Mid Rim",
+    "grid": "R-9",
+    "x": 18,
+    "y": 9,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chorax",
+    "sector": "Rachuk",
+    "region": "Colonies",
+    "grid": "N-11",
+    "x": 14,
+    "y": 11,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Chorgad",
+    "sector": "Fei Hu",
+    "region": "Mid Rim",
+    "grid": "Q-13",
+    "x": 17,
+    "y": 13,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chorin",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chorra",
+    "sector": "Bamula",
+    "region": "Inner Rim",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chortose",
+    "sector": "Rseik",
+    "region": "Outer Rim Territories",
+    "grid": "N-20",
+    "x": 14,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chosper",
+    "sector": "Hapes Cluster",
+    "region": "Inner Rim",
+    "grid": "O-9",
+    "x": 15,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Choss",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "J-13",
+    "x": 10,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Chrellis",
+    "sector": "Lahara",
+    "region": "Outer Rim Territories",
+    "grid": "M-5",
+    "x": 13,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chrelythiumn",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "K-2",
+    "x": 11,
+    "y": 2,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Chrenthoan Abyss",
+    "sector": "Chrenthoa",
+    "region": "Inner Rim",
+    "grid": "J-14",
+    "x": 10,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Christophsis",
+    "sector": "Savareen",
+    "region": "Outer Rim Territories",
+    "grid": "Q-16",
+    "x": 17,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chroma Zed",
+    "sector": "Maerdocian",
+    "region": "Mid Rim",
+    "grid": "Q-12",
+    "x": 17,
+    "y": 12,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chroman",
+    "sector": "D'Aelgoth",
+    "region": "Mid Rim",
+    "grid": "K-17",
+    "x": 11,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chrome Citadel",
+    "sector": "Harron",
+    "region": "Expansion Region",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Chromovon",
+    "sector": "Nembus",
+    "region": "Outer Rim Territories",
+    "grid": "P-4",
+    "x": 16,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chrona",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Chryya",
+    "sector": "Dustig",
+    "region": "Mid Rim",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Chundu",
+    "sector": "Cegul",
+    "region": "Outer Rim Territories",
+    "grid": "L-20",
+    "x": 12,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Churr",
+    "sector": "Quellor",
+    "region": "Colonies",
+    "grid": "N-12",
+    "x": 14,
+    "y": 12,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Churruma",
+    "sector": "Velcar",
+    "region": "Outer Rim Territories",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chuzalla",
+    "sector": "Tammuz",
+    "region": "Outer Rim Territories",
+    "grid": "T-14",
+    "x": 20,
+    "y": 14,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Chyron",
+    "sector": "Har Worlds",
+    "region": "Expansion Region",
+    "grid": "J-16",
+    "x": 10,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cianap",
+    "sector": "Piryn Shar",
+    "region": "Expansion Region",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Ciaox Verith",
+    "sector": "Croynar",
+    "region": "Inner Rim",
+    "grid": "M-14",
+    "x": 13,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cificap",
+    "sector": "Herdessa",
+    "region": "Mid Rim",
+    "grid": "Q-16",
+    "x": 17,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cilare",
+    "sector": "Veragi",
+    "region": "Outer Rim Territories",
+    "grid": "K-3",
+    "x": 11,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cilpar",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cimarosa",
+    "sector": "Irnaj",
+    "region": "Mid Rim",
+    "grid": "K-17",
+    "x": 11,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cinnabar",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Cioral",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "F-8",
+    "x": 6,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Cioran",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-12",
+    "x": 12,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Ciratu",
+    "sector": "Immerian Outback",
+    "region": "Expansion Region",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Circarpous",
+    "sector": "Circarpous",
+    "region": "Expansion Region",
+    "grid": "O-12",
+    "x": 15,
+    "y": 12,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Circumtore",
+    "sector": "Unknown",
+    "region": "Hutt Space",
+    "grid": "S-12",
+    "x": 19,
+    "y": 12,
+    "color": "#00FF00"
+  },
+  {
+    "name": "Cirilia",
+    "sector": "Lannik Space",
+    "region": "Mid Rim",
+    "grid": "R-13",
+    "x": 18,
+    "y": 13,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cirra",
+    "sector": "Brak",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cirrus",
+    "sector": "Dantus",
+    "region": "Outer Rim Territories",
+    "grid": "J-6",
+    "x": 10,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cirtappa",
+    "sector": "Alui",
+    "region": "Mid Rim",
+    "grid": "O-17",
+    "x": 15,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cirus",
+    "sector": "Arkanis",
+    "region": "Outer Rim Territories",
+    "grid": "R-17",
+    "x": 18,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Citlik",
+    "sector": "Citlik",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Ciutric",
+    "sector": "Ciutric",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Clabron",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Claer",
+    "sector": "Sern",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Clak'dor",
+    "sector": "Mayagil",
+    "region": "Outer Rim Territories",
+    "grid": "M-18",
+    "x": 13,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Clantaano",
+    "sector": "Albanin",
+    "region": "Outer Rim Territories",
+    "grid": "U-12",
+    "x": 21,
+    "y": 12,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Clar, The",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "I-20",
+    "x": 9,
+    "y": 20,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Clariv",
+    "sector": "Tion Hegemony",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Clear View",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "U-13",
+    "x": 21,
+    "y": 13,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Clendor",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Clerion",
+    "sector": "Palamut",
+    "region": "Expansion Region",
+    "grid": "N-13",
+    "x": 14,
+    "y": 13,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cloak of the Sith, The",
+    "sector": "Abrion",
+    "region": "Outer Rim Territories",
+    "grid": "S-15",
+    "x": 19,
+    "y": 15,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Clyne",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Clysm",
+    "sector": "D'Astan",
+    "region": "Outer Rim Territories",
+    "grid": "O-5",
+    "x": 15,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cmaoli Di",
+    "sector": "Brema",
+    "region": "Outer Rim Territories",
+    "grid": "M-17",
+    "x": 13,
+    "y": 17,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Coachelle",
+    "sector": "Terr'skiar",
+    "region": "Mid Rim",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cobal",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-13",
+    "x": 11,
+    "y": 13,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Codia",
+    "sector": "Unknown",
+    "region": "Mid Rim",
+    "grid": "H-15",
+    "x": 8,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cog Hive Seven",
+    "sector": "Tharin",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cole-Haddon",
+    "sector": "Dalonbian",
+    "region": "Outer Rim Territories",
+    "grid": "M-3",
+    "x": 13,
+    "y": 3,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Colla",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Collus",
+    "sector": "Thuldin's Grant",
+    "region": "Expansion Region",
+    "grid": "J-15",
+    "x": 10,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Colonial Station Camco",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "F-8",
+    "x": 6,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Colonial Station Chaf",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "F-9",
+    "x": 6,
+    "y": 9,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Cols",
+    "sector": "Kastolar",
+    "region": "Mid Rim",
+    "grid": "Q-10",
+    "x": 17,
+    "y": 10,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Colsassa",
+    "sector": "Jospro",
+    "region": "Outer Rim Territories",
+    "grid": "R-7",
+    "x": 18,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Columex",
+    "sector": "Vorzyd",
+    "region": "Outer Rim Territories",
+    "grid": "R-6",
+    "x": 18,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Columus",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Colunda Prime",
+    "sector": "Phelleem (Colunda)",
+    "region": "Outer Rim Territories",
+    "grid": "S-7",
+    "x": 19,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Comantira",
+    "sector": "Atravis",
+    "region": "Outer Rim Territories",
+    "grid": "L-19",
+    "x": 12,
+    "y": 19,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cometwash, The",
+    "sector": "Gordian Reach",
+    "region": "Outer Rim Territories",
+    "grid": "Q-6",
+    "x": 17,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Comkin",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-7",
+    "x": 14,
+    "y": 7,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Commenor",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-10",
+    "x": 14,
+    "y": 10,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Comra",
+    "sector": "Prefsbelt",
+    "region": "Outer Rim Territories",
+    "grid": "J-5",
+    "x": 10,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cona",
+    "sector": "Inner Cluster",
+    "region": "Inner Rim",
+    "grid": "O-11",
+    "x": 15,
+    "y": 11,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Concord Dawn",
+    "sector": "Mandalore",
+    "region": "Outer Rim Territories",
+    "grid": "O-7",
+    "x": 15,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Condular",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Conjenus",
+    "sector": "Vish",
+    "region": "Mid Rim",
+    "grid": "N-16",
+    "x": 14,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Constancia",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "K-12",
+    "x": 11,
+    "y": 12,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Contruum",
+    "sector": "Truum",
+    "region": "Mid Rim",
+    "grid": "O-8",
+    "x": 15,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Coonee",
+    "sector": "Brevost",
+    "region": "Expansion Region",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Coorimbus",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Copero",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "F-9",
+    "x": 6,
+    "y": 9,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Cophrigin",
+    "sector": "Ash Worlds",
+    "region": "Outer Rim Territories",
+    "grid": "T-7",
+    "x": 20,
+    "y": 7,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Copperline",
+    "sector": "Vatha",
+    "region": "Expansion Region",
+    "grid": "K-16",
+    "x": 11,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Copul",
+    "sector": "Pallis",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cor I",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cor II",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Cor III",
+    "sector": "Tapani",
+    "region": "Colonies",
+    "grid": "L-13",
+    "x": 12,
+    "y": 13,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Corann",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-9",
+    "x": 13,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corbantis",
+    "sector": "Chaykin",
+    "region": "Expansion Region",
+    "grid": "O-14",
+    "x": 15,
+    "y": 14,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Corbett Cluster",
+    "sector": "Corbett",
+    "region": "Mid Rim",
+    "grid": "I-17",
+    "x": 9,
+    "y": 17,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Corbos",
+    "sector": "Esstran",
+    "region": "Outer Rim Territories",
+    "grid": "Q-5",
+    "x": 17,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cordes",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Cordota",
+    "sector": "Lantillian",
+    "region": "Mid Rim",
+    "grid": "P-8",
+    "x": 16,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Corellia",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corfai",
+    "sector": "Corellian",
+    "region": "Core Worlds",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corg",
+    "sector": "Unknown",
+    "region": "Wild Space",
+    "grid": "O-20",
+    "x": 15,
+    "y": 20,
+    "color": "#AA00AA"
+  },
+  {
+    "name": "Coriallis",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corips",
+    "sector": "Unknown",
+    "region": "Inner Rim",
+    "grid": "N-14",
+    "x": 14,
+    "y": 14,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Corjain",
+    "sector": "Kathol",
+    "region": "Outer Rim Territories",
+    "grid": "M-21",
+    "x": 13,
+    "y": 21,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corlaasi",
+    "sector": "Minos Cluster",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corlass",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corlax",
+    "sector": "Allied Tion",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corlus",
+    "sector": "Woostri",
+    "region": "Expansion Region",
+    "grid": "M-16",
+    "x": 13,
+    "y": 16,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cormit",
+    "sector": "Chiss Space*",
+    "region": "Unknown Regions",
+    "grid": "F-8",
+    "x": 6,
+    "y": 8,
+    "color": "#FF00FF"
+  },
+  {
+    "name": "Cornesia",
+    "sector": "Manda",
+    "region": "Mid Rim",
+    "grid": "R-14",
+    "x": 18,
+    "y": 14,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Coronar",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Corosi",
+    "sector": "Corosi",
+    "region": "Outer Rim Territories",
+    "grid": "N-6",
+    "x": 14,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corphelion",
+    "sector": "Corpheli",
+    "region": "Expansion Region",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Corrdair",
+    "sector": "Hevvrol",
+    "region": "Mid Rim",
+    "grid": "O-15",
+    "x": 15,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Corrida",
+    "sector": "Corridan",
+    "region": "Core Worlds",
+    "grid": "J-10",
+    "x": 10,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corroth",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Corsin",
+    "sector": "Greater Plooriod",
+    "region": "Expansion Region",
+    "grid": "M-7",
+    "x": 13,
+    "y": 7,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Corson Prime",
+    "sector": "Tharin (Periphery)",
+    "region": "Outer Rim Territories",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corstris",
+    "sector": "Quelii",
+    "region": "Outer Rim Territories",
+    "grid": "O-6",
+    "x": 15,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cortella",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-9",
+    "x": 11,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corthenia",
+    "sector": "Corthenia",
+    "region": "Mid Rim",
+    "grid": "K-7",
+    "x": 11,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cortilium Major",
+    "sector": "Eucer",
+    "region": "Mid Rim",
+    "grid": "Q-7",
+    "x": 17,
+    "y": 7,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cortina",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-12",
+    "x": 11,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corulag",
+    "sector": "Bormea",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corus",
+    "sector": "Wyl",
+    "region": "Outer Rim Territories",
+    "grid": "S-4",
+    "x": 19,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Coruscant",
+    "sector": "Corusca (Coruscant)",
+    "region": "Core Worlds",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Coruschal",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "K-10",
+    "x": 11,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Coruscul",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "L-10",
+    "x": 12,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corutarn",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-10",
+    "x": 13,
+    "y": 10,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Corva",
+    "sector": "Corva",
+    "region": "Outer Rim Territories",
+    "grid": "P-4",
+    "x": 16,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corva Yag",
+    "sector": "Rseik",
+    "region": "Outer Rim Territories",
+    "grid": "N-20",
+    "x": 14,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corvanni",
+    "sector": "Neshig",
+    "region": "Inner Rim",
+    "grid": "N-9",
+    "x": 14,
+    "y": 9,
+    "color": "#6666FF"
+  },
+  {
+    "name": "Corvis Minor",
+    "sector": "Ciutric",
+    "region": "Outer Rim Territories",
+    "grid": "N-5",
+    "x": 14,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corvus",
+    "sector": "Cronese Mandate",
+    "region": "Outer Rim Territories",
+    "grid": "S-6",
+    "x": 19,
+    "y": 6,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Corweillia",
+    "sector": "Corweillian",
+    "region": "Mid Rim",
+    "grid": "P-15",
+    "x": 16,
+    "y": 15,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Cosia",
+    "sector": "Unknown",
+    "region": "Deep Core",
+    "grid": "M-11",
+    "x": 13,
+    "y": 11,
+    "color": "#00FFFF"
+  },
+  {
+    "name": "Cosmatanic Steppes",
+    "sector": "Grohl",
+    "region": "Outer Rim Territories",
+    "grid": "R-16",
+    "x": 18,
+    "y": 16,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cotellier",
+    "sector": "Rseik",
+    "region": "Outer Rim Territories",
+    "grid": "N-20",
+    "x": 14,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Coth Fuuras",
+    "sector": "Deadalis",
+    "region": "Expansion Region",
+    "grid": "J-8",
+    "x": 10,
+    "y": 8,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Coto-Xana",
+    "sector": "Unknown",
+    "region": "Colonies",
+    "grid": "L-9",
+    "x": 12,
+    "y": 9,
+    "color": "#00AAFF"
+  },
+  {
+    "name": "Council",
+    "sector": "Javin (Anoat)",
+    "region": "Outer Rim Territories",
+    "grid": "K-18",
+    "x": 11,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Couronne",
+    "sector": "Couronne",
+    "region": "Expansion Region",
+    "grid": "P-10",
+    "x": 16,
+    "y": 10,
+    "color": "#FFC800"
+  },
+  {
+    "name": "Cousault",
+    "sector": "Semagi",
+    "region": "Mid Rim",
+    "grid": "I-16",
+    "x": 9,
+    "y": 16,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Coveway",
+    "sector": "Koradin",
+    "region": "Outer Rim Territories",
+    "grid": "I-18",
+    "x": 9,
+    "y": 18,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Cowl Crucible",
+    "sector": "Oricho",
+    "region": "Outer Rim Territories",
+    "grid": "M-5",
+    "x": 13,
+    "y": 5,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Coxixia",
+    "sector": "Unknown",
+    "region": "Core Worlds",
+    "grid": "M-12",
+    "x": 13,
+    "y": 12,
+    "color": "#4444FF"
+  },
+  {
+    "name": "Coyerti",
+    "sector": "Bortele",
+    "region": "Mid Rim",
+    "grid": "S-8",
+    "x": 19,
+    "y": 8,
+    "color": "#FFAA00"
+  },
+  {
+    "name": "Coyn",
+    "sector": "Elrood",
+    "region": "Outer Rim Territories",
+    "grid": "M-20",
+    "x": 13,
+    "y": 20,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Craci",
+    "sector": "Corporate Sector",
+    "region": "Outer Rim Territories",
+    "grid": "R-4",
+    "x": 18,
+    "y": 4,
+    "color": "#FF4444"
+  },
+  {
+    "name": "Crait",
+    "sector": "Bon'nyuw-Luq",
+    "region": "Outer Rim Territories",
+    "grid": "N-17",
+    "x": 14,
+    "y": 17,
+    "color": "#FF4444"
   }
 ]
