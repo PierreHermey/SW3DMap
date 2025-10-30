@@ -596,10 +596,26 @@ class GalaxyViewer {
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-		const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+
+		// Chercher les intersections avec TOUS les objets
+		const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
 		if (intersects.length > 0) {
-			this.focusOnPlanet(intersects[0].object);
+			// Trouver la première intersection valide
+			for (let intersection of intersects) {
+				let targetMesh = intersection.object;
+
+				// Si c'est un élément enfant (halo, anneau, orbite), trouver la planète parente
+				if (targetMesh.parent && targetMesh.parent.userData && targetMesh.parent.userData.region) {
+					targetMesh = targetMesh.parent;
+				}
+
+				// Vérifier si c'est une planète
+				if (targetMesh.userData && targetMesh.userData.name && this.planetMeshes.includes(targetMesh)) {
+					this.focusOnPlanet(targetMesh);
+					return;
+				}
+			}
 		}
 	}
 
