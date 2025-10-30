@@ -323,6 +323,7 @@ class GalaxyViewer {
 		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		sphere.position.copy(center);
 		sphere.userData.region = regionName;
+		sphere.visible = false;
 		this.scene.add(sphere);
 
 		// Stocker pour animation et toggle
@@ -554,7 +555,6 @@ class GalaxyViewer {
 		if (toggleZones) {
 			toggleZones.addEventListener('change', (e) => {
 				const visible = e.target.checked;
-
 				if (this.regionalSpheres) {
 					this.regionalSpheres.forEach(({ sphere }) => {
 						sphere.visible = visible;
