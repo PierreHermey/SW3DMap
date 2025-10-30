@@ -17,7 +17,6 @@ class GalaxyViewer {
 		this.selectedPlanetIndex = null;
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
-		this.regionalSpheres = [];
 
 		// Repulsion config
 		this.REPULSION_CONFIG = {
@@ -41,7 +40,6 @@ class GalaxyViewer {
 		this.setupLights();
 		this.createVolumetricGalaxy();
 		this.createInstancedPlanets();
-		this.createRegionalZones();
 		this.setupEvents();
 		this.setupSearchEvents();
 		this.animate();
@@ -517,7 +515,6 @@ class GalaxyViewer {
 		return canvas;
 	}
 
-
 	generateBiomeTexture(biome) {
 		const canvas = document.createElement('canvas');
 		canvas.width = 128;
@@ -630,62 +627,6 @@ class GalaxyViewer {
 		return canvas;
 	}
 
-	// generateNormalMap(biome) {
-	// 	const canvas = document.createElement('canvas');
-	// 	canvas.width = 128;
-	// 	canvas.height = 128;
-	// 	const ctx = canvas.getContext('2d');
-	// 	const imageData = ctx.createImageData(128, 128);
-	// 	const data = imageData.data;
-	//
-	// 	for (let y = 1; y < 127; y++) {
-	// 		for (let x = 1; x < 127; x++) {
-	// 			const idx = (y * 128 + x) * 4;
-	// 			let nx = 0, ny = 0, nz = 1;
-	//
-	// 			switch(biome) {
-	// 				case 'water':
-	// 					nx = Math.sin(x * 0.1) * 0.3;
-	// 					ny = Math.cos(y * 0.1) * 0.3;
-	// 					break;
-	// 				case 'ice':
-	// 					nx = Math.sin(x * 0.2) * 0.4;
-	// 					ny = Math.cos(y * 0.2) * 0.4;
-	// 					break;
-	// 				case 'earth':
-	// 					nx = Math.sin(x * 0.08) * 0.3;
-	// 					ny = Math.cos(y * 0.08) * 0.3;
-	// 					break;
-	// 				case 'desert':
-	// 					nx = Math.sin(x * 0.06) * 0.35;
-	// 					ny = Math.cos(y * 0.06) * 0.35;
-	// 					break;
-	// 				case 'city':
-	// 					nx = Math.sin(x * 0.15) * 0.4;
-	// 					ny = Math.sin(y * 0.15) * 0.4;
-	// 					break;
-	// 				case 'marsh':
-	// 					nx = Math.sin(x * 0.1) * 0.25;
-	// 					ny = Math.cos(y * 0.1) * 0.25;
-	// 					break;
-	// 			}
-	//
-	// 			const len = Math.sqrt(nx * nx + ny * ny + nz * nz);
-	// 			nx /= len;
-	// 			ny /= len;
-	// 			nz /= len;
-	//
-	// 			data[idx] = Math.floor((nx + 1) * 127.5);
-	// 			data[idx + 1] = Math.floor((ny + 1) * 127.5);
-	// 			data[idx + 2] = Math.floor((nz + 1) * 127.5);
-	// 			data[idx + 3] = 255;
-	// 		}
-	// 	}
-	//
-	// 	ctx.putImageData(imageData, 0, 0);
-	// 	return canvas;
-	// }
-
 	generateBiomeColor() {
 		const biomes = {
 			water: {
@@ -739,106 +680,62 @@ class GalaxyViewer {
 			'Hutt Space': 0xff0000,
 		};
 
+		// ← Générer UNE SEULE texture réutilisable
+		const sharedHaloTexture = this.generateSoftHaloTexture();
+
 		this.planetData.forEach((data) => {
 			const regionColor = regionColors[data.region] || 0xFFE81F;
 
-			const haloGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 1.8, 16, 16);
+			const haloGeometry = new THREE.IcosahedronGeometry(CONFIG.PLANET_SIZE * 5, 5);
 			const haloMaterial = new THREE.MeshBasicMaterial({
+				map: sharedHaloTexture,
 				color: regionColor,
 				transparent: true,
 				opacity: 0.12,
-				side: THREE.BackSide
+				side: THREE.FrontSide,
+				depthWrite: false,
+				blending: THREE.NormalBlending,  // ← Normal, pas Additive
 			});
+
 			const halo = new THREE.Mesh(haloGeometry, haloMaterial);
 			halo.position.copy(data.position);
+			halo.userData = {
+				pulseSpeed: 0.6 + Math.random() * 0.3,
+				pulseOffset: Math.random() * Math.PI * 2
+			};
 
 			this.scene.add(halo);
 			data.haloMesh = halo;
 		});
+
+		console.log(`✨ ${this.planetData.length} halos créés`);
 	}
 
-	createRegionalZones() {
-		const regionGroups = {};
+	generateSoftHaloTexture() {
+		const canvas = document.createElement('canvas');
+		canvas.width = 64;
+		canvas.height = 64;
+		const ctx = canvas.getContext('2d');
 
-		this.planetData.forEach(data => {
-			const region = data.region;
-			if (!regionGroups[region]) {
-				regionGroups[region] = {
-					planets: [],
-					color: data.color
-				};
-			}
-			regionGroups[region].planets.push(data.position.clone());
-		});
+		const centerX = 32;
+		const centerY = 32;
 
-		const regionColors = {
-			'Deep Core': '#ffffff',
-			'Core Worlds': '#fcd788',
-			'Colonies': '#c687f8',
-			'Mid Rim': '#b939af',
-			'Inner Rim': '#f6b16b',
-			'Expansion Region': '#85ddf1',
-			'Outer Rim Territories': '#00ffd9',
-			'Unknown Regions': '#9a9a9a',
-			'Wild Space': '#41ff00',
-			'Hutt Space': '#ff0000',
-		};
+		// Créer gradient radial très simple
+		const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 45);
+		gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+		gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.6)');
+		gradient.addColorStop(0.8, 'rgba(255, 255, 255, 0.1)');
+		gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-		Object.entries(regionGroups).forEach(([regionName, data]) => {
-			if (data.planets.length < 1) {
-				return;
-			}
+		ctx.fillStyle = gradient;
+		ctx.fillRect(0, 0, 64, 64);
 
-			const color = regionColors[regionName] || 0xFFE81F;
-			const center = this.calculateCenter(data.planets);
-			const radius = this.calculateBoundingRadius(data.planets, center);
-
-			this.createSimpleRegionalZone(center, radius, color, regionName);
-
-			console.log(`🌈 Zone ${regionName}: ${data.planets.length} planètes`);
-		});
+		const texture = new THREE.CanvasTexture(canvas);
+		texture.magFilter = THREE.LinearFilter;
+		texture.minFilter = THREE.LinearFilter;
+		return texture;
 	}
 
-	calculateCenter(points) {
-		const center = new THREE.Vector3();
-		points.forEach(point => center.add(point));
-		center.divideScalar(points.length);
-		return center;
-	}
-
-	calculateBoundingRadius(points, center) {
-		let maxDistance = 0;
-		points.forEach(point => {
-			const distance = point.distanceTo(center);
-			if (distance > maxDistance) {
-				maxDistance = distance;
-			}
-		});
-		return maxDistance * 1.5;
-	}
-
-	createSimpleRegionalZone(center, radius, color, regionName) {
-		const sphereGeometry = new THREE.SphereGeometry(radius, 32, 32);
-		const sphereMaterial = new THREE.MeshBasicMaterial({
-			color: color,
-			transparent: true,
-			opacity: 0.02,
-			side: THREE.DoubleSide,
-			depthWrite: false
-		});
-		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-		sphere.position.copy(center);
-		sphere.userData.region = regionName;
-		sphere.visible = false;
-		this.scene.add(sphere);
-
-		this.regionalSpheres.push({
-			sphere,
-			center,
-			baseRadius: radius,
-			regionName
-		});
-	}
 
 	applyRepulsionForces() {
 		if (this.selectedPlanetIndex === null) return;
@@ -947,16 +844,6 @@ class GalaxyViewer {
 		window.addEventListener('resize', () => this.onWindowResize());
 		window.addEventListener('click', (e) => this.onMouseClick(e));
 		window.addEventListener('mousemove', (e) => this.onMouseMove(e));
-
-		const toggleZones = document.getElementById('toggle-zones');
-		if (toggleZones) {
-			toggleZones.addEventListener('change', (e) => {
-				const visible = e.target.checked;
-				this.regionalSpheres.forEach(({ sphere }) => {
-					sphere.visible = visible;
-				});
-			});
-		}
 	}
 
 	onWindowResize() {
@@ -1140,12 +1027,13 @@ class GalaxyViewer {
 		this.applyRepulsionForces();
 		this.updatePlanetVelocities();
 
-		if (this.regionalSpheres) {
-			this.regionalSpheres.forEach(({ sphere }) => {
-				const pulse = Math.sin(time * 0.3) * 0.03 + 1;
-				sphere.scale.setScalar(pulse);
-			});
-		}
+		// ← AJOUTER: Animer les halos avec pulse/breathing
+		this.planetData.forEach((data) => {
+			if (data.haloMesh) {
+				const pulse = Math.sin(time * data.haloMesh.userData.pulseSpeed + data.haloMesh.userData.pulseOffset) * 0.15 + 1;
+				data.haloMesh.scale.setScalar(pulse);
+			}
+		});
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
