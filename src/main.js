@@ -187,22 +187,32 @@ class GalaxyViewer {
 	}
 
 	setupLights() {
-		const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+		// Réduire l'ambient pour plus de contraste
+		const ambientLight = new THREE.AmbientLight(0x1a3a4d, 0.6);
 		this.scene.add(ambientLight);
 
-		// Lumière centrale (comme le Core galactique)
-		const pointLight = new THREE.PointLight(0xffffaa, 2, CONFIG.SPHERE_RADIUS * 3);
-		pointLight.position.set(0, 0, 0);
-		this.scene.add(pointLight);
+		// Lumière centrale PLUS FORTE et plus chaude (énergie galactique)
+		const coreLight = new THREE.PointLight(0xffcc99, 3.5, CONFIG.SPHERE_RADIUS * 4);
+		coreLight.position.set(0, 0, 0);
+		coreLight.castShadow = true;
+		this.scene.add(coreLight);
 
-		// Lumières d'appoint
-		const fillLight1 = new THREE.DirectionalLight(0x4444ff, 0.3);
-		fillLight1.position.set(-100, 50, 100);
-		this.scene.add(fillLight1);
+		// Lumière secondaire (cool, ombre douce)
+		const rimLight = new THREE.PointLight(0x6688ff, 1.8, CONFIG.SPHERE_RADIUS * 3.5);
+		rimLight.position.set(CONFIG.SPHERE_RADIUS * 1.2, CONFIG.SPHERE_RADIUS * 0.8, -CONFIG.SPHERE_RADIUS * 0.8);
+		this.scene.add(rimLight);
 
-		const fillLight2 = new THREE.DirectionalLight(0xff4444, 0.3);
-		fillLight2.position.set(100, 50, -100);
-		this.scene.add(fillLight2);
+		// Lumière de remplissage (accent chaud contre le rim)
+		const fillLight = new THREE.PointLight(0xff6644, 1.2, CONFIG.SPHERE_RADIUS * 3);
+		fillLight.position.set(-CONFIG.SPHERE_RADIUS * 1.5, -CONFIG.SPHERE_RADIUS * 0.5, CONFIG.SPHERE_RADIUS * 1.2);
+		this.scene.add(fillLight);
+
+		// Directional light subtile pour les planètes (contraste XYZ)
+		const directional = new THREE.DirectionalLight(0xffffff, 0.4);
+		directional.position.set(100, 100, 100);
+		directional.target.position.set(0, 0, 0);
+		this.scene.add(directional);
+		this.scene.add(directional.target);
 	}
 
 	createVolumetricGalaxy() {
@@ -497,12 +507,14 @@ class GalaxyViewer {
 
 			const material = new THREE.MeshPhongMaterial({
 				color: color,
-				//emissive: new THREE.Color(planet.color), // Légère émission de la couleur régionale
-				//emissiveIntensity: 0,
-				shininess: 100,
+				emissive: new THREE.Color(planet.color),
+				emissiveIntensity: 0.3,  // ← Ajouter légère émission régionale
+				shininess: 120,
 				transparent: true,
 				opacity: 0.95,
+				side: THREE.FrontSide  // ← Éviter les faces arrière
 			});
+
 
 			const mesh = new THREE.Mesh(planetGeometry, material);
 			mesh.position.copy(position);
