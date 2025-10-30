@@ -31,7 +31,8 @@ class GalaxyViewer {
 		this.setupControls();
 		this.setupLights();
 		this.createVolumetricGalaxy();
-		this.createPlanets();
+		this.createPlanets();              // ← D'ABORD les planètes
+		this.createRegionalZones();         // ← PUIS les zones (qui utilisent planetMeshes)
 		this.setupEvents();
 		this.setupSearchEvents();
 		this.animate();
@@ -214,7 +215,7 @@ class GalaxyViewer {
 		const sphereMaterial = new THREE.MeshBasicMaterial({
 			color: 0x1a4466,
 			transparent: true,
-			opacity: 0.03,
+			opacity: 0,
 			side: THREE.BackSide,
 			wireframe: false
 		});
@@ -226,10 +227,9 @@ class GalaxyViewer {
 		const edgeMaterial = new THREE.LineBasicMaterial({
 			color: 0x3366aa,
 			transparent: true,
-			opacity: 0.15
+			opacity: 0
 		});
-		const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
-		this.scene.add(edges);
+
 
 		// Grille volumétrique 3D - Plans de coupe
 		this.createVolumetricGrid();
@@ -241,11 +241,129 @@ class GalaxyViewer {
 		this.createCoordinateAxes();
 	}
 
+	/**
+	 * Crée des zones volumétriques basées sur les positions réelles des planètes
+	 */
+	createRegionalZones() {
+		// Grouper les planètes par région
+		const regionGroups = {};
+
+		this.planetMeshes.forEach(mesh => {
+			const region = mesh.userData.region;
+			if (!regionGroups[region]) {
+				regionGroups[region] = {
+					planets: [],
+					color: mesh.userData.color
+				};
+			}
+			regionGroups[region].planets.push(mesh.position.clone());
+		});
+
+		// Définition des couleurs par région
+		const regionColors = {
+			'Deep Core': 0x00FFFF,
+			'Core Worlds': 0x4444FF,
+			'Colonies': 0x00AAFF,
+			'Mid Rim': 0xFFAA00,
+			'Expansion Region': 0xFFC800,
+			'Outer Rim Territories': 0xFF4444,
+			'Unknown Regions': 0xFF00FF,
+			'Wild Space': 0xAA00AA,
+			'Hutt Space': 0x00FF00
+		};
+
+		// Créer une zone pour chaque région
+		Object.entries(regionGroups).forEach(([regionName, data]) => {
+			if (data.planets.length < 1) {
+				return;
+			}
+
+			const color = regionColors[regionName] || 0xFFE81F;
+
+			// Calculer le centre et le rayon englobant
+			const center = this.calculateCenter(data.planets);
+			const radius = this.calculateBoundingRadius(data.planets, center);
+
+			// Créer une zone simple et minimaliste
+			this.createSimpleRegionalZone(center, radius, color, regionName);
+
+			console.log(`🌈 Zone ${regionName}: ${data.planets.length} planètes`);
+		});
+	}
+
+	/**
+	 * Calcule le centre géométrique d'un groupe de points
+	 */
+	calculateCenter(points) {
+		const center = new THREE.Vector3();
+		points.forEach(point => center.add(point));
+		center.divideScalar(points.length);
+		return center;
+	}
+
+	/**
+	 * Calcule le rayon qui englobe tous les points avec une marge
+	 */
+	calculateBoundingRadius(points, center) {
+		let maxDistance = 0;
+		points.forEach(point => {
+			const distance = point.distanceTo(center);
+			if (distance > maxDistance) {
+				maxDistance = distance;
+			}
+		});
+		// Ajouter 50% de marge pour que la zone englobe bien
+		return maxDistance * 1.5;
+	}
+
+	/**
+	 * Crée une zone simple et minimaliste autour d'une région
+	 */
+	createSimpleRegionalZone(center, radius, color, regionName) {
+		// Sphère transparente colorée
+		const sphereGeometry = new THREE.SphereGeometry(radius, 32, 32);
+		const sphereMaterial = new THREE.MeshBasicMaterial({
+			color: color,
+			transparent: true,
+			opacity: 0.03,
+			side: THREE.DoubleSide,
+			depthWrite: false
+		});
+		const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+		sphere.position.copy(center);
+		sphere.userData.region = regionName;
+		this.scene.add(sphere);
+
+		// Contour wireframe de la zone
+		const edgesGeometry = new THREE.EdgesGeometry(sphereGeometry);
+		const edgesMaterial = new THREE.LineBasicMaterial({
+			color: color,
+			transparent: true,
+			opacity: 0,
+			linewidth: 0
+		});
+		const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+		edges.position.copy(center);
+		edges.userData.region = regionName;
+		this.scene.add(edges);
+
+		// Stocker pour animation et toggle
+		if (!this.regionalSpheres) this.regionalSpheres = [];
+		this.regionalSpheres.push({
+			sphere,
+			edges,
+			center,
+			baseRadius: radius,
+			regionName
+		});
+	}
+
+
 	createVolumetricGrid() {
 		const gridMaterial = new THREE.LineBasicMaterial({
 			color: 0x444466,
 			transparent: true,
-			opacity: 0.15
+			opacity: 0
 		});
 
 		// Plans XY à différentes profondeurs Z
@@ -290,7 +408,7 @@ class GalaxyViewer {
 		const xMaterial = new THREE.LineBasicMaterial({
 			color: 0xff3333,
 			transparent: true,
-			opacity: 0.3
+			opacity: 0
 		});
 		this.scene.add(new THREE.Line(xGeometry, xMaterial));
 
@@ -302,7 +420,7 @@ class GalaxyViewer {
 		const yMaterial = new THREE.LineBasicMaterial({
 			color: 0x33ff33,
 			transparent: true,
-			opacity: 0.3
+			opacity: 0
 		});
 		this.scene.add(new THREE.Line(yGeometry, yMaterial));
 
@@ -314,7 +432,7 @@ class GalaxyViewer {
 		const zMaterial = new THREE.LineBasicMaterial({
 			color: 0x3333ff,
 			transparent: true,
-			opacity: 0.3
+			opacity: 0
 		});
 		this.scene.add(new THREE.Line(zGeometry, zMaterial));
 	}
@@ -352,7 +470,7 @@ class GalaxyViewer {
 		const starsMaterial = new THREE.PointsMaterial({
 			size: 0.5,
 			transparent: true,
-			opacity: 0.6,
+			opacity: 0,
 			vertexColors: true,
 			sizeAttenuation: true
 		});
@@ -376,34 +494,31 @@ class GalaxyViewer {
 		this.planets.forEach((planet, index) => {
 			const planetsInGrid = gridGroups[planet.grid];
 
-			// Profondeur Z basée sur la région (Core au centre, Outer Rim à l'extérieur)
-			let depth = 0.5; // Par défaut au milieu
+			// Profondeur Z basée sur la région
+			let depth = 0.5;
 
 			if (planet.region.includes('Deep Core')) {
-				depth = 0.5; // Centre exact
+				depth = 0.5;
 			} else if (planet.region.includes('Core Worlds')) {
-				depth = 0.4 + Math.random() * 0.2; // Proche du centre
+				depth = 0.4 + Math.random() * 0.2;
 			} else if (planet.region.includes('Colonies')) {
 				depth = 0.3 + Math.random() * 0.4;
 			} else if (planet.region.includes('Mid Rim')) {
 				depth = 0.35 + Math.random() * 0.3;
 			} else if (planet.region.includes('Outer Rim')) {
-				depth = 0.1 + Math.random() * 0.3; // Vers l'extérieur
+				depth = 0.1 + Math.random() * 0.3;
 			} else if (planet.region.includes('Unknown')) {
-				depth = Math.random(); // Distribution aléatoire
+				depth = Math.random();
 			}
 
-			// Si plusieurs planètes dans la même case, on varie la profondeur
 			if (planetsInGrid.length > 1) {
 				const indexInGrid = planetsInGrid.indexOf(planet);
 				depth += (indexInGrid / planetsInGrid.length - 0.5) * 0.1;
-				depth = Math.max(0, Math.min(1, depth)); // Clamp entre 0 et 1
+				depth = Math.max(0, Math.min(1, depth));
 			}
 
-			// Position 3D basée sur la grille et la profondeur
 			const basePosition = this.gridTo3D(planet.x, planet.y, depth);
 
-			// Petit offset aléatoire pour éviter les collisions
 			const offset = new THREE.Vector3(
 				(Math.random() - 0.5) * 2,
 				(Math.random() - 0.5) * 2,
@@ -412,15 +527,17 @@ class GalaxyViewer {
 
 			const position = basePosition.clone().add(offset);
 
-			const color = new THREE.Color(planet.color);
+			// Planètes blanches/argentées au lieu de colorées
+			const color = new THREE.Color(0x000000);
 
 			const material = new THREE.MeshPhongMaterial({
 				color: color,
-				emissive: color,
-				emissiveIntensity: 0.5,
-				shininess: 30,
+				emissive: new THREE.Color(planet.color), // Légère émission de la couleur régionale
+				emissiveIntensity: 0,
+				shininess: 60,
 				transparent: true,
-				opacity: 0.9
+				opacity: 0.95,
+				metalness: 0.5
 			});
 
 			const mesh = new THREE.Mesh(planetGeometry, material);
@@ -433,34 +550,56 @@ class GalaxyViewer {
 			this.scene.add(mesh);
 			this.planetMeshes.push(mesh);
 
-			// Halo lumineux
+			// Halo lumineux avec la couleur de la région
 			const glowGeometry = new THREE.SphereGeometry(CONFIG.PLANET_SIZE * 2, 16, 16);
 			const glowMaterial = new THREE.MeshBasicMaterial({
-				color: color,
+				color: new THREE.Color(planet.color),
 				transparent: true,
-				opacity: 0.2,
+				opacity: 0.15,
 				side: THREE.BackSide
 			});
 			const glow = new THREE.Mesh(glowGeometry, glowMaterial);
 			mesh.add(glow);
+
+			// Anneau orbital très subtil
+			const ringGeometry = new THREE.RingGeometry(
+				CONFIG.PLANET_SIZE * 1.5,
+				CONFIG.PLANET_SIZE * 2,
+				32
+			);
+			const ringMaterial = new THREE.MeshBasicMaterial({
+				color: new THREE.Color(planet.color),
+				transparent: true,
+				opacity: 0.1,
+				side: THREE.DoubleSide
+			});
+			const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+			ring.rotation.x = Math.PI / 2;
+			mesh.add(ring);
 		});
 
 		console.log(`✨ ${this.planetMeshes.length} planètes créées dans le volume 3D`);
-
-		// Logger les cases avec plusieurs planètes
-		const multiplePlanetsGrids = Object.entries(gridGroups)
-			.filter(([grid, planets]) => planets.length > 1)
-			.sort((a, b) => b[1].length - a[1].length);
-
-		if (multiplePlanetsGrids.length > 0) {
-			console.log(`📍 ${multiplePlanetsGrids.length} cases contiennent plusieurs planètes`);
-		}
 	}
 
 	setupEvents() {
 		window.addEventListener('resize', () => this.onWindowResize());
 		window.addEventListener('click', (e) => this.onMouseClick(e));
 		window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+
+		// Toggle des zones régionales
+		const toggleZones = document.getElementById('toggle-zones');
+		if (toggleZones) {
+			toggleZones.addEventListener('change', (e) => {
+				const visible = e.target.checked;
+
+				if (this.regionalSpheres) {
+					this.regionalSpheres.forEach(({ sphere, edges }) => {
+						sphere.visible = visible;
+						edges.visible = visible;
+					});
+				}
+			});
+		}
 	}
 
 	onWindowResize() {
@@ -607,6 +746,7 @@ class GalaxyViewer {
 
 		const time = Date.now() * 0.001 * CONFIG.ANIMATION_SPEED;
 
+		// Animation des planètes
 		this.planetMeshes.forEach(mesh => {
 			const pulse = Math.sin(time * mesh.userData.pulseSpeed + mesh.userData.pulseOffset);
 			let targetScale = 1.0 + pulse * 0.08;
@@ -627,6 +767,15 @@ class GalaxyViewer {
 
 			mesh.rotation.y += 0.005;
 		});
+
+		// Animation subtile des zones régionales (pulsation légère)
+		if (this.regionalSpheres) {
+			this.regionalSpheres.forEach(({ sphere, edges }) => {
+				const pulse = Math.sin(time * 0.3) * 0.03 + 1;
+				sphere.scale.setScalar(pulse);
+				edges.scale.setScalar(pulse);
+			});
+		}
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
