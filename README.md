@@ -9,7 +9,6 @@
 ## Technologies
 
 - **Three.js** - Visualisation 3D
-- **pdf-parse** - Extraction des données du PDF
 - **Node.js** - Script de parsing
 - **Vanilla JavaScript** - Pas de framework frontend
 
