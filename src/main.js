@@ -270,15 +270,16 @@ class GalaxyViewer {
 
 		// Définition des couleurs par région
 		const regionColors = {
-			'Deep Core': 0x00FFFF,
-			'Core Worlds': 0x4444FF,
-			'Colonies': 0x00AAFF,
-			'Mid Rim': 0xFFAA00,
-			'Expansion Region': 0xFFC800,
-			'Outer Rim Territories': 0xFF4444,
-			'Unknown Regions': 0xFF00FF,
-			'Wild Space': 0xAA00AA,
-			'Hutt Space': 0x00FF00
+			'Deep Core': '#ffffff',
+			'Core Worlds': '#fcd788',
+			'Colonies': '#c687f8',
+			'Mid Rim': '#b939af',
+			'Inner Rim': '#f6b16b',
+			'Expansion Region': '#85ddf1',
+			'Outer Rim Territories': '#00ffd9',
+			'Unknown Regions': '#9a9a9a',
+			'Wild Space': '#41ff00',
+			'Hutt Space': '#ff0000',
 		};
 
 		// Créer une zone pour chaque région
@@ -322,7 +323,7 @@ class GalaxyViewer {
 			}
 		});
 		// Ajouter 50% de marge pour que la zone englobe bien
-		return maxDistance * 1.5;
+		return maxDistance;
 	}
 
 	/**

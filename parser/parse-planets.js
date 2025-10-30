@@ -44,18 +44,18 @@ function getRegionColor(regionText) {
 
 	const region = regionText.toLowerCase();
 
-	if (region.includes('deep core')) return '#00FFFF';      // Cyan
-	if (region.includes('core worlds') || region === 'core') return '#4444FF';  // Bleu
-	if (region.includes('inner rim')) return '#6666FF';      // Bleu clair
-	if (region.includes('mid rim')) return '#FFAA00';        // Orange
-	if (region.includes('expansion region')) return '#FFC800'; // Jaune-orange
-	if (region.includes('outer rim')) return '#FF4444';      // Rouge
-	if (region.includes('unknown')) return '#FF00FF';        // Magenta
-	if (region.includes('wild space')) return '#AA00AA';     // Violet
-	if (region.includes('colonies')) return '#00AAFF';       // Bleu clair
-	if (region.includes('hutt space')) return '#00FF00';     // Vert
+	if (region.includes('deep core')) return '#ffffff';      // Blanc
+	if (region.includes('core worlds') || region === 'core') return '#fcd788';  // Jaune clair
+	if (region.includes('inner rim')) return '#f6b16b';      // Orange clair
+	if (region.includes('mid rim')) return '#b939af';        // Fuschia
+	if (region.includes('expansion region')) return '#85ddf1'; // Bleu clair
+	if (region.includes('outer rim')) return '#00ffd9';      // Cyan
+	if (region.includes('unknown')) return '#9a9a9a';        // Gris
+	if (region.includes('wild space')) return '#41ff00';     // Vert
+	if (region.includes('colonies')) return '#c687f8';       // Violet clair
+	if (region.includes('hutt space')) return '#ff0000';     // Vert
 
-	return '#FFE81F'; // Jaune Star Wars par défaut
+	return '#ffd300'; // Jaune Star Wars par défaut
 }
 
 /**
