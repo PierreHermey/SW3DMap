@@ -11,6 +11,7 @@ const CONFIG = {
 
 class GalaxyViewer {
 	constructor() {
+		this.regionalClouds = [];
 		this.planets = [];
 		this.planetData = [];
 		this.planetVelocities = new Map();
@@ -404,7 +405,7 @@ class GalaxyViewer {
 		this.instancedMesh = instancedMesh;
 		this.scene.add(instancedMesh);
 
-		this.createPlanetHalos();
+		this.createRegionalClouds();
 
 		console.log(`✨ ${this.planets.length} planètes: sphères colorées + textures + halos`);
 	}
@@ -666,7 +667,33 @@ class GalaxyViewer {
 		};
 	}
 
-	createPlanetHalos() {
+	generateCloudParticleTexture() {
+		const canvas = document.createElement('canvas');
+		canvas.width = 64;
+		canvas.height = 64;
+		const ctx = canvas.getContext('2d');
+
+		ctx.clearRect(0, 0, 64, 64);
+
+		// Créer dégradé radial blanc → transparent
+		const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+		gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+		gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
+		gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+		ctx.fillStyle = gradient;
+		ctx.beginPath();
+		ctx.arc(32, 32, 32, 0, Math.PI * 2);
+		ctx.fill();
+
+		const texture = new THREE.CanvasTexture(canvas);
+		texture.magFilter = THREE.LinearFilter;
+		texture.minFilter = THREE.LinearFilter;
+		return texture;
+	}
+
+
+	createRegionalClouds() {
 		const regionColors = {
 			'Deep Core': 0xffffff,
 			'Core Worlds': 0xfcd788,
@@ -680,62 +707,157 @@ class GalaxyViewer {
 			'Hutt Space': 0xff0000,
 		};
 
-		// ← Générer UNE SEULE texture réutilisable
-		const sharedHaloTexture = this.generateSoftHaloTexture();
-
-		this.planetData.forEach((data) => {
-			const regionColor = regionColors[data.region] || 0xFFE81F;
-
-			const haloGeometry = new THREE.IcosahedronGeometry(CONFIG.PLANET_SIZE * 5, 5);
-			const haloMaterial = new THREE.MeshBasicMaterial({
-				map: sharedHaloTexture,
-				color: regionColor,
-				transparent: true,
-				opacity: 0.12,
-				side: THREE.FrontSide,
-				depthWrite: false,
-				blending: THREE.NormalBlending,  // ← Normal, pas Additive
-			});
-
-			const halo = new THREE.Mesh(haloGeometry, haloMaterial);
-			halo.position.copy(data.position);
-			halo.userData = {
-				pulseSpeed: 0.6 + Math.random() * 0.3,
-				pulseOffset: Math.random() * Math.PI * 2
-			};
-
-			this.scene.add(halo);
-			data.haloMesh = halo;
+		// ← Grouper planètes par région
+		const regionGroups = {};
+		this.planetData.forEach(planet => {
+			const region = planet.region;
+			if (!regionGroups[region]) {
+				regionGroups[region] = [];
+			}
+			regionGroups[region].push(planet);
 		});
 
-		console.log(`✨ ${this.planetData.length} halos créés`);
+		// ← Créer UN nuage par région
+		Object.entries(regionGroups).forEach(([regionName, planets]) => {
+			if (planets.length === 0) return;
+
+			const color = regionColors[regionName] || 0xFFE81F;
+			this.createRegionalCloud(regionName, planets, color);
+		});
+
+		console.log(`☁️ ${Object.keys(regionGroups).length} nuages régionaux créés`);
 	}
 
-	generateSoftHaloTexture() {
-		const canvas = document.createElement('canvas');
-		canvas.width = 64;
-		canvas.height = 64;
-		const ctx = canvas.getContext('2d');
+	createRegionalCloud(regionName, planets, colorHex) {
+		const cloudGeometry = new THREE.BufferGeometry();
+		const positions = [];
+		const colors = [];
+		const baseOffsets = [];  // ← Stocker les offsets FIXES
 
-		const centerX = 32;
-		const centerY = 32;
+		const color = new THREE.Color(colorHex);
 
-		// Créer gradient radial très simple
-		const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 45);
-		gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-		gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.6)');
-		gradient.addColorStop(0.8, 'rgba(255, 255, 255, 0.1)');
-		gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+		planets.forEach(planet => {
+			for (let i = 0; i < 30; i++) {
+				const theta = Math.random() * Math.PI * 2;
+				const phi = Math.acos(2 * Math.random() - 1);
+				const radius = CONFIG.PLANET_SIZE * (0.2 + Math.random() * 0.1);
 
-		ctx.fillStyle = gradient;
-		ctx.fillRect(0, 0, 64, 64);
+				const offsetX = radius * Math.sin(phi) * Math.cos(theta);
+				const offsetY = radius * Math.sin(phi) * Math.sin(theta);
+				const offsetZ = radius * Math.cos(phi);
 
-		const texture = new THREE.CanvasTexture(canvas);
-		texture.magFilter = THREE.LinearFilter;
-		texture.minFilter = THREE.LinearFilter;
-		return texture;
+				baseOffsets.push({ x: offsetX, y: offsetY, z: offsetZ });
+
+				positions.push(
+					planet.position.x + offsetX,
+					planet.position.y + offsetY,
+					planet.position.z + offsetZ
+				);
+
+				const alpha = Math.random() * 0.6 + 0.3;
+				colors.push(color.r, color.g, color.b, alpha);
+			}
+		});
+
+		cloudGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+		cloudGeometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 4));
+
+		const cloudMaterial = new THREE.PointsMaterial({
+			map: this.generateCloudParticleTexture(),
+			size: 3,
+			vertexColors: true,
+			transparent: true,
+			opacity: 0.15,
+			sizeAttenuation: true,
+			fog: false,
+			depthWrite: false,
+		});
+
+		const cloud = new THREE.Points(cloudGeometry, cloudMaterial);
+		this.scene.add(cloud);
+
+		if (!this.regionalClouds) {
+			this.regionalClouds = [];
+		}
+
+		this.regionalClouds.push({
+			mesh: cloud,
+			regionName,
+			planets,
+			geometry: cloudGeometry,
+			colorHex,
+			baseOffsets,  // ← Garder les offsets fixes
+			driftOffsets: planets.flatMap(() =>
+				Array(30).fill(0).map(() => ({
+					x: (Math.random() - 0.5) * 1.5,
+					y: (Math.random() - 0.5) * 1.5,
+					z: (Math.random() - 0.5) * 1.5,
+					vx: (Math.random() - 0.5) * 0.01, // Augmente à 0.01 pour test
+					vy: (Math.random() - 0.5) * 0.01,
+					vz: (Math.random() - 0.5) * 0.01,
+				}))
+			),
+		});
 	}
 
+	updateRegionalClouds() {
+		if (!this.regionalClouds) return;
+
+		this.regionalClouds.forEach(cloudData => {
+			const positions = [];
+			const oldPositions = cloudData.geometry.attributes.position?.array;
+
+			// ← Mettre à jour les drifts
+			cloudData.driftOffsets.forEach(drift => {
+				drift.x += drift.vx;
+				drift.y += drift.vy;
+				drift.z += drift.vz;
+
+				// ← Rebond aux limites
+				if (Math.abs(drift.x) > 1.5) drift.vx *= -1;
+				if (Math.abs(drift.y) > 1.5) drift.vy *= -1;
+				if (Math.abs(drift.z) > 1.5) drift.vz *= -1;
+			});
+
+			cloudData.planets.forEach((planet, planetIndex) => {
+				for (let i = 0; i < 30; i++) {
+					const pointIndex = planetIndex * 30 + i;
+					const baseOffset = cloudData.baseOffsets[pointIndex];
+					const drift = cloudData.driftOffsets[pointIndex];
+
+					if (!baseOffset) {
+						console.error('Missing baseOffset at', pointIndex);
+						continue;
+					}
+					if (!drift) {
+						console.error('Missing drift at', pointIndex);
+						continue;
+					}
+
+					const newX = planet.position.x + baseOffset.x + drift.x;
+					const newY = planet.position.y + baseOffset.y + drift.y;
+					const newZ = planet.position.z + baseOffset.z + drift.z;
+
+					if (oldPositions && pointIndex * 3 < oldPositions.length) {
+						const oldX = oldPositions[pointIndex * 3];
+						const oldY = oldPositions[pointIndex * 3 + 1];
+						const oldZ = oldPositions[pointIndex * 3 + 2];
+
+						positions.push(
+							oldX * 0.5 + newX * 0.5,
+							oldY * 0.5 + newY * 0.5,
+							oldZ * 0.5 + newZ * 0.5
+						);
+					} else {
+						positions.push(newX, newY, newZ);
+					}
+				}
+			});
+
+			cloudData.geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+			cloudData.geometry.attributes.position.needsUpdate = true;
+		});
+	}
 
 	applyRepulsionForces() {
 		if (this.selectedPlanetIndex === null) return;
@@ -902,6 +1024,9 @@ class GalaxyViewer {
 			}
 		});
 
+		// ← AJOUTER: Force une mise à jour des nuages immédiatement
+		this.updateRegionalClouds();
+
 		// ← AJOUTER AFFICHAGE INFOS DESKTOP
 		document.getElementById('planet-info').innerHTML = `
         <div class="space-y-3">
@@ -984,6 +1109,9 @@ class GalaxyViewer {
 			this.planetVelocities.forEach((velocity) => {
 				velocity.set(0, 0, 0);
 			});
+
+			// ← AJOUTER: Force une mise à jour des nuages
+			this.updateRegionalClouds();
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
@@ -1027,13 +1155,8 @@ class GalaxyViewer {
 		this.applyRepulsionForces();
 		this.updatePlanetVelocities();
 
-		// ← AJOUTER: Animer les halos avec pulse/breathing
-		this.planetData.forEach((data) => {
-			if (data.haloMesh) {
-				const pulse = Math.sin(time * data.haloMesh.userData.pulseSpeed + data.haloMesh.userData.pulseOffset) * 0.15 + 1;
-				data.haloMesh.scale.setScalar(pulse);
-			}
-		});
+		// Dans animate(), remplacer la section halos par:
+		this.updateRegionalClouds();
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
