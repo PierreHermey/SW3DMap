@@ -245,8 +245,9 @@ class GalaxyViewer {
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
 		this.focusedHdMesh = null;
+		this.focusedHdMeshKey = null;
+		this.alwaysVisibleMeshes = new Map();
 
-		// ← Ajouter les spotlights
 		this.spotlights = [];
 		this.ambientLight = null;
 
@@ -1024,31 +1025,54 @@ class GalaxyViewer {
 			cloud.mesh.visible = false;
 		});
 
-		// ✅ TOUJOURS supprimer l'ancien mesh AVANT de charger le nouveau
+		// ✅ CORRECTION: Vérifier si l'ancien mesh doit rester visible
 		if (this.focusedHdMesh) {
-			this.scene.remove(this.focusedHdMesh);
-			if (this.focusedHdMesh.traverse) {
-				this.focusedHdMesh.traverse((child) => {
-					if (child.geometry) child.geometry.dispose();
-					if (child.material) {
-						if (Array.isArray(child.material)) {
-							child.material.forEach(m => m.dispose());
-						} else {
-							child.material.dispose();
+			const oldBiomeKey = this.focusedHdMeshKey;
+			const shouldKeepOldVisible = PLANET_SPECIFIC_TEXTURES[oldBiomeKey]?.alwaysVisible;
+
+			if (!shouldKeepOldVisible) {
+				// Supprimer et nettoyer
+				this.scene.remove(this.focusedHdMesh);
+				if (this.focusedHdMesh.traverse) {
+					this.focusedHdMesh.traverse((child) => {
+						if (child.geometry) child.geometry.dispose();
+						if (child.material) {
+							if (Array.isArray(child.material)) {
+								child.material.forEach(m => m.dispose());
+							} else {
+								child.material.dispose();
+							}
 						}
-					}
-				});
+					});
+				}
+				this.focusedHdMesh = null;
 			}
-			this.focusedHdMesh = null;
+			// Si shouldKeepOldVisible, on laisse le mesh dans la scène
 		}
 
 		const biomeKey = planet.biome;
 		if (TEXTURE_MAPS[biomeKey]) {
 			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
-			this.focusedHdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
-			if (this.focusedHdMesh) {
-				this.focusedHdMesh.position.copy(planet.position);
-				this.scene.add(this.focusedHdMesh);
+
+			// ✅ CORRECTION: Vérifier si le mesh existe déjà
+			let hdMesh = this.alwaysVisibleMeshes.get(biomeKey);
+
+			if (!hdMesh) {
+				// Créer le mesh s'il n'existe pas
+				hdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
+				if (hdMesh) {
+					this.scene.add(hdMesh);
+					// Stocker dans la Map si c'est une planète alwaysVisible
+					if (PLANET_SPECIFIC_TEXTURES[biomeKey]?.alwaysVisible) {
+						this.alwaysVisibleMeshes.set(biomeKey, hdMesh);
+					}
+				}
+			}
+
+			if (hdMesh) {
+				hdMesh.position.copy(planet.position);
+				this.focusedHdMesh = hdMesh;
+				this.focusedHdMeshKey = biomeKey;
 				console.log(`✅ Textures HD chargées pour ${planet.name}`);
 
 				this.updateLightingForPlanet(planet.position);
@@ -1114,10 +1138,8 @@ class GalaxyViewer {
 		this.animateCameraTo(planet.position);
 	}
 
-
 	clearPlanetFocus() {
 		if (this.selectedPlanetIndex !== null) {
-			const planet = this.planetData[this.selectedPlanetIndex];
 			this.planetData[this.selectedPlanetIndex].focused = false;
 			this.selectedPlanetIndex = null;
 
@@ -1131,10 +1153,9 @@ class GalaxyViewer {
 
 			this.updateRegionalClouds();
 
-			// ✅ Vérifier si la planète doit rester visible (alwaysVisible)
-			if (this.focusedHdMesh) {
-				const planetBiomeKey = planet.biome;
-				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[planetBiomeKey]?.alwaysVisible;
+			// ✅ CORRECTION: Utiliser focusedHdMeshKey pour vérifier alwaysVisible
+			if (this.focusedHdMesh && this.focusedHdMeshKey) {
+				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[this.focusedHdMeshKey]?.alwaysVisible;
 
 				if (!shouldKeepVisible) {
 					this.scene.remove(this.focusedHdMesh);
@@ -1151,8 +1172,9 @@ class GalaxyViewer {
 						});
 					}
 					this.focusedHdMesh = null;
+					this.focusedHdMeshKey = null;
 				} else {
-					console.log(`✨ ${planet.name} reste visible (planète principale)`);
+					console.log(`✨ Planète principale reste visible`);
 				}
 			}
 
@@ -1166,7 +1188,6 @@ class GalaxyViewer {
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
-
 
 	animateCameraTo(targetPosition) {
 		const distance = CONFIG.SPHERE_RADIUS * 0.03;
