@@ -12,7 +12,7 @@ const CONFIG = {
 const isDev = location.hostname == 'localhost';
 const host = isDev
 	? '/assets'
-	: 'http://shimmering-rolypoly-7f38b3.netlify.app';
+	: 'https://pub-1ee90aa7201d46a6866703f0c56989a7.r2.dev';
 
 // ========== GESTION TEXTURES HD ==========
 const TEXTURE_MAPS = {
