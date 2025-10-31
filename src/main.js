@@ -521,7 +521,7 @@ class GalaxyViewer {
 		const scaleRandomFactor = 1 + (Math.random() * 0.2 - 0.1);
 
 		const jitteredX = gridX - centerGrid + (Math.random() * 2 - 1) * jitter;
-		const jitteredY = gridY - centerGrid + (Math.random() * 2 - 1) * jitter;
+		const jitteredY = centerGrid - gridY + (Math.random() * 2 - 1) * jitter;
 
 		let x = jitteredX * scale * scaleRandomFactor;
 		let y = jitteredY * scale * scaleRandomFactor;
