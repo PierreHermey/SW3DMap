@@ -9,6 +9,106 @@ const CONFIG = {
 	ANIMATION_SPEED: 0.5,
 };
 
+// ========== GESTION TEXTURES HD ==========
+const TEXTURE_MAPS = {
+	volcanic: {
+		diffuse: 'assets/textures/volcanic/volcanic_diffuse.png',
+		bump: 'assets/textures/volcanic/volcanic_bump.png',
+		roughness: 'assets/textures/volcanic/volcanic_roughness.png',
+		elevation: 'assets/textures/volcanic/volcanic_elevation.png',
+		clouds: 'assets/textures/volcanic/volcanic_clouds.png',
+		lava: 'assets/textures/volcanic/volcanic_lava.png',
+		citylights: 'assets/textures/volcanic/volcanic_citylights.png',
+	},
+	oceanic: {
+		diffuse: 'assets/textures/oceanic/oceanic_diffuse.png',
+		bump: 'assets/textures/oceanic/oceanic_bump.png',
+		roughness: 'assets/textures/oceanic/oceanic_roughness.png',
+		elevation: 'assets/textures/oceanic/oceanic_elevation.png',
+		clouds: 'assets/textures/oceanic/oceanic_clouds.png',
+		lava: 'assets/textures/oceanic/oceanic_islands.png',
+		citylights: 'assets/textures/oceanic/oceanic_citylights.png',
+	},
+	coruscant: {
+		diffuse: 'assets/planets/coruscant/coruscant_diffuse.png',
+		bump: 'assets/planets/coruscant/coruscant_bump.png',
+		roughness: 'assets/planets/coruscant/coruscant_elevation.png',
+		elevation: 'assets/planets/coruscant/coruscant_clouds.png',
+		clouds: 'assets/planets/coruscant/coruscant_clouds_bump.png',
+		citylights: 'assets/planets/coruscant/coruscant_citylights.png',
+	},
+	// Ajoute ici d'autres biomes : desert, ice, oceanic...
+};
+
+const HdTextureCache = new Map();
+
+async function loadHDTexturesAsync(biomeKey) {
+	if (HdTextureCache.has(biomeKey)) return HdTextureCache.get(biomeKey);
+
+	const loader = new THREE.TextureLoader();
+	const files = TEXTURE_MAPS[biomeKey];
+	if (!files) {
+		console.warn(`Aucune texture HD définie pour le biome: ${biomeKey}`);
+		return null;
+	}
+
+	const entries = await Promise.all(
+		Object.entries(files).map(async ([k, url]) => [k, await loader.loadAsync(url)])
+	);
+	const tex = Object.fromEntries(entries);
+	HdTextureCache.set(biomeKey, tex);
+	return tex;
+}
+
+async function createHDPlanetMesh(biomeKey, planetRadius) {
+	const tex = await loadHDTexturesAsync(biomeKey);
+	if (!tex) return null;
+
+	const mat = new THREE.MeshStandardMaterial({
+		map: tex.diffuse,
+		bumpMap: tex.bump,
+		roughnessMap: tex.roughness,
+		displacementMap: tex.elevation,
+		displacementScale: 0.025,
+		emissiveMap: tex.citylights,
+		emissive: tex.citylights ? new THREE.Color(0xffa000) : new THREE.Color(0x000000),
+		emissiveIntensity: 1.0,
+	});
+
+	const geo = new THREE.SphereGeometry(planetRadius, 128, 128);
+	const mesh = new THREE.Mesh(geo, mat);
+
+	// Nuages overlay
+	if (tex.clouds) {
+		const cloudsGeo = new THREE.SphereGeometry(planetRadius * 1.02, 64, 64);
+		const cloudsMat = new THREE.MeshPhongMaterial({
+			map: tex.clouds,
+			transparent: true,
+			opacity: 0.7,
+			depthWrite: false,
+		});
+		const cloudsMesh = new THREE.Mesh(cloudsGeo, cloudsMat);
+		mesh.add(cloudsMesh);
+	}
+
+	// Lave overlay (effet additif)
+	if (tex.lava) {
+		const lavaGeo = new THREE.SphereGeometry(planetRadius * 1.01, 64, 64);
+		const lavaMat = new THREE.MeshPhongMaterial({
+			map: tex.lava,
+			transparent: true,
+			blending: THREE.AdditiveBlending,
+			opacity: 0.5,
+			depthWrite: false,
+		});
+		const lavaMesh = new THREE.Mesh(lavaGeo, lavaMat);
+		mesh.add(lavaMesh);
+	}
+
+	return mesh;
+}
+// ==========================================
+
 class GalaxyViewer {
 	constructor() {
 		this.regionalClouds = [];
@@ -18,8 +118,8 @@ class GalaxyViewer {
 		this.selectedPlanetIndex = null;
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
+		this.focusedHdMesh = null; // ← Mesh HD de la planète en focus
 
-		// Repulsion config
 		this.REPULSION_CONFIG = {
 			radius: 40,
 			strength: 0.8,
@@ -337,52 +437,9 @@ class GalaxyViewer {
 			matrix.setPosition(position);
 			instancedMesh.setMatrixAt(index, matrix);
 
-			// ← Couleur UNIQUE pour la sphère solide
-			const biomeData = this.generateBiomeColor();
-			const uniqueMaterial = material.clone();
-			uniqueMaterial.color = biomeData.color;
-			uniqueMaterial.emissive = biomeData.color;
-			uniqueMaterial.emissiveIntensity = 0.2;
-
-			instancedMesh.setColorAt(index, biomeData.color);
-
-
-			const textureGeometry = new THREE.IcosahedronGeometry(CONFIG.PLANET_SIZE * 1.05, 5);
-			// ← RANDOMISER: 50% de chance d'avoir une texture
-			const hasTexture = Math.random() > 0.5;
-
-			let textureMesh = null;
-
-			if (hasTexture) {
-				const textureCanvas = this.generateBiomeTexture(biomeData.biome);
-				const heightCanvas = this.generateHeightmap(biomeData.biome);
-
-				const texture = this.canvasToThreeTexture(textureCanvas);
-				const displacementMap = this.canvasToThreeTexture(heightCanvas);
-
-				// ← FIX COUPURE: Répéter la texture au lieu de l'étirer
-				texture.wrapS = THREE.RepeatWrapping;
-				texture.wrapT = THREE.RepeatWrapping;
-				texture.repeat.set(2, 2);  // Répète 2x2 pour éviter les coupures
-
-				displacementMap.wrapS = THREE.RepeatWrapping;
-				displacementMap.wrapT = THREE.RepeatWrapping;
-				displacementMap.repeat.set(2, 2);
-
-				const textureMaterial = new THREE.MeshPhongMaterial({
-					map: texture,
-					displacementMap: displacementMap,
-					displacementScale: 0.3,
-					transparent: true,
-					opacity: 1,
-					side: THREE.FrontSide,
-					shininess: 50
-				});
-
-				textureMesh = new THREE.Mesh(textureGeometry, textureMaterial);
-				textureMesh.position.copy(position);
-				this.scene.add(textureMesh);
-			}
+			// ← Lire la couleur depuis le JSON (biome)
+			const biomeColor = new THREE.Color(planet.color);
+			instancedMesh.setColorAt(index, biomeColor);
 
 			this.planetData.push({
 				...planet,
@@ -393,9 +450,8 @@ class GalaxyViewer {
 				pulseOffset: Math.random() * Math.PI * 2,
 				hovered: false,
 				focused: false,
-				biomeColor: biomeData.color,
-				biome: biomeData.biome,
-				textureMesh: textureMesh
+				biomeColor: biomeColor,
+				biome: planet.biome, // ← Clé du biome pour charger HD
 			});
 
 			this.planetVelocities.set(index, new THREE.Vector3());
@@ -407,264 +463,7 @@ class GalaxyViewer {
 
 		this.createRegionalClouds();
 
-		console.log(`✨ ${this.planets.length} planètes: sphères colorées + textures + halos`);
-	}
-
-	canvasToThreeTexture(canvas) {
-		const texture = new THREE.CanvasTexture(canvas);
-		texture.magFilter = THREE.NearestFilter;
-		texture.minFilter = THREE.NearestFilter;
-		return texture;
-	}
-
-	generateHeightmap(biome) {
-		const canvas = document.createElement('canvas');
-		canvas.width = 128;
-		canvas.height = 128;
-		const ctx = canvas.getContext('2d');
-		const imageData = ctx.createImageData(128, 128);
-		const data = imageData.data;
-
-		switch(biome) {
-			case 'water':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const wave = Math.sin(x * 0.1) * 20 + Math.sin(y * 0.08) * 15;
-						const height = 128 + wave;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = height;
-						data[idx + 1] = height;
-						data[idx + 2] = height;
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'ice':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const crystal = Math.sin(x * 0.2) * 30 + Math.cos(y * 0.2) * 25;
-						const height = 128 + crystal;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.min(255, Math.max(0, height));
-						data[idx + 1] = data[idx];
-						data[idx + 2] = data[idx];
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'earth':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const mountain = Math.sin(x * 0.08) * 40 + Math.cos(y * 0.08) * 35;
-						const height = 128 + mountain;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.min(255, Math.max(0, height));
-						data[idx + 1] = data[idx];
-						data[idx + 2] = data[idx];
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'desert':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const dune = Math.sin(x * 0.06 + y * 0.04) * 45;
-						const height = 128 + dune;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.min(255, Math.max(0, height));
-						data[idx + 1] = data[idx];
-						data[idx + 2] = data[idx];
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'city':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const building = Math.floor(x / 16) + Math.floor(y / 16);
-						const height = 100 + (building % 3) * 40;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = height;
-						data[idx + 1] = height;
-						data[idx + 2] = height;
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'marsh':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const swamp = Math.sin(x * 0.1) * 20 + Math.cos(y * 0.1) * 15;
-						const water = Math.random() > 0.7 ? -20 : 0;
-						const height = 128 + swamp + water;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.min(255, Math.max(0, height));
-						data[idx + 1] = data[idx];
-						data[idx + 2] = data[idx];
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-		}
-
-		ctx.putImageData(imageData, 0, 0);
-		return canvas;
-	}
-
-	generateBiomeTexture(biome) {
-		const canvas = document.createElement('canvas');
-		canvas.width = 128;
-		canvas.height = 128;
-		const ctx = canvas.getContext('2d');
-		const imageData = ctx.createImageData(128, 128);
-		const data = imageData.data;
-
-		switch(biome) {
-			case 'water':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const wave = Math.sin(x * 0.1 + Math.random() * 0.5) * 10;
-						const brightness = 122 + wave;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = 26;
-						data[idx + 1] = 107;
-						data[idx + 2] = Math.max(100, brightness);
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'ice':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const noise = Math.sin(x * 0.05) * Math.cos(y * 0.05);
-						const brightness = 240 + noise * 15;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = brightness;
-						data[idx + 1] = brightness;
-						data[idx + 2] = 255;
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'earth':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const terrain = Math.sin(x * 0.08) + Math.cos(y * 0.08);
-						const forest = Math.sin(x * 0.3) * Math.cos(y * 0.3);
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.floor(61 + terrain * 10 + forest * 20);
-						data[idx + 1] = Math.floor(100 + terrain * 15);
-						data[idx + 2] = Math.floor(45 + terrain * 8);
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'desert':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const dune = Math.sin(x * 0.06) * 20;
-						const shadow = Math.cos(y * 0.04) * 10;
-						const idx = (y * 128 + x) * 4;
-						data[idx] = Math.floor(212 + dune + shadow);
-						data[idx + 1] = Math.floor(165 + dune * 0.7);
-						data[idx + 2] = Math.floor(116 + dune * 0.5);
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'city':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const light = Math.random() > 0.4;
-						const shadow = Math.abs(Math.sin(x * 0.1)) * 20;
-						const idx = (y * 128 + x) * 4;
-
-						if (light) {
-							data[idx] = 200;
-							data[idx + 1] = 200;
-							data[idx + 2] = 100;
-						} else {
-							data[idx] = Math.floor(80 - shadow);
-							data[idx + 1] = Math.floor(80 - shadow);
-							data[idx + 2] = Math.floor(80 - shadow);
-						}
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-
-			case 'marsh':
-				for (let y = 0; y < 128; y++) {
-					for (let x = 0; x < 128; x++) {
-						const swamp = Math.sin(x * 0.05) * Math.cos(y * 0.05);
-						const water = Math.sin(x * 0.1) * 10;
-						const idx = (y * 128 + x) * 4;
-
-						if (Math.random() > 0.6) {
-							data[idx] = 26;
-							data[idx + 1] = 58 + water;
-							data[idx + 2] = 92;
-						} else {
-							data[idx] = Math.floor(61 + swamp * 15);
-							data[idx + 1] = Math.floor(92 + swamp * 10);
-							data[idx + 2] = Math.floor(45 + swamp * 8);
-						}
-						data[idx + 3] = 255;
-					}
-				}
-				break;
-		}
-
-		ctx.putImageData(imageData, 0, 0);
-		return canvas;
-	}
-
-	generateBiomeColor() {
-		const biomes = {
-			water: {
-				colors: [0x1a4d7a, 0x2d5fa3, 0x1f5a96, 0x0d3b66, 0x2d6a8f],
-				name: 'water'
-			},
-			ice: {
-				colors: [0xf0f8ff, 0xe0f6ff, 0xd4ebf7, 0xb3e5fc, 0x81d4fa],
-				name: 'ice'
-			},
-			earth: {
-				colors: [0x3d5c1d, 0x556b2f, 0x6b8e23, 0x228b22, 0x2d5016],
-				name: 'earth'
-			},
-			desert: {
-				colors: [0xd4a574, 0xe6b84d, 0xcc8800, 0xd2691e, 0xff8c00],
-				name: 'desert'
-			},
-			city: {
-				colors: [0x696969, 0x808080, 0xa9a9a9, 0xffff00, 0xffa500],
-				name: 'city'
-			},
-			marsh: {
-				colors: [0x3d5c1d, 0x1a3a1a, 0x4a6741, 0x2d4a2f, 0x556b2f],
-				name: 'marsh'
-			}
-		};
-
-		const biomeArray = Object.values(biomes);
-		const randomBiome = biomeArray[Math.floor(Math.random() * biomeArray.length)];
-		const randomColor = randomBiome.colors[Math.floor(Math.random() * randomBiome.colors.length)];
-
-		return {
-			hex: randomColor,
-			color: new THREE.Color(randomColor),
-			biome: randomBiome.name
-		};
+		console.log(`✨ ${this.planets.length} planètes créées avec biomes`);
 	}
 
 	generateCloudParticleTexture() {
@@ -675,7 +474,6 @@ class GalaxyViewer {
 
 		ctx.clearRect(0, 0, 64, 64);
 
-		// Créer dégradé radial blanc → transparent
 		const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
 		gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
 		gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
@@ -692,22 +490,8 @@ class GalaxyViewer {
 		return texture;
 	}
 
-
 	createRegionalClouds() {
-		const regionColors = {
-			'Deep Core': 0xffffff,
-			'Core Worlds': 0xfcd788,
-			'Colonies': 0xc687f8,
-			'Mid Rim': 0xb939af,
-			'Inner Rim': 0xf6b16b,
-			'Expansion Region': 0x85ddf1,
-			'Outer Rim Territories': 0x00ffd9,
-			'Unknown Regions': 0x9a9a9a,
-			'Wild Space': 0x41ff00,
-			'Hutt Space': 0xff0000,
-		};
-
-		// ← Grouper planètes par région
+		// Grouper planètes par région
 		const regionGroups = {};
 		this.planetData.forEach(planet => {
 			const region = planet.region;
@@ -717,12 +501,13 @@ class GalaxyViewer {
 			regionGroups[region].push(planet);
 		});
 
-		// ← Créer UN nuage par région
+		// Créer UN nuage par région avec sa couleur de région
 		Object.entries(regionGroups).forEach(([regionName, planets]) => {
 			if (planets.length === 0) return;
 
-			const color = regionColors[regionName] || 0xFFE81F;
-			this.createRegionalCloud(regionName, planets, color);
+			// ← Utiliser regionColor du premier planet (tous ont la même pour la région)
+			const regionColor = planets[0].regionColor;
+			this.createRegionalCloud(regionName, planets, regionColor);
 		});
 
 		console.log(`☁️ ${Object.keys(regionGroups).length} nuages régionaux créés`);
@@ -732,7 +517,7 @@ class GalaxyViewer {
 		const cloudGeometry = new THREE.BufferGeometry();
 		const positions = [];
 		const colors = [];
-		const baseOffsets = [];  // ← Stocker les offsets FIXES
+		const baseOffsets = [];
 
 		const color = new THREE.Color(colorHex);
 
@@ -786,13 +571,13 @@ class GalaxyViewer {
 			planets,
 			geometry: cloudGeometry,
 			colorHex,
-			baseOffsets,  // ← Garder les offsets fixes
+			baseOffsets,
 			driftOffsets: planets.flatMap(() =>
 				Array(30).fill(0).map(() => ({
 					x: (Math.random() - 0.5) * 1.5,
 					y: (Math.random() - 0.5) * 1.5,
 					z: (Math.random() - 0.5) * 1.5,
-					vx: (Math.random() - 0.5) * 0.01, // Augmente à 0.01 pour test
+					vx: (Math.random() - 0.5) * 0.01,
 					vy: (Math.random() - 0.5) * 0.01,
 					vz: (Math.random() - 0.5) * 0.01,
 				}))
@@ -807,13 +592,11 @@ class GalaxyViewer {
 			const positions = [];
 			const oldPositions = cloudData.geometry.attributes.position?.array;
 
-			// ← Mettre à jour les drifts
 			cloudData.driftOffsets.forEach(drift => {
 				drift.x += drift.vx;
 				drift.y += drift.vy;
 				drift.z += drift.vz;
 
-				// ← Rebond aux limites
 				if (Math.abs(drift.x) > 1.5) drift.vx *= -1;
 				if (Math.abs(drift.y) > 1.5) drift.vy *= -1;
 				if (Math.abs(drift.z) > 1.5) drift.vz *= -1;
@@ -825,14 +608,7 @@ class GalaxyViewer {
 					const baseOffset = cloudData.baseOffsets[pointIndex];
 					const drift = cloudData.driftOffsets[pointIndex];
 
-					if (!baseOffset) {
-						console.error('Missing baseOffset at', pointIndex);
-						continue;
-					}
-					if (!drift) {
-						console.error('Missing drift at', pointIndex);
-						continue;
-					}
+					if (!baseOffset || !drift) continue;
 
 					const newX = planet.position.x + baseOffset.x + drift.x;
 					const newY = planet.position.y + baseOffset.y + drift.y;
@@ -899,32 +675,18 @@ class GalaxyViewer {
 			const elapsed = (Date.now() - startTime) / 1000;
 			const progress = Math.min(elapsed / duration, 1);
 
-			// Easing ease-out-cubic pour un mouvement naturel
 			const eased = 1 - Math.pow(1 - progress, 3);
 
 			this.planetData.forEach(data => {
 				const startPos = startPositions.get(data.index);
 				const targetPos = data.originalPosition;
 
-				// Interpoler la position
 				data.position.lerpVectors(startPos, targetPos, eased);
 
-				// Mettre à jour la matrice de l'InstancedMesh
 				const matrix = new THREE.Matrix4();
 				matrix.setPosition(data.position);
 				this.instancedMesh.setMatrixAt(data.index, matrix);
 
-				// ← Mettre à jour position du skin texturé
-				if (data.textureMesh) {
-					data.textureMesh.position.copy(data.position);
-				}
-
-				// ← Mettre à jour position du halo aussi
-				if (data.haloMesh) {
-					data.haloMesh.position.copy(data.position);
-				}
-
-				// Réinitialiser la vélocité progressivement
 				const velocity = this.planetVelocities.get(data.index);
 				if (velocity) {
 					velocity.multiplyScalar(1 - progress);
@@ -953,9 +715,6 @@ class GalaxyViewer {
 				const matrix = new THREE.Matrix4();
 				matrix.setPosition(data.position);
 				this.instancedMesh.setMatrixAt(data.index, matrix);
-
-				if (data.textureMesh) data.textureMesh.position.copy(data.position);
-				if (data.haloMesh) data.haloMesh.position.copy(data.position);
 			}
 		});
 
@@ -1007,7 +766,7 @@ class GalaxyViewer {
 		}
 	}
 
-	focusOnPlanet(instanceId) {
+	async focusOnPlanet(instanceId) {
 		if (this.selectedPlanetIndex !== null && this.selectedPlanetIndex !== instanceId) {
 			this.restorePlanetsToOriginalPositions(0.5);
 		}
@@ -1024,10 +783,42 @@ class GalaxyViewer {
 			}
 		});
 
-		// ← AJOUTER: Force une mise à jour des nuages immédiatement
 		this.updateRegionalClouds();
 
-		// ← AJOUTER AFFICHAGE INFOS DESKTOP
+		// ========== CHARGER TEXTURE HD ==========
+		// Masquer TOUS les meshes low-res
+		this.instancedMesh.visible = false;
+
+		// ← MASQUER LES NUAGES AUSSI
+		this.regionalClouds.forEach(cloud => {
+			cloud.mesh.visible = false;
+		});
+
+		// Supprimer l'ancien mesh HD si existant
+		if (this.focusedHdMesh) {
+			this.scene.remove(this.focusedHdMesh);
+			this.focusedHdMesh = null;
+		}
+
+		// Charger et créer le mesh HD
+		const biomeKey = planet.biome; // ex: 'volcanic'
+		if (TEXTURE_MAPS[biomeKey]) {
+			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
+			this.focusedHdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
+			if (this.focusedHdMesh) {
+				// ← AJOUTER LA POSITION CORRECTEMENT
+				this.focusedHdMesh.position.copy(planet.position);
+				this.scene.add(this.focusedHdMesh);
+				console.log(`✅ Textures HD chargées pour ${planet.name}`);
+				console.log(`📍 Position: x=${planet.position.x}, y=${planet.position.y}, z=${planet.position.z}`);
+			} else {
+				console.error(`❌ Erreur lors de la création du mesh HD pour ${biomeKey}`);
+			}
+		} else {
+			console.warn(`⚠️ Aucune texture HD définie pour le biome: ${biomeKey}`);
+		}
+		// =========================================
+
 		document.getElementById('planet-info').innerHTML = `
         <div class="space-y-3">
             <div class="text-base font-semibold text-white">
@@ -1067,18 +858,6 @@ class GalaxyViewer {
                 
                 <div class="flex items-start gap-2.5 text-gray-300">
                     <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"></path>
-                    </svg>
-                    <div class="flex-1">
-                        <div class="text-gray-500 mb-0.5">Position 3D</div>
-                        <div class="text-white font-mono text-xs">
-                            (${Math.round(planet.position.x)}, ${Math.round(planet.position.y)}, ${Math.round(planet.position.z)})
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-2.5 text-gray-300">
-                    <svg class="w-3.5 h-3.5 text-star-wars flex-shrink-0 mt-0.5 opacity-70" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M2 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 11-2 0V7H3v9a1 1 0 11-2 0V4zm8 0a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 11-2 0V7h-3v9a1 1 0 11-2 0V4z" clip-rule="evenodd"></path>
                     </svg>
                     <div class="flex-1">
@@ -1090,8 +869,7 @@ class GalaxyViewer {
         </div>
     `;
 
-		// ← AJOUTER MODAL MOBILE
-		window.showPlanetModal(planet);
+		window.showPlanetModal && window.showPlanetModal(planet);
 
 		this.animateCameraTo(planet.position);
 	}
@@ -1101,7 +879,6 @@ class GalaxyViewer {
 			this.planetData[this.selectedPlanetIndex].focused = false;
 			this.selectedPlanetIndex = null;
 
-			// ← Restaurer minDistance pour vue galaxie
 			this.controls.minDistance = CONFIG.SPHERE_RADIUS * 0.5;
 
 			this.restorePlanetsToOriginalPositions();
@@ -1110,8 +887,22 @@ class GalaxyViewer {
 				velocity.set(0, 0, 0);
 			});
 
-			// ← AJOUTER: Force une mise à jour des nuages
 			this.updateRegionalClouds();
+
+			// ========== RESTAURER VUE GALAXIE ==========
+			// Supprimer le mesh HD
+			if (this.focusedHdMesh) {
+				this.scene.remove(this.focusedHdMesh);
+				this.focusedHdMesh = null;
+			}
+			// Réafficher l'instancedMesh
+			this.instancedMesh.visible = true;
+
+			// ← RÉAFFICHER LES NUAGES AUSSI
+			this.regionalClouds.forEach(cloud => {
+				cloud.mesh.visible = true;
+			});
+			// ===========================================
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
@@ -1154,8 +945,6 @@ class GalaxyViewer {
 
 		this.applyRepulsionForces();
 		this.updatePlanetVelocities();
-
-		// Dans animate(), remplacer la section halos par:
 		this.updateRegionalClouds();
 
 		this.controls.update();

@@ -12,6 +12,53 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /**
+ * Biomes disponibles (génériques)
+ */
+const AVAILABLE_GENERIC_BIOMES = ['volcanic', 'oceanic'];
+
+/**
+ * Couleurs par biome (pour affichage low-res dans la galaxie)
+ */
+const BIOME_COLORS = {
+	volcanic: '#ff4500',
+	coruscant: '#808080',
+	desert: '#d4a574',
+	ice: '#e0f6ff',
+	oceanic: '#1a4d7a',
+	earth: '#3d5c1d',
+};
+
+/**
+ * Couleurs par région (pour les nuages régionaux)
+ */
+const REGION_COLORS = {
+	'Deep Core': '#ffffff',      // Blanc
+	'Core Worlds': '#fcd788',    // Jaune clair
+	'Inner Rim': '#f6b16b',      // Orange clair
+	'Mid Rim': '#b939af',        // Fuschia
+	'Expansion Region': '#85ddf1', // Bleu clair
+	'Outer Rim': '#00ffd9',      // Cyan
+	'Outer Rim Territories': '#00ffd9', // Cyan
+	'Unknown Regions': '#9a9a9a', // Gris
+	'Wild Space': '#41ff00',     // Vert
+	'Colonies': '#c687f8',       // Violet clair
+	'Hutt Space': '#ff0000',     // Rouge
+};
+
+/**
+ * Vérifie si une texture existe pour une planète (chemin de la texture spécifique)
+ */
+async function checkPlanetTextureExists(planetName) {
+	const texturePath = join(__dirname, `../src/assets/planets/${planetName}/${planetName}_diffuse.png`);
+	try {
+		await fs.access(texturePath);
+		return true; // Texture trouvée
+	} catch {
+		return false; // Texture non trouvée
+	}
+}
+
+/**
  * Parse une coordonnée de grille (ex: "M-10") et retourne {x, y}
  */
 function parseGridCoord(gridStr) {
@@ -19,21 +66,44 @@ function parseGridCoord(gridStr) {
 		return null;
 	}
 
-	const cleaned = gridStr.trim().replace(/\r\n.*/, ''); // Gérer les multi-lignes
+	const cleaned = gridStr.trim().replace(/\r\n.*/, '');
 	const match = cleaned.match(/^([A-Z])-(\d+)$/);
 
 	if (match) {
 		const letter = match[1];
 		const number = parseInt(match[2], 10);
-
-		// A=1, B=2, ..., U=21
 		const x = letter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
 		const y = number;
-
 		return { x, y };
 	}
 
 	return null;
+}
+
+/**
+ * Détermine le biome d'une planète
+ * 1. Si une texture spécifique existe dans assets/planets/{planetName}, l'utilise
+ * 2. Sinon, en assigne une aléatoire de assets/textures
+ */
+async function determinePlanetBiome(planetName) {
+	const hasSpecificTexture = await checkPlanetTextureExists(planetName);
+
+	if (hasSpecificTexture) {
+		return planetName.toLowerCase(); // ex: 'coruscant', 'naboo'
+	}
+
+	// Assigner un biome générique aléatoire
+	const randomBiome = AVAILABLE_GENERIC_BIOMES[
+		Math.floor(Math.random() * AVAILABLE_GENERIC_BIOMES.length)
+		];
+	return randomBiome;
+}
+
+/**
+ * Détermine la couleur basée sur le biome
+ */
+function getBiomeColor(biome) {
+	return BIOME_COLORS[biome] || '#FFE81F';
 }
 
 /**
@@ -42,20 +112,13 @@ function parseGridCoord(gridStr) {
 function getRegionColor(regionText) {
 	if (!regionText) return '#FFE81F';
 
-	const region = regionText.toLowerCase();
+	for (const [region, color] of Object.entries(REGION_COLORS)) {
+		if (regionText.toLowerCase().includes(region.toLowerCase())) {
+			return color;
+		}
+	}
 
-	if (region.includes('deep core')) return '#ffffff';      // Blanc
-	if (region.includes('core worlds') || region === 'core') return '#fcd788';  // Jaune clair
-	if (region.includes('inner rim')) return '#f6b16b';      // Orange clair
-	if (region.includes('mid rim')) return '#b939af';        // Fuschia
-	if (region.includes('expansion region')) return '#85ddf1'; // Bleu clair
-	if (region.includes('outer rim')) return '#00ffd9';      // Cyan
-	if (region.includes('unknown')) return '#9a9a9a';        // Gris
-	if (region.includes('wild space')) return '#41ff00';     // Vert
-	if (region.includes('colonies')) return '#c687f8';       // Violet clair
-	if (region.includes('hutt space')) return '#ff0000';     // Vert
-
-	return '#ffd300'; // Jaune Star Wars par défaut
+	return '#FFE81F';
 }
 
 /**
@@ -63,7 +126,7 @@ function getRegionColor(regionText) {
  */
 async function parseCSV(csvPath) {
 	const content = await fs.readFile(csvPath, 'utf-8');
-	const lines = content.split('\n').slice(1); // Skip header
+	const lines = content.split('\n').slice(1);
 
 	const planets = [];
 	const errors = [];
@@ -72,19 +135,21 @@ async function parseCSV(csvPath) {
 		const line = lines[i].trim();
 		if (!line || line === ';;;;') continue;
 
-		// Séparer par point-virgule
 		const parts = line.split(';').map(p => p.trim());
 
 		if (parts.length >= 4) {
 			const [system, sector, region, grid] = parts;
 
-			// Ignorer les lignes sans système
 			if (!system) continue;
 
-			// Parser les coordonnées
 			const coords = parseGridCoord(grid);
 
 			if (coords) {
+				// ← DÉTERMINER LE BIOME (sync → async)
+				const biome = await determinePlanetBiome(system);
+				const biomeColor = getBiomeColor(biome);
+				const regionColor = getRegionColor(region);
+
 				planets.push({
 					name: system,
 					sector: sector || 'Unknown',
@@ -92,13 +157,14 @@ async function parseCSV(csvPath) {
 					grid: grid.trim(),
 					x: coords.x,
 					y: coords.y,
-					color: getRegionColor(region)
+					biome: biome,
+					color: biomeColor,
+					regionColor: regionColor
 				});
 			} else {
-				// Log les erreurs pour debug
 				if (grid && grid.trim()) {
 					errors.push({
-						line: i + 2, // +2 car on skip header et index commence à 0
+						line: i + 2,
 						system,
 						grid: grid.trim(),
 						reason: 'Invalid grid format'
@@ -145,7 +211,6 @@ async function main() {
 			}
 		}
 
-		// Sauvegarder en JSON
 		const jsonPath = join(__dirname, '../src/planets.json');
 		await fs.writeFile(
 			jsonPath,
@@ -155,11 +220,9 @@ async function main() {
 
 		console.log(`\n💾 JSON sauvegardé: ${jsonPath}`);
 
-		// Statistiques
 		console.log('\n📊 Statistiques:');
 		console.log(`  • Total de planètes: ${planets.length}`);
 
-		// Répartition par région
 		const regions = {};
 		planets.forEach(p => {
 			regions[p.region] = (regions[p.region] || 0) + 1;
@@ -173,7 +236,18 @@ async function main() {
 				console.log(`  • ${region.padEnd(25)} ${count}`);
 			});
 
-		// Étendue de la galaxie
+		const biomes = {};
+		planets.forEach(p => {
+			biomes[p.biome] = (biomes[p.biome] || 0) + 1;
+		});
+
+		console.log('\n🌍 Répartition par biome:');
+		Object.entries(biomes)
+			.sort((a, b) => b[1] - a[1])
+			.forEach(([biome, count]) => {
+				console.log(`  • ${biome.padEnd(15)} ${count}`);
+			});
+
 		const xCoords = planets.map(p => p.x);
 		const yCoords = planets.map(p => p.y);
 
@@ -181,7 +255,6 @@ async function main() {
 		console.log(`  • X: ${Math.min(...xCoords)} à ${Math.max(...xCoords)} (lettres ${String.fromCharCode(64 + Math.min(...xCoords))}-${String.fromCharCode(64 + Math.max(...xCoords))})`);
 		console.log(`  • Y: ${Math.min(...yCoords)} à ${Math.max(...yCoords)}`);
 
-		// Exemples de planètes célèbres
 		const famousPlanets = [
 			'Tatooine', 'Coruscant', 'Alderaan', 'Naboo', 'Hoth',
 			'Endor', 'Dagobah', 'Mustafar', 'Kamino', 'Ahch-To'
@@ -191,7 +264,7 @@ async function main() {
 		famousPlanets.forEach(name => {
 			const planet = planets.find(p => p.name === name);
 			if (planet) {
-				console.log(`  ✓ ${planet.name.padEnd(15)} - ${planet.grid.padEnd(6)} - ${planet.region}`);
+				console.log(`  ✓ ${planet.name.padEnd(15)} - ${planet.grid.padEnd(6)} - ${planet.biome.padEnd(12)} - ${planet.region}`);
 			} else {
 				console.log(`  ✗ ${name.padEnd(15)} - Non trouvée`);
 			}
