@@ -1048,62 +1048,83 @@ class GalaxyViewer {
 	}
 
 	onMouseMove(event) {
-		// ← AJOUTER: Ne tester que si instancedMesh est visible
-		if (!this.instancedMesh.visible) {
-			this.planetData.forEach(data => {
-				data.hovered = false;
-			});
-			document.body.style.cursor = 'default';
-			return;
-		}
-
+		// ← MODIFIER: Toujours tester le raycaster
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-		const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
+		// Réinitialiser les hover
 		this.planetData.forEach(data => {
 			data.hovered = false;
 		});
 
-		if (intersects.length > 0) {
-			const instanceId = intersects[0].instanceId;
-			const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
-			const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+		// 1. Tester les planètes du instancedMesh si visible
+		if (this.instancedMesh.visible) {
+			const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
-			// ← AJOUTER: Vérifier que la planète est visible
-			if (planet && planet.visible) {
-				planet.hovered = true;
-				document.body.style.cursor = 'pointer';
-			} else {
-				document.body.style.cursor = 'default';
+			if (intersects.length > 0) {
+				const instanceId = intersects[0].instanceId;
+				const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
+				const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+
+				if (planet && planet.visible) {
+					planet.hovered = true;
+					document.body.style.cursor = 'pointer';
+					return;
+				}
 			}
-		} else {
-			document.body.style.cursor = 'default';
 		}
+
+		// 2. Tester les planètes alwaysVisible en arrière-plan
+		for (const [biomeKey, mesh] of this.alwaysVisibleMeshes) {
+			const intersects = this.raycaster.intersectObject(mesh);
+
+			if (intersects.length > 0) {
+				const planet = this.planetData.find(p => p.biome === biomeKey);
+				if (planet && planet.index !== this.selectedPlanetIndex) {
+					planet.hovered = true;
+					document.body.style.cursor = 'pointer';
+					return;
+				}
+			}
+		}
+
+		document.body.style.cursor = 'default';
 	}
 
 	onMouseClick(event) {
-		// ← AJOUTER: Ne tester que si instancedMesh est visible
-		if (!this.instancedMesh.visible) {
-			return;
-		}
-
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
 		this.raycaster.setFromCamera(this.mouse, this.camera);
-		const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
-		if (intersects.length > 0) {
-			const instanceId = intersects[0].instanceId;
-			const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
-			const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+		// 1. Tester d'abord les planètes du instancedMesh si visible
+		if (this.instancedMesh.visible) {
+			const intersects = this.raycaster.intersectObject(this.instancedMesh);
 
-			// ← AJOUTER: Vérifier que la planète est visible ET cliquable
-			if (planet && planet.visible) {
-				this.focusOnPlanet(globalPlanetIndex);
+			if (intersects.length > 0) {
+				const instanceId = intersects[0].instanceId;
+				const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
+				const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+
+				if (planet && planet.visible) {
+					this.focusOnPlanet(globalPlanetIndex);
+					return;
+				}
+			}
+		}
+
+		// 2. Tester les planètes alwaysVisible en arrière-plan
+		for (const [biomeKey, mesh] of this.alwaysVisibleMeshes) {
+			const intersects = this.raycaster.intersectObject(mesh);
+
+			if (intersects.length > 0) {
+				const planet = this.planetData.find(p => p.biome === biomeKey);
+				if (planet && planet.index !== this.selectedPlanetIndex) {
+					this.focusOnPlanet(planet.index);
+					return;
+				}
 			}
 		}
 	}
@@ -1142,6 +1163,9 @@ class GalaxyViewer {
 			cloud.mesh.visible = false;
 		});
 
+		// ← AJOUTER: Activer le glow sur les autres planètes alwaysVisible
+		this.updateAlwaysVisibleGlow(globalPlanetIndex);
+
 		if (this.focusedHdMesh) {
 			const oldBiomeKey = this.focusedHdMeshKey;
 			const shouldKeepOldVisible = PLANET_SPECIFIC_TEXTURES[oldBiomeKey]?.alwaysVisible;
@@ -1168,16 +1192,13 @@ class GalaxyViewer {
 		if (TEXTURE_MAPS[biomeKey]) {
 			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
 
-			// ← AJOUTER: Afficher le loader
 			this.showLoader();
 
 			let hdMesh = this.alwaysVisibleMeshes.get(biomeKey);
 
 			if (!hdMesh) {
-				// ← Charger les textures (async)
 				hdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
 
-				// ← AJOUTER: Masquer le loader après chargement
 				this.hideLoader();
 
 				if (hdMesh) {
@@ -1187,7 +1208,6 @@ class GalaxyViewer {
 					}
 				}
 			} else {
-				// ← Si déjà en cache: masquer immédiatement
 				this.hideLoader();
 			}
 
@@ -1199,12 +1219,10 @@ class GalaxyViewer {
 
 				this.updateLightingForPlanet(planet.position);
 			} else {
-				// ← AJOUTER: Masquer le loader en cas d'erreur
 				this.hideLoader();
 				console.error(`❌ Erreur lors de la création du mesh HD pour ${biomeKey}`);
 			}
 		} else {
-			// ← AJOUTER: Masquer si pas de textures
 			this.hideLoader();
 			console.warn(`⚠️ Aucune texture HD définie pour le biome: ${biomeKey}`);
 		}
@@ -1266,7 +1284,6 @@ class GalaxyViewer {
 
 	clearPlanetFocus() {
 		if (this.selectedPlanetIndex !== null) {
-			// ← Chercher la planète par index global
 			const planet = this.planetData.find(p => p.index === this.selectedPlanetIndex);
 
 			if (planet) {
@@ -1284,6 +1301,9 @@ class GalaxyViewer {
 			});
 
 			this.updateRegionalClouds();
+
+			// ← AJOUTER: Désactiver le glow sur toutes les planètes
+			this.updateAlwaysVisibleGlow(null);
 
 			if (this.focusedHdMesh && this.focusedHdMeshKey) {
 				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[this.focusedHdMeshKey]?.alwaysVisible;
@@ -1319,6 +1339,60 @@ class GalaxyViewer {
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
+
+	updateAlwaysVisibleGlow(focusedPlanetIndex) {
+		// Boucler sur tous les meshes alwaysVisible
+		for (const [biomeKey, mesh] of this.alwaysVisibleMeshes) {
+			const planet = this.planetData.find(p => p.biome === biomeKey);
+
+			if (!planet) continue;
+
+			// Si c'est la planète focusée → pas de glow
+			if (planet.index === focusedPlanetIndex) {
+				this.removeGlowFromMesh(mesh);
+				continue;
+			}
+
+			// Si on est en focus (quelque chose est sélectionné) → ajouter glow
+			if (focusedPlanetIndex !== null) {
+				this.addGlowToMesh(mesh);
+			} else {
+				// Pas de focus → pas de glow
+				this.removeGlowFromMesh(mesh);
+			}
+		}
+	}
+
+	addGlowToMesh(mesh) {
+		mesh.traverse((child) => {
+			if (child.material) {
+				// Modifier l'émission
+				if (child.material.emissive) {
+					child.material.emissive.setHex(0x4488ff);
+					child.material.emissiveIntensity = 0.7;
+				}
+			}
+		});
+
+		// ← AJOUTER: Légère augmentation de taille pour l'effet de glow
+		mesh.scale.set(2, 2, 2);
+	}
+
+	removeGlowFromMesh(mesh) {
+		mesh.traverse((child) => {
+			if (child.material) {
+				// Réinitialiser l'émission
+				if (child.material.emissive) {
+					child.material.emissive.setHex(0x000000);
+					child.material.emissiveIntensity = 0;
+				}
+			}
+		});
+
+		// ← AJOUTER: Réinitialiser la scale
+		mesh.scale.set(1, 1, 1);
+	}
+
 
 	animateCameraTo(targetPosition) {
 		const distance = CONFIG.SPHERE_RADIUS * 0.03;
