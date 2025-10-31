@@ -35,7 +35,7 @@ const TEXTURE_MAPS = {
 		citylights: `${host}/textures/oceanic/oceanic_citylights.png`,
 	},
 	coruscant: {
-		diffuse: `${host}/planets/coruscant/coruscant_diffuse.png`,
+		diffuse: `${host}/planets/coruscant/coruscant_elevation.png`,
 		bump: `${host}/planets/coruscant/coruscant_bump.png`,
 		roughness: `${host}/planets/coruscant/coruscant_bump.png`,
 		elevation: `${host}/planets/coruscant/coruscant_elevation.png`,
