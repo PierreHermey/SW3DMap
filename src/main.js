@@ -74,7 +74,7 @@ Object.entries(TEXTURE_MAPS_BASE).forEach(([biome, files]) => {
 Object.entries(PLANET_SPECIFIC_TEXTURES).forEach(([planetName, files]) => {
 	TEXTURE_MAPS[planetName] = {};
 	Object.entries(files).forEach(([type, filename]) => {
-		if (filename) {
+		if (filename && type !== 'alwaysVisible') {
 			TEXTURE_MAPS[planetName][type] = `${host}/planets/${planetName}/${filename}`;
 		}
 	});
