@@ -37,10 +37,10 @@ const TEXTURE_MAPS = {
 	coruscant: {
 		diffuse: `${host}/planets/coruscant/coruscant_diffuse.png`,
 		bump: `${host}/planets/coruscant/coruscant_bump.png`,
-		roughness: `${host}/planets/coruscant/coruscant_citylights.png`,
+		roughness: `${host}/planets/coruscant/coruscant_bump.png`,
 		elevation: `${host}/planets/coruscant/coruscant_elevation.png`,
 		clouds: `${host}/planets/coruscant/coruscant_clouds.png`,
-		citylights: `${host}/planets/coruscant/coruscant_clouds_bump.png`,
+		citylights: `${host}/planets/coruscant/coruscant_citylights.png`,
 	},
 	// Ajoute ici d'autres biomes : desert, ice, oceanic...
 };
