@@ -283,6 +283,10 @@ class GalaxyViewer {
 		this.createInstancedPlanets();
 		this.setupEvents();
 		this.setupSearchEvents();
+
+		// ← AJOUTER: Créer les tooltips après avoir créé les alwaysVisible meshes
+		this.setupPlanetTooltips();
+
 		this.animate();
 
 		document.getElementById('loading').style.display = 'none';
@@ -297,6 +301,120 @@ class GalaxyViewer {
 			}
 		}
 	}
+
+	setupPlanetTooltips() {
+		const container = document.getElementById('planet-tooltips-container');
+
+		// Créer des tooltips pour toutes les alwaysVisible
+		this.planetTooltips = new Map();
+
+		for (const [biomeKey, textureConfig] of Object.entries(PLANET_SPECIFIC_TEXTURES)) {
+			if (!textureConfig.alwaysVisible) continue;
+
+			const planet = this.planetData.find(p => p.biome === biomeKey);
+			if (!planet) continue;
+
+			// Créer l'élément tooltip
+			const tooltip = document.createElement('div');
+			tooltip.className = 'planet-tooltip';
+			tooltip.id = `tooltip-${biomeKey}`;
+			tooltip.innerHTML = `<span>${planet.name}</span>`;
+			tooltip.classList.add('visible');
+
+			// ← AJOUTER: Rendre cliquable avec un curseur pointer
+			tooltip.style.cursor = 'pointer';
+			tooltip.style.pointerEvents = 'auto';  // Accepter les clics
+
+			// ← AJOUTER: Event listener pour les clics
+			tooltip.addEventListener('click', () => {
+				this.focusOnPlanet(planet.index);
+			});
+
+			// ← AJOUTER: Effect au survol
+			tooltip.addEventListener('mouseenter', () => {
+				tooltip.style.transform = 'translate(-50%, -100%) scale(1.1)';
+				tooltip.style.boxShadow = '0 0 20px rgba(255, 192, 0, 0.8)';
+			});
+
+			tooltip.addEventListener('mouseleave', () => {
+				tooltip.style.transform = 'translate(-50%, -100%) scale(1)';
+				tooltip.style.boxShadow = '0 0 15px rgba(255, 192, 0, 0.4)';
+			});
+
+			container.appendChild(tooltip);
+
+			this.planetTooltips.set(biomeKey, {
+				element: tooltip,
+				planet: planet,
+				visible: true
+			});
+		}
+
+		console.log(`✨ ${this.planetTooltips.size} tooltips créés et cliquables`);
+	}
+
+	updatePlanetTooltipsPositions() {
+		if (!this.planetTooltips) return;
+
+		for (const [biomeKey, data] of this.planetTooltips) {
+			// Convertir la position 3D en screen space
+			const vector = data.planet.position.clone();
+			vector.project(this.camera);
+
+			// Vérifier si la planète est visible (en avant de la caméra)
+			const isVisible = vector.z < 1 && vector.z > -1;
+
+			// Vérifier que la planète n'est pas derrière la caméra
+			const cameraDistance = this.camera.position.distanceTo(data.planet.position);
+			const behindCamera = cameraDistance < this.camera.near;
+
+			if (isVisible && !behindCamera) {
+				// Convertir en coordonnées pixel
+				const x = (vector.x + 1) * window.innerWidth / 2;
+				const y = -(vector.y - 1) * window.innerHeight / 2;
+
+				// Ajouter offset pour afficher au-dessus
+				const tooltipY = y - 50;
+
+				// Mettre à jour la position
+				data.element.style.left = `${x}px`;
+				data.element.style.top = `${tooltipY}px`;
+
+				// Afficher le tooltip
+				data.element.classList.add('visible');
+				data.visible = true;
+			} else {
+				// Masquer si hors écran ou derrière caméra
+				data.element.classList.remove('visible');
+				data.visible = false;
+			}
+		}
+	}
+
+
+	showTooltip(biomeKey) {
+		const data = this.planetTooltips?.get(biomeKey);
+		if (data) {
+			data.element.classList.add('visible');
+			data.visible = true;
+		}
+	}
+
+	hideTooltip(biomeKey) {
+		const data = this.planetTooltips?.get(biomeKey);
+		if (data) {
+			data.element.classList.remove('visible');
+			data.visible = false;
+		}
+	}
+
+	hideAllTooltips() {
+		if (!this.planetTooltips) return;
+		for (const data of this.planetTooltips.values()) {
+			data.element.classList.remove('visible');
+		}
+	}
+
 
 	async loadPlanets() {
 		try {
@@ -1048,7 +1166,6 @@ class GalaxyViewer {
 	}
 
 	onMouseMove(event) {
-		// ← MODIFIER: Toujours tester le raycaster
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1082,10 +1199,18 @@ class GalaxyViewer {
 
 			if (intersects.length > 0) {
 				const planet = this.planetData.find(p => p.biome === biomeKey);
+
+				// ← AJOUTER: Vérifier que ce n'est pas la planète focusée
 				if (planet && planet.index !== this.selectedPlanetIndex) {
-					planet.hovered = true;
-					document.body.style.cursor = 'pointer';
-					return;
+					// ← VÉRIFIER: Que la planète n'est pas derrière la caméra
+					const cameraDistance = this.camera.position.distanceTo(planet.position);
+					const behindCamera = cameraDistance < this.camera.near;
+
+					if (!behindCamera) {
+						planet.hovered = true;
+						document.body.style.cursor = 'pointer';
+						return;
+					}
 				}
 			}
 		}
@@ -1094,6 +1219,11 @@ class GalaxyViewer {
 	}
 
 	onMouseClick(event) {
+		// ← AJOUTER: Ignorer les clics sur les tooltips (ils gèrent leurs propres clics)
+		if (event.target.closest('.planet-tooltip')) {
+			return;
+		}
+
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1116,14 +1246,23 @@ class GalaxyViewer {
 		}
 
 		// 2. Tester les planètes alwaysVisible en arrière-plan
+		// ← MODIFIER: Vérifier que c'est la planète focusée ET pas masquée
 		for (const [biomeKey, mesh] of this.alwaysVisibleMeshes) {
 			const intersects = this.raycaster.intersectObject(mesh);
 
 			if (intersects.length > 0) {
 				const planet = this.planetData.find(p => p.biome === biomeKey);
+
+				// ← AJOUTER: Vérifier que ce n'est pas une planète déjà focusée
 				if (planet && planet.index !== this.selectedPlanetIndex) {
-					this.focusOnPlanet(planet.index);
-					return;
+					// ← VÉRIFIER: Que la planète est pas derrière la caméra
+					const cameraDistance = this.camera.position.distanceTo(planet.position);
+					const behindCamera = cameraDistance < this.camera.near;
+
+					if (!behindCamera) {
+						this.focusOnPlanet(planet.index);
+						return;
+					}
 				}
 			}
 		}
@@ -1205,6 +1344,10 @@ class GalaxyViewer {
 					this.scene.add(hdMesh);
 					if (PLANET_SPECIFIC_TEXTURES[biomeKey]?.alwaysVisible) {
 						this.alwaysVisibleMeshes.set(biomeKey, hdMesh);
+					}
+					if (this.planetTooltips?.has(biomeKey)) {
+						const tooltipData = this.planetTooltips.get(biomeKey);
+						tooltipData.element.classList.add('visible');
 					}
 				}
 			} else {
@@ -1302,8 +1445,10 @@ class GalaxyViewer {
 
 			this.updateRegionalClouds();
 
-			// ← AJOUTER: Désactiver le glow sur toutes les planètes
 			this.updateAlwaysVisibleGlow(null);
+
+			// ← Les tooltips restent visibles - pas besoin de les afficher à nouveau
+			// car updatePlanetTooltipsPositions() les gère chaque frame
 
 			if (this.focusedHdMesh && this.focusedHdMeshKey) {
 				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[this.focusedHdMeshKey]?.alwaysVisible;
@@ -1432,6 +1577,9 @@ class GalaxyViewer {
 		this.applyRepulsionForces();
 		this.updatePlanetVelocities();
 		this.updateRegionalClouds();
+
+		// ← AJOUTER: Mettre à jour les positions des tooltips
+		this.updatePlanetTooltipsPositions();
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
