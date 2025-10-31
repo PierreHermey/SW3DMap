@@ -22,6 +22,7 @@ const AVAILABLE_GENERIC_BIOMES = ['volcanic', 'oceanic'];
 const BIOME_COLORS = {
 	volcanic: '#ff4500',
 	coruscant: '#808080',
+	taris: '#3d5c1d',
 	desert: '#d4a574',
 	ice: '#e0f6ff',
 	oceanic: '#1a4d7a',
@@ -257,7 +258,7 @@ async function main() {
 
 		const famousPlanets = [
 			'Tatooine', 'Coruscant', 'Alderaan', 'Naboo', 'Hoth',
-			'Endor', 'Dagobah', 'Mustafar', 'Kamino', 'Ahch-To'
+			'Endor', 'Dagobah', 'Mustafar', 'Ahch-To'
 		];
 
 		console.log('\n⭐ Planètes célèbres trouvées:');

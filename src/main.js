@@ -15,35 +15,68 @@ const host = isDev
 	: 'https://pub-1ee90aa7201d46a6866703f0c56989a7.r2.dev';
 
 // ========== GESTION TEXTURES HD ==========
-const TEXTURE_MAPS = {
+
+const TEXTURE_MAPS_BASE = {
 	volcanic: {
-		diffuse: `${host}/textures/volcanic/volcanic_diffuse.png`,
-		bump: `${host}/textures/volcanic/volcanic_bump.png`,
-		roughness: `${host}/textures/volcanic/volcanic_roughness.png`,
-		elevation: `${host}/textures/volcanic/volcanic_elevation.png`,
-		clouds: `${host}/textures/volcanic/volcanic_clouds.png`,
-		lava: `${host}/textures/volcanic/volcanic_lava.png`,
-		citylights: `${host}/textures/volcanic/volcanic_citylights.png`,
+		diffuse: 'volcanic_diffuse.png',
+		bump: 'volcanic_bump.png',
+		roughness: 'volcanic_roughness.png',
+		elevation: 'volcanic_elevation.png',
+		clouds: 'volcanic_clouds.png',
+		lava: 'volcanic_lava.png',
+		citylights: 'volcanic_citylights.png',
 	},
 	oceanic: {
-		diffuse: `${host}/textures/oceanic/oceanic_diffuse.png`,
-		bump: `${host}/textures/oceanic/oceanic_bump.png`,
-		roughness: `${host}/textures/oceanic/oceanic_roughness.png`,
-		elevation: `${host}/textures/oceanic/oceanic_elevation.png`,
-		clouds: `${host}/textures/oceanic/oceanic_clouds.png`,
-		lava: `${host}/textures/oceanic/oceanic_islands.png`,
-		citylights: `${host}/textures/oceanic/oceanic_citylights.png`,
+		diffuse: 'oceanic_diffuse.png',
+		bump: 'oceanic_bump.png',
+		roughness: 'oceanic_roughness.png',
+		elevation: 'oceanic_elevation.png',
+		clouds: 'oceanic_clouds.png',
+		lava: 'oceanic_islands.png',
+		citylights: 'oceanic_citylights.png',
 	},
-	coruscant: {
-		diffuse: `${host}/planets/coruscant/coruscant_elevation.png`,
-		bump: `${host}/planets/coruscant/coruscant_bump.png`,
-		roughness: `${host}/planets/coruscant/coruscant_bump.png`,
-		elevation: `${host}/planets/coruscant/coruscant_elevation.png`,
-		clouds: `${host}/planets/coruscant/coruscant_clouds.png`,
-		citylights: `${host}/planets/coruscant/coruscant_citylights.png`,
-	},
-	// Ajoute ici d'autres biomes : desert, ice, oceanic...
 };
+
+const PLANET_SPECIFIC_TEXTURES = {
+	coruscant: {
+		diffuse: 'coruscant_diffuse.png',
+		bump: 'coruscant_bump.png',
+		roughness: null,
+		specular: 'coruscant_specular.png',
+		elevation: null,
+		clouds: 'coruscant_clouds.png',
+		cloudsbump: 'coruscant_clouds_bump.png',
+		citylights: 'coruscant_citylights.png',
+	},
+	taris: {
+		diffuse: 'taris_diffuse.png',
+		bump: 'taris_bump.png',
+		roughness: null,
+		specular: 'taris_specular.png',
+		elevation: null,
+		clouds: 'taris_clouds.png',
+		cloudsbump: 'taris_cloud_bump.png',
+		citylights: 'taris_citylights.png',
+	},
+};
+
+const TEXTURE_MAPS = {};
+
+Object.entries(TEXTURE_MAPS_BASE).forEach(([biome, files]) => {
+	TEXTURE_MAPS[biome] = {};
+	Object.entries(files).forEach(([type, filename]) => {
+		TEXTURE_MAPS[biome][type] = `${host}/textures/${biome}/${filename}`;
+	});
+});
+
+Object.entries(PLANET_SPECIFIC_TEXTURES).forEach(([planetName, files]) => {
+	TEXTURE_MAPS[planetName] = {};
+	Object.entries(files).forEach(([type, filename]) => {
+		if (filename) {
+			TEXTURE_MAPS[planetName][type] = `${host}/planets/${planetName}/${filename}`;
+		}
+	});
+});
 
 const HdTextureCache = new Map();
 
@@ -58,8 +91,19 @@ async function loadHDTexturesAsync(biomeKey) {
 	}
 
 	const entries = await Promise.all(
-		Object.entries(files).map(async ([k, url]) => [k, await loader.loadAsync(url)])
+		Object.entries(files)
+			.filter(([k, url]) => url)
+			.map(async ([k, url]) => {
+				try {
+					const tex = await loader.loadAsync(url);
+					return [k, tex];
+				} catch (error) {
+					console.warn(`⚠️ Impossible de charger ${k} depuis ${url}:`, error.message);
+					return [k, null];
+				}
+			})
 	);
+
 	const tex = Object.fromEntries(entries);
 	HdTextureCache.set(biomeKey, tex);
 	return tex;
@@ -67,51 +111,126 @@ async function loadHDTexturesAsync(biomeKey) {
 
 async function createHDPlanetMesh(biomeKey, planetRadius) {
 	const tex = await loadHDTexturesAsync(biomeKey);
-	if (!tex) return null;
-
-	const mat = new THREE.MeshStandardMaterial({
-		map: tex.diffuse,
-		bumpMap: tex.bump,
-		roughnessMap: tex.roughness,
-		displacementMap: tex.elevation,
-		displacementScale: 0.025,
-		emissiveMap: tex.citylights,
-		emissive: tex.citylights ? new THREE.Color(0xffa000) : new THREE.Color(0x000000),
-		emissiveIntensity: 1.0,
-	});
-
-	const geo = new THREE.SphereGeometry(planetRadius, 128, 128);
-	const mesh = new THREE.Mesh(geo, mat);
-
-	// Nuages overlay
-	if (tex.clouds) {
-		const cloudsGeo = new THREE.SphereGeometry(planetRadius * 1.02, 64, 64);
-		const cloudsMat = new THREE.MeshPhongMaterial({
-			map: tex.clouds,
-			transparent: true,
-			opacity: 0.7,
-			depthWrite: false,
-		});
-		const cloudsMesh = new THREE.Mesh(cloudsGeo, cloudsMat);
-		mesh.add(cloudsMesh);
+	if (!tex || !tex.diffuse) {
+		console.error(`❌ Impossible de créer le mesh HD : pas de texture diffuse pour ${biomeKey}`);
+		return null;
 	}
 
-	// Lave overlay (effet additif)
+	// Réglage des encodages
+	if (tex.diffuse) tex.diffuse.encoding = THREE.sRGBEncoding;
+	if (tex.bump) tex.bump.encoding = THREE.LinearEncoding;
+	if (tex.roughness) tex.roughness.encoding = THREE.LinearEncoding;
+	if (tex.elevation) tex.elevation.encoding = THREE.LinearEncoding;
+	if (tex.specular) tex.specular.encoding = THREE.LinearEncoding;
+	if (tex.citylights) tex.citylights.encoding = THREE.sRGBEncoding;
+	if (tex.clouds) tex.clouds.encoding = THREE.sRGBEncoding;
+	if (tex.cloudsbump) tex.cloudsbump.encoding = THREE.LinearEncoding;
+	if (tex.lava) tex.lava.encoding = THREE.sRGBEncoding;
+
+	// Groupe principal contenant tous les layers
+	const planetGroup = new THREE.Group();
+
+	// ========== LAYER 1 : Surface principale (diffuse + bump + elevation) ==========
+	const surfaceGeo = new THREE.SphereGeometry(planetRadius, 128, 128);
+	const surfaceMat = new THREE.MeshStandardMaterial({
+		map: tex.diffuse,
+		transparent: false,
+		side: THREE.FrontSide,
+		metalness: 0,
+		roughness: 0.9,
+	});
+
+	if (tex.bump) {
+		surfaceMat.bumpMap = tex.bump;
+		surfaceMat.bumpScale = 0.02;
+	}
+
+	if (tex.elevation) {
+		surfaceMat.displacementMap = tex.elevation;
+		surfaceMat.displacementScale = 0.015;
+	}
+
+	// ← IMPORTANT : Ne pas utiliser roughnessMap directement si tu veux pas de réflexions
+	// À la place, augmente le roughness global
+	if (tex.roughness) {
+		// Option 1 : Ignorer la roughnessMap
+		// surfaceMat.roughnessMap = tex.roughness;
+
+		// Option 2 : Utiliser la roughnessMap mais garder roughness à 1
+		surfaceMat.roughnessMap = tex.roughness;
+		surfaceMat.roughness = 1; // Force à maximum
+	}
+
+	const surfaceMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
+	planetGroup.add(surfaceMesh);
+
+	// ========== LAYER 2 : Specular (reflets métalliques) ==========
+	// if (tex.specular) {
+	// 	const specularGeo = new THREE.SphereGeometry(planetRadius * 1.001, 64, 64);
+	// 	const specularMat = new THREE.MeshStandardMaterial({
+	// 		map: tex.specular,
+	// 		transparent: true,
+	// 		opacity: 0.5,
+	// 		blending: THREE.AdditiveBlending,
+	// 		depthWrite: false,
+	// 		metalness: 0.3,
+	// 		roughness: 0.2,
+	// 	});
+	// 	const specularMesh = new THREE.Mesh(specularGeo, specularMat);
+	// 	planetGroup.add(specularMesh);
+	// }
+
+	// ========== LAYER 3 : City Lights (lumières urbaines/émissives) ==========
+	if (tex.citylights) {
+		const lightsGeo = new THREE.SphereGeometry(planetRadius * 1.002, 64, 64);
+		const lightsMat = new THREE.MeshBasicMaterial({
+			map: tex.citylights,
+			transparent: true,
+			blending: THREE.AdditiveBlending,
+			opacity: 0.8,
+			depthWrite: false,
+		});
+		const lightsMesh = new THREE.Mesh(lightsGeo, lightsMat);
+		planetGroup.add(lightsMesh);
+	}
+
+	// ========== LAYER 4 : Lava (couches de lave/éléments additifs) ==========
 	if (tex.lava) {
-		const lavaGeo = new THREE.SphereGeometry(planetRadius * 1.01, 64, 64);
-		const lavaMat = new THREE.MeshPhongMaterial({
+		const lavaGeo = new THREE.SphereGeometry(planetRadius * 1.003, 64, 64);
+		const lavaMat = new THREE.MeshBasicMaterial({
 			map: tex.lava,
 			transparent: true,
 			blending: THREE.AdditiveBlending,
-			opacity: 0.5,
+			opacity: 0.4,
 			depthWrite: false,
 		});
 		const lavaMesh = new THREE.Mesh(lavaGeo, lavaMat);
-		mesh.add(lavaMesh);
+		planetGroup.add(lavaMesh);
 	}
 
-	return mesh;
+	// ========== LAYER 5 : Clouds (nuages atmosphériques) ==========
+	if (tex.clouds) {
+		const cloudsGeo = new THREE.SphereGeometry(planetRadius * 1.015, 64, 64);
+		const cloudsMat = new THREE.MeshPhongMaterial({
+			map: tex.clouds,
+			transparent: true,
+			opacity: 0.6,
+			depthWrite: false,
+			side: THREE.FrontSide,
+		});
+
+		if (tex.cloudsbump) {
+			cloudsMat.bumpMap = tex.cloudsbump;
+			cloudsMat.bumpScale = 0.3;
+		}
+
+		const cloudsMesh = new THREE.Mesh(cloudsGeo, cloudsMat);
+		planetGroup.add(cloudsMesh);
+	}
+
+	return planetGroup;
 }
+
 // ==========================================
 
 class GalaxyViewer {
@@ -123,7 +242,11 @@ class GalaxyViewer {
 		this.selectedPlanetIndex = null;
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
-		this.focusedHdMesh = null; // ← Mesh HD de la planète en focus
+		this.focusedHdMesh = null;
+
+		// ← Ajouter les spotlights
+		this.spotlights = [];
+		this.ambientLight = null;
 
 		this.REPULSION_CONFIG = {
 			radius: 40,
@@ -302,8 +425,8 @@ class GalaxyViewer {
 	}
 
 	setupLights() {
-		const ambientLight = new THREE.AmbientLight(0x1a3a4d, 0.6);
-		this.scene.add(ambientLight);
+		this.ambientLight = new THREE.AmbientLight(0x1a3a4d, 0.6);
+		this.scene.add(this.ambientLight);
 
 		const coreLight = new THREE.PointLight(0xffcc99, 3.5, CONFIG.SPHERE_RADIUS * 4);
 		coreLight.position.set(0, 0, 0);
@@ -323,7 +446,118 @@ class GalaxyViewer {
 		directional.target.position.set(0, 0, 0);
 		this.scene.add(directional);
 		this.scene.add(directional.target);
+
+		this.createSpotlights();
 	}
+
+	createSpotlights() {
+		const spotlightConfigs = [
+			{ position: { x: -15, y: -18, z: 0 } },
+			{ position: { x: 15, y: -18, z: 0 } },
+			{ position: { x: -15, y: 18, z: 0 } },
+			{ position: { x: 15, y: 18, z: 0 } },
+		];
+
+		spotlightConfigs.forEach((config) => {
+			const spotlight = new THREE.SpotLight(
+				0xffffff,
+				5,
+				350,
+				Math.PI / 5,
+				0.4,
+				1.5
+			);
+
+			spotlight.position.set(config.position.x, config.position.y, config.position.z);
+			spotlight.target.position.set(0, 0, 0);
+			spotlight.castShadow = false;
+			spotlight.visible = false;
+
+			this.scene.add(spotlight);
+			this.scene.add(spotlight.target);
+
+			spotlight.userData = {
+				originalPosition: new THREE.Vector3(config.position.x, config.position.y, config.position.z)
+			};
+
+			this.spotlights.push(spotlight);
+		});
+
+		this.createVolumetricDust();
+	}
+
+	createVolumetricDust() {
+		// Créer de la poussière/brume qui montre les rayons
+		const dustGeometry = new THREE.BufferGeometry();
+		const dustCount = 3000;
+
+		const positions = new Float32Array(dustCount * 3);
+		const colors = new Float32Array(dustCount * 3);
+
+		for (let i = 0; i < dustCount * 3; i += 3) {
+			positions[i] = (Math.random() - 0.5) * 80;     // x
+			positions[i + 1] = (Math.random() - 0.5) * 80; // y
+			positions[i + 2] = (Math.random() - 0.5) * 80; // z
+
+			colors[i] = 1;     // r
+			colors[i + 1] = 1; // g
+			colors[i + 2] = 1; // b
+		}
+
+		dustGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+		dustGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+		const dustMaterial = new THREE.PointsMaterial({
+			size: 0.3,
+			transparent: true,
+			opacity: 0.3,
+			vertexColors: true,
+			sizeAttenuation: true,
+			fog: false
+		});
+
+		this.dustCloud = new THREE.Points(dustGeometry, dustMaterial);
+		this.dustCloud.visible = false;
+		this.scene.add(this.dustCloud);
+	}
+
+	updateLightingForPlanet(planetPosition) {
+		// ← Augmenter drastiquement l'ambient light
+		if (this.ambientLight) {
+			this.ambientLight.intensity = 3.0; // Augmenté de 0.6 à 2.0
+		}
+
+		this.spotlights.forEach((spotlight) => {
+			const offset = spotlight.userData.originalPosition.clone();
+			const newPos = planetPosition.clone().add(offset);
+
+			spotlight.position.copy(newPos);
+			spotlight.target.position.copy(planetPosition);
+			spotlight.visible = true;
+		});
+
+		// Afficher la poussière autour de la planète
+		if (this.dustCloud) {
+			this.dustCloud.position.copy(planetPosition);
+			this.dustCloud.visible = true;
+		}
+	}
+
+	resetLighting() {
+		// ← Revenir à l'ambient light original
+		if (this.ambientLight) {
+			this.ambientLight.intensity = 0.6; // Back to original
+		}
+
+		this.spotlights.forEach(spotlight => {
+			spotlight.visible = false;
+		});
+
+		if (this.dustCloud) {
+			this.dustCloud.visible = false;
+		}
+	}
+
 
 	createVolumetricGalaxy() {
 		const sphereGeometry = new THREE.SphereGeometry(
@@ -442,7 +676,6 @@ class GalaxyViewer {
 			matrix.setPosition(position);
 			instancedMesh.setMatrixAt(index, matrix);
 
-			// ← Lire la couleur depuis le JSON (biome)
 			const biomeColor = new THREE.Color(planet.color);
 			instancedMesh.setColorAt(index, biomeColor);
 
@@ -456,7 +689,7 @@ class GalaxyViewer {
 				hovered: false,
 				focused: false,
 				biomeColor: biomeColor,
-				biome: planet.biome, // ← Clé du biome pour charger HD
+				biome: planet.biome,
 			});
 
 			this.planetVelocities.set(index, new THREE.Vector3());
@@ -496,7 +729,6 @@ class GalaxyViewer {
 	}
 
 	createRegionalClouds() {
-		// Grouper planètes par région
 		const regionGroups = {};
 		this.planetData.forEach(planet => {
 			const region = planet.region;
@@ -506,11 +738,9 @@ class GalaxyViewer {
 			regionGroups[region].push(planet);
 		});
 
-		// Créer UN nuage par région avec sa couleur de région
 		Object.entries(regionGroups).forEach(([regionName, planets]) => {
 			if (planets.length === 0) return;
 
-			// ← Utiliser regionColor du premier planet (tous ont la même pour la région)
 			const regionColor = planets[0].regionColor;
 			this.createRegionalCloud(regionName, planets, regionColor);
 		});
@@ -790,39 +1020,33 @@ class GalaxyViewer {
 
 		this.updateRegionalClouds();
 
-		// ========== CHARGER TEXTURE HD ==========
-		// Masquer TOUS les meshes low-res
 		this.instancedMesh.visible = false;
-
-		// ← MASQUER LES NUAGES AUSSI
 		this.regionalClouds.forEach(cloud => {
 			cloud.mesh.visible = false;
 		});
 
-		// Supprimer l'ancien mesh HD si existant
 		if (this.focusedHdMesh) {
 			this.scene.remove(this.focusedHdMesh);
 			this.focusedHdMesh = null;
 		}
 
-		// Charger et créer le mesh HD
-		const biomeKey = planet.biome; // ex: 'volcanic'
+		const biomeKey = planet.biome;
 		if (TEXTURE_MAPS[biomeKey]) {
 			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
 			this.focusedHdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
 			if (this.focusedHdMesh) {
-				// ← AJOUTER LA POSITION CORRECTEMENT
 				this.focusedHdMesh.position.copy(planet.position);
 				this.scene.add(this.focusedHdMesh);
 				console.log(`✅ Textures HD chargées pour ${planet.name}`);
-				console.log(`📍 Position: x=${planet.position.x}, y=${planet.position.y}, z=${planet.position.z}`);
+
+				// ← Activer les projecteurs
+				this.updateLightingForPlanet(planet.position);
 			} else {
 				console.error(`❌ Erreur lors de la création du mesh HD pour ${biomeKey}`);
 			}
 		} else {
 			console.warn(`⚠️ Aucune texture HD définie pour le biome: ${biomeKey}`);
 		}
-		// =========================================
 
 		document.getElementById('planet-info').innerHTML = `
         <div class="space-y-3">
@@ -894,24 +1118,21 @@ class GalaxyViewer {
 
 			this.updateRegionalClouds();
 
-			// ========== RESTAURER VUE GALAXIE ==========
-			// Supprimer le mesh HD
 			if (this.focusedHdMesh) {
 				this.scene.remove(this.focusedHdMesh);
 				this.focusedHdMesh = null;
 			}
-			// Réafficher l'instancedMesh
 			this.instancedMesh.visible = true;
 
-			// ← RÉAFFICHER LES NUAGES AUSSI
 			this.regionalClouds.forEach(cloud => {
 				cloud.mesh.visible = true;
 			});
-			// ===========================================
+
+			// ← Réinitialiser les lumières
+			this.resetLighting();
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
-
 
 	animateCameraTo(targetPosition) {
 		const distance = CONFIG.SPHERE_RADIUS * 0.03;
