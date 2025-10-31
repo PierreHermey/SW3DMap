@@ -9,33 +9,38 @@ const CONFIG = {
 	ANIMATION_SPEED: 0.5,
 };
 
+const isDev = location.hostname == 'localhost';
+const host = isDev
+	? '/assets'
+	: 'http://shimmering-rolypoly-7f38b3.netlify.app';
+
 // ========== GESTION TEXTURES HD ==========
 const TEXTURE_MAPS = {
 	volcanic: {
-		diffuse: 'assets/textures/volcanic/volcanic_diffuse.png',
-		bump: 'assets/textures/volcanic/volcanic_bump.png',
-		roughness: 'assets/textures/volcanic/volcanic_roughness.png',
-		elevation: 'assets/textures/volcanic/volcanic_elevation.png',
-		clouds: 'assets/textures/volcanic/volcanic_clouds.png',
-		lava: 'assets/textures/volcanic/volcanic_lava.png',
-		citylights: 'assets/textures/volcanic/volcanic_citylights.png',
+		diffuse: `${host}/textures/volcanic/volcanic_diffuse.png`,
+		bump: `${host}/textures/volcanic/volcanic_bump.png`,
+		roughness: `${host}/textures/volcanic/volcanic_roughness.png`,
+		elevation: `${host}/textures/volcanic/volcanic_elevation.png`,
+		clouds: `${host}/textures/volcanic/volcanic_clouds.png`,
+		lava: `${host}/textures/volcanic/volcanic_lava.png`,
+		citylights: `${host}/textures/volcanic/volcanic_citylights.png`,
 	},
 	oceanic: {
-		diffuse: 'assets/textures/oceanic/oceanic_diffuse.png',
-		bump: 'assets/textures/oceanic/oceanic_bump.png',
-		roughness: 'assets/textures/oceanic/oceanic_roughness.png',
-		elevation: 'assets/textures/oceanic/oceanic_elevation.png',
-		clouds: 'assets/textures/oceanic/oceanic_clouds.png',
-		lava: 'assets/textures/oceanic/oceanic_islands.png',
-		citylights: 'assets/textures/oceanic/oceanic_citylights.png',
+		diffuse: `${host}/textures/oceanic/oceanic_diffuse.png`,
+		bump: `${host}/textures/oceanic/oceanic_bump.png`,
+		roughness: `${host}/textures/oceanic/oceanic_roughness.png`,
+		elevation: `${host}/textures/oceanic/oceanic_elevation.png`,
+		clouds: `${host}/textures/oceanic/oceanic_clouds.png`,
+		lava: `${host}/textures/oceanic/oceanic_islands.png`,
+		citylights: `${host}/textures/oceanic/oceanic_citylights.png`,
 	},
 	coruscant: {
-		diffuse: 'assets/planets/coruscant/coruscant_diffuse.png',
-		bump: 'assets/planets/coruscant/coruscant_bump.png',
-		roughness: 'assets/planets/coruscant/coruscant_elevation.png',
-		elevation: 'assets/planets/coruscant/coruscant_clouds.png',
-		clouds: 'assets/planets/coruscant/coruscant_clouds_bump.png',
-		citylights: 'assets/planets/coruscant/coruscant_citylights.png',
+		diffuse: `${host}/planets/coruscant/coruscant_diffuse.png`,
+		bump: `${host}/planets/coruscant/coruscant_bump.png`,
+		roughness: `${host}/planets/coruscant/coruscant_elevation.png`,
+		elevation: `${host}/planets/coruscant/coruscant_clouds.png`,
+		clouds: `${host}/planets/coruscant/coruscant_clouds_bump.png`,
+		citylights: `${host}/planets/coruscant/coruscant_citylights.png`,
 	},
 	// Ajoute ici d'autres biomes : desert, ice, oceanic...
 };
