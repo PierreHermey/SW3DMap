@@ -312,11 +312,7 @@ class GalaxyViewer {
 		const searchInput = document.getElementById('planet-search');
 		const clearButton = document.getElementById('clear-search');
 
-		searchInput.addEventListener('input', (e) => {
-			const searchTerm = e.target.value.trim();
-			if (searchTerm) this.searchAndFocusPlanet(searchTerm);
-		});
-
+		// ✅ Garder seulement 'change' (déclenché à la fin de la saisie)
 		searchInput.addEventListener('change', (e) => {
 			const searchTerm = e.target.value.trim();
 			if (searchTerm) this.searchAndFocusPlanet(searchTerm);
