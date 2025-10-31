@@ -244,7 +244,6 @@ async function createHDPlanetMesh(biomeKey, planetRadius) {
 class GalaxyViewer {
 	constructor() {
 		this.isMobile = isMobile();  // ← AJOUTER
-		this.mobileVisibleMeshes = new Map();
 		this.instanceIndexToPlanetIndex = new Map();  // ← AJOUTER: mapping
 
 		this.regionalClouds = [];
