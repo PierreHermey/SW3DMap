@@ -245,6 +245,7 @@ class GalaxyViewer {
 	constructor() {
 		this.isMobile = isMobile();  // ← AJOUTER
 		this.mobileVisibleMeshes = new Map();
+		this.instanceIndexToPlanetIndex = new Map();  // ← AJOUTER: mapping
 
 		this.regionalClouds = [];
 		this.planets = [];
@@ -361,10 +362,9 @@ class GalaxyViewer {
 		);
 
 		if (planet) {
-			const planetData = this.planetData.find(d =>
-				d.name === planet.name
-			);
-			if (planetData) this.focusOnPlanet(planetData.index);
+			// ← Trouver l'index global dans this.planets
+			const globalIndex = this.planets.indexOf(planet);
+			this.focusOnPlanet(globalIndex);
 		}
 	}
 
@@ -651,7 +651,7 @@ class GalaxyViewer {
 			side: THREE.FrontSide
 		});
 
-		// ← AJOUTER: Filtrer les planètes visibles sur mobile
+		// ← Filtrer les planètes visibles sur mobile
 		const visiblePlanets = this.isMobile
 			? this.planets.filter(p => PLANET_SPECIFIC_TEXTURES[p.biome]?.alwaysVisible)
 			: this.planets;
@@ -661,27 +661,26 @@ class GalaxyViewer {
 		const instancedMesh = new THREE.InstancedMesh(
 			planetGeometry,
 			material,
-			visiblePlanets.length  // ← Utiliser le nombre de planètes visibles
+			visiblePlanets.length
 		);
 
 		instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
 		const gridGroups = {};
-		visiblePlanets.forEach(planet => {  // ← Itérer sur visiblePlanets
+		visiblePlanets.forEach(planet => {
 			if (!gridGroups[planet.grid]) {
 				gridGroups[planet.grid] = [];
 			}
 			gridGroups[planet.grid].push(planet);
 		});
 
-		// Index dans instancedMesh (différent de l'index dans planetData sur mobile)
+		// Index dans instancedMesh
 		let instanceIndex = 0;
-		const planetToInstanceIndex = new Map();  // ← AJOUTER: mapping
 
-		visiblePlanets.forEach((planet, dataIndex) => {  // ← Itérer sur visiblePlanets
-			const globalIndex = this.planets.indexOf(planet);
-
-			const planetsInGrid = gridGroups[planet.grid];
+		// ← IMPORTANT: Créer d'abord TOUTES les entrées dans planetData
+		const planetToGlobalIndex = new Map();
+		this.planets.forEach((planet, globalIndex) => {
+			const planetsInGrid = gridGroups[planet.grid] || [];
 			let depth = 0.5;
 
 			if (planet.region.includes('Deep Core')) depth = 0.5;
@@ -705,19 +704,13 @@ class GalaxyViewer {
 			);
 			const position = basePosition.clone().add(offset);
 
-			const matrix = new THREE.Matrix4();
-			matrix.setPosition(position);
-			instancedMesh.setMatrixAt(instanceIndex, matrix);  // ← Utiliser instanceIndex
-
 			const biomeColor = new THREE.Color(planet.color);
-			instancedMesh.setColorAt(instanceIndex, biomeColor);
 
-			planetToInstanceIndex.set(globalIndex, instanceIndex);  // ← Sauvegarder le mapping
-
+			// Créer l'entrée dans planetData POUR TOUTES les planètes
 			this.planetData.push({
 				...planet,
-				index: globalIndex,  // ← Index global
-				instanceIndex: instanceIndex,  // ← Index dans instancedMesh
+				index: globalIndex,
+				instanceIndex: undefined,  // Sera défini plus bas si visible
 				position: position.clone(),
 				originalPosition: position.clone(),
 				pulseSpeed: 0.5 + Math.random() * 0.5,
@@ -726,10 +719,31 @@ class GalaxyViewer {
 				focused: false,
 				biomeColor: biomeColor,
 				biome: planet.biome,
-				visible: true,  // ← AJOUTER: toutes les planètes sont dans planetData
+				visible: false,  // Sera mis à true si visible
 			});
 
+			planetToGlobalIndex.set(globalIndex, this.planetData.length - 1);
 			this.planetVelocities.set(globalIndex, new THREE.Vector3());
+		});
+
+		// ← Maintenant ajouter les planètes visibles à l'instancedMesh
+		visiblePlanets.forEach((planet) => {
+			const globalIndex = this.planets.indexOf(planet);
+			const planetDataIndex = planetToGlobalIndex.get(globalIndex);
+			const planetData = this.planetData[planetDataIndex];
+
+			const matrix = new THREE.Matrix4();
+			matrix.setPosition(planetData.position);
+			instancedMesh.setMatrixAt(instanceIndex, matrix);
+
+			instancedMesh.setColorAt(instanceIndex, planetData.biomeColor);
+
+			// ← AJOUTER: Sauvegarder le mapping
+			this.instanceIndexToPlanetIndex.set(instanceIndex, globalIndex);
+
+			// ← Mettre à jour planetData
+			planetData.instanceIndex = instanceIndex;
+			planetData.visible = true;
 
 			instanceIndex++;
 		});
@@ -1036,20 +1050,25 @@ class GalaxyViewer {
 
 		if (intersects.length > 0) {
 			const instanceId = intersects[0].instanceId;
-			this.focusOnPlanet(instanceId);
+			// ← Utiliser le mapping pour obtenir l'index global
+			const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
+			this.focusOnPlanet(globalPlanetIndex);
 		}
 	}
 
-	async focusOnPlanet(instanceId) {
-		if (this.selectedPlanetIndex !== null && this.selectedPlanetIndex !== instanceId) {
+
+	async focusOnPlanet(globalPlanetIndex) {
+		if (this.selectedPlanetIndex !== null && this.selectedPlanetIndex !== globalPlanetIndex) {
 			this.restorePlanetsToOriginalPositions(0.5);
 		}
 
-		this.selectedPlanetIndex = instanceId;
-		const planet = this.planetData.find(p => p.index === instanceId);
+		this.selectedPlanetIndex = globalPlanetIndex;
+
+		// ← Chercher la planète dans planetData par index global
+		const planet = this.planetData.find(p => p.index === globalPlanetIndex);
 
 		if (!planet) {
-			console.error(`❌ Planète avec index ${instanceId} non trouvée`);
+			console.error(`❌ Planète avec index ${globalPlanetIndex} non trouvée`);
 			return;
 		}
 
@@ -1058,16 +1077,15 @@ class GalaxyViewer {
 		this.controls.minDistance = CONFIG.PLANET_SIZE * 2;
 
 		this.planetData.forEach((data) => {
-			if (data.index !== instanceId) {
+			if (data.index !== globalPlanetIndex) {
 				this.planetVelocities.set(data.index, new THREE.Vector3());
 			}
 		});
 
 		this.updateRegionalClouds();
 
-		// ← AJOUTER: Afficher/cacher instancedMesh uniquement si la planète est visible
-		const planetInstanceIndex = planet.instanceIndex;
-		if (planetInstanceIndex !== undefined) {
+		// ← Afficher/cacher instancedMesh
+		if (planet.visible) {
 			this.instancedMesh.visible = false;
 		}
 
@@ -1075,7 +1093,7 @@ class GalaxyViewer {
 			cloud.mesh.visible = false;
 		});
 
-		// ✅ CORRECTION: Vérifier si l'ancien mesh doit rester visible
+		// ✅ Vérifier si l'ancien mesh doit rester visible
 		if (this.focusedHdMesh) {
 			const oldBiomeKey = this.focusedHdMeshKey;
 			const shouldKeepOldVisible = PLANET_SPECIFIC_TEXTURES[oldBiomeKey]?.alwaysVisible;
@@ -1102,15 +1120,12 @@ class GalaxyViewer {
 		if (TEXTURE_MAPS[biomeKey]) {
 			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
 
-			// ✅ CORRECTION: Vérifier si le mesh existe déjà
 			let hdMesh = this.alwaysVisibleMeshes.get(biomeKey);
 
 			if (!hdMesh) {
-				// Créer le mesh s'il n'existe pas
 				hdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
 				if (hdMesh) {
 					this.scene.add(hdMesh);
-					// Stocker dans la Map si c'est une planète alwaysVisible
 					if (PLANET_SPECIFIC_TEXTURES[biomeKey]?.alwaysVisible) {
 						this.alwaysVisibleMeshes.set(biomeKey, hdMesh);
 					}
@@ -1183,11 +1198,13 @@ class GalaxyViewer {
 
 		window.showPlanetModal && window.showPlanetModal(planet);
 
+		// ← IMPORTANT: Appeler animateCameraTo pour zoomer
 		this.animateCameraTo(planet.position);
 	}
 
 	clearPlanetFocus() {
 		if (this.selectedPlanetIndex !== null) {
+			// ← Chercher la planète par index global
 			const planet = this.planetData.find(p => p.index === this.selectedPlanetIndex);
 
 			if (planet) {
@@ -1206,7 +1223,6 @@ class GalaxyViewer {
 
 			this.updateRegionalClouds();
 
-			// ✅ CORRECTION: Utiliser focusedHdMeshKey pour vérifier alwaysVisible
 			if (this.focusedHdMesh && this.focusedHdMeshKey) {
 				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[this.focusedHdMeshKey]?.alwaysVisible;
 
