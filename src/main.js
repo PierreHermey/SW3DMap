@@ -292,10 +292,8 @@ class GalaxyViewer {
 		if (this.isMobile) {
 			const coruscantPlanet = this.planetData.find(p => p.biome === 'coruscant');
 			if (coruscantPlanet) {
-				setTimeout(() => {
-					this.focusOnPlanet(coruscantPlanet.index);
-					console.log('📱 Focus automatique sur Coruscant (mobile)');
-				}, 800);
+				this.focusOnPlanet(coruscantPlanet.index);
+				console.log('📱 Focus automatique sur Coruscant (mobile)');
 			}
 		}
 	}
@@ -335,22 +333,51 @@ class GalaxyViewer {
 		const searchInput = document.getElementById('planet-search');
 		const clearButton = document.getElementById('clear-search');
 
-		// ✅ Utiliser uniquement 'change' au lieu de 'input'
-		searchInput.addEventListener('change', (e) => {
+		// ← AJOUTER: Variable pour le debounce
+		let searchTimeout = null;
+
+		// ← MODIFIER: Utiliser 'input' avec debounce
+		searchInput.addEventListener('input', (e) => {
+			clearTimeout(searchTimeout);
 			const searchTerm = e.target.value.trim();
-			if (searchTerm) this.searchAndFocusPlanet(searchTerm);
+
+			// Attendre 300ms après le dernier caractère tapé
+			searchTimeout = setTimeout(() => {
+				if (searchTerm) {
+					this.searchAndFocusPlanet(searchTerm);
+				}
+			}, 1000);
+		});
+
+		// ← GARDER: 'change' pour les clics dehors ou entrée
+		searchInput.addEventListener('change', (e) => {
+			clearTimeout(searchTimeout);
+			const searchTerm = e.target.value.trim();
+			if (searchTerm) {
+				this.searchAndFocusPlanet(searchTerm);
+			}
 		});
 
 		clearButton.addEventListener('click', () => {
 			searchInput.value = '';
+			clearTimeout(searchTimeout);
 			this.clearPlanetFocus();
 		});
 
 		searchInput.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape') {
 				searchInput.value = '';
+				clearTimeout(searchTimeout);
 				this.clearPlanetFocus();
 				searchInput.blur();
+			}
+			// ← AJOUTER: Entrée pour chercher immédiatement
+			if (e.key === 'Enter') {
+				clearTimeout(searchTimeout);
+				const searchTerm = searchInput.value.trim();
+				if (searchTerm) {
+					this.searchAndFocusPlanet(searchTerm);
+				}
 			}
 		});
 	}
@@ -1021,6 +1048,15 @@ class GalaxyViewer {
 	}
 
 	onMouseMove(event) {
+		// ← AJOUTER: Ne tester que si instancedMesh est visible
+		if (!this.instancedMesh.visible) {
+			this.planetData.forEach(data => {
+				data.hovered = false;
+			});
+			document.body.style.cursor = 'default';
+			return;
+		}
+
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1033,14 +1069,27 @@ class GalaxyViewer {
 
 		if (intersects.length > 0) {
 			const instanceId = intersects[0].instanceId;
-			this.planetData[instanceId].hovered = true;
-			document.body.style.cursor = 'pointer';
+			const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
+			const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+
+			// ← AJOUTER: Vérifier que la planète est visible
+			if (planet && planet.visible) {
+				planet.hovered = true;
+				document.body.style.cursor = 'pointer';
+			} else {
+				document.body.style.cursor = 'default';
+			}
 		} else {
 			document.body.style.cursor = 'default';
 		}
 	}
 
 	onMouseClick(event) {
+		// ← AJOUTER: Ne tester que si instancedMesh est visible
+		if (!this.instancedMesh.visible) {
+			return;
+		}
+
 		this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1049,12 +1098,15 @@ class GalaxyViewer {
 
 		if (intersects.length > 0) {
 			const instanceId = intersects[0].instanceId;
-			// ← Utiliser le mapping pour obtenir l'index global
 			const globalPlanetIndex = this.instanceIndexToPlanetIndex.get(instanceId);
-			this.focusOnPlanet(globalPlanetIndex);
+			const planet = this.planetData.find(p => p.index === globalPlanetIndex);
+
+			// ← AJOUTER: Vérifier que la planète est visible ET cliquable
+			if (planet && planet.visible) {
+				this.focusOnPlanet(globalPlanetIndex);
+			}
 		}
 	}
-
 
 	async focusOnPlanet(globalPlanetIndex) {
 		if (this.selectedPlanetIndex !== null && this.selectedPlanetIndex !== globalPlanetIndex) {
@@ -1063,7 +1115,6 @@ class GalaxyViewer {
 
 		this.selectedPlanetIndex = globalPlanetIndex;
 
-		// ← Chercher la planète dans planetData par index global
 		const planet = this.planetData.find(p => p.index === globalPlanetIndex);
 
 		if (!planet) {
@@ -1083,7 +1134,6 @@ class GalaxyViewer {
 
 		this.updateRegionalClouds();
 
-		// ← Afficher/cacher instancedMesh
 		if (planet.visible) {
 			this.instancedMesh.visible = false;
 		}
@@ -1092,7 +1142,6 @@ class GalaxyViewer {
 			cloud.mesh.visible = false;
 		});
 
-		// ✅ Vérifier si l'ancien mesh doit rester visible
 		if (this.focusedHdMesh) {
 			const oldBiomeKey = this.focusedHdMeshKey;
 			const shouldKeepOldVisible = PLANET_SPECIFIC_TEXTURES[oldBiomeKey]?.alwaysVisible;
@@ -1119,16 +1168,27 @@ class GalaxyViewer {
 		if (TEXTURE_MAPS[biomeKey]) {
 			console.log(`🔄 Chargement textures HD pour ${planet.name} (${biomeKey})...`);
 
+			// ← AJOUTER: Afficher le loader
+			this.showLoader();
+
 			let hdMesh = this.alwaysVisibleMeshes.get(biomeKey);
 
 			if (!hdMesh) {
+				// ← Charger les textures (async)
 				hdMesh = await createHDPlanetMesh(biomeKey, CONFIG.PLANET_SIZE * 3);
+
+				// ← AJOUTER: Masquer le loader après chargement
+				this.hideLoader();
+
 				if (hdMesh) {
 					this.scene.add(hdMesh);
 					if (PLANET_SPECIFIC_TEXTURES[biomeKey]?.alwaysVisible) {
 						this.alwaysVisibleMeshes.set(biomeKey, hdMesh);
 					}
 				}
+			} else {
+				// ← Si déjà en cache: masquer immédiatement
+				this.hideLoader();
 			}
 
 			if (hdMesh) {
@@ -1139,9 +1199,13 @@ class GalaxyViewer {
 
 				this.updateLightingForPlanet(planet.position);
 			} else {
+				// ← AJOUTER: Masquer le loader en cas d'erreur
+				this.hideLoader();
 				console.error(`❌ Erreur lors de la création du mesh HD pour ${biomeKey}`);
 			}
 		} else {
+			// ← AJOUTER: Masquer si pas de textures
+			this.hideLoader();
 			console.warn(`⚠️ Aucune texture HD définie pour le biome: ${biomeKey}`);
 		}
 
@@ -1197,7 +1261,6 @@ class GalaxyViewer {
 
 		window.showPlanetModal && window.showPlanetModal(planet);
 
-		// ← IMPORTANT: Appeler animateCameraTo pour zoomer
 		this.animateCameraTo(planet.position);
 	}
 
@@ -1298,6 +1361,20 @@ class GalaxyViewer {
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
+	}
+
+	showLoader() {
+		const loader = document.getElementById('planet-loader');
+		if (loader) {
+			loader.classList.remove('hidden');
+		}
+	}
+
+	hideLoader() {
+		const loader = document.getElementById('planet-loader');
+		if (loader) {
+			loader.classList.add('hidden');
+		}
 	}
 }
 
