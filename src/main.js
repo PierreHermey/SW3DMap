@@ -1,6 +1,12 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
+const isMobile = () => {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+			.test(navigator.userAgent) ||
+		window.matchMedia("(max-width: 768px)").matches;
+};
+
 // Configuration
 const CONFIG = {
 	GRID_SIZE: 21,
@@ -237,6 +243,9 @@ async function createHDPlanetMesh(biomeKey, planetRadius) {
 
 class GalaxyViewer {
 	constructor() {
+		this.isMobile = isMobile();  // ← AJOUTER
+		this.mobileVisibleMeshes = new Map();
+
 		this.regionalClouds = [];
 		this.planets = [];
 		this.planetData = [];
@@ -278,6 +287,17 @@ class GalaxyViewer {
 
 		document.getElementById('loading').style.display = 'none';
 		console.log('✅ Galaxie volumétrique chargée!');
+
+		// ← AJOUTER: Auto-focus Coruscant sur mobile
+		if (this.isMobile) {
+			const coruscantPlanet = this.planetData.find(p => p.biome === 'coruscant');
+			if (coruscantPlanet) {
+				setTimeout(() => {
+					this.focusOnPlanet(coruscantPlanet.index);
+					console.log('📱 Focus automatique sur Coruscant (mobile)');
+				}, 800);
+			}
+		}
 	}
 
 	async loadPlanets() {
@@ -631,23 +651,36 @@ class GalaxyViewer {
 			side: THREE.FrontSide
 		});
 
+		// ← AJOUTER: Filtrer les planètes visibles sur mobile
+		const visiblePlanets = this.isMobile
+			? this.planets.filter(p => PLANET_SPECIFIC_TEXTURES[p.biome]?.alwaysVisible)
+			: this.planets;
+
+		console.log(`📱 Mobile: ${this.isMobile ? 'OUI' : 'NON'} - ${visiblePlanets.length}/${this.planets.length} planètes visibles`);
+
 		const instancedMesh = new THREE.InstancedMesh(
 			planetGeometry,
 			material,
-			this.planets.length
+			visiblePlanets.length  // ← Utiliser le nombre de planètes visibles
 		);
 
 		instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
 		const gridGroups = {};
-		this.planets.forEach(planet => {
+		visiblePlanets.forEach(planet => {  // ← Itérer sur visiblePlanets
 			if (!gridGroups[planet.grid]) {
 				gridGroups[planet.grid] = [];
 			}
 			gridGroups[planet.grid].push(planet);
 		});
 
-		this.planets.forEach((planet, index) => {
+		// Index dans instancedMesh (différent de l'index dans planetData sur mobile)
+		let instanceIndex = 0;
+		const planetToInstanceIndex = new Map();  // ← AJOUTER: mapping
+
+		visiblePlanets.forEach((planet, dataIndex) => {  // ← Itérer sur visiblePlanets
+			const globalIndex = this.planets.indexOf(planet);
+
 			const planetsInGrid = gridGroups[planet.grid];
 			let depth = 0.5;
 
@@ -674,14 +707,17 @@ class GalaxyViewer {
 
 			const matrix = new THREE.Matrix4();
 			matrix.setPosition(position);
-			instancedMesh.setMatrixAt(index, matrix);
+			instancedMesh.setMatrixAt(instanceIndex, matrix);  // ← Utiliser instanceIndex
 
 			const biomeColor = new THREE.Color(planet.color);
-			instancedMesh.setColorAt(index, biomeColor);
+			instancedMesh.setColorAt(instanceIndex, biomeColor);
+
+			planetToInstanceIndex.set(globalIndex, instanceIndex);  // ← Sauvegarder le mapping
 
 			this.planetData.push({
 				...planet,
-				index,
+				index: globalIndex,  // ← Index global
+				instanceIndex: instanceIndex,  // ← Index dans instancedMesh
 				position: position.clone(),
 				originalPosition: position.clone(),
 				pulseSpeed: 0.5 + Math.random() * 0.5,
@@ -690,9 +726,12 @@ class GalaxyViewer {
 				focused: false,
 				biomeColor: biomeColor,
 				biome: planet.biome,
+				visible: true,  // ← AJOUTER: toutes les planètes sont dans planetData
 			});
 
-			this.planetVelocities.set(index, new THREE.Vector3());
+			this.planetVelocities.set(globalIndex, new THREE.Vector3());
+
+			instanceIndex++;
 		});
 
 		instancedMesh.instanceMatrix.needsUpdate = true;
@@ -701,7 +740,7 @@ class GalaxyViewer {
 
 		this.createRegionalClouds();
 
-		console.log(`✨ ${this.planets.length} planètes créées avec biomes`);
+		console.log(`✨ ${visiblePlanets.length} planètes créées (${this.isMobile ? 'mobile' : 'desktop'})`);
 	}
 
 	generateCloudParticleTexture() {
@@ -1007,20 +1046,31 @@ class GalaxyViewer {
 		}
 
 		this.selectedPlanetIndex = instanceId;
-		const planet = this.planetData[instanceId];
+		const planet = this.planetData.find(p => p.index === instanceId);
+
+		if (!planet) {
+			console.error(`❌ Planète avec index ${instanceId} non trouvée`);
+			return;
+		}
+
 		planet.focused = true;
 
 		this.controls.minDistance = CONFIG.PLANET_SIZE * 2;
 
-		this.planetData.forEach((data, index) => {
-			if (index !== instanceId) {
-				this.planetVelocities.set(index, new THREE.Vector3());
+		this.planetData.forEach((data) => {
+			if (data.index !== instanceId) {
+				this.planetVelocities.set(data.index, new THREE.Vector3());
 			}
 		});
 
 		this.updateRegionalClouds();
 
-		this.instancedMesh.visible = false;
+		// ← AJOUTER: Afficher/cacher instancedMesh uniquement si la planète est visible
+		const planetInstanceIndex = planet.instanceIndex;
+		if (planetInstanceIndex !== undefined) {
+			this.instancedMesh.visible = false;
+		}
+
 		this.regionalClouds.forEach(cloud => {
 			cloud.mesh.visible = false;
 		});
@@ -1031,7 +1081,6 @@ class GalaxyViewer {
 			const shouldKeepOldVisible = PLANET_SPECIFIC_TEXTURES[oldBiomeKey]?.alwaysVisible;
 
 			if (!shouldKeepOldVisible) {
-				// Supprimer et nettoyer
 				this.scene.remove(this.focusedHdMesh);
 				if (this.focusedHdMesh.traverse) {
 					this.focusedHdMesh.traverse((child) => {
@@ -1047,7 +1096,6 @@ class GalaxyViewer {
 				}
 				this.focusedHdMesh = null;
 			}
-			// Si shouldKeepOldVisible, on laisse le mesh dans la scène
 		}
 
 		const biomeKey = planet.biome;
@@ -1140,7 +1188,12 @@ class GalaxyViewer {
 
 	clearPlanetFocus() {
 		if (this.selectedPlanetIndex !== null) {
-			this.planetData[this.selectedPlanetIndex].focused = false;
+			const planet = this.planetData.find(p => p.index === this.selectedPlanetIndex);
+
+			if (planet) {
+				planet.focused = false;
+			}
+
 			this.selectedPlanetIndex = null;
 
 			this.controls.minDistance = CONFIG.SPHERE_RADIUS * 0.5;
