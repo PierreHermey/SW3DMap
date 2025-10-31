@@ -47,6 +47,7 @@ const PLANET_SPECIFIC_TEXTURES = {
 		clouds: 'coruscant_clouds.png',
 		cloudsbump: 'coruscant_clouds_bump.png',
 		citylights: 'coruscant_citylights.png',
+		alwaysVisible: true,  // ← PLANÈTE PRINCIPALE
 	},
 	taris: {
 		diffuse: 'taris_diffuse.png',
@@ -57,6 +58,7 @@ const PLANET_SPECIFIC_TEXTURES = {
 		clouds: 'taris_clouds.png',
 		cloudsbump: 'taris_cloud_bump.png',
 		citylights: 'taris_citylights.png',
+		alwaysVisible: true,  // ← PLANÈTE PRINCIPALE
 	},
 };
 
@@ -312,7 +314,7 @@ class GalaxyViewer {
 		const searchInput = document.getElementById('planet-search');
 		const clearButton = document.getElementById('clear-search');
 
-		// ✅ Garder seulement 'change' (déclenché à la fin de la saisie)
+		// ✅ Utiliser uniquement 'change' au lieu de 'input'
 		searchInput.addEventListener('change', (e) => {
 			const searchTerm = e.target.value.trim();
 			if (searchTerm) this.searchAndFocusPlanet(searchTerm);
@@ -344,6 +346,7 @@ class GalaxyViewer {
 			if (planetData) this.focusOnPlanet(planetData.index);
 		}
 	}
+
 
 	gridTo3D(gridX, gridY, depthFactor = Math.random()) {
 		const centerGrid = 11;
@@ -1021,8 +1024,21 @@ class GalaxyViewer {
 			cloud.mesh.visible = false;
 		});
 
+		// ✅ TOUJOURS supprimer l'ancien mesh AVANT de charger le nouveau
 		if (this.focusedHdMesh) {
 			this.scene.remove(this.focusedHdMesh);
+			if (this.focusedHdMesh.traverse) {
+				this.focusedHdMesh.traverse((child) => {
+					if (child.geometry) child.geometry.dispose();
+					if (child.material) {
+						if (Array.isArray(child.material)) {
+							child.material.forEach(m => m.dispose());
+						} else {
+							child.material.dispose();
+						}
+					}
+				});
+			}
 			this.focusedHdMesh = null;
 		}
 
@@ -1035,7 +1051,6 @@ class GalaxyViewer {
 				this.scene.add(this.focusedHdMesh);
 				console.log(`✅ Textures HD chargées pour ${planet.name}`);
 
-				// ← Activer les projecteurs
 				this.updateLightingForPlanet(planet.position);
 			} else {
 				console.error(`❌ Erreur lors de la création du mesh HD pour ${biomeKey}`);
@@ -1099,8 +1114,10 @@ class GalaxyViewer {
 		this.animateCameraTo(planet.position);
 	}
 
+
 	clearPlanetFocus() {
 		if (this.selectedPlanetIndex !== null) {
+			const planet = this.planetData[this.selectedPlanetIndex];
 			this.planetData[this.selectedPlanetIndex].focused = false;
 			this.selectedPlanetIndex = null;
 
@@ -1114,21 +1131,42 @@ class GalaxyViewer {
 
 			this.updateRegionalClouds();
 
+			// ✅ Vérifier si la planète doit rester visible (alwaysVisible)
 			if (this.focusedHdMesh) {
-				this.scene.remove(this.focusedHdMesh);
-				this.focusedHdMesh = null;
+				const planetBiomeKey = planet.biome;
+				const shouldKeepVisible = PLANET_SPECIFIC_TEXTURES[planetBiomeKey]?.alwaysVisible;
+
+				if (!shouldKeepVisible) {
+					this.scene.remove(this.focusedHdMesh);
+					if (this.focusedHdMesh.traverse) {
+						this.focusedHdMesh.traverse((child) => {
+							if (child.geometry) child.geometry.dispose();
+							if (child.material) {
+								if (Array.isArray(child.material)) {
+									child.material.forEach(m => m.dispose());
+								} else {
+									child.material.dispose();
+								}
+							}
+						});
+					}
+					this.focusedHdMesh = null;
+				} else {
+					console.log(`✨ ${planet.name} reste visible (planète principale)`);
+				}
 			}
+
 			this.instancedMesh.visible = true;
 
 			this.regionalClouds.forEach(cloud => {
 				cloud.mesh.visible = true;
 			});
 
-			// ← Réinitialiser les lumières
 			this.resetLighting();
 		}
 		document.getElementById('planet-info').innerHTML = '';
 	}
+
 
 	animateCameraTo(targetPosition) {
 		const distance = CONFIG.SPHERE_RADIUS * 0.03;
